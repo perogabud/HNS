@@ -1,0 +1,28 @@
+# Increase max allowed post/upload size
+#php_value post_max_size 20M
+#php_value upload_max_filesize 20M
+
+# Disable magic quotes
+#php_flag magic_quotes_gpc Off
+
+# Use PHP 5
+# AddHandler php5-script .php
+
+# No SESSION_ID in URL
+#php_flag session.use_trans_sid off
+
+
+RewriteEngine on
+
+RewriteRule ^search/(.*)term:(.*) /index.php?object=search/$1term&term=$2 [L,QSA]
+
+RewriteCond %{REQUEST_URI} ^/app?(.+)
+RewriteRule ^app([^\?]+)\??(.*)$ /index.php?object=app$1&$2 [L,QSA]
+
+RewriteCond %{REQUEST_URI} ^/css.* [OR]
+RewriteCond %{REQUEST_URI} ^/js.* [OR]
+RewriteCond %{REQUEST_URI} ^/img.* [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+) - [PT,L]
+RewriteRule ^([^\?]+)\??(.*)$ /index.php?object=$1&$2 [L,QSA]
