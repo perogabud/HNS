@@ -1,0 +1,1024 @@
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:12px;
+  line-height:14px;
+  background: #777;
+}
+
+div#wrapper {
+  position: relative;
+  /*float: left;*/
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  width: 960px;
+}
+
+a, a:link, a:visited {
+  color:teal;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color:lightseagreen;
+}
+
+ul#tabs li a:link, ul#tabs li a:visited {text-decoration:none;}
+
+html.js textarea.tinymce { display: none; }
+
+ul#tabs { position: relative; float: left; border-bottom: 1px solid #CCC; }
+
+ul#tabs li {
+  position: relative;
+  float: left;
+  margin-right:1px;
+  background: #edebe6;
+  padding: 10px;
+  font-weight:bold;
+  font-size: 1em;
+  color: #FFF;
+}
+
+ul#tabs li.active {
+  background: teal;
+}
+
+ul#tabs a { color: teal; }
+ul#tabs li.active a { color: #FFF; }
+
+div#mainContent {
+  position: relative;
+  background:none repeat scroll 0 0 #edebe6;
+  float:left;
+  padding: 10px;
+  margin-bottom: 30px;
+  width:940px;
+  clear: both;
+}
+div.column {
+  position: relative;
+  float: left;
+  width: 50%;
+  overflow-x: auto;
+}
+
+div.column img {
+  max-width: 300px;
+  height: auto;
+}
+
+div#loginContent {
+ background:none repeat scroll 0 0 #EFEFEF;
+  margin:auto;
+  width:300px;
+}
+
+fieldset {
+  border: 1px solid #CCC;
+  padding: 10px;
+  margin: 10px;
+}
+
+div.column fieldset {
+  margin-left: 0px;
+}
+
+fieldset legend {
+  padding: 0.2em 0.4em;
+  font-size: 1.5em;
+  line-height: 1.1;
+  font-weight: bold;
+  color: teal;
+}
+
+div.input {
+  position: relative;
+  float: left;
+  width: 100%;
+  clear: both;
+  padding: 5px 0;
+  margin-bottom: 10px;
+}
+
+div.inline30 {
+  clear: none;
+  width: 29%;
+  padding-right: 1%;
+}
+
+div.inline {
+  clear: none;
+  width: auto;
+  padding-right: 10px;
+}
+
+input.file {
+  position: relative;
+  float: left;
+  clear: both;
+}
+
+input.text,
+input[type="text"],
+input.password {
+  position: relative;
+  float: left;
+  width: 50%;
+  padding: 5px;
+  clear: both;
+  font-size: 1.083em;
+  border: 1px solid #CCC;
+}
+
+input.text,
+input[type="text"],
+input.password,
+textarea {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+  background-image: -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+  background-image: -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+  background-image: -o-linear-gradient(bottom, white 85%, #eeeeee 99%);
+  background-image: -ms-linear-gradient(top, #ffffff 85%,#eeeeee 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );
+  background-image: linear-gradient(top, #ffffff 85%,#eeeeee 99%);
+}
+
+div.inline30 input.text {
+  width: 90%;
+}
+
+div.first {
+  clear: left;
+}
+
+select {
+  padding: 5px;
+  font-size: 1.083em;
+  border: 1px solid #CCC;
+  position: relative;
+  float: left;
+  clear: both;
+}
+
+textarea {
+  display:block;
+  width:50%;
+  padding: 5px;
+  min-height:80px;
+  font-size: 1.083em;
+  font-family: Arial, sans-serif;
+  border: 1px solid #CCC;
+}
+
+input, textarea {
+  margin-left: -1px;
+  color: #222;
+  font-family: Arial, Verdana, sans-serif;
+}
+
+input.text:focus,
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #AAA;
+}
+
+input.readOnly,
+textarea.readOnly {
+  opacity: 0.5 !important;
+}
+
+div.input label {
+  display: block;
+  padding: 5px 0 10px 5px;
+  font-size: 1.4em;
+  line-height: 1.1;
+  color: #555;
+  width: 100%;
+  padding-left: 5px;
+  border-left: 5px solid #DDD;
+}
+
+div.checkbox label,
+div.radio label {
+  font-size: 1.2em;
+  margin-bottom: 0;
+  border: 0;
+  padding-left: 0;
+}
+
+.hidden { display: none; }
+
+div.input input.shopBrand {
+  width:inherit;
+  display:inherit;
+  margin-bottom:10px;
+}
+
+div.input input#loginUsername {
+  width:200px;
+}
+
+div.input input#loginPassword {
+  width:200px;
+}
+
+div.input input#postSubmit {
+  margin-bottom:0px;
+}
+
+div#shopImg {
+  float:left;
+  width:200px;
+  text-align:center;
+  margin-right:10px;
+}
+
+table, td, th { border: 1px solid #EAEAEA; }
+
+td, th { text-align: left; padding: 0.4em 0.5em; vertical-align: middle; }
+
+tr.parent td.title { font-weight: bold; }
+
+td.title { font-weight: bold; color: #333; }
+
+tr.parent { background: #E1E1E1 !important; }
+
+tr.child td.title { padding-left: 20px; }
+
+td.disabled { font-style: italic; color: #666; }
+
+div.column table {
+  width: 100%;
+  margin: 10px 0;
+}
+
+th {
+  line-height: 1.4;
+  color: teal;
+  font-size: 1.17em;
+  background: #E1E1E1;
+}
+body table tfoot tr, body table tfoot tr:hover { background: /*#E1E1E1*/ transparent !important; }
+
+tr.odd { background: #FAFAFA; }
+tr.even { background: #F5F5F5; }
+
+td.controls,
+td.controls2,
+td.controls3,
+td.controls4,
+td.controls5 { text-align: right; }
+
+td.controls { width: auto; }
+
+td.controls2 { width: 55px; }
+
+td.controls3 { width: 75px; }
+td.controls4 { width: 95px; }
+td.controls5 { width: 125px; }
+
+td.controls a,
+td.controls2 a,
+td.controls3 a,
+td.controls4 a,
+td.controls5 a
+{ margin-left: 5px; }
+
+h1 { font-size: 2em; margin-bottom: 1em; color: #FFF; line-height: 1.1; }
+h2 { font-size: 1.5em; margin: 1em 0 1.5em 0; color: #08326F; line-height: 1.1; }
+h3 { font-size: 1.2em; margin-bottom: 1em; line-height: 1.1; }
+
+
+div.input span.info {
+  display: block;
+  padding-left: 5px;
+  border-left: 5px solid #D7D7D7;
+  margin: -5px 0 5px 0;
+  font-size: 0.92em;
+  color: #444;
+  font-family: Arial, sans-serif;
+  font-style: italic;
+}
+div.input span.error {
+  float: left;
+  padding: 0 5px;
+  border-left: 5px solid #D7D7D7;
+  margin: -5px 0 5px 0;
+  font-size: 0.92em;
+  color: black;
+  background: yellow;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-style: italic;
+}
+
+tr ul { list-style: disc; padding-left: 1em; }
+tr ul li { padding: 0.3em; }
+
+p.warning { font-size: 1.17em; background: yellow; }
+
+span.cke_skin_kama * {
+  float: none;
+}
+
+td.images img {
+  width: 30%;
+  padding: 1%;
+}
+
+div.image dl { padding-top: 5px; }
+div.image dl dd { color: #333; padding-bottom: 5px; }
+
+div.pagination {
+  position: relative;
+  float: right;
+  margin: 0.7em -0.7em 0 0;
+}
+
+ul.pagination,
+ul.pagination li {
+  position: relative;
+  float: left;
+  list-style: none;
+}
+
+ul.pagination li { margin-left: 0.3em; }
+
+ul.pagination li a,
+ul.pagination li span,
+span.pagination {
+  position: relative;
+  float: left;
+  padding: 0.1em;
+  line-height: 2em;
+  height: 2em; width: 2em;
+  border: 1px solid #CCC;
+  text-align: center;
+}
+
+ul.pagination li a {
+  color: #FFF;
+  background: teal;
+}
+
+ul.pagination li a:hover {
+  background: lightseagreen;
+}
+
+span.pagination { width: auto; border: none; height: auto; line-height: 2; }
+
+th img { position: relative; top: 2px; }
+
+div.imageInfo, div.image { position: relative; float: left; width: 26%; padding: 1%; border: 1px solid #DDD; margin: 1%; }
+div.image { width: 20%; height: 300px; }
+div.image img.thumbnail { position: relative; display: block; height: auto; width: auto; max-width: 160px; }
+div.image a.edit { position: absolute; top: 5px; right: 5px; }
+div.image a.delete { position: absolute; top: 25px; right: 5px; }
+div.image a.view { position: absolute; top: 45px; right: 5px; }
+div.image a.left { position: absolute; top: 65px; right: 5px; }
+div.image a.right { position: absolute; top: 85px; right: 5px; }
+div.imageInfo div.input label { font-size: 1.2em; margin-bottom: 3px; }
+div.imageInfo div.input { width: 100%; padding: 0; margin-bottom: 5px;  }
+div.imageInfo div.input input.text,
+div.imageInfo div.input textarea { width: 94%; font-size: 1em; }
+div.imageInfo div.input select { font-size: 1em; }
+
+
+fieldset fieldset {
+  min-width: 50%;
+  float: left;
+  position: relative;
+  clear: both;
+  margin: 10px 0;
+}
+
+fieldset fieldset.full {
+  width: 97%;
+}
+
+fieldset fieldset div.checkbox { margin-bottom: 0; }
+
+table, p.info { clear: both; }
+
+p.info {
+  color: #222;
+  position: relative;
+  float: left;
+  margin: 1em 0;
+}
+legend + p.info { margin-top: 0; }
+
+ul.lastNames { clear: both; margin-bottom: 1ex; float: left; }
+ul.lastNames li { display: inline; float: left; padding: 1ex; font-size: 1.4em;  border-bottom: 1px solid #CCC; }
+
+ul.lastNames li a.active { color: black; }
+
+fieldset table { min-width: 50%; width: 100%; }
+
+div.input table { width: 100%; }
+
+div.orderItemData { position: relative; float: left; width: 100%; padding: 1em 0; border-bottom: 1px solid #CCC; }
+
+dl.info dt,
+dl.info dd {
+  position: relative;
+  float: left;
+  clear: both;
+  width: 97%;
+}
+
+dl.info dt { padding: 0; margin-top: 1em; }
+dl.info dt:first-child { margin-top: 0; }
+dl.info dd { padding: 0.1em 0 1em 0; }
+
+dl.subinfo { width: 80%; position: relative; float: left; padding: 1em; margin-right: 1em; border-bottom: 1px #CCC solid; }
+dl.subinfo dt { color: #333; }
+
+dd.sub { font-size: 1.2em; background: #DDD; }
+dd.total { font-size: 1.4em;  }
+
+dt.sub { font-size: 1.2em;  }
+dt.total { font-size: 1.4em; }
+
+dl.info { padding: 1em 0; }
+
+dl.info dt { font-weight: bold; }
+
+dl.info dd {
+  margin: 0.5em 0;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  background: #F8F8F8;
+  color: #222;
+}
+
+dl.info dd p {
+  margin: 0.5em 0;
+}
+
+fieldset.hidden { display: none; }
+
+h3.subLegend { margin: 1em 0 1ex 0; font-size: 1.4em; color: #08326F; }
+
+h3.inactive,
+table.inactive,
+table.inactive th,
+table.inactive td,
+table.inactive td.title { color: #888888 !important; }
+
+dl.info div.radio {
+  font-size: 0.92em;
+  margin-bottom: 0px;
+  padding: 0;
+}
+
+dl.info div.custom {
+  position: relative;
+  float: left;
+  width: 90%;
+}
+
+dl.info div.custom div.input { display: inline; width: auto; clear: none; }
+
+dl.info div.custom div.radio { width: 100%; }
+
+div.radio label { width: auto; position: relative; float: left; }
+
+div.addImage {
+  position: relative;
+  float: left;
+  height: 230px;
+  padding-right: 20px;
+}
+
+div.addImage strong, div.addImage img { position: relative; float: left; clear: both; padding-bottom: 5px; max-height: 100px; max-width: 100px; }
+
+h2.galleryName { width: 100%; position: relative; float: left; }
+
+div.addImage div.input { font-size: 0.92em; margin: 0; padding: 0; width: auto; }
+div.addImage div.checkbox {}
+
+div.addImage div.input input.text { width: 4ex; }
+
+div.orderItemData img { position: relative; float: left; clear: both; }
+
+input.big { font-size: 2em; }
+
+p.loading { position: absolute; top: 30px; left: 15px;}
+
+tr.pageDepth0 { background: #FFFFFF; }
+tr.pageDepth1 { background: #F9F9F9; }
+tr.pageDepth2 { background: #EEEEEE; }
+tr.pageDepth3 { background: #E9E9E9; }
+tr.pageDepth4 { background: #DDDDDD; }
+tr.pageDepth5 {  }
+tr.pageDepth6 {  }
+fieldset > table tr:hover { background: #d4ece7 !important; }
+
+tr.pageDepth0 td.title { padding-top: 0.5em; padding-bottom: 0.5em; }
+tr.pageDepth1 td.title { padding-left: 2em; padding-top: 0.5em; padding-bottom: 0.5em; }
+tr.pageDepth2 td.title { padding-left: 4em; padding-top: 0.5em; padding-bottom: 0.5em; }
+tr.pageDepth3 td.title { padding-left: 6em; padding-top: 0.5em; padding-bottom: 0.5em; }
+tr.pageDepth4 td.title { padding-left: 8em; }
+tr.pageDepth5 td.title {  }
+tr.pageDepth6 td.title {  }
+
+span.dbg { color: #888888; display: none; }
+
+span.aemph { color: #888888; }
+
+img.loader { margin-left: 1ex; width: auto; height: 0.75em; }
+
+td.state { color: #777; font-size: 1.17em; }
+td.city { color: #555; }
+
+div.adminInfo {
+  background: url("/img/ra.png") no-repeat scroll left top transparent;
+  color: #FFFFFF;
+  float: left;
+  height: 110px;
+  margin: 10px 0 -25px 0;
+  padding: 58px 10px 10px 250px;
+  position: relative;
+  top: -44px;
+  width: 700px;
+}
+
+h2.info {
+  color: #fff;
+}
+
+div.uploadifyQueueItem {
+  position: relative;
+  width:410px;
+}
+
+ul#locationImagesList,
+ul#locationImagesList li {
+  position: relative;
+  float: left;
+}
+
+ul#locationImagesList { width: 100%; }
+
+ul#locationImagesList li { padding: 0 10px 10px 0; }
+
+ul#locationImagesList li img {
+  position: relative;
+  float: left;
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+ul#locationImagesList li a.remove {
+  position: relative;
+  float: left;
+  clear: both;
+  cursor: pointer;
+}
+
+ul#locationImagesList li a.remove img {
+  width: auto;
+  float: none;
+  display: inline;
+}
+
+ul#promoGraphics {
+  padding: 10px 0;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+ul#promoGraphics li > * {
+  display:block;
+}
+
+ul#promoGraphics.location li > a > img {
+  width: 100px;
+  height: auto;
+}
+
+ul#promoGraphics li {
+  position: relative;
+  float: left;
+  padding: 10px;
+  margin: 0 10px 0 0;
+  border: 1px solid #DDD;
+}
+
+fieldset hr {
+  position: relative;
+  float: left;
+  width: 100%;
+  border: 0;
+  border-style: solid;
+  border-top-color: #DDD;
+  border-top-width: 5px;
+  margin: 10px 0;
+  display: none;
+}
+
+ul.actions { margin-bottom: 10px; }
+
+fieldset ul.actions {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+ul.actions li { margin-bottom: 5px; }
+ul.actions li.last-child { margin-bottom: 0px; }
+
+ul.actions li a { line-height: 1.5; }
+
+ul.actions li a img {
+  position: relative;
+  float: left;
+  margin-right: 5px;
+  padding: 0;
+}
+
+fieldset legend span.related, fieldset legend strong { color: gray; }
+
+ul.imageList {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+ul.imageList li {
+  position: relative;
+  float: left;
+  max-width: 47%;
+  min-width: 129px;
+  padding: 0 1.5% 3% 1.5%;
+}
+
+ul.imageList li img {
+  position: relative;
+  float: left;
+  max-width: 100%;
+  max-height: 140px;
+}
+
+ul.imageList li a.remove {
+  position: relative;
+  float: left;
+  clear: both;
+  margin: 5px 0 0 0;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+ul.imageList li a.moveUp {
+  clear: left;
+}
+
+ul.imageList li a.moveUp,
+ul.imageList li a.moveDown {
+  position: relative;
+  float: left;
+  padding: 2px;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+div.orderLinks {
+  position: relative;
+  float: right;
+}
+
+form.searchForm table {
+  width: auto;
+  margin: 10px 0;
+}
+
+form.searchForm td {
+  padding: 0.2em 0.5em;
+}
+
+form.searchForm table div.input {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+form.searchForm table div.input label {
+  clear: none;
+  width: 25%;
+  float: left;
+  border: 0;
+  padding: 0;
+  line-height: 2.4;
+  font-size: 1em;
+  margin: 0;
+}
+
+form.searchForm table div.input input {
+  clear: none;
+  width: 70%;
+  float: left;
+}
+
+form.searchForm table div.checkbox input {
+  width: auto;
+  height: 1.6em;
+  margin-right: 1em;
+}
+
+input.submit {
+  background: teal;
+  color: white;
+  font-weight: bold;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+input.submit:hover {
+  background: lightseagreen;
+}
+
+input.submit:active {
+  background: teal;
+}
+
+div.searchFilters {
+  position: relative;
+  float: left;
+  font-size: 1.2em;
+  color: gray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  padding-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+div.searchFilters dl {
+  position: relative;
+  float: left;
+  margin: 1em 0;
+}
+
+div.searchFilters dt,
+div.searchFilters dd {
+  position: relative;
+  float: left;
+}
+
+div.searchFilters dt {
+  font-weight: bold;
+  margin-right: 1ex;
+}
+
+div.searchFilters dd {
+  margin-right: 1.5em;
+}
+
+div.searchFilters dd:before { content: open-quote; }
+div.searchFilters dd:after { content: close-quote; }
+
+span.count {
+  position: relative;
+  float: right;
+  margin-bottom: 1ex;
+  color: gray;
+}
+
+html.js .editor, html.js .simpleEditor {
+  display: none;
+}
+
+h3.langContent {
+  color: gray;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  position: relative;
+  float: left;
+}
+
+p.error,
+p.success {
+  padding: 5px;
+  margin-bottom: 1em;
+  color: black;
+  background: yellow;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  position: static;
+  display: block;
+}
+
+p.success {
+  background: #00a413;
+  color: white;
+}
+
+span.language {
+  color: #AAA;
+}
+
+div.table textarea {
+  max-height: 2.5em;
+}
+
+div.table table label { border: none; font-size: 1em; }
+
+div.table {
+  clear: both;
+  width: auto !important;
+  min-width: 461px;
+}
+
+div.table table {
+  border: none;
+}
+
+div.table input,
+div.table textarea {
+  width: auto;
+  max-width: 200px;
+}
+
+div.table textarea {
+  width: 150px;
+  height: 2.5em;
+  min-height: 0;
+}
+
+div.dataTables_info { display: none; }
+
+div.dataTables_filter { width: 100%; background: #E1E1E1; }
+
+div.dataTables_filter label {
+  padding: none;
+  font-size: 1em;
+}
+
+div.dataTables_filter input {
+  float: none;
+  margin-left: 1ex;
+}
+
+div.dataTables_scrollHead {
+  background: #E1E1E1;
+}
+
+div.dataTables_scroll {
+  border: 1px solid #DDD;
+  border-top: none;
+}
+
+ul.selectImage li label {
+  border-left: none;
+  width: auto;
+}
+
+ul.selectImage li {
+  width: auto;
+  margin: 0 1em 0 0;
+  float: left;
+}
+
+/*
+div.table table tbody {
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 100%;
+  display: block;
+}
+
+div.table table thead {
+  display: block;
+  width: 100%;
+  background: #E1E1E1;
+}
+
+div.table th,
+div.table td {
+  border: 0;
+  min-width: 200px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.table table div.input {
+  padding: 0;
+  margin: 0;
+  width: auto;
+}
+
+div.table table div.input input,
+div.table table div.input textarea { width: auto; }
+div.table table div.input textarea { height: auto; }
+*/
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+input.date {
+  background: url(/img/admin/calendarGray.png) 99% center no-repeat #FFF;
+  background-image: url(/img/admin/calendarGray.png), -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+  background-image: url(/img/admin/calendarGray.png), -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+  background-image: url(/img/admin/calendarGray.png), -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+  background-image: url(/img/admin/calendarGray.png), -o-linear-gradient(bottom, white 85%, #eeeeee 99%);
+  background-image: url(/img/admin/calendarGray.png), -ms-linear-gradient(top, #ffffff 85%,#eeeeee 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );
+}
+
+div.sideBySide {
+  width: 100%;
+  height: 80px;
+}
+div.sideBySide.files {
+  height: 100px;
+  clear: both;
+}
+div.sideBySide div.input {
+  width: 45%;
+  float: left;
+  clear: none;
+}
+div.sideBySide div.input input.text {
+  width: 90%;
+}
+fieldset.sideBySide {
+  width: 97%;
+}
+input.btnAddElement {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+input.btnRemoveElement {
+  margin-top: 39px;
+  float: right;
+  margin-right: 10px;
+}

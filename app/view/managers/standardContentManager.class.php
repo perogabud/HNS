@@ -9,6 +9,25 @@ class StandardContentManager extends ContentManager {
     // Varijabla $mightyVar je dostupna u svim templateima i elementima
     $this->_setData (array ('mightyVar' => 'test'));
 
+    $this->_setElements (
+      array (
+        'scripts' => array (
+          'filename' => 'defaultScripts'
+        )
+      )
+    );
+
+    $pageController = PageController::getInstance ();
+    $this->_setElements (
+      array (
+        'header' => array (
+          'data' => array (
+            'navPages' => $pageController->getNavigation ()
+          )
+        )
+      )
+    );
+
     // Parse parameters
     switch ($this->params[0]) {
       /*
@@ -16,16 +35,7 @@ class StandardContentManager extends ContentManager {
        */
       case '':
         if ($this->_checkParams (1)) {
-          $this->_setElements (
-            array (
-              'mainContent' => array (
-                'filename' => 'page',
-                'data' => array (
-                  'varName' => array (1, 2, 3) // U elementu pristupaš ovome kao $varName.
-                )
-              )
-            )
-          );
+          $this->_setTemplate ('home');
           $this->_setHtmlHead (array ('pageTitle' => 'Naslovnica'));
           break;
         }
@@ -50,8 +60,28 @@ class StandardContentManager extends ContentManager {
         }
 
       default:
-        // TEMP
-        $this->set404 ();
+        $pageController = PageController::getInstance ();
+        $page = $pageController->getPage (array ('uri' => $this->params));
+        if ($page) {
+          $this->_setElements (
+            array (
+              'mainContent' => array (
+                'filename' => 'page',
+                'data' => array (
+                  'page' => $page
+                )
+              )
+            )
+          );
+          $this->_setHtmlHead (
+            array (
+              'page' => $page
+            )
+          );
+        }
+        else {
+          $this->set404 ();
+        }
     }
   }
 

@@ -11,8 +11,8 @@ class Page extends ModelObject {
   protected $_slug;
   protected $_rootUrl;
   protected $_fullUri;
-  protected $_lead;
   protected $_content;
+  protected $_lead;
   protected $_metaTitle;
   protected $_metaDescription;
   protected $_metaKeywords;
@@ -21,8 +21,10 @@ class Page extends ModelObject {
   protected $_isEditable;
   protected $_isPublished;
   protected $_canAddChildren;
-  protected $_tags;
-
+  protected $_canBeDeleted;
+  protected $_class;
+  protected $_navigationDescription;
+  
   public function __construct ($data, $dataLang, $config = array ()) {
     parent::__construct ($data);
     $this->_setMember ('_id', $data, 'pageId');
@@ -38,14 +40,15 @@ class Page extends ModelObject {
       'slug',
       'fullUri',
       'navigationName',
-      'lead',
       'content',
+      'lead',
       'metaTitle',
       'metaDescription',
-      'metaKeywords'
+      'metaKeywords',
+      'navigationDescription'
     );
   }
-
+  
   public function getLft () {
     return $this->_lft;
   }
@@ -126,14 +129,18 @@ class Page extends ModelObject {
     return $this->_canAddChildren;
   }
 
-  public function getTags () {
-    return $this->_tags;
+  public function getCanBeDeleted () {
+    return $this->_canBeDeleted;
   }
 
-  public function setTags ($tags) {
-    $this->_tags = $tags;
+  public function getClass () {
+    return $this->_class;
   }
 
+  public function getNavigationDescription ($lang = NULL) {
+    return $this->_getLanguageMember ($this->_navigationDescription, $lang);
+  }
 
+  
 }
 ?>

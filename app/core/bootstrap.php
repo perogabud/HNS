@@ -1,24 +1,12 @@
 <?php
 
-if (get_magic_quotes_gpc ()) {
-  $process = array (&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
-  while (list($key, $val) = each ($process)) {
-    foreach ($val as $k => $v) {
-      unset ($process[$key][$k]);
-      if (is_array ($v)) {
-        $process[$key][stripslashes ($k)] = $v;
-        $process[] = &$process[$key][stripslashes ($k)];
-      }
-      else {
-        $process[$key][stripslashes ($k)] = stripslashes ($v);
-      }
-    }
-  }
-  unset ($process);
-}
+spl_autoload_register ('__autoload');
+$sitepath = str_replace ('app' . DIRECTORY_SEPARATOR . 'core', '', dirname (__FILE__));
+require_once ('config.class.php');
+//require_once ($sitepath . 'app/core/config.class.php');
 
 // Bootstraping logic
-Config::write ('sitePath', str_replace ('app' . DIRECTORY_SEPARATOR . 'core', '', dirname (__FILE__)));
+Config::write ('sitePath', $sitepath);
 #set_include_path (Config::read ('sitePath'));
 require_once (Config::read ('sitePath') . 'app/configuration.php');
 require_once (Config::read ('sitePath') . 'app/core/configuration.php');

@@ -39,6 +39,9 @@ class PageController extends Controller {
       )
     );
   }
+  public function getPageBySlug ($slug) {
+    return $this->_repository->getPage (array ('slug' => $slug));
+  }
 }
 
 ?>

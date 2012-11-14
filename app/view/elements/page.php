@@ -1,14 +1,12 @@
-<div id="page">
-  <p>Element goes here.</p>
-  <form action="" method="post">
-    <fieldset>
-      <legend>Forma</legend>
-      <?php
-      FormHelper::input ('text', 'fieldName1', 'fieldId1', array ('label' => array ('text' => 'Labela'), 'class' => 'klasa'));
-      FormHelper::input ('textarea', 'fieldName2', 'fieldId2', array ('label' => array ('text' => 'Labela'), 'class' => 'klasa', 'info' => 'Info tekst ovdje.'));
-      FormHelper::input ('checkbox', 'fieldName3', 'fieldId3', array ('label' => array ('text' => 'Labela'), 'class' => 'klasa'));
-      FormHelper::input ('radio', 'fieldName4', 'fieldId4', array ('label' => array ('text' => 'Labela'), 'class' => 'klasa'));
-      ?>
-    </fieldset>
-  </form>
-</div>
+<?php if (isset ($page)): ?>
+<section>
+  <header>
+    <h1><?php echo $page->Title; ?></h1>
+    <time datetime="<?php echo $page->getCreated ('Y-m-d'); ?>"></time>
+  </header>
+  <div class="lead">
+    <?php echo $page->Lead; ?>
+  </div>
+  <?php echo $page->Content; ?>
+</section>
+<?php endif; ?>

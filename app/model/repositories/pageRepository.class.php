@@ -5,8 +5,15 @@ class PageRepository extends Repository {
     parent::__construct ();
   }
 
-  public function getNavigation ($firstLevelOnly) {
-    return $this->getSubPages (NULL, $firstLevelOnly ? 1 : 2);
+  public function getNavigation () {
+    return $this->getSubPages (NULL, 2, NULL,
+      array (
+        'isVisible' => TRUE,
+        'fields' => array (
+          'pageId', 'lft', 'rgt', 'languageId', 'depth', 'fullUri', 'navigationName', 'slug', 'navigationDescription'
+        )
+      )
+    );
   }
 
   /**
@@ -28,8 +35,8 @@ class PageRepository extends Repository {
     if (isset ($params['filterParams']) && is_array ($params['filterParams'])
       && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
       foreach ($params['filterParams']['inSearch'] as $attrName) {
-        if (in_array ($attrName, array ('title', 'navigationName', 'content', 'metaTitle', 'metaDescription', 'metaKeywords', 'isException', 'isVisible', 'isEditable', 'isPublished', 'canAddChildren'))) {
-          if (in_array ($attrName, array ('isException', 'isVisible', 'isEditable', 'isPublished', 'canAddChildren'))) {
+        if (in_array ($attrName, array ('title', 'navigationName', 'content', 'lead', 'metaTitle', 'metaDescription', 'metaKeywords', 'isException', 'isVisible', 'isEditable', 'isPublished', 'canAddChildren', 'canBeDeleted', 'class', 'navigationDescription'))) {
+          if (in_array ($attrName, array ('isException', 'isVisible', 'isEditable', 'isPublished', 'canAddChildren', 'canBeDeleted'))) {
             $query .= "
               AND $attrName = :$attrName
             ";
@@ -60,8 +67,12 @@ class PageRepository extends Repository {
     return intval ($results[0]['pageCount']);
   }
   public function getSubPages ($uri = NULL, $depth = NULL, $page = NULL, $params = array ()) {
+    $fields = '*';
+    if (isset ($params['fields']) && is_array ($params['fields'])) {
+      $fields = implode (', ', $params['fields']);
+    }
     $query = "
-      SELECT *
+      SELECT $fields
       FROM " . DBP . "vw_pageTree AS pageTree
       WHERE depth > 0
         AND languageId = :lang
@@ -85,6 +96,13 @@ class PageRepository extends Repository {
       $queryParams[':lft'] = array ($page->Lft, PDO::PARAM_INT);
       $queryParams[':rgt'] = array ($page->Rgt, PDO::PARAM_INT);
     }
+
+    if (isset ($params['isVisible']) && $params['isVisible']) {
+      $query .= "
+        AND isVisible = 1
+      ";
+    }
+
     $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     foreach ($results as &$result) {
 
@@ -148,15 +166,6 @@ class PageRepository extends Repository {
     else {
 
       $page = Factory::getPage ($results);
-
-      $tagRepository = new TagRepository ();
-      $tags = $tagRepository->getTags (
-        array (
-          'pageId' => $page->getId (),
-          'relationName' => 'tag'
-        )
-      );
-      $page->setTags ($tags);
 
       return $page;
     }
@@ -300,6 +309,8 @@ class PageRepository extends Repository {
             `isEditable` = :isEditable,
             `isPublished` = :isPublished,
             `canAddChildren` = :canAddChildren,
+            `canBeDeleted` = :canBeDeleted,
+            `class` = :class,
             `created` = NOW(),
             `modified` = NOW()
       ";
@@ -307,11 +318,13 @@ class PageRepository extends Repository {
         ':parentId' => array ($parentId, PDO::PARAM_INT),
         ':lft' => array ($num + 1, PDO::PARAM_INT),
         ':rgt' => array ($num + 2, PDO::PARAM_INT),
-        ':isException' => isset ($data['isException']) ? '1' : '0',
-        ':isVisible' => isset ($data['isVisible']) ? '1' : '0',
-        ':isEditable' => isset ($data['isEditable']) ? '1' : '0',
-        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
-        ':canAddChildren' => isset ($data['canAddChildren']) ? '1' : '0'
+        ':isException' => Config::read ('debug') ? (isset ($data['isException']) ? '1' : '0') : '',
+        ':isVisible' => Config::read ('debug') ? (isset ($data['isVisible']) ? '1' : '0') : '',
+        ':isEditable' => Config::read ('debug') ? (isset ($data['isEditable']) ? '1' : '0') : '',
+        ':isPublished' => Config::read ('debug') ? (isset ($data['isPublished']) ? '1' : '0') : '',
+        ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '',
+        ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '',
+        ':class' => empty ($data['class']) ? NULL : Tools::stripTags ($data['class'])
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
@@ -328,6 +341,7 @@ class PageRepository extends Repository {
               `metaTitle` = :metaTitle,
               `metaDescription` = :metaDescription,
               `metaKeywords` = :metaKeywords,
+              `navigationDescription` = :navigationDescription,
               `created` = NOW(),
               `modified` = NOW(),
               `languageId` = :languageId,
@@ -335,34 +349,20 @@ class PageRepository extends Repository {
         ";
         $queryParams = array (
           ':title' => Tools::stripTags (trim ($data['title_' . $lang]), 'strict'),
-          ':navigationName' => Tools::stripTags (trim ($data['navigationName_' . $lang])),
+          ':navigationName' => Tools::stripTags (trim ($data['navigationName_' . $lang]), 'strict'),
           ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['navigationName_' . $lang]))),
-          ':lead' => Tools::stripTags (trim ($data['lead_' . $lang]), 'loose'),
-          ':content' => Tools::stripTags (trim ($data['content_' . $lang]), 'loose'),
+          ':content' => empty ($data['content_' . $lang]) ? NULL : Tools::stripTags (trim ($data['content_' . $lang]), 'loose'),
+          ':lead' => empty ($data['lead_' . $lang]) ? NULL : Tools::stripTags (trim ($data['lead_' . $lang]), 'loose'),
           ':metaTitle' => empty ($data['metaTitle_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaTitle_' . $lang])),
           ':metaDescription' => empty ($data['metaDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaDescription_' . $lang])),
           ':metaKeywords' => empty ($data['metaKeywords_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaKeywords_' . $lang])),
+          ':navigationDescription' => empty ($data['navigationDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['navigationDescription_' . $lang]), 'strict'),
           ':languageId' => $lang,
           ':pageId' => $pageId
         );
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
 
-      // Handle many-to-many Tag relation
-      if (isset ($data['tagId']) && is_array ($data['tagId'])) {
-        foreach ($data['tagId'] as $tagId) {
-          $query = "
-            INSERT INTO " . DBP . "pageHasTag
-            SET `pageId` = :pageId,
-                `tagId` = :tagId
-          ";
-          $queryParams = array (
-            ':pageId' => array ($pageId, PDO::PARAM_INT),
-            ':tagId' => array ($tagId, PDO::PARAM_INT),
-          );
-          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-        }
-      }
     }
     catch (Exception $e) {
       $this->rollback ();
@@ -392,22 +392,34 @@ class PageRepository extends Repository {
 
       $query = "
         UPDATE " . DBP . "page
-        SET `isException` = :isException,
-            `isVisible` = :isVisible,
-            `isEditable` = :isEditable,
-            `isPublished` = :isPublished,
-            `canAddChildren` = :canAddChildren,
+        SET `isException` = " . (Config::read ('debug') ? ':isException' : '`isException`') . ",
+            `isVisible` = " . (Config::read ('debug') ? ':isVisible' : '`isVisible`') . ",
+            `isEditable` = " . (Config::read ('debug') ? ':isEditable' : '`isEditable`') . ",
+            `isPublished` = " . (Config::read ('debug') ? ':isPublished' : '`isPublished`') . ",
+            `canAddChildren` = " . (Config::read ('debug') ? ':canAddChildren' : '`canAddChildren`') . ",
+            `canBeDeleted` = " . (Config::read ('debug') ? ':canBeDeleted' : '`canBeDeleted`') . ",
+            `class` = " . (Config::read ('debug') ? ':class' : '`class`') . ",
             `modified` = NOW()
         WHERE `pageId` = :pageId
       ";
       $queryParams = array (
-        ':isException' => isset ($data['isException']) ? '1' : '0',
-        ':isVisible' => isset ($data['isVisible']) ? '1' : '0',
-        ':isEditable' => isset ($data['isEditable']) ? '1' : '0',
-        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
-        ':canAddChildren' => isset ($data['canAddChildren']) ? '1' : '0',
+
+        ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '',
+        ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '',
+        ':class' => empty ($data['class']) ? NULL : Tools::stripTags ($data['class']),
         ':pageId' => array ($pageId, PDO::PARAM_INT)
       );
+      if (Config::read ('debug')) {
+        $queryParams = array_merge (
+          $queryParams,
+          array (    ':isException' => Config::read ('debug') ? (isset ($data['isException']) ? '1' : '0') : '',
+        ':isVisible' => Config::read ('debug') ? (isset ($data['isVisible']) ? '1' : '0') : '',
+        ':isEditable' => Config::read ('debug') ? (isset ($data['isEditable']) ? '1' : '0') : '',
+        ':isPublished' => Config::read ('debug') ? (isset ($data['isPublished']) ? '1' : '0') : ''
+          )
+        );
+      }
+
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
       foreach (Config::read ('supportedLangs') as $lang) {
@@ -421,6 +433,7 @@ class PageRepository extends Repository {
               `metaTitle` = :metaTitle,
               `metaDescription` = :metaDescription,
               `metaKeywords` = :metaKeywords,
+              `navigationDescription` = :navigationDescription,
               `modified` = NOW(),
               `pageId` = :pageId,
               `languageId` = :languageId,
@@ -429,57 +442,28 @@ class PageRepository extends Repository {
               `title` = :title,
               `navigationName` = :navigationName,
               `slug` = :slug,
-              `lead` = :lead,
               `content` = :content,
+              `lead` = :lead,
               `metaTitle` = :metaTitle,
               `metaDescription` = :metaDescription,
               `metaKeywords` = :metaKeywords,
+              `navigationDescription` = :navigationDescription,
               `modified` = NOW()
         ";
         $queryParams = array (
           ':title' => Tools::stripTags (trim ($data['title_' . $lang]), 'strict'),
-          ':navigationName' => Tools::stripTags (trim ($data['navigationName_' . $lang])),
+          ':navigationName' => Tools::stripTags (trim ($data['navigationName_' . $lang]), 'strict'),
           ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['navigationName_' . $lang]))),
-          ':lead' => Tools::stripTags (trim ($data['lead_' . $lang]), 'loose'),
-          ':content' => Tools::stripTags (trim ($data['content_' . $lang]), 'loose'),
+          ':content' => empty ($data['content_' . $lang]) ? NULL : Tools::stripTags (trim ($data['content_' . $lang]), 'loose'),
+          ':lead' => empty ($data['lead_' . $lang]) ? NULL : Tools::stripTags (trim ($data['lead_' . $lang]), 'loose'),
           ':metaTitle' => empty ($data['metaTitle_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaTitle_' . $lang])),
           ':metaDescription' => empty ($data['metaDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaDescription_' . $lang])),
           ':metaKeywords' => empty ($data['metaKeywords_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaKeywords_' . $lang])),
+          ':navigationDescription' => empty ($data['navigationDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['navigationDescription_' . $lang]), 'strict'),
           ':pageId' => array ($pageId, PDO::PARAM_INT),
           ':languageId' => $lang
         );
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-      }
-      // Handle many-to-many Tag relation
-      $tagIdParams = array (0);
-      $queryParams = array (
-        ':pageId' => array ($pageId, PDO::PARAM_INT)
-      );
-      for ($i = 0; $i < count ($data['tagId']); $i++) {
-        $tagIdParams[] = ':id' . $i;
-        $queryParams[':id' . $i] = $data['tagId'][$i];
-      }
-      $query = "
-        DELETE FROM " . DBP . "pageHasTag
-        WHERE `pageId` = :pageId
-          AND `tagId` NOT IN (". implode (', ', $tagIdParams) .")
-      ";
-      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-      if (isset ($data['tagId']) && is_array ($data['tagId'])) {
-        foreach ($data['tagId'] as $tagId) {
-          $query = "
-            INSERT INTO " . DBP . "pageHasTag
-            SET `pageId` = :pageId,
-                `tagId` = :tagId
-            ON DUPLICATE KEY UPDATE
-                `pageId` = :pageId
-          ";
-          $queryParams = array (
-            ':pageId' => array ($pageId, PDO::PARAM_INT),
-            ':tagId' => array ($tagId, PDO::PARAM_INT),
-          );
-          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-          }
       }
       }
       $this->commit ();
@@ -499,8 +483,8 @@ class PageRepository extends Repository {
    * @return <bool> Success flag
    */
   public function deletePage ($pageId) {
-    $page = $this->getPage (array ('id' => $pageId));
-    if (!$page->IsEditable || $page->IsException) {
+    $page = $this->getPage (array ('pageId' => $pageId));
+    if (!$page->CanBeDeleted || $page->IsException) {
       $_SESSION['message'] = 'Can\'t delete page!';
       return FALSE;
     }
@@ -835,7 +819,7 @@ class PageRepository extends Repository {
     if (!$this->checkSetData (
         $input,
         array (),
-        array ('title', 'navigationName', 'content')
+        array ('title', 'navigationName')
       )
     ) {
       return FALSE;
@@ -850,8 +834,7 @@ class PageRepository extends Repository {
           ),
           'notEmptyLang' => array (
             'title' => 'Title cannot be empty.',
-            'navigationName' => 'Navigation Name cannot be empty.',
-            'content' => 'Content cannot be empty.'
+            'navigationName' => 'Navigation Name cannot be empty.'
           )
         )
       )

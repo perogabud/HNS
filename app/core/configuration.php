@@ -3,7 +3,7 @@
 // Core configuration
 
 Config::write ('options', TRUE);
-Config::write ('debug', 0);
+Config::write ('debug', 2);
 Config::write ('cache', TRUE);
 
 error_reporting (Config::read ('debug') ? -1 : 0);
@@ -13,7 +13,7 @@ ini_set ('error_log', Config::read ('sitepath') . 'error_log.txt');
 
 Config::write ('optionsDelimiter', '!');
 
-Config::write ('siteDomain', 'localhost');
+Config::write ('siteDomain', 'hns.local');
 Config::write ('siteUrl', 'http://' . Config::read ('siteDomain'));
 Config::write ('siteUrlRoot', Config::read ('siteUrl') . '/');
 Config::write ('siteUrlRootNoLang', Config::read ('siteUrlRoot'));
@@ -31,7 +31,7 @@ Config::write ('elementsPath', Config::read ('sitePath') . 'app/view/elements/')
 Config::write ('elementsCachePath', Config::read ('sitePath') . 'app/view/elements/cache/');
 
 // I18N & language configuration
-Config::write ('supportedLangs', array ('hrv'));
+Config::write ('supportedLangs', array ('hrv', 'eng'));
 Config::write ('defaultLang', 'hrv');
 Config::write ('lang', Config::read ('defaultLang'));
 Config::write ('langNames', array (
@@ -52,3 +52,10 @@ Config::write ('langMeta', array (
     'deu' => 'de'
     )
 );
+
+// Default database configuration
+Config::write ('dbprefix', 'hns_');
+Config::write ('dbhost', 'localhost');
+Config::write ('dbname', 'hns');
+Config::write ('dbuser', 'root');
+Config::write ('dbpass', '');
