@@ -9,7 +9,9 @@ class Actuality extends ModelObject {
   protected $_content;
   protected $_isPublished;
   protected $_publishDate;
-  
+
+  protected $_coverImage;
+
   public function __construct ($data, $config = array ()) {
     parent::__construct ($data);
     $this->_setMember ('_id', $data, 'actualityId');
@@ -23,7 +25,7 @@ class Actuality extends ModelObject {
       'slug'
     );
   }
-  
+
   public function getLanguageId () {
     return $this->_languageId;
   }
@@ -56,6 +58,14 @@ class Actuality extends ModelObject {
     return $this->_getDateByFormat ($this->_publishDate, $format);
   }
 
-  
+  public function getCoverImage () {
+    return $this->_coverImage;
+  }
+
+  public function setCoverImage ($coverImage) {
+    $this->_coverImage = $coverImage;
+  }
+
+
 }
 ?>

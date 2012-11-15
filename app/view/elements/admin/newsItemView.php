@@ -8,8 +8,8 @@
     </ul>
     <dl class="info">
       <dt>Language</dt>
-      <?php if ($newsItem->getLanguageId ()): ?>
-      <dd><?php echo $newsItem->getLanguageId (); ?></dd>
+      <?php if ($newsItem->getLanguage ()): ?>
+      <dd><?php echo $newsItem->getLanguage ()->getName(); ?></dd>
       <?php endif; ?>
       <dt>Title</dt>
       <?php if ($newsItem->getTitle ()): ?>
@@ -31,6 +31,10 @@
       <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
       <?php endforeach; ?>
+      <?php if ($newsItem->CoverImage): ?>
+      <dt>Cover Image</dt>
+      <dd class="check"><img src="<?php echo $newsItem->getCoverImage () ? $newsItem->getCoverImage ()->getUrl () : ''; ?>" /></dd>
+      <?php endif; ?>
       <dt>Created On</dt>
       <dd>
         <?php echo $newsItem->Created; ?>

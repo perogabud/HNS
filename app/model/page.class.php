@@ -24,7 +24,9 @@ class Page extends ModelObject {
   protected $_canBeDeleted;
   protected $_class;
   protected $_navigationDescription;
-  
+
+  protected $_coverImage;
+
   public function __construct ($data, $dataLang, $config = array ()) {
     parent::__construct ($data);
     $this->_setMember ('_id', $data, 'pageId');
@@ -48,7 +50,7 @@ class Page extends ModelObject {
       'navigationDescription'
     );
   }
-  
+
   public function getLft () {
     return $this->_lft;
   }
@@ -141,6 +143,14 @@ class Page extends ModelObject {
     return $this->_getLanguageMember ($this->_navigationDescription, $lang);
   }
 
-  
+  public function getCoverImage () {
+    return $this->_coverImage;
+  }
+
+  public function setCoverImage ($coverImage) {
+    $this->_coverImage = $coverImage;
+  }
+
+
 }
 ?>

@@ -75,6 +75,8 @@ a:hover {
   color:lightseagreen;
 }
 
+img { max-width: 100%; }
+
 ul#tabs li a:link, ul#tabs li a:visited {text-decoration:none;}
 
 html.js textarea.tinymce { display: none; }
@@ -771,9 +773,12 @@ form.searchForm table div.input label {
   margin: 0;
 }
 
-form.searchForm table div.input input {
+form.searchForm table div.input input,
+form.searchForm table div.input select,
+form.searchForm table div.input .chzn-container {
   clear: none;
-  width: 70%;
+  width: 70% !important;
+  min-width: 70% !important;
   float: left;
 }
 

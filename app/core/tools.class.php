@@ -174,10 +174,30 @@ class Tools {
 
   static public function redirect ($url) {
     if (Config::read ('debug') === 2) {
-      echo '[DEBUG] You are being redirected to: <a href="' . $url . '">' . $url . '</a>';
+      echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" lang="hr">
+      <head>
+        <title>Redirect</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="/css/redirect.css" media="screen,projection" type="text/css" />
+      </head>
+      <body>
+      <div id="wrapper">';
+      echo '<p>[DEBUG] You are being redirected to: <a href="' . $url . '">' . $url . '</a></p>';
+      echo '<h3>$_GET</h3>';
+      echo '<pre>';
+      print_r ($_GET);
+      echo '</pre>';
+      echo '<h3>$_POST</h3>';
       echo '<pre>';
       print_r ($_POST);
       echo '</pre>';
+      echo '<h3>$_FILES</h3>';
+      echo '<pre>';
+      print_r ($_FILES);
+      echo '</pre>';
+      echo '</div>
+        </body>
+        </html>';
       die ();
     }
     else {

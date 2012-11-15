@@ -14,7 +14,7 @@ class ActualityRepository extends Repository {
     if (empty ($params)) {
         return NULL;
       }
-    
+
     $query = "
       SELECT *
       FROM ". DBP ."actuality AS a
@@ -29,7 +29,7 @@ class ActualityRepository extends Repository {
       ";
       $queryParams[':actualityId'] = array (intval ($params['actualityId']), PDO::PARAM_INT);
     }
-    
+
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }
@@ -41,10 +41,39 @@ class ActualityRepository extends Repository {
     if (!$results || empty ($results)) {
       return NULL;
     }
-    
+
+    $coverImage = $this->getCoverImage ($results[0]['actualityId']);
+    $results[0]['coverImage'] = $coverImage;
+
     $actuality = Factory::getActuality ($results[0]);
-      
+
     return $actuality;
+  }
+
+  /**
+   * Method returns a single ActualityCoverImage object.
+   * @param integer $actualityId Actuality ID.
+   * @return ActualityCoverImage The requested Actuality object or NULL if none found.
+   */
+  public function getCoverImage ($actualityId) {
+    $query = "
+      SELECT *
+      FROM ". DBP ."actualityCoverImage
+      WHERE `actualityId` = :actualityId
+    ";
+
+    $queryParams = array (
+      ':actualityId' => array ($actualityId, PDO::PARAM_INT)
+    );
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      return !empty ($results) ? Factory::getActualityCoverImage ($results[0]) : NULL;
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching actuality record';
+      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+    }
   }
 
   /**
@@ -53,7 +82,7 @@ class ActualityRepository extends Repository {
    * @return integer A count of Actuality records in the database.
    */
   public function getActualityCount ($params = array ()) {
-    
+
     $query = "
       SELECT COUNT(actualityId) AS actualityCount
       FROM ". DBP ."actuality AS a
@@ -82,7 +111,7 @@ class ActualityRepository extends Repository {
     }
     else {
       // Handle parameters
-      
+
     }
 
     try {
@@ -101,7 +130,7 @@ class ActualityRepository extends Repository {
    * @return array An array of Actuality objects.
    */
   public function getActualitys ($params = array ()) {
-    
+
     $query = "
       SELECT *
       FROM ". DBP ."actuality AS a
@@ -130,7 +159,7 @@ class ActualityRepository extends Repository {
     }
     else {
       // Handle parameters
-      
+
     }
     ;
 		$query .= $this->_getOrderAndLimit ($params);
@@ -145,7 +174,8 @@ class ActualityRepository extends Repository {
     }
 
     foreach ($results as &$result) {
-      
+      $coverImage = $this->getCoverImage ($result['actualityId']);
+      $result['coverImage'] = $coverImage;
     }
 
     return Factory::getActualitys ($results);
@@ -163,7 +193,7 @@ class ActualityRepository extends Repository {
 
     try {
       $this->startTransaction ();
-    
+
       $query = "
         INSERT INTO " . DBP . "actuality
         SET `languageId` = :languageId,
@@ -187,7 +217,48 @@ class ActualityRepository extends Repository {
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       $actualityId = $this->lastInsertId ();
-      
+
+      // Upload coverImage
+      $coverImageData = Tools::uploadImages (
+        array (
+          'name' => 'coverImage',
+          'maxCount' => 1,
+          'types' => array (
+            'coverImage' => array (
+              'directory' => Config::read ('actualityCoverImagePath'),
+              'dimensions' => Config::read ('actualityCoverImageDimensions')
+            ),
+            'largeThumbnail' => array (
+              'directory' => Config::read ('actualityCoverImageLargeThumbnailPath'),
+              'dimensions' => Config::read ('actualityCoverImageLargeThumbnailDimensions')
+            ),
+            'smallThumbnail' => array (
+              'directory' => Config::read ('actualityCoverImageSmallThumbnailPath'),
+              'dimensions' => Config::read ('actualityCoverImageSmallThumbnailDimensions')
+            ),
+          )
+        )
+      );
+      $coverImageData = isset ($coverImageData[0]) ? $coverImageData[0] : NULL;
+
+      if (!is_null ($coverImageData)) {
+        $query = "
+          INSERT INTO " . DBP . "actualityCoverImage
+          SET `actualityId` = :actualityId,
+              `filename` = :filename,
+              `width` = :width,
+              `height` = :height,
+              `created` = NOW()
+        ";
+        $queryParams = array (
+          ':actualityId' => array ($actualityId, PDO::PARAM_INT),
+          ':filename' => $coverImageData['filename'],
+          ':width' => array ($coverImageData['width'], PDO::PARAM_INT),
+          ':height' => array ($coverImageData['height'], PDO::PARAM_INT)
+        );
+        $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      }
+
       $this->commit ();
     }
     catch (Exception $e) {
@@ -209,6 +280,50 @@ class ActualityRepository extends Repository {
     }
     try {
       $this->startTransaction ();
+
+      // Upload coverImage
+      $coverImageData = Tools::uploadImages (
+        array (
+          'name' => 'coverImage',
+          'maxCount' => 1,
+          'types' => array (
+            'coverImage' => array (
+              'directory' => Config::read ('actualityCoverImagePath'),
+              'dimensions' => Config::read ('actualityCoverImageDimensions')
+            ),
+            'largeThumbnail' => array (
+              'directory' => Config::read ('actualityCoverImageLargeThumbnailPath'),
+              'dimensions' => Config::read ('actualityCoverImageLargeThumbnailDimensions')
+            ),
+            'smallThumbnail' => array (
+              'directory' => Config::read ('actualityCoverImageSmallThumbnailPath'),
+              'dimensions' => Config::read ('actualityCoverImageSmallThumbnailDimensions')
+            ),
+          )
+        )
+      );
+      $coverImageData = isset ($coverImageData[0]) ? $coverImageData[0] : NULL;
+      if (!empty ($coverImageData) || isset ($data['deleteCoverImage'])) {
+        $this->_deleteCoverImage ($actualityId);
+        if (!empty ($coverImageData)) {
+          $query = "
+            INSERT INTO " . DBP . "actualityCoverImage
+            SET `actualityId` = :actualityId,
+                `filename` = :filename,
+                `width` = :width,
+                `height` = :height,
+                `created` = NOW()
+          ";
+          $queryParams = array (
+            ':actualityId' => array ($actualityId, PDO::PARAM_INT),
+            ':filename' => $coverImageData['filename'],
+            ':width' => array ($coverImageData['width'], PDO::PARAM_INT),
+            ':height' => array ($coverImageData['height'], PDO::PARAM_INT)
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+        }
+      }
+
       $query = "
         UPDATE " . DBP . "actuality
         SET `languageId` = :languageId,
@@ -252,6 +367,7 @@ class ActualityRepository extends Repository {
   public function deleteActuality ($actualityId) {
     try {
       $this->startTransaction ();
+      $this->_deleteCoverImage ($actualityId);
       $query = "
         DELETE FROM " . DBP . "actuality
         WHERE `actualityId` = :actualityId
@@ -260,7 +376,7 @@ class ActualityRepository extends Repository {
         ':actualityId' => array ($actualityId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-    
+
       $this->commit ();
 
       return TRUE;
@@ -271,7 +387,7 @@ class ActualityRepository extends Repository {
         throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
       }
   }
-  
+
 
   private function _validateActualityData ($input) {
     if (!$this->checkSetData (
@@ -294,11 +410,32 @@ class ActualityRepository extends Repository {
               'publishDate' => 'Publish Date cannot be empty.'
           ),
           'notEmptyLang' => array (
-            
+
           )
         )
       )
     );
+  }
+
+  private function _deleteCoverImage ($actualityId) {
+    // Delete image files on server
+    $actuality = $this->getActuality (array ('actualityId' => $actualityId));
+    if (is_null ($actuality)) {
+      throw new Exception ("Trying to delete coverImage for a non-existant actuality");
+    }
+    if ($actuality->getCoverImage ()) {
+      $actuality->getCoverImage ()->deleteFiles ();
+
+      // Delete coverImage from database
+      $query = "
+        DELETE FROM " . DBP . "actualityCoverImage
+        WHERE `actualityId` = :actualityId
+      ";
+      $queryParams = array (
+        ':actualityId' => array ($actualityId, PDO::PARAM_INT)
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      }
   }
 
 }

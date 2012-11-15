@@ -57,7 +57,8 @@ class AdminContentManager extends ContentManager {
                     Config::read ('iterationLimit'),
                     isset ($_GET['searchSubmit']) ? $_GET : NULL
                   ),
-                  'newsItemCount' => $newsItemController->getNewsItemCount (isset ($_GET['searchSubmit']) ? $_GET : NULL)
+                  'newsItemCount' => $newsItemController->getNewsItemCount (isset ($_GET['searchSubmit']) ? $_GET : NULL),
+                  'languages' => $newsItemController->getLanguages ()
                 )
               )
             )
@@ -71,8 +72,8 @@ class AdminContentManager extends ContentManager {
              * /newsItem/add/
              */
             case 'add':
+              $newsItemController = NewsItemController::getInstance ();
               if (!empty ($_POST)) {
-                $newsItemController = NewsItemController::getInstance ();
                 try {
                   $newsItem = $newsItemController->addNewsItem ($_POST);
                 }
@@ -90,6 +91,7 @@ class AdminContentManager extends ContentManager {
                   'mainContent' => array (
                     'filename' => 'admin/newsItemAddForm',
                     'data' => array (
+                      'languages' => $newsItemController->getLanguages ()
                     )
                   )
                 )
@@ -143,6 +145,7 @@ class AdminContentManager extends ContentManager {
                     'filename' => 'admin/newsItemEditForm',
                     'data' => array (
                       'newsItem' => $newsItemController->getNewsItemById ($newsItemId),
+                      'languages' => $newsItemController->getLanguages ()
                     )
                   )
                 )

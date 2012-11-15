@@ -1,6 +1,6 @@
 <form id="bannerEdit" method="post" enctype="multipart/form-data" action="">
   <fieldset>
-    <legend>Edit Banner <strong><?php echo $banner->; ?></strong></legend>
+    <legend>Edit Banner <strong><?php echo $banner->Name; ?></strong></legend>
     <?php TableHelper::globalMessages (); ?>
     <ul class="actions">
       <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/banner/view/<?php echo $banner->getId (); ?>"><?php TableHelper::icon ('view'); ?> View this Banner</a></li>

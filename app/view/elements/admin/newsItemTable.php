@@ -24,6 +24,13 @@
             TableHelper::iconYesNo (isset ($_GET[$name]));
             echo '</dd>';
           }
+          elseif ($name == 'languageId') {
+            foreach ($languages as $language)
+              if ($language->Id == $_GET[$name]) {
+                echo '<dt>'. $printableNames[$name] .'</dt><dd>'. $language->Name .'</dd>';
+                break;
+              }
+          }
           else {
             echo '<dt>'. $printableNames[$name] .'</dt><dd>'. $_GET[$name] .'</dd>';
           }
@@ -59,7 +66,7 @@
       <tbody>
         <?php foreach ($newsItems as $newsItem): ?>
         <tr class="<?php echo Tools::toggleClass (); ?>">
-          <td><?php echo $newsItem->LanguageId; ?></td>
+          <td><?php echo $newsItem->Language->Name; ?></td>
           <td><?php echo $newsItem->Title; ?></td>
           <td><?php TableHelper::iconYesNo ($newsItem->IsPublished); ?></td>
           <td><?php echo $newsItem->PublishDate; ?></td>
@@ -93,7 +100,7 @@
         echo '<td>';
         FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'languageId', 'div' => array ('class' => 'searchUse')));
         echo '</td><td>';
-        FormHelper::input ('text', 'languageId', 'languageIdSearch', array ('label' => array ('text' => 'Language')));
+        FormHelper::select ('languageId', 'languageId', 'Language', $languages);
         echo '</td></tr>';
         echo '<tr class="'. Tools::toggleClass () .'">';
         echo '<td>';

@@ -64,6 +64,36 @@ class Factory {
     return $newsItems;
   }
 
+  public static function getNewsItemCoverImage (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $newsItemCoverImage = new NewsItemCoverImage ($data, $config);
+    return $newsItemCoverImage;
+  }
+
+  public static function getNewsItemCoverImages (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $newsItemCoverImages = array ();
+    foreach ($data as $row) {
+      $newsItemCoverImages[] = new NewsItemCoverImage ($row, $config);
+    }
+    return $newsItemCoverImages;
+  }
+
+  public static function getLanguage (&$data = array ()) {
+    $language = new Language ($data);
+    return $language;
+  }
+
+  public static function getLanguages (&$data = array ()) {
+    $languages = array ();
+    foreach ($data as $row) {
+      $languages[] = new Language ($row);
+    }
+    return $languages;
+  }
+
   public static function getUser (&$data = array ()) {
     $config['rootUrl'] = Config::read ('siteUrlRoot');
     $config['uriSeparator'] = Config::read ('uriSeparator');
@@ -143,6 +173,23 @@ class Factory {
     return $pages;
   }
 
+  public static function getPageCoverImage (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $pageCoverImage = new PageCoverImage ($data, $config);
+    return $pageCoverImage;
+  }
+
+  public static function getPageCoverImages (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $pageCoverImages = array ();
+    foreach ($data as $row) {
+      $pageCoverImages[] = new PageCoverImage ($row, $config);
+    }
+    return $pageCoverImages;
+  }
+
   public static function getActuality (&$data = array ()) {
     $config['rootUrl'] = Config::read ('siteUrlRoot');
     $config['uriSeparator'] = Config::read ('uriSeparator');
@@ -158,6 +205,23 @@ class Factory {
       $actualitys[] = new Actuality ($row, $config);
     }
     return $actualitys;
+  }
+
+  public static function getActualityCoverImage (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $actualityCoverImage = new ActualityCoverImage ($data, $config);
+    return $actualityCoverImage;
+  }
+
+  public static function getActualityCoverImages (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $actualityCoverImages = array ();
+    foreach ($data as $row) {
+      $actualityCoverImages[] = new ActualityCoverImage ($row, $config);
+    }
+    return $actualityCoverImages;
   }
 
   public static function getVideo (&$dataArrays = array ()) {

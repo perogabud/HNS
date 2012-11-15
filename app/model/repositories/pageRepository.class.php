@@ -17,6 +17,32 @@ class PageRepository extends Repository {
   }
 
   /**
+   * Method returns a single PageCoverImage object.
+   * @param integer $pageId Page ID.
+   * @return PageCoverImage The requested Page object or NULL if none found.
+   */
+  public function getCoverImage ($pageId) {
+    $query = "
+      SELECT *
+      FROM ". DBP ."pageCoverImage
+      WHERE `pageId` = :pageId
+    ";
+
+    $queryParams = array (
+      ':pageId' => array ($pageId, PDO::PARAM_INT)
+    );
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      return !empty ($results) ? Factory::getPageCoverImage ($results[0]) : NULL;
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching page record';
+      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+    }
+  }
+
+  /**
    * Method returns a count of Page records in the database.
    * @param array $params An array of parameters for query generation.
    * @return integer A count of Page records in the database.
@@ -164,6 +190,9 @@ class PageRepository extends Repository {
       return NULL;
     }
     else {
+
+      $coverImage = $this->getCoverImage ($results[0]['pageId']);
+      $results[0]['coverImage'] = $coverImage;
 
       $page = Factory::getPage ($results);
 
@@ -363,6 +392,47 @@ class PageRepository extends Repository {
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
 
+      // Upload coverImage
+      $coverImageData = Tools::uploadImages (
+        array (
+          'name' => 'coverImage',
+          'maxCount' => 1,
+          'types' => array (
+            'coverImage' => array (
+              'directory' => Config::read ('pageCoverImagePath'),
+              'dimensions' => Config::read ('pageCoverImageDimensions')
+            ),
+            'largeThumbnail' => array (
+              'directory' => Config::read ('pageCoverImageLargeThumbnailPath'),
+              'dimensions' => Config::read ('pageCoverImageLargeThumbnailDimensions')
+            ),
+            'smallThumbnail' => array (
+              'directory' => Config::read ('pageCoverImageSmallThumbnailPath'),
+              'dimensions' => Config::read ('pageCoverImageSmallThumbnailDimensions')
+            ),
+          )
+        )
+      );
+      $coverImageData = isset ($coverImageData[0]) ? $coverImageData[0] : NULL;
+
+      if (!is_null ($coverImageData)) {
+        $query = "
+          INSERT INTO " . DBP . "pageCoverImage
+          SET `pageId` = :pageId,
+              `filename` = :filename,
+              `width` = :width,
+              `height` = :height,
+              `created` = NOW()
+        ";
+        $queryParams = array (
+          ':pageId' => array ($pageId, PDO::PARAM_INT),
+          ':filename' => $coverImageData['filename'],
+          ':width' => array ($coverImageData['width'], PDO::PARAM_INT),
+          ':height' => array ($coverImageData['height'], PDO::PARAM_INT)
+        );
+        $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      }
+
     }
     catch (Exception $e) {
       $this->rollback ();
@@ -387,6 +457,49 @@ class PageRepository extends Repository {
       try {
       $this->startTransaction ();
       $page = $this->getPage (array ('id' => $pageId));
+
+      // Upload coverImage
+      $coverImageData = Tools::uploadImages (
+        array (
+          'name' => 'coverImage',
+          'maxCount' => 1,
+          'types' => array (
+            'coverImage' => array (
+              'directory' => Config::read ('pageCoverImagePath'),
+              'dimensions' => Config::read ('pageCoverImageDimensions')
+            ),
+            'largeThumbnail' => array (
+              'directory' => Config::read ('pageCoverImageLargeThumbnailPath'),
+              'dimensions' => Config::read ('pageCoverImageLargeThumbnailDimensions')
+            ),
+            'smallThumbnail' => array (
+              'directory' => Config::read ('pageCoverImageSmallThumbnailPath'),
+              'dimensions' => Config::read ('pageCoverImageSmallThumbnailDimensions')
+            ),
+          )
+        )
+      );
+      $coverImageData = isset ($coverImageData[0]) ? $coverImageData[0] : NULL;
+      if (!empty ($coverImageData) || isset ($data['deleteCoverImage'])) {
+        $this->_deleteCoverImage ($pageId);
+        if (!empty ($coverImageData)) {
+          $query = "
+            INSERT INTO " . DBP . "pageCoverImage
+            SET `pageId` = :pageId,
+                `filename` = :filename,
+                `width` = :width,
+                `height` = :height,
+                `created` = NOW()
+          ";
+          $queryParams = array (
+            ':pageId' => array ($pageId, PDO::PARAM_INT),
+            ':filename' => $coverImageData['filename'],
+            ':width' => array ($coverImageData['width'], PDO::PARAM_INT),
+            ':height' => array ($coverImageData['height'], PDO::PARAM_INT)
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+        }
+      }
 
       foreach (Config::read ('supportedLangs') as $lang) {
 
@@ -490,6 +603,8 @@ class PageRepository extends Repository {
     }
     try {
       $this->startTransaction ();
+
+      $this->_deleteCoverImage ();
       // Get 'lft', 'rgt' and width values from page that will be deleted
       $query = "
         SELECT lft, rgt, (rgt - lft + 1) AS width
@@ -813,8 +928,6 @@ class PageRepository extends Repository {
     return TRUE;
   }
 
-
-
   private function _validatePageData ($input) {
     if (!$this->checkSetData (
         $input,
@@ -839,6 +952,27 @@ class PageRepository extends Repository {
         )
       )
     );
+  }
+
+  private function _deleteCoverImage ($pageId) {
+    // Delete image files on server
+    $page = $this->getPage (array ('pageId' => $pageId));
+    if (is_null ($page)) {
+      throw new Exception ("Trying to delete coverImage for a non-existant page");
+    }
+    if ($page->getCoverImage ()) {
+      $page->getCoverImage ()->deleteFiles ();
+
+      // Delete coverImage from database
+      $query = "
+        DELETE FROM " . DBP . "pageCoverImage
+        WHERE `pageId` = :pageId
+      ";
+      $queryParams = array (
+        ':pageId' => array ($pageId, PDO::PARAM_INT)
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      }
   }
 
 }

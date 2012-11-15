@@ -1,6 +1,6 @@
 <div class="column">
   <fieldset>
-    <legend>Banner <strong><?php echo $banner->; ?></strong></legend>
+    <legend>Banner <strong><?php echo $banner->Name; ?></strong></legend>
     <?php TableHelper::globalMessages (); ?>
     <ul class="actions">
       <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/banner"><?php TableHelper::icon ('arrowLeft'); ?> Back to Banners</a></li>

@@ -36,6 +36,12 @@ class StandardContentManager extends ContentManager {
       case '':
         if ($this->_checkParams (1)) {
           $this->_setTemplate ('home');
+          $newsItemController = NewsItemController::getInstance ();
+          $this->_setData (
+            array (
+              'newsItems' => $newsItemController->getNewsItemsByParams ()
+            )
+          );
           $this->_setHtmlHead (array ('pageTitle' => 'Naslovnica'));
           break;
         }

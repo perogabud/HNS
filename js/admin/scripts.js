@@ -89,7 +89,7 @@ $().ready (function () {
         ['Undo', 'Redo'],
         ['Bold', 'Italic'],
         ['NumberedList', 'BulletedList'],
-        ['HorizontalRule'],
+        ['Blockquote', 'HorizontalRule'],
         ['Link','Unlink','Anchor', 'Image'],
         ['Format']
         ],

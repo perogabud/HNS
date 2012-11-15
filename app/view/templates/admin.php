@@ -13,7 +13,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/chosen/chosen.jquery.min.js"></script>
-    <link rel="stylesheet" href="<?php echo Config::read ('siteUrlRoot'); ?>js/admin/css/flick/jquery-ui-1.8.9.custom.css" media="screen,projection" type="text/css" />
   </head>
 
   <body>
@@ -22,8 +21,8 @@
         <h1>Admin Panel</h1>
         <?php $activeClass = 'class="active"'; ?>
         <ul id="tabs">
-          <li <?php echo $activeTab == 'newsItem' ? $activeClass : ''; ?>><a href="/admin/newsItem">News Items</a></li>
           <li <?php echo $activeTab == 'page' ? $activeClass : ''; ?>><a href="/admin/page">Pages</a></li>
+          <li <?php echo $activeTab == 'newsItem' ? $activeClass : ''; ?>><a href="/admin/newsItem">News Items</a></li>
           <li <?php echo $activeTab == 'actuality' ? $activeClass : ''; ?>><a href="/admin/actuality">Actualitys</a></li>
           <li <?php echo $activeTab == 'video' ? $activeClass : ''; ?>><a href="/admin/video">Videos</a></li>
           <li <?php echo $activeTab == 'gallery' ? $activeClass : ''; ?>><a href="/admin/gallery">Gallerys</a></li>

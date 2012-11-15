@@ -14,7 +14,7 @@ class NewsItemRepository extends Repository {
     if (empty ($params)) {
         return NULL;
       }
-    
+
     $query = "
       SELECT *
       FROM ". DBP ."newsItem AS n
@@ -29,7 +29,7 @@ class NewsItemRepository extends Repository {
       ";
       $queryParams[':newsItemId'] = array (intval ($params['newsItemId']), PDO::PARAM_INT);
     }
-    
+
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }
@@ -41,10 +41,41 @@ class NewsItemRepository extends Repository {
     if (!$results || empty ($results)) {
       return NULL;
     }
-    
+
+    $coverImage = $this->getCoverImage ($results[0]['newsItemId']);
+    $results[0]['coverImage'] = $coverImage;
+
+    $results[0]['language'] = $this->getLanguage (array ('languageId' => $results[0]['languageId']));
+
     $newsItem = Factory::getNewsItem ($results[0]);
-      
+
     return $newsItem;
+  }
+
+  /**
+   * Method returns a single NewsItemCoverImage object.
+   * @param integer $newsItemId News Item ID.
+   * @return NewsItemCoverImage The requested NewsItem object or NULL if none found.
+   */
+  public function getCoverImage ($newsItemId) {
+    $query = "
+      SELECT *
+      FROM ". DBP ."newsItemCoverImage
+      WHERE `newsItemId` = :newsItemId
+    ";
+
+    $queryParams = array (
+      ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
+    );
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      return !empty ($results) ? Factory::getNewsItemCoverImage ($results[0]) : NULL;
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news item record';
+      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+    }
   }
 
   /**
@@ -53,7 +84,7 @@ class NewsItemRepository extends Repository {
    * @return integer A count of NewsItem records in the database.
    */
   public function getNewsItemCount ($params = array ()) {
-    
+
     $query = "
       SELECT COUNT(newsItemId) AS newsItemCount
       FROM ". DBP ."newsItem AS n
@@ -82,7 +113,7 @@ class NewsItemRepository extends Repository {
     }
     else {
       // Handle parameters
-      
+
     }
 
     try {
@@ -101,10 +132,12 @@ class NewsItemRepository extends Repository {
    * @return array An array of NewsItem objects.
    */
   public function getNewsItems ($params = array ()) {
-    
+
     $query = "
       SELECT *
       FROM ". DBP ."newsItem AS n
+      JOIN ". DBP ."language AS l
+        ON n.languageId = l.languageId
       WHERE 1 = 1
     ";
     $queryParams = array ();
@@ -115,24 +148,29 @@ class NewsItemRepository extends Repository {
         if (in_array ($attrName, array ('languageId', 'title', 'lead', 'content', 'isPublished', 'publishDate'))) {
           if (in_array ($attrName, array ('isPublished'))) {
             $query .= "
-              AND $attrName = :$attrName
+              AND n.$attrName = :$attrName
             ";
             $queryParams[":$attrName"] = isset ($params['filterParams'][$attrName]) ? '1' : '0';
           }
           elseif (isset ($params['filterParams'][$attrName])) {
             $query .= "
-              AND $attrName LIKE :$attrName
+              AND n.$attrName LIKE :$attrName
             ";
             $queryParams[":$attrName"] = '%'. $params['filterParams'][$attrName] .'%';
           }
         }
       }
     }
-    else {
-      // Handle parameters
-      
+    if (isset ($params['isPublished']) && $params['isPublished'] === TRUE) {
+      $query .= "
+        AND n.isPublished = 1
+      ";
     }
-    ;
+
+    if (!isset ($params['orderBy'])) {
+      $params['orderBy'] = 'publishDate';
+      $params['orderDirection'] = 'DESC';
+    }
 		$query .= $this->_getOrderAndLimit ($params);
 
 		$newsItems = array ();
@@ -145,7 +183,9 @@ class NewsItemRepository extends Repository {
     }
 
     foreach ($results as &$result) {
-      
+      $result['language'] = Factory::getLanguage ($result);
+      $coverImage = $this->getCoverImage ($result['newsItemId']);
+      $result['coverImage'] = $coverImage;
     }
 
     return Factory::getNewsItems ($results);
@@ -163,7 +203,7 @@ class NewsItemRepository extends Repository {
 
     try {
       $this->startTransaction ();
-    
+
       $query = "
         INSERT INTO " . DBP . "newsItem
         SET `languageId` = :languageId,
@@ -187,7 +227,48 @@ class NewsItemRepository extends Repository {
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       $newsItemId = $this->lastInsertId ();
-      
+
+      // Upload coverImage
+      $coverImageData = Tools::uploadImages (
+        array (
+          'name' => 'coverImage',
+          'maxCount' => 1,
+          'types' => array (
+            'coverImage' => array (
+              'directory' => Config::read ('newsItemCoverImagePath'),
+              'dimensions' => Config::read ('newsItemCoverImageDimensions')
+            ),
+            'largeThumbnail' => array (
+              'directory' => Config::read ('newsItemCoverImageLargeThumbnailPath'),
+              'dimensions' => Config::read ('newsItemCoverImageLargeThumbnailDimensions')
+            ),
+            'smallThumbnail' => array (
+              'directory' => Config::read ('newsItemCoverImageSmallThumbnailPath'),
+              'dimensions' => Config::read ('newsItemCoverImageSmallThumbnailDimensions')
+            ),
+          )
+        )
+      );
+      $coverImageData = isset ($coverImageData[0]) ? $coverImageData[0] : NULL;
+
+      if (!is_null ($coverImageData)) {
+        $query = "
+          INSERT INTO " . DBP . "newsItemCoverImage
+          SET `newsItemId` = :newsItemId,
+              `filename` = :filename,
+              `width` = :width,
+              `height` = :height,
+              `created` = NOW()
+        ";
+        $queryParams = array (
+          ':newsItemId' => array ($newsItemId, PDO::PARAM_INT),
+          ':filename' => $coverImageData['filename'],
+          ':width' => array ($coverImageData['width'], PDO::PARAM_INT),
+          ':height' => array ($coverImageData['height'], PDO::PARAM_INT)
+        );
+        $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      }
+
       $this->commit ();
     }
     catch (Exception $e) {
@@ -209,6 +290,50 @@ class NewsItemRepository extends Repository {
     }
     try {
       $this->startTransaction ();
+
+      // Upload coverImage
+      $coverImageData = Tools::uploadImages (
+        array (
+          'name' => 'coverImage',
+          'maxCount' => 1,
+          'types' => array (
+            'coverImage' => array (
+              'directory' => Config::read ('newsItemCoverImagePath'),
+              'dimensions' => Config::read ('newsItemCoverImageDimensions')
+            ),
+            'largeThumbnail' => array (
+              'directory' => Config::read ('newsItemCoverImageLargeThumbnailPath'),
+              'dimensions' => Config::read ('newsItemCoverImageLargeThumbnailDimensions')
+            ),
+            'smallThumbnail' => array (
+              'directory' => Config::read ('newsItemCoverImageSmallThumbnailPath'),
+              'dimensions' => Config::read ('newsItemCoverImageSmallThumbnailDimensions')
+            ),
+          )
+        )
+      );
+      $coverImageData = isset ($coverImageData[0]) ? $coverImageData[0] : NULL;
+      if (!empty ($coverImageData) || isset ($data['deleteCoverImage'])) {
+        $this->_deleteCoverImage ($newsItemId);
+        if (!empty ($coverImageData)) {
+          $query = "
+            INSERT INTO " . DBP . "newsItemCoverImage
+            SET `newsItemId` = :newsItemId,
+                `filename` = :filename,
+                `width` = :width,
+                `height` = :height,
+                `created` = NOW()
+          ";
+          $queryParams = array (
+            ':newsItemId' => array ($newsItemId, PDO::PARAM_INT),
+            ':filename' => $coverImageData['filename'],
+            ':width' => array ($coverImageData['width'], PDO::PARAM_INT),
+            ':height' => array ($coverImageData['height'], PDO::PARAM_INT)
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+        }
+      }
+
       $query = "
         UPDATE " . DBP . "newsItem
         SET `languageId` = :languageId,
@@ -252,6 +377,7 @@ class NewsItemRepository extends Repository {
   public function deleteNewsItem ($newsItemId) {
     try {
       $this->startTransaction ();
+      $this->_deleteCoverImage ($newsItemId);
       $query = "
         DELETE FROM " . DBP . "newsItem
         WHERE `newsItemId` = :newsItemId
@@ -260,7 +386,7 @@ class NewsItemRepository extends Repository {
         ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-    
+
       $this->commit ();
 
       return TRUE;
@@ -271,7 +397,6 @@ class NewsItemRepository extends Repository {
         throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
       }
   }
-  
 
   private function _validateNewsItemData ($input) {
     if (!$this->checkSetData (
@@ -292,11 +417,32 @@ class NewsItemRepository extends Repository {
               'publishDate' => 'Publish Date cannot be empty.'
           ),
           'notEmptyLang' => array (
-            
+
           )
         )
       )
     );
+  }
+
+  private function _deleteCoverImage ($newsItemId) {
+    // Delete image files on server
+    $newsItem = $this->getNewsItem (array ('newsItemId' => $newsItemId));
+    if (is_null ($newsItem)) {
+      throw new Exception ("Trying to delete coverImage for a non-existant newsItem");
+    }
+    if ($newsItem->getCoverImage ()) {
+      $newsItem->getCoverImage ()->deleteFiles ();
+
+      // Delete coverImage from database
+      $query = "
+        DELETE FROM " . DBP . "newsItemCoverImage
+        WHERE `newsItemId` = :newsItemId
+      ";
+      $queryParams = array (
+        ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      }
   }
 
 }

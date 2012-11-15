@@ -122,3 +122,51 @@
 [14-Nov-2012 14:51:06 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\default.php:13
 [14-Nov-2012 14:53:46 UTC] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list'
 [14-Nov-2012 14:53:56 UTC] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'navigationDecription' in 'field list'
+[15-Nov-2012 11:53:11 UTC] PHP Notice:  Undefined variable: newsItemController in C:\wamp\www\hns\app\view\managers\adminContentManager.class.php on line 93
+[15-Nov-2012 11:53:11 UTC] PHP Stack trace:
+[15-Nov-2012 11:53:11 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[15-Nov-2012 11:53:11 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[15-Nov-2012 11:53:11 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[15-Nov-2012 11:53:11 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[15-Nov-2012 11:53:11 UTC] PHP Fatal error:  Call to a member function getLanguages() on a non-object in C:\wamp\www\hns\app\view\managers\adminContentManager.class.php on line 93
+[15-Nov-2012 11:53:11 UTC] PHP Stack trace:
+[15-Nov-2012 11:53:11 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[15-Nov-2012 11:53:11 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[15-Nov-2012 11:53:11 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[15-Nov-2012 11:53:11 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[15-Nov-2012 11:53:30 UTC] An error occurred while fetching news item records: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'created' in 'order clause'
+[15-Nov-2012 11:53:54 UTC] PHP Fatal error:  Class 'Language' not found in C:\wamp\www\hns\app\model\factories\factory.class.php on line 75
+[15-Nov-2012 11:53:54 UTC] PHP Stack trace:
+[15-Nov-2012 11:53:54 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[15-Nov-2012 11:53:54 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[15-Nov-2012 11:53:54 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[15-Nov-2012 11:53:54 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[15-Nov-2012 11:53:54 UTC] PHP   5. NewsItemController->getLanguages() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:93
+[15-Nov-2012 11:53:54 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:93
+[15-Nov-2012 11:53:54 UTC] PHP   7. Repository->getLanguages() C:\wamp\www\hns\app\controllers\controller.class.php:49
+[15-Nov-2012 11:53:54 UTC] PHP   8. Factory::getLanguages() C:\wamp\www\hns\app\model\repositories\repository.class.php:878
+[15-Nov-2012 12:03:43 UTC] PHP Fatal error:  Call to undefined method NewsItem::getLanguageId() in C:\wamp\www\hns\app\view\elements\admin\newsItemView.php on line 11
+[15-Nov-2012 12:03:43 UTC] PHP Stack trace:
+[15-Nov-2012 12:03:43 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[15-Nov-2012 12:03:43 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[15-Nov-2012 12:03:43 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[15-Nov-2012 12:03:43 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[15-Nov-2012 12:03:43 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:34
+[15-Nov-2012 12:03:43 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
+[15-Nov-2012 12:06:26 UTC] PHP Fatal error:  Call to undefined method NewsItem::getLanguageId() in C:\wamp\www\hns\app\view\elements\admin\newsItemEditForm.php on line 10
+[15-Nov-2012 12:06:26 UTC] PHP Stack trace:
+[15-Nov-2012 12:06:26 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[15-Nov-2012 12:06:26 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[15-Nov-2012 12:06:26 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[15-Nov-2012 12:06:26 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[15-Nov-2012 12:06:26 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:34
+[15-Nov-2012 12:06:26 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
+[15-Nov-2012 12:07:05 UTC] PHP Fatal error:  Call to undefined method NewsItem::getLanguageId() in C:\wamp\www\hns\app\view\elements\admin\newsItemEditForm.php on line 10
+[15-Nov-2012 12:07:05 UTC] PHP Stack trace:
+[15-Nov-2012 12:07:05 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[15-Nov-2012 12:07:05 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[15-Nov-2012 12:07:05 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[15-Nov-2012 12:07:05 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[15-Nov-2012 12:07:05 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:34
+[15-Nov-2012 12:07:05 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
+[15-Nov-2012 12:11:38 UTC] An error occurred while fetching news item records: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'languageId' in where clause is ambiguous

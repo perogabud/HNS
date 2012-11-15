@@ -822,6 +822,62 @@ class Repository {
     return $query;
   }
 
+  public function getLanguage ($params = array ()) {
+    if (empty ($params)) {
+        return NULL;
+      }
+
+    $query = "
+      SELECT *
+      FROM ". DBP ."language AS l
+      WHERE 1 = 1
+    ";
+
+    $queryParams = array ();
+
+    if (array_key_exists ('languageId', $params)) {
+      $query .= "
+        AND l.languageId = :languageId
+      ";
+      $queryParams[':languageId'] = trim ($params['languageId']);
+    }
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news item record';
+      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+    }
+
+    if (!$results || empty ($results)) {
+      return NULL;
+    }
+
+    return Factory::getLanguage ($results[0]);
+  }
+
+  public function getLanguages ($params = array ()) {
+
+    $query = "
+      SELECT *
+      FROM ". DBP ."language AS l
+      WHERE 1 = 1
+    ";
+    $queryParams = array ();
+
+		$languages = array ();
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news item records';
+      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+    }
+
+    return Factory::getLanguages ($results);
+  }
+
 }
 
 ?>

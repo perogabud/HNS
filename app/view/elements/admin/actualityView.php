@@ -33,6 +33,10 @@
       <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
       <?php endforeach; ?>
+      <dt>Cover Image</dt>
+      <?php if ($actuality->CoverImage): ?>
+      <dd class="check"><img src="<?php echo $actuality->getCoverImage () ? $actuality->getCoverImage ()->getUrl () : ''; ?>" /></dd>
+      <?php endif; ?>
       <dt>Created On</dt>
       <dd>
         <?php echo $actuality->Created; ?>

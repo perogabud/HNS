@@ -37,6 +37,10 @@
       <dd><?php echo $page->getClass (); ?></dd>
       <?php endif; ?>
       <?php endif; ?>
+      <?php if ($page->CoverImage): ?>
+      <dt>Cover Image</dt>
+      <dd class="check"><img src="<?php echo $page->getCoverImage () ? $page->getCoverImage ()->getUrl () : ''; ?>" /></dd>
+      <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
       <dt<?php echo !$page->getTitle ($lang) ? ' class="empty"' : '' ?>>Title [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($page->getTitle ($lang)): ?>

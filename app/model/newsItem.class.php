@@ -1,7 +1,7 @@
 <?php
 class NewsItem extends ModelObject {
 
-  protected $_languageId;
+  protected $_language;
   protected $_title;
   protected $_slug;
   protected $_rootUrl;
@@ -9,7 +9,9 @@ class NewsItem extends ModelObject {
   protected $_content;
   protected $_isPublished;
   protected $_publishDate;
-  
+
+  protected $_coverImage;
+
   public function __construct ($data, $config = array ()) {
     parent::__construct ($data);
     $this->_setMember ('_id', $data, 'newsItemId');
@@ -18,22 +20,16 @@ class NewsItem extends ModelObject {
     $this->_setMembers ($data);
   }
 
-  public static function getLanguageFields () {
-    return array (
-      'slug'
-    );
-  }
-  
-  public function getLanguageId () {
-    return $this->_languageId;
+  public function getLanguage () {
+    return $this->_language;
   }
 
-  public function getSlug ($lang = NULL) {
-    return $this->_getLanguageMember ($this->_slug, $lang);
+  public function getSlug () {
+    return $this->_slug;
   }
 
   public function getUrl () {
-    return $this->_rootUrl . 'newsItem' . '/' . $this->_slug;
+    return $this->_rootUrl . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_news') . '/' . $this->_slug;
   }
 
   public function getTitle () {
@@ -56,6 +52,14 @@ class NewsItem extends ModelObject {
     return $this->_getDateByFormat ($this->_publishDate, $format);
   }
 
-  
+  public function getCoverImage () {
+    return $this->_coverImage;
+  }
+
+  public function setCoverImage ($coverImage) {
+    $this->_coverImage = $coverImage;
+  }
+
+
 }
 ?>
