@@ -7,9 +7,12 @@
     <script type="text/javascript">document.documentElement.className = 'js';</script>
   </head>
   <body>
-  <?php $this->getElement ('header'); ?>
-  <?php $this->getElement ('mainContent'); ?>
-  <?php $this->getElement ('footer'); ?>
-  <?php $this->getElement ('scripts'); ?>
+  	<div role="wrapper">
+		  <?php $this->getElement ('header'); ?>
+		  <?php $this->getElement ('navigation'); ?>
+		  <?php $this->getElement ('mainContent'); ?>
+		  <?php $this->getElement ('footer'); ?>
+		  <?php $this->getElement ('scripts'); ?>
+  </div>
   </body>
 </html>
