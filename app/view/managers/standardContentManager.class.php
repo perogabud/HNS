@@ -27,10 +27,6 @@ class StandardContentManager extends ContentManager {
         )
       )
     );
-    /*1
-    2
-    3
-    4*/
 
     $this->_setData (array ('activePage3' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
 
