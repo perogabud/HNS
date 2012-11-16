@@ -1,7 +1,7 @@
 <?php
 class Actuality extends ModelObject {
 
-  protected $_languageId;
+  protected $_language;
   protected $_title;
   protected $_slug;
   protected $_rootUrl;
@@ -20,22 +20,16 @@ class Actuality extends ModelObject {
     $this->_setMembers ($data);
   }
 
-  public static function getLanguageFields () {
-    return array (
-      'slug'
-    );
+  public function getLanguage () {
+    return $this->_language;
   }
 
-  public function getLanguageId () {
-    return $this->_languageId;
-  }
-
-  public function getSlug ($lang = NULL) {
-    return $this->_getLanguageMember ($this->_slug, $lang);
+  public function getSlug () {
+    return $this->_slug;
   }
 
   public function getUrl () {
-    return $this->_rootUrl . 'actuality' . '/' . $this->_slug;
+    return $this->_rootUrl . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_actualities') . '/' . $this->_slug;
   }
 
   public function getTitle () {

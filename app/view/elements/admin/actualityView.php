@@ -1,49 +1,49 @@
 <div class="column">
   <fieldset>
-    <legend>Actuality <strong><?php echo $actuality->Title; ?></strong></legend>
+    <legend>Aktualnost <strong><?php echo $actuality->Title; ?></strong></legend>
     <?php TableHelper::globalMessages (); ?>
     <ul class="actions">
-      <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/actuality"><?php TableHelper::icon ('arrowLeft'); ?> Back to Actualitys</a></li>
-      <li><a href="/admin/actuality/edit/<?php echo $actuality->Id; ?>"><?php TableHelper::icon ('edit'); ?> Edit this Actuality</a></li>
+      <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/actuality"><?php TableHelper::icon ('arrowLeft'); ?> Natrag na aktualnosti</a></li>
+      <li><a href="/admin/actuality/edit/<?php echo $actuality->Id; ?>"><?php TableHelper::icon ('edit'); ?> Uredi ovu aktualnost</a></li>
     </ul>
     <dl class="info">
-      <dt>Language</dt>
-      <?php if ($actuality->getLanguageId ()): ?>
-      <dd><?php echo $actuality->getLanguageId (); ?></dd>
+      <dt>Jezik</dt>
+      <?php if ($actuality->getLanguage ()): ?>
+      <dd><?php echo $actuality->getLanguage ()->getName(); ?></dd>
       <?php endif; ?>
-      <dt>Title</dt>
+      <dt>Naslov</dt>
       <?php if ($actuality->getTitle ()): ?>
       <dd><?php echo $actuality->getTitle (); ?></dd>
       <?php endif; ?>
-      <dt>Lead</dt>
+      <dt>Uvodni tekst</dt>
       <?php if ($actuality->getLead ()): ?>
       <dd><?php echo $actuality->getLead (); ?></dd>
       <?php endif; ?>
-      <dt>Content</dt>
+      <dt>Sadržaj</dt>
       <?php if ($actuality->getContent ()): ?>
       <dd><?php echo $actuality->getContent (); ?></dd>
       <?php endif; ?>
-      <dt>Published</dt>
+      <dt>Objavljeno</dt>
       <?php if ($actuality->getIsPublished ()): ?>
       <dd><?php echo $actuality->getIsPublished (); ?></dd>
       <?php endif; ?>
-      <dt>Publish Date</dt>
+      <dt>Datum objave</dt>
       <?php if ($actuality->getPublishDate ()): ?>
-      <dd><?php echo $actuality->getPublishDate (); ?></dd>
+      <dd><?php echo $actuality->getPublishDate ('d.m.Y.'); ?></dd>
       <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
       <?php endforeach; ?>
-      <dt>Cover Image</dt>
+      <dt>Naslovna slika</dt>
       <?php if ($actuality->CoverImage): ?>
       <dd class="check"><img src="<?php echo $actuality->getCoverImage () ? $actuality->getCoverImage ()->getUrl () : ''; ?>" /></dd>
       <?php endif; ?>
-      <dt>Created On</dt>
+      <dt>Zapis stvoren</dt>
       <dd>
-        <?php echo $actuality->Created; ?>
+        <?php echo $actuality->getCreated ('d.m.Y. H:i:s'); ?>
       </dd>
-      <dt>Modified On</dt>
+      <dt>Zapis uređen</dt>
       <dd>
-        <?php echo $actuality->Created == $actuality->Created ? $actuality->Modified : '-'; ?>
+        <?php echo $actuality->Created == $actuality->Created ? $actuality->getModified ('d.m.Y. H:i:s'): '-'; ?>
       </dd>
     </dl>
     <div>

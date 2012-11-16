@@ -14,12 +14,10 @@ class GalleryRepository extends Repository {
     if (empty ($params)) {
         return NULL;
       }
-    
+
     $query = "
       SELECT *
-      FROM ". DBP ."gallery AS g
-      JOIN ". DBP ."galleryI18n AS gi18n
-        ON g.galleryId = gi18n.galleryId
+      FROM ". DBP ."vw_gallery AS g
       WHERE 1 = 1
     ";
 
@@ -31,7 +29,14 @@ class GalleryRepository extends Repository {
       ";
       $queryParams[':galleryId'] = array (intval ($params['galleryId']), PDO::PARAM_INT);
     }
-    
+
+    if (array_key_exists ('slug', $params)) {
+      $query .= "
+        AND g.slug = :slug
+      ";
+      $queryParams[':slug'] = trim ($params['slug']);
+    }
+
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }
@@ -43,12 +48,12 @@ class GalleryRepository extends Repository {
     if (!$results || empty ($results)) {
       return NULL;
     }
-    
+
     $images = $this->getImages ($results[0]['galleryId']);
     $results[0]['images'] = $images;
-    
+
     $gallery = Factory::getGallery ($results);
-      
+
     return $gallery;
   }
   /**
@@ -85,7 +90,7 @@ class GalleryRepository extends Repository {
    * @return integer A count of Gallery records in the database.
    */
   public function getGalleryCount ($params = array ()) {
-    
+
     $query = "
       SELECT COUNT(galleryId) AS galleryCount
       FROM ". DBP ."vw_gallery AS g
@@ -116,7 +121,7 @@ class GalleryRepository extends Repository {
     }
     else {
       // Handle parameters
-      
+
     }
 
     try {
@@ -135,7 +140,7 @@ class GalleryRepository extends Repository {
    * @return array An array of Gallery objects.
    */
   public function getGallerys ($params = array ()) {
-    
+
     $query = "
       SELECT *
       FROM ". DBP ."vw_gallery
@@ -166,7 +171,7 @@ class GalleryRepository extends Repository {
     }
     else {
       // Handle parameters
-      
+
     }
     ;
 		$query .= $this->_getOrderAndLimit ($params);
@@ -181,12 +186,8 @@ class GalleryRepository extends Repository {
     }
 
     foreach ($results as &$result) {
-      
-    if (isset ($params['image'])) {
       $images = $this->getImages ($result['galleryId']);
       $result['images'] = $images;
-    }
-    
     }
 
     return Factory::getGallerys ($results);
@@ -204,15 +205,15 @@ class GalleryRepository extends Repository {
 
     try {
       $this->startTransaction ();
-    
+
       $query = "
         INSERT INTO " . DBP . "gallery
-        SET 
+        SET
             `created` = NOW(),
             `modified` = NOW()
       ";
       $queryParams = array (
-        
+
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
@@ -238,7 +239,7 @@ class GalleryRepository extends Repository {
         );
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
-    
+
       $this->commit ();
     }
     catch (Exception $e) {
@@ -262,7 +263,7 @@ class GalleryRepository extends Repository {
       $this->startTransaction ();
       $query = "
         UPDATE " . DBP . "gallery
-        SET 
+        SET
             `modified` = NOW()
         WHERE `galleryId` = :galleryId
       ";
@@ -323,7 +324,7 @@ class GalleryRepository extends Repository {
         ':galleryId' => array ($galleryId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-    
+
       $this->commit ();
 
       return TRUE;
@@ -334,7 +335,7 @@ class GalleryRepository extends Repository {
         throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
       }
   }
-  
+
 
   private function _validateGalleryData ($input) {
     if (!$this->checkSetData (
@@ -351,7 +352,7 @@ class GalleryRepository extends Repository {
         'message' => 'Not all required fields have been filled in.',
         'rules' => array (
           'notEmpty' => array (
-            
+
           ),
           'notEmptyLang' => array (
             'title' => 'Title cannot be empty.'

@@ -14,6 +14,16 @@ class Dict {
       'eng' => 'News',
       'hrv' => 'Novosti'
     ),
+    'title_actualities' => array (
+      'deu' => '',
+      'eng' => 'Actualities',
+      'hrv' => 'Aktualnosti'
+    ),
+    'title_galleries' => array (
+      'deu' => '',
+      'eng' => 'Gallery',
+      'hrv' => 'Galerija'
+    ),
 
     'text_youCanAlsoTry' => array (
       'deu' => 'Probieren Sie auch dies...',
@@ -31,6 +41,16 @@ class Dict {
       'deu' => '',
       'eng' => 'news',
       'hrv' => 'novosti'
+    ),
+    'slug_actualities' => array (
+      'deu' => '',
+      'eng' => 'actualities',
+      'hrv' => 'aktualnosti'
+    ),
+    'slug_galleries' => array (
+      'deu' => '',
+      'eng' => 'gallery',
+      'hrv' => 'galerija'
     )
 
   );

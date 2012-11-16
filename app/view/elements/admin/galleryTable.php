@@ -1,18 +1,18 @@
 <div class="columnNo">
   <fieldset>
-    <legend>Gallerys</legend>
+    <legend>Galerije</legend>
     <?php TableHelper::globalMessages (); ?>
     <ul class="actions">
-      <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/gallery/add"><?php TableHelper::icon('add'); ?> Add Gallery</a></li>
+      <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/gallery/add"><?php TableHelper::icon('add'); ?> Dodaj galeriju</a></li>
     </ul>
     <?php if (isset ($_GET['searchSpremi']) && isset ($_GET['inSearch']) && is_array ($_GET['inSearch'])): ?>
     <div class="searchFilters">
-    <p>Records filtered with:</p>
+    <p>Zapisi filtrirani sa:</p>
     <dl>
     <?php
       $printableNames = array (
-        'title' => 'Title',
-        'category' => 'Category',);
+        'title' => 'Naslov',
+        'category' => 'Kategorija',);
       foreach ($_GET['inSearch'] as $name) {
         if (in_array ($name, array ('title', 'category'))) {
           if (in_array ($name, array ())) {
@@ -30,16 +30,16 @@
     </div>
     <?php endif; ?>
     <?php if (empty ($gallerys)): ?>
-    <p>There are currently no Gallerys.</p>
+    <p>Trenutno nema galerija.</p>
     <?php else: ?>
-    <span class="count">Showing records: <?php TableHelper::showingRecord (count ($gallerys), $galleryCount); ?></span>
+    <span class="count">Prikazani zapisi: <?php TableHelper::showingRecord (count ($gallerys), $galleryCount); ?></span>
     <table>
       <thead>
         <tr>
-          <th>Title <?php TableHelper::orderLinks ('admin/gallery', 'title'); ?></th>
-          <th>Created <?php TableHelper::orderLinks ('admin/gallery', 'created'); ?></th>
-          <th>Modified <?php TableHelper::orderLinks ('admin/gallery', 'modified'); ?></th>
-          <th>Controls</th>
+          <th>Naslov <?php TableHelper::orderLinks ('admin/gallery', 'title'); ?></th>
+          <th>Zapis stvoren <?php TableHelper::orderLinks ('admin/gallery', 'created'); ?></th>
+          <th>Zapis uređen <?php TableHelper::orderLinks ('admin/gallery', 'modified'); ?></th>
+          <th>Kontrole</th>
         </tr>
       </thead>
       <tfoot>
@@ -53,8 +53,8 @@
         <?php foreach ($gallerys as $gallery): ?>
         <tr class="<?php echo Tools::toggleClass (); ?>">
           <td><?php echo $gallery->Title; ?></td>
-          <td><?php echo $gallery->Created; ?></td>
-          <td><?php echo ($gallery->Created == $gallery->Modified) ? '-' : $gallery->Modified; ?></td>
+          <td><?php echo $gallery->getCreated ('d.m.Y. H:i:s'); ?></td>
+          <td><?php echo ($gallery->Created == $gallery->Modified) ? '-' : $gallery->getModified ('d.m.Y. H:i:s'); ?></td>
           <td class="controls3">
             <a class="view" href="<?php echo Config::read ('siteUrlRoot'); ?>admin/gallery/view/<?php echo $gallery->Id; ?>"><?php TableHelper::icon('view'); ?></a>
             <a class="edit" href="<?php echo Config::read ('siteUrlRoot'); ?>admin/gallery/edit/<?php echo $gallery->Id; ?>"><?php TableHelper::icon('edit'); ?></a>
@@ -67,14 +67,14 @@
     <?php endif; ?>
   </fieldset>
   <fieldset>
-    <legend>Search for Gallerys</legend>
+    <legend>Pretraži galerije</legend>
     <form class="searchForm" action="<?php echo substr (Config::read ('siteUrlRoot'), 0, -1) . $_SERVER['REQUEST_URI']; ?>" method="get">
-      <p>Use the form below to search for specific Gallerys.</p>
+      <p>Iskoristi formu niže za pretraživanje galerija.</p>
       <table>
         <thead>
           <tr>
-            <th>Use</th>
-            <th>Field</th>
+            <th>Koristi</th>
+            <th>Polje</th>
           </tr>
         </thead>
         <tbody>
@@ -83,13 +83,13 @@
         echo '<td>';
         FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'title', 'div' => array ('class' => 'searchUse')));
         echo '</td><td>';
-        FormHelper::input ('text', 'title', 'titleSearch', array ('label' => array ('text' => 'Title')));
+        FormHelper::input ('text', 'title', 'titleSearch', array ('label' => array ('text' => 'Naslov')));
         echo '</td></tr>';
         echo '<tr class="'. Tools::toggleClass () .'">';
         echo '<td>';
         FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'category', 'div' => array ('class' => 'searchUse')));
         echo '</td><td>';
-        FormHelper::input ('text', 'category', 'categorySearch', array ('label' => array ('text' => 'Category')));
+        FormHelper::input ('text', 'category', 'categorySearch', array ('label' => array ('text' => 'Kategorija')));
         echo '</td></tr>';
       ?>
       </tbody>

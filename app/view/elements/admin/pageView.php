@@ -20,7 +20,7 @@
       <dd class="check"><?php TableHelper::iconYesNo ($page->getIsEditable ()); ?></dd>
       <?php endif; ?>
       <?php if (Config::read ('debug')): ?>
-      <dt>Published</dt>
+      <dt>Objavljeno</dt>
       <dd class="check"><?php TableHelper::iconYesNo ($page->getIsPublished ()); ?></dd>
       <?php endif; ?>
       <?php if (Config::read ('debug')): ?>
@@ -42,7 +42,7 @@
       <dd class="check"><img src="<?php echo $page->getCoverImage () ? $page->getCoverImage ()->getUrl () : ''; ?>" /></dd>
       <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
-      <dt<?php echo !$page->getTitle ($lang) ? ' class="empty"' : '' ?>>Title [<?php echo strtoupper ($lang); ?>]</dt>
+      <dt<?php echo !$page->getTitle ($lang) ? ' class="empty"' : '' ?>>Naslov [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($page->getTitle ($lang)): ?>
       <dd><?php echo $page->getTitle ($lang); ?></dd>
       <?php endif; ?>
@@ -54,11 +54,11 @@
       <?php if ($page->getContent ($lang)): ?>
       <dd><?php echo $page->getContent ($lang); ?></dd>
       <?php endif; ?>
-      <dt<?php echo !$page->getLead ($lang) ? ' class="empty"' : '' ?>>Lead [<?php echo strtoupper ($lang); ?>]</dt>
+      <dt<?php echo !$page->getLead ($lang) ? ' class="empty"' : '' ?>>Uvodni tekst [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($page->getLead ($lang)): ?>
       <dd><?php echo $page->getLead ($lang); ?></dd>
       <?php endif; ?>
-      <dt<?php echo !$page->getMetaTitle ($lang) ? ' class="empty"' : '' ?>>Meta Title [<?php echo strtoupper ($lang); ?>]</dt>
+      <dt<?php echo !$page->getMetaTitle ($lang) ? ' class="empty"' : '' ?>>Meta Naslov [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($page->getMetaTitle ($lang)): ?>
       <dd><?php echo $page->getMetaTitle ($lang); ?></dd>
       <?php endif; ?>

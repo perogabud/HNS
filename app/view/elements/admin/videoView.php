@@ -12,7 +12,7 @@
       <dd><?php echo $video->getYoutubeUrl (); ?></dd>
       <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
-      <dt<?php echo !$video->getTitle ($lang) ? ' class="empty"' : '' ?>>Title [<?php echo strtoupper ($lang); ?>]</dt>
+      <dt<?php echo !$video->getTitle ($lang) ? ' class="empty"' : '' ?>>Naslov [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($video->getTitle ($lang)): ?>
       <dd><?php echo $video->getTitle ($lang); ?></dd>
       <?php endif; ?>

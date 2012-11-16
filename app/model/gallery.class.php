@@ -6,7 +6,7 @@ class Gallery extends ModelObject {
   protected $_rootUrl;
   protected $_category;
   protected $_images;
-  
+
   public function __construct ($data, $dataLang, $config = array ()) {
     parent::__construct ($data);
     $this->_setMember ('_id', $data, 'galleryId');
@@ -23,13 +23,13 @@ class Gallery extends ModelObject {
       'category'
     );
   }
-  
-  public function getSlug () {
-    return $this->_slug;
+
+  public function getSlug ($lang = NULL) {
+    return $this->_getLanguageMember ($this->_slug, $lang);
   }
 
   public function getUrl ($lang = NULL) {
-    return $this->_rootUrl . 'gallery' . '/' . $this->_getLanguageMember ($this->_slug, $lang);
+    return $this->_rootUrl . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_galleries') . '/' . $this->_getLanguageMember ($this->_slug, $lang);
   }
 
   public function getTitle ($lang = NULL) {
@@ -48,6 +48,10 @@ class Gallery extends ModelObject {
     $this->_images = $image;
   }
 
-  
+  public function getCoverImage () {
+    return $this->_images ? $this->_images[0] : NULL;
+  }
+
+
 }
 ?>

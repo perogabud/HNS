@@ -10,6 +10,10 @@ class ActualityController extends Controller {
     return $this->_repository->getActuality (array ('actualityId' => $actualityId));
   }
 
+  public function getActualityBySlug ($slug) {
+    return $this->_repository->getActuality (array ('slug' => $slug));
+  }
+
   public function getActualitys (
     $orderBy = NULL,
     $orderDirection = NULL,

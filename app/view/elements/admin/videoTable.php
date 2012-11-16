@@ -11,7 +11,7 @@
     <dl>
     <?php
       $printableNames = array (
-        'title' => 'Title',
+        'title' => 'Naslov',
         'category' => 'Category',
         'youtubeUrl' => 'Youtube URL',);
       foreach ($_GET['inSearch'] as $name) {
@@ -37,7 +37,7 @@
     <table>
       <thead>
         <tr>
-          <th>Title <?php TableHelper::orderLinks ('admin/video', 'title'); ?></th>
+          <th>Naslov <?php TableHelper::orderLinks ('admin/video', 'title'); ?></th>
           <th>Youtube URL <?php TableHelper::orderLinks ('admin/video', 'youtubeUrl'); ?></th>
           <th>Created <?php TableHelper::orderLinks ('admin/video', 'created'); ?></th>
           <th>Modified <?php TableHelper::orderLinks ('admin/video', 'modified'); ?></th>
@@ -86,7 +86,7 @@
         echo '<td>';
         FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'title', 'div' => array ('class' => 'searchUse')));
         echo '</td><td>';
-        FormHelper::input ('text', 'title', 'titleSearch', array ('label' => array ('text' => 'Title')));
+        FormHelper::input ('text', 'title', 'titleSearch', array ('label' => array ('text' => 'Naslov')));
         echo '</td></tr>';
         echo '<tr class="'. Tools::toggleClass () .'">';
         echo '<td>';

@@ -30,6 +30,13 @@ class ActualityRepository extends Repository {
       $queryParams[':actualityId'] = array (intval ($params['actualityId']), PDO::PARAM_INT);
     }
 
+    if (array_key_exists ('slug', $params)) {
+      $query .= "
+        AND a.slug = :slug
+      ";
+      $queryParams[':slug'] = trim ($params['slug']);
+    }
+
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }
@@ -44,6 +51,8 @@ class ActualityRepository extends Repository {
 
     $coverImage = $this->getCoverImage ($results[0]['actualityId']);
     $results[0]['coverImage'] = $coverImage;
+
+    $results[0]['language'] = $this->getLanguage (array ('languageId' => $results[0]['languageId']));
 
     $actuality = Factory::getActuality ($results[0]);
 
@@ -134,6 +143,8 @@ class ActualityRepository extends Repository {
     $query = "
       SELECT *
       FROM ". DBP ."actuality AS a
+      JOIN ". DBP ."language AS l
+        ON a.languageId = l.languageId
       WHERE 1 = 1
     ";
     $queryParams = array ();
@@ -142,26 +153,30 @@ class ActualityRepository extends Repository {
       && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
       foreach ($params['filterParams']['inSearch'] as $attrName) {
         if (in_array ($attrName, array ('languageId', 'title', 'lead', 'content', 'isPublished', 'publishDate'))) {
-          if (in_array ($attrName, array ())) {
+          if (in_array ($attrName, array ('isPublished'))) {
             $query .= "
-              AND $attrName = :$attrName
+              AND a.$attrName = :$attrName
             ";
             $queryParams[":$attrName"] = isset ($params['filterParams'][$attrName]) ? '1' : '0';
           }
           elseif (isset ($params['filterParams'][$attrName])) {
             $query .= "
-              AND $attrName LIKE :$attrName
+              AND a.$attrName LIKE :$attrName
             ";
             $queryParams[":$attrName"] = '%'. $params['filterParams'][$attrName] .'%';
           }
         }
       }
     }
-    else {
-      // Handle parameters
-
+    if (isset ($params['isPublished']) && $params['isPublished'] === TRUE) {
+      $query .= "
+        AND n.isPublished = 1
+      ";
     }
-    ;
+    if (!isset ($params['orderBy'])) {
+      $params['orderBy'] = 'publishDate';
+      $params['orderDirection'] = 'DESC';
+    }
 		$query .= $this->_getOrderAndLimit ($params);
 
 		$actualitys = array ();
@@ -174,6 +189,7 @@ class ActualityRepository extends Repository {
     }
 
     foreach ($results as &$result) {
+      $result['language'] = Factory::getLanguage ($result);
       $coverImage = $this->getCoverImage ($result['actualityId']);
       $result['coverImage'] = $coverImage;
     }
@@ -212,7 +228,7 @@ class ActualityRepository extends Repository {
         ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['title']))),
         ':lead' => Tools::stripTags (trim ($data['lead']), 'loose'),
         ':content' => Tools::stripTags (trim ($data['content']), 'loose'),
-        ':isPublished' => empty ($data['isPublished']) ? NULL : array ($data['isPublished'], PDO::PARAM_INT),
+        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
         ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
@@ -343,7 +359,7 @@ class ActualityRepository extends Repository {
         ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['title']))),
         ':lead' => Tools::stripTags (trim ($data['lead']), 'loose'),
         ':content' => Tools::stripTags (trim ($data['content']), 'loose'),
-        ':isPublished' => empty ($data['isPublished']) ? NULL : array ($data['isPublished'], PDO::PARAM_INT),
+        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
         ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT),
         ':actualityId' => array ($actualityId, PDO::PARAM_INT)
       );

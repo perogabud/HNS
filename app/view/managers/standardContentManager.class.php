@@ -39,7 +39,14 @@ class StandardContentManager extends ContentManager {
           $newsItemController = NewsItemController::getInstance ();
           $this->_setData (
             array (
-              'newsItems' => $newsItemController->getNewsItems ('publishDate', 'DESC', 1, 10)
+              'newsItems' => $newsItemController->getNewsItemsByParams (
+                array (
+                  'orderBy' => 'publishDate',
+                  'orderDirection' => 'DESC',
+                  'limit' => 10,
+                  'languageId' => Config::read ('lang')
+                )
+              )
             )
           );
           $this->_setHtmlHead (array ('pageTitle' => 'Naslovnica'));
@@ -61,7 +68,14 @@ class StandardContentManager extends ContentManager {
                */
               if ($this->_checkParams (2, TRUE)) {
                 $newsItemController = NewsItemController::getInstance ();
-                $newsItems = $newsItemController->getNewsItems ('publishDate', 'DESC', 1, 10);
+                $newsItems = $newsItemController->getNewsItemsByParams (
+                  array (
+                    'orderBy' => 'publishDate',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10,
+                    'languageId' => Config::read ('lang')
+                  )
+                );
                 if ($newsItems) {
                   $this->_setElements (
                     array (
@@ -82,32 +96,145 @@ class StandardContentManager extends ContentManager {
                 return;
               }
               elseif ($this->_checkParams (3, TRUE)) {
-                switch ($this->params[1]) {
-                  /*
-                   * Single News Item.
-                   */
-                  case Dict::read ('slug_news'):
-                    $newsItemController = NewsItemController::getInstance ();
-                    $newsItem = $newsItemController->getNewsItemBySlug ($this->params[2]);
-                    FB::warn ('here');
-                    if ($newsItem) {
-                      $this->_setElements (
-                        array (
-                          'mainContent' => array (
-                            'filename' => 'newsItem',
-                            'data' => array (
-                              'newsItem' => $newsItem
-                            )
-                          )
+                $newsItemController = NewsItemController::getInstance ();
+                $newsItem = $newsItemController->getNewsItemBySlug ($this->params[2]);
+                FB::warn ('here');
+                if ($newsItem) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'newsItem',
+                        'data' => array (
+                          'newsItem' => $newsItem
                         )
-                      );
-                      $this->_setHtmlHead (
-                        array (
-                          'pageTitle' => Dict::read ('title_news') . ' :: ' . $newsItem->getTitle ()
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $newsItem->getTitle ()
+                    )
+                  );
+                  return;
+                }
+              }
+
+            /*
+             * Actualities.
+             */
+            case Dict::read ('slug_actualities'):
+              /*
+               * Actualities Listing.
+               */
+              if ($this->_checkParams (2, TRUE)) {
+                $actualityController = ActualityController::getInstance ();
+                $actualitys = $actualityController->getActualitysByParams (
+                  array (
+                    'orderBy' => 'publishDate',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10,
+                    'languageId' => Config::read ('lang')
+                  )
+                );
+                if ($actualitys) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'actualities',
+                        'data' => array (
+                          'actualitys' => $actualitys
                         )
-                      );
-                      return;
-                    }
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_actualities')
+                    )
+                  );
+                }
+                return;
+              }
+              elseif ($this->_checkParams (3, TRUE)) {
+                $actualityController = ActualityController::getInstance ();
+                $actuality = $actualityController->getActualityBySlug ($this->params[2]);
+                FB::warn ('here');
+                if ($actuality) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'actuality',
+                        'data' => array (
+                          'actuality' => $actuality
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $actuality->getTitle ()
+                    )
+                  );
+                  return;
+                }
+              }
+
+            /*
+             * Galleries.
+             */
+            case Dict::read ('slug_galleries'):
+              /*
+               * Galleries Listing.
+               */
+              if ($this->_checkParams (2, TRUE)) {
+                $galleryController = GalleryController::getInstance ();
+                $gallerys = $galleryController->getGallerysByParams (
+                  array (
+                    'orderBy' => 'created',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10
+                  )
+                );
+                if ($gallerys) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'galleries',
+                        'data' => array (
+                          'gallerys' => $gallerys
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_galleries')
+                    )
+                  );
+                }
+                return;
+              }
+              elseif ($this->_checkParams (3, TRUE)) {
+                $galleryController = GalleryController::getInstance ();
+                $gallery = $galleryController->getGalleryBySlug ($this->params[2]);
+                FB::warn ('here');
+                if ($gallery) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'gallery',
+                        'data' => array (
+                          'gallery' => $gallery
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $gallery->getTitle ()
+                    )
+                  );
+                  return;
                 }
               }
           }

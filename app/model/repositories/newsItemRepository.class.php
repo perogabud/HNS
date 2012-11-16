@@ -168,6 +168,12 @@ class NewsItemRepository extends Repository {
         }
       }
     }
+    if (isset ($params['languageId'])) {
+      $query .= "
+        AND n.languageId = :languageId
+      ";
+      $queryParams[':languageId'] = trim ($params['languageId']);
+    }
     if (isset ($params['isPublished']) && $params['isPublished'] === TRUE) {
       $query .= "
         AND n.isPublished = 1

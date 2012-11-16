@@ -8,8 +8,8 @@
     <?php
     FormHelper::input ('textarea', 'youtubeUrl', 'youtubeUrl', array ('label' => array ('text' => 'Youtube URL * ')));
     foreach (Config::read ('supportedLangs') as $lang) {
-      echo '<h3 class="langContent">Data in '. Config::read ("langNamesEnglish", $lang) .' Language</h3>';
-      FormHelper::input ('textarea', 'title', 'title', array ('label' => array ('text' => 'Title * '), 'lang' => $lang, 'class' => 'simpleEditor'));
+      echo '<h3 class="langContent">Data in '. Config::read ("langNamesEnglish", $lang) .' Jezik</h3>';
+      FormHelper::input ('textarea', 'title', 'title', array ('label' => array ('text' => 'Naslov * '), 'lang' => $lang, 'class' => 'simpleEditor'));
       FormHelper::input ('text', 'category', 'category', array ('label' => array ('text' => 'Category  '), 'lang' => $lang));
     }
     ?>

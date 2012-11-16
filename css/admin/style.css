@@ -989,10 +989,10 @@ div.table table div.input textarea { height: auto; }
 
 input.date {
   background: url(/img/admin/calendarGray.png) 99% center no-repeat #FFF;
-  background-image: -moz-linear-gradient(top, #eee 0%, #fff 5px); /* FF3.6+ */
-  background-image: -webkit-linear-gradient(top, #eee 0%, #fff 5px); /* Chrome10+,Safari5.1+ */
-  background-image: -o-linear-gradient(top, #eee 0%, #fff 5px); /* Opera? */
-  background-image: linear-gradient(top, #eee 0%, #fff 5px); /* W3C */
+  background-image: url(/img/admin/calendarGray.png), -moz-linear-gradient(top, #eee 0%, #fff 5px); /* FF3.6+ */
+  background-image: url(/img/admin/calendarGray.png), -webkit-linear-gradient(top, #eee 0%, #fff 5px); /* Chrome10+,Safari5.1+ */
+  background-image: url(/img/admin/calendarGray.png), -o-linear-gradient(top, #eee 0%, #fff 5px); /* Opera? */
+  background-image: url(/img/admin/calendarGray.png), linear-gradient(top, #eee 0%, #fff 5px); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );
 }
 
@@ -1043,3 +1043,20 @@ span.isVisible img {
 }
 
 td.info img { cursor: help; }
+
+.ui-tabs {
+  float: left;
+  width: 918px;
+  margin: 0 -11px;
+  background: #f3f2f0 !important;
+  border-left-color: #CCC !important;
+  border-right-color: #CCC !important;
+  padding: 0 0 5px 0 !important;
+
+}
+
+.ui-tabs .ui-tabs-panel {
+  padding: 10px !important;
+}
+
+.ui-tabs .langContent { display: none; }

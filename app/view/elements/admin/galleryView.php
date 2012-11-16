@@ -1,29 +1,29 @@
 <div class="column">
   <fieldset>
-    <legend>Gallery <strong><?php echo $gallery->Title; ?></strong></legend>
+    <legend>Galerija <strong><?php echo $gallery->Title; ?></strong></legend>
     <?php TableHelper::globalMessages (); ?>
     <ul class="actions">
-      <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/gallery"><?php TableHelper::icon ('arrowLeft'); ?> Back to Gallerys</a></li>
-      <li><a href="/admin/gallery/edit/<?php echo $gallery->Id; ?>"><?php TableHelper::icon ('edit'); ?> Edit this Gallery</a></li>
+      <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/gallery"><?php TableHelper::icon ('arrowLeft'); ?> Natrag na galerije</a></li>
+      <li><a href="/admin/gallery/edit/<?php echo $gallery->Id; ?>"><?php TableHelper::icon ('edit'); ?> Uredi ovu galeriju</a></li>
     </ul>
     <dl class="info">
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
-      <dt<?php echo !$gallery->getTitle ($lang) ? ' class="empty"' : '' ?>>Title [<?php echo strtoupper ($lang); ?>]</dt>
+      <dt<?php echo !$gallery->getTitle ($lang) ? ' class="empty"' : '' ?>>Naslov [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($gallery->getTitle ($lang)): ?>
       <dd><?php echo $gallery->getTitle ($lang); ?></dd>
       <?php endif; ?>
-      <dt<?php echo !$gallery->getCategory ($lang) ? ' class="empty"' : '' ?>>Category [<?php echo strtoupper ($lang); ?>]</dt>
+      <dt<?php echo !$gallery->getCategory ($lang) ? ' class="empty"' : '' ?>>Kategorija [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($gallery->getCategory ($lang)): ?>
       <dd><?php echo $gallery->getCategory ($lang); ?></dd>
       <?php endif; ?>
       <?php endforeach; ?>
-      <dt>Created On</dt>
+      <dt>Zapis stvoren</dt>
       <dd>
-        <?php echo $gallery->Created; ?>
+        <?php echo $gallery->getCreated ('m.d.Y. H:i:s'); ?>
       </dd>
-      <dt>Modified On</dt>
+      <dt>Zapis uređen</dt>
       <dd>
-        <?php echo $gallery->Created == $gallery->Created ? $gallery->Modified : '-'; ?>
+        <?php echo $gallery->Created == $gallery->Created ? $gallery->getModified ('m.d.Y. H:i:s') : '-'; ?>
       </dd>
     </dl>
     <div>
@@ -32,8 +32,8 @@
 </div>
 <div class="column">
   <fieldset>
-    <legend>Images</legend>
-    <p class="info">There are no dimension constraints for these image files.</p>
+    <legend>Slike</legend>
+    <p class="info">Minimalne dimenzije za slike su <strong>729px</strong> širina i <strong>419px</strong> visina.</p>
     <?php
       FormHelper::input ('file', 'image[]', 'image');
       FormHelper::input ('hidden', 'sessid', 'sessid', array ('value' => session_id()));
@@ -43,10 +43,10 @@
       <?php if (count ($gallery->Images)) foreach ($gallery->Images as $image): ?>
       <li>
             <a target="blank" href="<?php echo $image->getUrl (); ?>"><img src="<?php echo $image->getLargeThumbnailUrl (); ?>" alt=""/></a>
-              
+
         <a id="moveUpImage<?php echo $image->Id; ?>" class="moveUp"><?php TableHelper::icon('moveUp'); ?></a>
         <a id="moveDownImage<?php echo $image->Id; ?>" class="moveDown" ><?php TableHelper::icon('moveDown'); ?></a>
-        <a id="removeImage<?php echo $image->Id; ?>" class="remove"><?php TableHelper::icon ('delete'); ?> Remove</a>
+        <a id="removeImage<?php echo $image->Id; ?>" class="remove"><?php TableHelper::icon ('delete'); ?> Obriši</a>
         <script type="text/javascript">
           $('a#removeImage<?php echo $image->Id; ?>, a#moveUpImage<?php echo $image->Id; ?>, a#moveDownImage<?php echo $image->Id; ?>').data (
            'imageId', '<?php echo $image->Id; ?>'
@@ -107,7 +107,7 @@
         $('#imagesList').append ('<li>' + getUploadedImageHTML (response.filename, '', '')
           + '<a id="moveUp' + ID +'" class="moveUp"><img src="/img/admin/arrowUp.png" alt="arrow up"></a>'
           + '<a id="moveDown' + ID +'" class="moveDown"><img src="/img/admin/arrowDown.png" alt="arrow down"></a>'
-          + '<a id="remove' + ID +'" class="remove"><img src="/img/admin/binClosed.png" alt="delete"> Remove</a></li>');
+          + '<a id="remove' + ID +'" class="remove"><img src="/img/admin/binClosed.png" alt="delete"> Obriši</a></li>');
         $('#loader' + ID).remove ();
         $('a#remove' + ID + ', a#moveUp' + ID + ', a#moveDown' + ID).data ('imageId', response.imageId);
         $('ul.imageList a#remove' + ID).click (function () {removeImageClick (this);return false;});
@@ -210,4 +210,3 @@
     </script>
   </fieldset>
 </div>
-        

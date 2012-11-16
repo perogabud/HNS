@@ -674,7 +674,8 @@ class AdminContentManager extends ContentManager {
                     Config::read ('iterationLimit'),
                     isset ($_GET['searchSubmit']) ? $_GET : NULL
                   ),
-                  'actualityCount' => $actualityController->getActualityCount (isset ($_GET['searchSubmit']) ? $_GET : NULL)
+                  'actualityCount' => $actualityController->getActualityCount (isset ($_GET['searchSubmit']) ? $_GET : NULL),
+                  'languages' => $actualityController->getLanguages ()
                 )
               )
             )
@@ -688,8 +689,8 @@ class AdminContentManager extends ContentManager {
              * /actuality/add/
              */
             case 'add':
+              $actualityController = ActualityController::getInstance ();
               if (!empty ($_POST)) {
-                $actualityController = ActualityController::getInstance ();
                 try {
                   $actuality = $actualityController->addActuality ($_POST);
                 }
@@ -707,6 +708,7 @@ class AdminContentManager extends ContentManager {
                   'mainContent' => array (
                     'filename' => 'admin/actualityAddForm',
                     'data' => array (
+                      'languages' => $actualityController->getLanguages ()
                     )
                   )
                 )
@@ -760,6 +762,7 @@ class AdminContentManager extends ContentManager {
                     'filename' => 'admin/actualityEditForm',
                     'data' => array (
                       'actuality' => $actualityController->getActualityById ($actualityId),
+                      'languages' => $actualityController->getLanguages ()
                     )
                   )
                 )

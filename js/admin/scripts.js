@@ -19,6 +19,7 @@ $().ready (function () {
     });
   }
 
+  $('.tabs').tabs ();
 
   $(dataTables).data ('alwaysDisplayed', []);
 
