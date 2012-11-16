@@ -20,7 +20,7 @@ class StandardContentManager extends ContentManager {
     $pageController = PageController::getInstance ();
     $this->_setElements (
       array (
-        'header' => array (
+        'navigation' => array (
           'data' => array (
             'navPages' => $pageController->getNavigation ()
           )
