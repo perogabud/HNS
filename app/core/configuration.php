@@ -31,7 +31,7 @@ Config::write ('elementsPath', Config::read ('sitePath') . 'app/view/elements/')
 Config::write ('elementsCachePath', Config::read ('sitePath') . 'app/view/elements/cache/');
 
 // I18N & language configuration
-Config::write ('supportedLangs', array ('hrv', 'eng'));
+Config::write ('supportedLangs', array ('hrv'));
 Config::write ('defaultLang', 'hrv');
 Config::write ('lang', Config::read ('defaultLang'));
 Config::write ('langNames', array (
