@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Računalo: localhost
--- Vrijeme generiranja: Stu 15, 2012 u 01:58 PM
+-- Vrijeme generiranja: Stu 16, 2012 u 10:36 AM
 -- Verzija poslužitelja: 5.5.24-log
 -- PHP verzija: 5.4.3
 
@@ -254,13 +254,13 @@ CREATE TABLE IF NOT EXISTS `hns_page` (
 --
 
 INSERT INTO `hns_page` (`pageId`, `lft`, `rgt`, `parentId`, `isException`, `isVisible`, `isEditable`, `isPublished`, `canAddChildren`, `canBeDeleted`, `class`, `created`, `modified`) VALUES
-(1, 1, 60, NULL, 1, 0, 0, 1, 1, 0, NULL, '2012-11-14 14:47:33', NULL),
-(2, 2, 17, 1, 1, 1, 1, 1, 1, 0, 'hns', '2012-11-14 15:08:19', '2012-11-14 15:08:19'),
+(1, 1, 60, NULL, 1, 0, 0, 1, 0, 0, NULL, '2012-11-14 14:47:33', '2012-11-16 10:44:25'),
+(2, 2, 17, 1, 1, 1, 0, 1, 1, 0, 'hns', '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
 (3, 18, 29, 1, 1, 1, 1, 1, 1, 0, 'selection', '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
 (4, 30, 43, 1, 1, 1, 1, 1, 1, 0, 'competitions', '2012-11-14 15:11:09', '2012-11-14 15:26:41'),
 (5, 44, 57, 1, 1, 1, 0, 1, 1, 0, 'infocenter', '2012-11-14 15:12:12', '2012-11-14 15:12:12'),
 (6, 58, 59, 1, 1, 1, 0, 1, 1, 0, 'press', '2012-11-14 15:13:00', '2012-11-14 15:13:00'),
-(7, 3, 4, 2, 0, 1, 1, 1, 0, 1, NULL, '2012-11-14 15:14:49', '2012-11-14 16:07:43'),
+(7, 3, 4, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:14:49', '2012-11-14 16:07:43'),
 (8, 5, 6, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:16:12', '2012-11-14 15:16:12'),
 (9, 7, 8, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:17:24', '2012-11-14 15:17:24'),
 (10, 9, 10, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:18:25', '2012-11-14 15:18:25'),
@@ -278,12 +278,12 @@ INSERT INTO `hns_page` (`pageId`, `lft`, `rgt`, `parentId`, `isException`, `isVi
 (23, 37, 38, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
 (24, 39, 40, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
 (25, 41, 42, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
-(26, 45, 46, 5, 1, 1, 0, 1, 0, 0, 'news', '2012-11-14 15:41:00', '2012-11-14 15:41:00'),
-(27, 47, 48, 5, 1, 1, 0, 1, 0, 0, 'actualities', '2012-11-14 15:41:43', '2012-11-14 15:41:43'),
-(28, 49, 50, 5, 1, 1, 0, 1, 0, 0, 'tv', '2012-11-14 15:42:30', '2012-11-14 15:42:30'),
-(29, 51, 52, 5, 1, 0, 1, 1, 0, 0, 'gallery', '2012-11-14 15:43:01', '2012-11-14 15:43:01'),
-(30, 53, 54, 5, 1, 1, 0, 1, 0, 0, 'blog', '2012-11-14 15:43:43', '2012-11-14 15:43:43'),
-(31, 55, 56, 5, 1, 0, 1, 1, 0, 0, 'magazine', '2012-11-14 15:44:23', '2012-11-14 15:44:23');
+(26, 45, 46, 5, 1, 1, 0, 1, 0, 0, 'news', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
+(27, 47, 48, 5, 1, 1, 0, 1, 0, 0, 'actualities', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
+(28, 49, 50, 5, 1, 1, 0, 1, 0, 0, 'tv', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
+(29, 51, 52, 5, 1, 1, 0, 1, 0, 0, 'gallery', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
+(30, 53, 54, 5, 1, 1, 0, 1, 0, 0, 'blog', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
+(31, 55, 56, 5, 1, 1, 0, 1, 0, 0, 'magazine', '2012-11-14 15:44:23', '2012-11-16 10:41:55');
 
 -- --------------------------------------------------------
 
@@ -334,10 +334,10 @@ CREATE TABLE IF NOT EXISTS `hns_pageI18n` (
 --
 
 INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `slug`, `content`, `lead`, `metaTitle`, `metaDescription`, `metaKeywords`, `navigationDescription`, `created`, `modified`) VALUES
-(1, 'eng', 'Home', 'Home', '', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 14:48:24', '2012-11-14 14:48:24'),
-(1, 'hrv', 'Naslovnica', 'Naslovnica', '', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 14:48:24', '2012-11-14 14:48:24'),
-(2, 'eng', 'HNS', 'HNS', 'hns', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 15:08:19', '2012-11-14 15:08:19'),
-(2, 'hrv', 'HNS', 'HNS', 'hns', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 15:08:19', '2012-11-14 15:08:19'),
+(1, 'eng', 'Home', 'Home', '', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 14:48:24', '2012-11-16 10:44:25'),
+(1, 'hrv', 'Naslovnica', 'Naslovnica', '', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 14:48:24', '2012-11-16 10:44:25'),
+(2, 'eng', 'HNS', 'HNS', 'hns', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
+(2, 'hrv', 'HNS', 'HNS', 'hns', NULL, NULL, 'HNS', 'O HNS-u', 'HNS, nogomet, Hrvatska', NULL, '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
 (3, 'eng', 'Selections', 'Selections', 'selections', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
 (3, 'hrv', 'Selekcije', 'Selekcije', 'selekcije', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
 (4, 'eng', 'Competitions', 'Competitions', 'competitions', NULL, NULL, NULL, NULL, NULL, NULL, '2012-11-14 15:11:09', '2012-11-14 15:26:41'),
@@ -382,18 +382,18 @@ INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `
 (24, 'hrv', 'Licenciranje igraÄa', 'Licenciranje igraÄa', 'licenciranje-igraca', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
 (25, 'eng', 'Regulations', 'Regulations', 'regulations', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
 (25, 'hrv', 'Propisi', 'Propisi', 'propisi', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
-(26, 'eng', 'News', 'News', 'news', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:00', '2012-11-14 15:41:00'),
-(26, 'hrv', 'Novosti', 'Novosti', 'novosti', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:00', '2012-11-14 15:41:00'),
-(27, 'eng', 'Actualities', 'Actualities', 'actualities', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:43', '2012-11-14 15:41:43'),
-(27, 'hrv', 'Aktualnosti', 'Aktualnosti', 'aktualnosti', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:43', '2012-11-14 15:41:43'),
-(28, 'eng', 'CFF TV', 'CFF TV', 'cff-tv', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:42:30', '2012-11-14 15:42:30'),
-(28, 'hrv', 'HNS TV', 'HNS TV', 'hns-tv', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:42:30', '2012-11-14 15:42:30'),
-(29, 'eng', 'Gallery', 'Gallery', 'gallery', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:01', '2012-11-14 15:43:01'),
-(29, 'hrv', 'Galerija', 'Galerija', 'galerija', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:01', '2012-11-14 15:43:01'),
-(30, 'eng', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-14 15:43:43'),
-(30, 'hrv', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-14 15:43:43'),
-(31, 'eng', 'CFF Magazine', 'CFF Magazine', 'cff-magazine', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-14 15:44:23'),
-(31, 'hrv', 'HNS ÄŒasopis', 'HNS ÄŒasopis', 'hns-casopis', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-14 15:44:23');
+(26, 'eng', 'News', 'News', 'news', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
+(26, 'hrv', 'Novosti', 'Novosti', 'novosti', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
+(27, 'eng', 'Actualities', 'Actualities', 'actualities', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
+(27, 'hrv', 'Aktualnosti', 'Aktualnosti', 'aktualnosti', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
+(28, 'eng', 'CFF TV', 'CFF TV', 'cff-tv', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
+(28, 'hrv', 'HNS TV', 'HNS TV', 'hns-tv', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
+(29, 'eng', 'Gallery', 'Gallery', 'gallery', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
+(29, 'hrv', 'Galerija', 'Galerija', 'galerija', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
+(30, 'eng', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
+(30, 'hrv', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
+(31, 'eng', 'CFF Magazine', 'CFF Magazine', 'cff-magazine', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
+(31, 'hrv', 'HNS ÄŒasopis', 'HNS ÄŒasopis', 'hns-casopis', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55');
 
 -- --------------------------------------------------------
 
@@ -606,8 +606,8 @@ ALTER TABLE `hns_bannerImage`
 -- Ograničenja za tablicu `hns_galleryI18n`
 --
 ALTER TABLE `hns_galleryI18n`
-  ADD CONSTRAINT `hns_galleryI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_galleryI18n_ibfk_1` FOREIGN KEY (`galleryId`) REFERENCES `hns_gallery` (`galleryId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_galleryI18n_ibfk_1` FOREIGN KEY (`galleryId`) REFERENCES `hns_gallery` (`galleryId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_galleryI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_galleryImage`
@@ -637,22 +637,22 @@ ALTER TABLE `hns_pageCoverImage`
 -- Ograničenja za tablicu `hns_pageI18n`
 --
 ALTER TABLE `hns_pageI18n`
-  ADD CONSTRAINT `hns_pageI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_pageI18n_ibfk_1` FOREIGN KEY (`pageId`) REFERENCES `hns_page` (`pageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_pageI18n_ibfk_1` FOREIGN KEY (`pageId`) REFERENCES `hns_page` (`pageId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_pageI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_userHasUserRole`
 --
 ALTER TABLE `hns_userHasUserRole`
-  ADD CONSTRAINT `hns_userHasUserRole_ibfk_2` FOREIGN KEY (`userRoleId`) REFERENCES `hns_userrole` (`userRoleId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_userHasUserRole_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `hns_user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_userHasUserRole_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `hns_user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_userHasUserRole_ibfk_2` FOREIGN KEY (`userRoleId`) REFERENCES `hns_userrole` (`userRoleId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_videoI18n`
 --
 ALTER TABLE `hns_videoI18n`
-  ADD CONSTRAINT `hns_videoI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_videoI18n_ibfk_1` FOREIGN KEY (`videoId`) REFERENCES `hns_video` (`videoId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_videoI18n_ibfk_1` FOREIGN KEY (`videoId`) REFERENCES `hns_video` (`videoId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_videoI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
