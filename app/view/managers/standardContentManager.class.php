@@ -28,6 +28,8 @@ class StandardContentManager extends ContentManager {
       )
     );
 
+    $this->_setData (array ('activePage' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
+
     // Parse parameters
     switch ($this->params[0]) {
       /*
