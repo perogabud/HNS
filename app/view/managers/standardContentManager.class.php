@@ -32,7 +32,7 @@ class StandardContentManager extends ContentManager {
     3
     4*/
 
-    $this->_setData (array ('activePage' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
+    $this->_setData (array ('activePage3' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
 
     // Parse parameters
     switch ($this->params[0]) {
