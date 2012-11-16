@@ -1,9 +1,8 @@
 <div class="columnNo">
   <fieldset>
-    <legend>Pages</legend>
+    <legend>Stranice</legend>
     <?php TableHelper::globalMessages (); ?>
     <?php TableHelper::drawPageTreeTable ($this->data['pageTree']); ?>
     </fieldset>
 </div>
 
-              

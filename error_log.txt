@@ -170,3 +170,52 @@
 [15-Nov-2012 12:07:05 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:34
 [15-Nov-2012 12:07:05 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
 [15-Nov-2012 12:11:38 UTC] An error occurred while fetching news item records: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'languageId' in where clause is ambiguous
+[16-Nov-2012 09:06:35 UTC] PHP Notice:  Undefined index: title_hrv in C:\wamp\www\hns\app\model\repositories\repository.class.php on line 627
+[16-Nov-2012 09:06:35 UTC] PHP Stack trace:
+[16-Nov-2012 09:06:35 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[16-Nov-2012 09:06:35 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[16-Nov-2012 09:06:35 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[16-Nov-2012 09:06:35 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[16-Nov-2012 09:06:35 UTC] PHP   5. PageController->editPage() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:06:35 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:06:35 UTC] PHP   7. PageRepository->editPage() C:\wamp\www\hns\app\controllers\controller.class.php:55
+[16-Nov-2012 09:06:35 UTC] PHP   8. PageRepository->_validatePageData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:453
+[16-Nov-2012 09:06:35 UTC] PHP   9. Repository->validateData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:957
+[16-Nov-2012 09:06:35 UTC] PHP Notice:  Undefined index: title_eng in C:\wamp\www\hns\app\model\repositories\repository.class.php on line 627
+[16-Nov-2012 09:06:35 UTC] PHP Stack trace:
+[16-Nov-2012 09:06:35 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[16-Nov-2012 09:06:35 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[16-Nov-2012 09:06:35 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[16-Nov-2012 09:06:35 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[16-Nov-2012 09:06:35 UTC] PHP   5. PageController->editPage() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:06:35 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:06:35 UTC] PHP   7. PageRepository->editPage() C:\wamp\www\hns\app\controllers\controller.class.php:55
+[16-Nov-2012 09:06:35 UTC] PHP   8. PageRepository->_validatePageData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:453
+[16-Nov-2012 09:06:35 UTC] PHP   9. Repository->validateData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:957
+[16-Nov-2012 09:08:23 UTC] PHP Notice:  Undefined index: title_hrv in C:\wamp\www\hns\app\model\repositories\repository.class.php on line 627
+[16-Nov-2012 09:08:23 UTC] PHP Stack trace:
+[16-Nov-2012 09:08:23 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[16-Nov-2012 09:08:23 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[16-Nov-2012 09:08:23 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[16-Nov-2012 09:08:23 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[16-Nov-2012 09:08:23 UTC] PHP   5. PageController->editPage() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:08:23 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:08:23 UTC] PHP   7. PageRepository->editPage() C:\wamp\www\hns\app\controllers\controller.class.php:55
+[16-Nov-2012 09:08:23 UTC] PHP   8. PageRepository->_validatePageData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:453
+[16-Nov-2012 09:08:23 UTC] PHP   9. Repository->validateData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:958
+[16-Nov-2012 09:08:23 UTC] PHP Notice:  Undefined index: title_eng in C:\wamp\www\hns\app\model\repositories\repository.class.php on line 627
+[16-Nov-2012 09:08:23 UTC] PHP Stack trace:
+[16-Nov-2012 09:08:23 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[16-Nov-2012 09:08:23 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[16-Nov-2012 09:08:23 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[16-Nov-2012 09:08:23 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[16-Nov-2012 09:08:23 UTC] PHP   5. PageController->editPage() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:08:23 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[16-Nov-2012 09:08:23 UTC] PHP   7. PageRepository->editPage() C:\wamp\www\hns\app\controllers\controller.class.php:55
+[16-Nov-2012 09:08:23 UTC] PHP   8. PageRepository->_validatePageData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:453
+[16-Nov-2012 09:08:23 UTC] PHP   9. Repository->validateData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:958
+[16-Nov-2012 10:28:58 UTC] Calling non-existing method getNewsItemBySlug with arguments {Array
+(
+    [0] => stimac-zelimo-tri-boda
+)
+}

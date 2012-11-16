@@ -46,6 +46,12 @@ Config::write ('langNamesEnglish', array (
     'deu' => 'German'
     )
 );
+Config::write ('langNamesCroatian', array (
+    'eng' => 'engleski',
+    'hrv' => 'hrvatski',
+    'deu' => 'njemački'
+    )
+);
 Config::write ('langMeta', array (
     'eng' => 'en',
     'hrv' => 'hr',

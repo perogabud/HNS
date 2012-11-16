@@ -104,50 +104,51 @@ class TableHelper {
     }
   }
 
-  public static function icon ($type, $return = FALSE) {
+  public static function icon ($type, $return = FALSE, $title = NULL) {
     $img = $type;
+    $title = $title ? 'title="'. $title .'"' : '';
     switch ($type) {
       case 'add':
-        $img = '<img border="0" alt="add" src="' . Config::read ('siteUrlRoot') . '/img/admin/add.png" />';
+        $img = '<img border="0" ' . $title . ' alt="add" src="' . Config::read ('siteUrlRoot') . '/img/admin/add.png" />';
         break;
       case 'delete':
-        $img = '<img border="0" alt="delete" src="' . Config::read ('siteUrlRoot') . '/img/admin/binClosed.png" />';
+        $img = '<img border="0" ' . $title . ' alt="delete" src="' . Config::read ('siteUrlRoot') . '/img/admin/binClosed.png" />';
         break;
       case 'duplicate':
-        $img = '<img border="0" alt="duplicate" src="' . Config::read ('siteUrlRoot') . '/img/admin/duplicate.png" />';
+        $img = '<img border="0" ' . $title . ' alt="duplicate" src="' . Config::read ('siteUrlRoot') . '/img/admin/duplicate.png" />';
         break;
       case 'block':
-        $img = '<img border="0" alt="block" src="' . Config::read ('siteUrlRoot') . '/img/admin/block.png" />';
+        $img = '<img border="0" ' . $title . ' alt="block" src="' . Config::read ('siteUrlRoot') . '/img/admin/block.png" />';
         break;
       case 'unblock':
-        $img = '<img border="0" alt="unblock" src="' . Config::read ('siteUrlRoot') . '/img/admin/refresh.png" />';
+        $img = '<img border="0" ' . $title . ' alt="unblock" src="' . Config::read ('siteUrlRoot') . '/img/admin/refresh.png" />';
         break;
       case 'refresh':
-        $img = '<img border="0" alt="refresh" src="' . Config::read ('siteUrlRoot') . '/img/admin/refresh.png" />';
+        $img = '<img border="0" ' . $title . ' alt="refresh" src="' . Config::read ('siteUrlRoot') . '/img/admin/refresh.png" />';
         break;
       case 'edit':
-        $img = '<img border="0" alt="edit" src="' . Config::read ('siteUrlRoot') . '/img/admin/edit.png" />';
+        $img = '<img border="0" ' . $title . ' alt="edit" src="' . Config::read ('siteUrlRoot') . '/img/admin/edit.png" />';
         break;
       case 'view':
-        $img = '<img border="0" alt="view" src="' . Config::read ('siteUrlRoot') . '/img/admin/view.png" />';
+        $img = '<img border="0" ' . $title . ' alt="view" src="' . Config::read ('siteUrlRoot') . '/img/admin/view.png" />';
         break;
       case 'moveUp':
-        $img = '<img border="0" alt="move up" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowUp.png" />';
+        $img = '<img border="0" ' . $title . ' alt="move up" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowUp.png" />';
         break;
       case 'moveDown':
-        $img = '<img border="0" alt="move down" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowDown.png" />';
+        $img = '<img border="0" ' . $title . ' alt="move down" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowDown.png" />';
         break;
       case 'moveUpDisabled':
-        $img = '<img border="0" alt="arrow up" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowUpGray.png" />';
+        $img = '<img border="0" ' . $title . ' alt="arrow up" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowUpGray.png" />';
         break;
       case 'moveDownDisabled':
-        $img = '<img border="0" alt="arrow down" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowDownGray.png" />';
+        $img = '<img border="0" ' . $title . ' alt="arrow down" src="' . Config::read ('siteUrlRoot') . '/img/admin/arrowDownGray.png" />';
         break;
       case 'extern':
-        $img = '<img border="0" alt="arrow down" src="' . Config::read ('siteUrlRoot') . '/img/admin/out.png" />';
+        $img = '<img border="0" ' . $title . ' alt="arrow down" src="' . Config::read ('siteUrlRoot') . '/img/admin/out.png" />';
         break;
       default:
-        $img = '<img border="0" alt="'. $type .'" src="' . Config::read ('siteUrlRoot') . '/img/admin/'. $type .'.png" />';
+        $img = '<img border="0" ' . $title . ' alt="'. $type .'" src="' . Config::read ('siteUrlRoot') . '/img/admin/'. $type .'.png" />';
     }
     if (!$return) {
       echo $img;
@@ -160,16 +161,21 @@ class TableHelper {
   public static function drawPageTreeTable ($pageTree, $depth = 0) {
     if ($depth == 0) {
       echo '<table>';
-      echo '<thead><tr><th>Page</th><th>Controls</th></tr></thead>';
+      echo '<thead><tr><th>Stranica</th><th>Info</th><th>Kontrole</th></tr></thead>';
       echo '<tbody>';
     }
     foreach ($pageTree as $page) {
       // Page table row
       echo '<tr class="pageDepth' . $depth . '" title="'. $page->Title .'">';
-      echo '<td class="title" style="width: 80%;"><span class="dbg"> ' . $page->Lft . ' </span>' . $page->NavigationName . '<span class="dbg"> ' . $page->Rgt . ' </span></td>';
+      echo '<td class="title" style="width: 70%;"><span class="dbg"> ' . $page->Lft . ' </span>' . $page->NavigationName . '<span class="dbg"> ' . $page->Rgt . ' </span></td>';
+      echo '<td class="info">
+        <span>'. ($page->IsVisible ? TableHelper::icon ('eye', TRUE, 'Stranica je vidljiva u navigaciji') : '') .'</span>
+        <span>'. ($page->IsPublished ? TableHelper::icon ('publish', TRUE, 'Stranica je objavljena') : '') .'</span>
+        <span>'. ($page->IsException ? TableHelper::icon ('special', TRUE, 'Stranica ima iznimni sadržaj') : '') .'</span>
+      </td>';
 
       // Controls
-      echo '<td class="controls">';
+      echo '<td class="title controls">';
       if ($depth >= 0) {
         // Position
         if ($depth > 1) {
@@ -191,27 +197,21 @@ class TableHelper {
           echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/add/' . $page->Id . '" title="Add subpage">' . self::icon ('add', TRUE) . '</a>';
         }
         // Handle exceptions
-        switch ($page->Slug) {
-          case 'o-nama':
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/customContent" title="Go to About us">' . self::icon ('extern', TRUE) . '</a>';
-            break;
-          case 'crm':
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/product/view/1" title="Go to CRM">' . self::icon ('extern', TRUE) . '</a>';
-            break;
-          case 'infrastruktura':
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/product/view/3" title="Go to Infrastruktura">' . self::icon ('extern', TRUE) . '</a>';
-            break;
-          case 'cloud':
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/product/view/4" title="Go to Cloud">' . self::icon ('extern', TRUE) . '</a>';
-            break;
-          case 'info-centar':
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/infoItem" title="Go to Info Centar">' . self::icon ('extern', TRUE) . '</a>';
-            break;
-          default:
-            // blank
+        if ($page->IsException) {
+          switch ($page->Class) {
+            case 'news':
+              echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/newsItem" title="Uredi novosti">' . self::icon ('extern', TRUE) . '</a>';
+              break;
+            case 'actualities':
+              echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/actuality" title="Uredi aktualnosti">' . self::icon ('extern', TRUE) . '</a>';
+              break;
+
+            default:
+              // blank
+          }
         }
         echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/edit/' . $page->Id . '" title="Edit">' . self::icon ('edit', TRUE) . '</a>';
-        if ($page->IsEditable) {
+        if ($page->CanBeDeleted) {
             if (!$page->IsException) {
               echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/delete/' . $page->Id . '" title="Delete">' . self::icon ('delete', TRUE) . '</a>';
             }

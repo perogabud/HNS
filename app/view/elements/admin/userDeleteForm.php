@@ -5,7 +5,7 @@
     <ul class="actions">
     </ul>
     <div class="input"><label>Are you sure you want to delete <strong> User <?php echo $user->Username; ?></strong>?</label></div>
-    <?php FormHelper::input ('submit', 'submitYes', 'deleteYesSubmit', array ('value' => 'Yes')); ?>
-    <?php FormHelper::input ('submit', 'submitNo', 'deleteNoSubmit', array ('value' => 'No')); ?>
+    <?php FormHelper::input ('submit', 'submitYes', 'deleteYesSpremi', array ('value' => 'Yes')); ?>
+    <?php FormHelper::input ('submit', 'submitNo', 'deleteNoSpremi', array ('value' => 'No')); ?>
   </fieldset>
 </form>

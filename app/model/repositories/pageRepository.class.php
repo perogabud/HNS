@@ -456,7 +456,7 @@ class PageRepository extends Repository {
     else {
       try {
       $this->startTransaction ();
-      $page = $this->getPage (array ('id' => $pageId));
+      $page = $this->getPage (array ('pageId' => $pageId));
 
       // Upload coverImage
       $coverImageData = Tools::uploadImages (
@@ -538,44 +538,48 @@ class PageRepository extends Repository {
       foreach (Config::read ('supportedLangs') as $lang) {
         $query = "
           INSERT INTO " . DBP . "pageI18n
-          SET `title` = :title,
-              `navigationName` = :navigationName,
-              `slug` = :slug,
-              `content` = :content,
-              `lead` = :lead,
+          SET `title` = " . ($page->IsEditable ? ":title" : "`title`") . ",
+              `navigationName` = " . ($page->IsEditable && !$page->IsException ? ":navigationName" : "`navigationName`") . ",
+              `slug` = " . ($page->IsEditable && !$page->IsException ? ":slug" : "`slug`") . ",
+              `content` = " . ($page->IsEditable ? ":content" : "`content`") . ",
+              `lead` = " . ($page->IsEditable ? ":lead" : "`lead`") . ",
               `metaTitle` = :metaTitle,
               `metaDescription` = :metaDescription,
               `metaKeywords` = :metaKeywords,
-              `navigationDescription` = :navigationDescription,
-              `modified` = NOW(),
+              `navigationDescription` = " . ($page->IsEditable ? ":navigationDescription" : "`navigationDescription`") . ",
               `pageId` = :pageId,
               `languageId` = :languageId,
-              `created` = NOW()
+              `created` = NOW(),
+              `modified` = NOW()
           ON DUPLICATE KEY UPDATE
-              `title` = :title,
-              `navigationName` = :navigationName,
-              `slug` = :slug,
-              `content` = :content,
-              `lead` = :lead,
+              `title` = " . ($page->IsEditable ? ":title" : "`title`") . ",
+              `navigationName` = " . ($page->IsEditable && !$page->IsException ? ":navigationName" : "`navigationName`") . ",
+              `slug` = " . ($page->IsEditable && !$page->IsException ? ":slug" : "`slug`") . ",
+              `content` = " . ($page->IsEditable ? ":content" : "`content`") . ",
+              `lead` = " . ($page->IsEditable ? ":lead" : "`lead`") . ",
               `metaTitle` = :metaTitle,
               `metaDescription` = :metaDescription,
               `metaKeywords` = :metaKeywords,
-              `navigationDescription` = :navigationDescription,
+              `navigationDescription` = " . ($page->IsEditable ? ":navigationDescription" : "`navigationDescription`") . ",
               `modified` = NOW()
         ";
         $queryParams = array (
-          ':title' => Tools::stripTags (trim ($data['title_' . $lang]), 'strict'),
-          ':navigationName' => Tools::stripTags (trim ($data['navigationName_' . $lang]), 'strict'),
-          ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['navigationName_' . $lang]))),
-          ':content' => empty ($data['content_' . $lang]) ? NULL : Tools::stripTags (trim ($data['content_' . $lang]), 'loose'),
-          ':lead' => empty ($data['lead_' . $lang]) ? NULL : Tools::stripTags (trim ($data['lead_' . $lang]), 'loose'),
           ':metaTitle' => empty ($data['metaTitle_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaTitle_' . $lang])),
           ':metaDescription' => empty ($data['metaDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaDescription_' . $lang])),
           ':metaKeywords' => empty ($data['metaKeywords_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaKeywords_' . $lang])),
-          ':navigationDescription' => empty ($data['navigationDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['navigationDescription_' . $lang]), 'strict'),
           ':pageId' => array ($pageId, PDO::PARAM_INT),
           ':languageId' => $lang
         );
+        if ($page->getIsEditable ()) {
+          $queryParams[':title'] = Tools::stripTags (trim ($data['title_' . $lang]), 'strict');
+          $queryParams[':content'] = empty ($data['content_' . $lang]) ? NULL : Tools::stripTags (trim ($data['content_' . $lang]), 'loose');
+          $queryParams[':lead'] = empty ($data['lead_' . $lang]) ? NULL : Tools::stripTags (trim ($data['lead_' . $lang]), 'loose');
+          $queryParams[':navigationDescription'] = empty ($data['navigationDescription_' . $lang]) ? NULL : Tools::stripTags (trim ($data['navigationDescription_' . $lang]), 'strict');
+        }
+        if ($page->getIsEditable () && !$page->getIsException ()) {
+          $queryParams[':navigationName'] = Tools::stripTags (trim ($data['navigationName_' . $lang]), 'strict');
+          $queryParams[':slug'] = Tools::formatURI (Tools::stripTags (trim ($data['navigationName_' . $lang])));
+        }
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
       }
@@ -598,8 +602,7 @@ class PageRepository extends Repository {
   public function deletePage ($pageId) {
     $page = $this->getPage (array ('pageId' => $pageId));
     if (!$page->CanBeDeleted || $page->IsException) {
-      $_SESSION['message'] = 'Can\'t delete page!';
-      return FALSE;
+      throw new Exception ('This page cannot be deleted!', 5, $e);
     }
     try {
       $this->startTransaction ();
@@ -929,10 +932,19 @@ class PageRepository extends Repository {
   }
 
   private function _validatePageData ($input) {
+    $checkData = array ('navigationName');
+    $notEmptyLang = array (
+      'navigationName' => 'Navigation Name cannot be empty.'
+    );
+    if (isset ($input['isEditable'])) {
+      $checkData[] = 'title';
+      $notEmptyLang['title'] = 'Title cannot be empty.';
+    }
+
     if (!$this->checkSetData (
         $input,
         array (),
-        array ('title', 'navigationName')
+        $checkData
       )
     ) {
       return FALSE;
@@ -945,10 +957,7 @@ class PageRepository extends Repository {
           'notEmpty' => array (
 
           ),
-          'notEmptyLang' => array (
-            'title' => 'Title cannot be empty.',
-            'navigationName' => 'Navigation Name cannot be empty.'
-          )
+          'notEmptyLang' => $notEmptyLang
         )
       )
     );

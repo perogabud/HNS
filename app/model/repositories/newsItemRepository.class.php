@@ -30,6 +30,13 @@ class NewsItemRepository extends Repository {
       $queryParams[':newsItemId'] = array (intval ($params['newsItemId']), PDO::PARAM_INT);
     }
 
+    if (array_key_exists ('slug', $params)) {
+      $query .= "
+        AND n.slug = :slug
+      ";
+      $queryParams[':slug'] = trim ($params['slug']);
+    }
+
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }

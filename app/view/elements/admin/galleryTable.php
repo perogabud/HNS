@@ -5,7 +5,7 @@
     <ul class="actions">
       <li><a href="<?php echo Config::read('siteUrlRoot') ?>admin/gallery/add"><?php TableHelper::icon('add'); ?> Add Gallery</a></li>
     </ul>
-    <?php if (isset ($_GET['searchSubmit']) && isset ($_GET['inSearch']) && is_array ($_GET['inSearch'])): ?>
+    <?php if (isset ($_GET['searchSpremi']) && isset ($_GET['inSearch']) && is_array ($_GET['inSearch'])): ?>
     <div class="searchFilters">
     <p>Records filtered with:</p>
     <dl>
@@ -95,7 +95,7 @@
       </tbody>
       </table>
       <?php
-        FormHelper::input ('submit', 'searchSubmit', 'searchSubmit', array ('value' => 'Submit'));
+        FormHelper::input ('submit', 'searchSpremi', 'searchSpremi', array ('value' => 'Spremi'));
       ?>
     </form>
     <script type="text/javascript">

@@ -9,6 +9,11 @@ class Dict {
       'eng' => 'Info Center',
       'hrv' => 'Info centar'
     ),
+    'title_news' => array (
+      'deu' => '',
+      'eng' => 'News',
+      'hrv' => 'Novosti'
+    ),
 
     'text_youCanAlsoTry' => array (
       'deu' => 'Probieren Sie auch dies...',

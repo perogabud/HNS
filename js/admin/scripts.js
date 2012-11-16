@@ -100,12 +100,16 @@ $().ready (function () {
         resize_minWidth : 550,
         resize_maxWidth : 898,
         height : height,
-        width : '898px'
+        width : '898px',
+        readOnly : $this.attr ('readonly') ? true : false
       }
     );
   });
 
-  $('.simpleEditor').ckeditor (
+  $('textarea.simpleEditor').each (function () {
+    var $this = $(this);
+
+    $this.ckeditor (
     function (element) {
       this.dataProcessor.writer.setRules ('br',
       {
@@ -145,8 +149,10 @@ $().ready (function () {
       // Skin
       skin : 'admin',
       height : '26px',
-      width : '459px'
+      width : '459px',
+      readOnly : $this.attr ('readonly') ? true : false
     }
     );
+  });
 
 });

@@ -39,7 +39,7 @@ class StandardContentManager extends ContentManager {
           $newsItemController = NewsItemController::getInstance ();
           $this->_setData (
             array (
-              'newsItems' => $newsItemController->getNewsItemsByParams ()
+              'newsItems' => $newsItemController->getNewsItems ('publishDate', 'DESC', 1, 10)
             )
           );
           $this->_setHtmlHead (array ('pageTitle' => 'Naslovnica'));
@@ -47,22 +47,70 @@ class StandardContentManager extends ContentManager {
         }
 
       /*
-       * Some page.
+       * Info Center.
        */
-      case 'some-page':
-        if ($this->_checkParams (1)) {
-          $this->_setElements (
-            array (
-              'mainContent' => array (
-                'filename' => 'page',
-                'data' => array (
-                  'varName' => array (1, 2, 3) // U elementu pristupaš ovome kao $varName.
-                )
-              )
-            )
-          );
-          $this->_setHtmlHead (array ('pageTitle' => 'Stranica'));
-          break;
+      case Dict::read ('slug_infoCenter'):
+        if (count ($this->params) > 1) {
+          switch ($this->params[1]) {
+            /*
+             * News.
+             */
+            case Dict::read ('slug_news'):
+              /*
+               * News Listing.
+               */
+              if ($this->_checkParams (2, TRUE)) {
+                $newsItemController = NewsItemController::getInstance ();
+                $newsItems = $newsItemController->getNewsItems ('publishDate', 'DESC', 1, 10);
+                if ($newsItems) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'newsItems',
+                        'data' => array (
+                          'newsItems' => $newsItems
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news')
+                    )
+                  );
+                }
+                return;
+              }
+              elseif ($this->_checkParams (3, TRUE)) {
+                switch ($this->params[1]) {
+                  /*
+                   * Single News Item.
+                   */
+                  case Dict::read ('slug_news'):
+                    $newsItemController = NewsItemController::getInstance ();
+                    $newsItem = $newsItemController->getNewsItemBySlug ($this->params[2]);
+                    FB::warn ('here');
+                    if ($newsItem) {
+                      $this->_setElements (
+                        array (
+                          'mainContent' => array (
+                            'filename' => 'newsItem',
+                            'data' => array (
+                              'newsItem' => $newsItem
+                            )
+                          )
+                        )
+                      );
+                      $this->_setHtmlHead (
+                        array (
+                          'pageTitle' => Dict::read ('title_news') . ' :: ' . $newsItem->getTitle ()
+                        )
+                      );
+                      return;
+                    }
+                }
+              }
+          }
         }
 
       default:
@@ -90,6 +138,7 @@ class StandardContentManager extends ContentManager {
         }
     }
   }
+
 
   private function _setHtmlHead (array $params = array ()) {
     if (empty ($params) || isset ($params['page'])) {

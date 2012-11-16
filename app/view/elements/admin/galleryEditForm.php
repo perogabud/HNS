@@ -13,7 +13,7 @@
       FormHelper::input ('text', 'category', 'category', array ('label' => array ('text' => 'Category  '), 'value' => $gallery->getCategory ($lang), 'lang' => $lang));
     }
     ?>
-    <p class="info">Fields marked with * are required.</p>
-    <?php FormHelper::input ('submit', 'submit', 'submit', array ('value' => 'Submit')); ?>
+    <p class="info">Polja označena sa zvijezdicom (*) moraju biti ispunjena.</p>
+    <?php FormHelper::input ('submit', 'submit', 'submit', array ('value' => 'Spremi')); ?>
     </fieldset>
 </form>

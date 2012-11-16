@@ -11,7 +11,7 @@
     FormHelper::input (Config::read ('debug') ? 'checkbox' : 'hidden', 'isEditable', 'isEditable', array ('label' => array ('text' => 'Editable  [DEBUG]')));
     FormHelper::input (Config::read ('debug') ? 'checkbox' : 'hidden', 'isPublished', 'isPublished', array ('label' => array ('text' => 'Published  [DEBUG]')));
     FormHelper::input (Config::read ('debug') ? 'checkbox' : 'hidden', 'canAddChildren', 'canAddChildren', array ('label' => array ('text' => 'Can Add Children  [DEBUG]')));
-    FormHelper::input (Config::read ('debug') ? 'checkbox' : 'hidden', 'canBeDeleted', 'canBeDeleted', array ('label' => array ('text' => 'Can Add Children  [DEBUG]')));
+    FormHelper::input (Config::read ('debug') ? 'checkbox' : 'hidden', 'canBeDeleted', 'canBeDeleted', array ('label' => array ('text' => 'Can Be Deleted  [DEBUG]')));
     FormHelper::input (Config::read ('debug') ? 'text' : 'hidden', 'class', 'class', array ('label' => array ('text' => 'Class  [DEBUG]')));
     FormHelper::input ('file', 'coverImage[]', 'coverImage', array ('label' => array ('text' => 'Cover Image '), 'info' => 'The image will be resized and cropped to the following dimensions: <strong>719px width</strong> and <strong>429px height</strong>.<br/>These are also minimum dimensions.'));
     foreach (Config::read ('supportedLangs') as $lang) {
@@ -26,7 +26,7 @@
       FormHelper::input ('text', 'metaKeywords', 'metaKeywords', array ('label' => array ('text' => 'Meta Keywords  '), 'lang' => $lang));
     }
     ?>
-    <p class="info">Fields marked with * are required.</p>
-    <?php FormHelper::input ('submit', 'submit', 'submit', array ('value' => 'Submit')); ?>
+    <p class="info">Polja označena sa zvijezdicom (*) moraju biti ispunjena.</p>
+    <?php FormHelper::input ('submit', 'submit', 'submit', array ('value' => 'Spremi')); ?>
     </fieldset>
 </form>

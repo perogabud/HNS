@@ -189,13 +189,11 @@ input.text,
 input[type="text"],
 input.password,
 textarea {
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
-  background-image: -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-  background-image: -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-  background-image: -o-linear-gradient(bottom, white 85%, #eeeeee 99%);
-  background-image: -ms-linear-gradient(top, #ffffff 85%,#eeeeee 99%);
+  background-image: -moz-linear-gradient(top, #eee 0%, #fff 5px); /* FF3.6+ */
+  background-image: -webkit-linear-gradient(top, #eee 0%, #fff 5px); /* Chrome10+,Safari5.1+ */
+  background-image: -o-linear-gradient(top, #eee 0%, #fff 5px); /* Opera? */
+  background-image: linear-gradient(top, #eee 0%, #fff 5px); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );
-  background-image: linear-gradient(top, #ffffff 85%,#eeeeee 99%);
 }
 
 div.inline30 input.text {
@@ -239,7 +237,8 @@ select:focus {
 }
 
 input.readOnly,
-textarea.readOnly {
+textarea.readOnly,
+div.readOnly span.cke_skin_admin {
   opacity: 0.5 !important;
 }
 
@@ -852,7 +851,7 @@ span.count {
   color: gray;
 }
 
-html.js .editor, html.js .simpleEditor {
+html.js textarea.editor, html.js textarea.simpleEditor {
   display: none;
 }
 
@@ -990,11 +989,10 @@ div.table table div.input textarea { height: auto; }
 
 input.date {
   background: url(/img/admin/calendarGray.png) 99% center no-repeat #FFF;
-  background-image: url(/img/admin/calendarGray.png), -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
-  background-image: url(/img/admin/calendarGray.png), -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-  background-image: url(/img/admin/calendarGray.png), -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
-  background-image: url(/img/admin/calendarGray.png), -o-linear-gradient(bottom, white 85%, #eeeeee 99%);
-  background-image: url(/img/admin/calendarGray.png), -ms-linear-gradient(top, #ffffff 85%,#eeeeee 99%);
+  background-image: -moz-linear-gradient(top, #eee 0%, #fff 5px); /* FF3.6+ */
+  background-image: -webkit-linear-gradient(top, #eee 0%, #fff 5px); /* Chrome10+,Safari5.1+ */
+  background-image: -o-linear-gradient(top, #eee 0%, #fff 5px); /* Opera? */
+  background-image: linear-gradient(top, #eee 0%, #fff 5px); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 );
 }
 
@@ -1027,3 +1025,21 @@ input.btnRemoveElement {
   float: right;
   margin-right: 10px;
 }
+
+span.isVisible {
+  opacity: 0.5;
+  display: inline-block;
+  margin-left: 1em;
+}
+
+span.isVisible img {
+  border-bottom: 0 none;
+  display: inline-block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 0.5ex;
+}
+
+td.info img { cursor: help; }

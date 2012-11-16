@@ -38,6 +38,12 @@ class FormHelper {
       if (isset ($options['div']['class'])) {
         $divClass = ' ' . $options['div']['class'];
       }
+      if (isset ($options['readonly']) && $options['readonly'] == true) {
+        $divClass .= ' ' . 'readOnly';
+      }
+      if (isset ($options['disabled']) && $options['disabled'] == true) {
+        $divClass .= ' ' . 'disabled';
+      }
       $output = '<div class="input' . $divClass . '">' . "\n";
     }
 
@@ -103,7 +109,7 @@ class FormHelper {
     // Read only
     $inputAttrs['readonly'] = '';
     if (isset ($options['readonly']) && $options['readonly'] == true) {
-      $inputAttrs['readonly'] = '';
+      $inputAttrs['readonly'] = 'readonly';
       $options['readonly'] = 'readonly';
       $options['class'] .= ' readOnly';
     }
@@ -113,7 +119,7 @@ class FormHelper {
     // Disabled
     $inputAttrs['disabled'] = '';
     if (isset ($options['disabled']) && $options['disabled'] == true) {
-      $inputAttrs['disabled'] = '';
+      $inputAttrs['disabled'] = 'disabled';
       $options['disabled'] = 'disabled';
       $options['class'] .= ' disabled';
     }
