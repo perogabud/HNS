@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Računalo: localhost
--- Vrijeme generiranja: Stu 16, 2012 u 10:36 AM
+-- Vrijeme generiranja: Stu 23, 2012 u 02:41 PM
 -- Verzija poslužitelja: 5.5.24-log
 -- PHP verzija: 5.4.3
 
@@ -39,7 +39,14 @@ CREATE TABLE IF NOT EXISTS `hns_actuality` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`actualityId`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_actuality`
+--
+
+INSERT INTO `hns_actuality` (`actualityId`, `languageId`, `title`, `slug`, `lead`, `content`, `isPublished`, `publishDate`, `created`, `modified`) VALUES
+(1, 'hrv', 'Kako su igrali reprezentativci?', 'kako-su-igrali-reprezentativci', '<p>Tjedan pred reprezentativno okupljanje najvaÅ¾niji je svakom izborniku jer se tada najbolje vidi forma s kojom mu igraÄi dolaze te na koga moÅ¾e raÄunati.</p>', '<p>ProÅ¡log tjedna naÅ¡i su igraÄi bili veoma dobri te s puno optimizma moÅ¾emo gledati prema Makedoniji i Walesu. Krenimo redom.</p>\r\n<h4>\r\n	Stipe Pletikosa (Rostov)</h4>\r\n<p>Odigrao cijeli susret u gostujuÄ‡em porazu Rostova od Tereka Groznog rezultatom 2:1.</p>\r\n<h4>\r\n	Danijel SubaÅ¡iÄ‡ (Monaco)</h4>\r\n<p>Svoj prvenstveni susret protiv ChÃ¢teaurouxa Monaco igra tek danas.</p>\r\n<h4>\r\n	Dario KreÅ¡iÄ‡ (Lokomotiv Moskva)</h4>\r\n<p>Odigrao cijelu utakmicu protiv Kubana koja je zavrÅ¡ila porazom Lokomotiva od 1:0.</p>\r\n<h4>\r\n	Darijo Srna (Å ahtar)</h4>\r\n<p>Odigrao cijelu utakmicu protiv Juventusa u Ligi prvaka. ZavrÅ¡ilo je 1:1. U prvenstvenom dvoboju protiv Metalista takoÄ‘er odigrao svih 90 minuta. Shakhtar je u gostima slavio s 2:0.</p>\r\n<h4>\r\n	Vedran Ä†orluka (Lokomotiv Moskva)</h4>\r\n<p>OdraÄ‘ivao kaznu zbog nakupljenih Å¾utih kartona pa nije bio niti na klupi u utakmici protiv Kubana. Lokomotiv je na domaÄ‡em terenu poraÅ¾en s 1:0.</p>\r\n<h4>\r\n	Ivan StriniÄ‡ (Dnipro)</h4>\r\n<p>Odigrao svih 90 minuta protiv AIK-a u Europa ligi. Asistirao za drugi pogodak u susretu koji je zavrÅ¡io pobjedom Dnipra s 3:2. U prvenstvenoj pobjedi protiv Dynama rezultatom 2:1 odigrao cijeli susret.</p>\r\n<h4>\r\n	Josip Å imuniÄ‡ (Dinamo Zagreb)</h4>\r\n<p>Odigrao svih 90 minuta u porazu od kijevskog Dinama rezultatom 2:0. U prvenstvenoj pobjedi protiv Slaven Belupa od 4:1, takoÄ‘er igrao cijeli susret.</p>\r\n<h4>\r\n	Domagoj Vida (Dinamo Zagreb)</h4>\r\n<p>Odigrao cijelu utakmicu protiv Dynama u Ligi prvaka. Protiv Slaven Belupa nije bio niti na klupi za priÄuve.</p>\r\n<h4>\r\n	Gordon Schildenfeld (Dinamo Moskva)</h4>\r\n<p>Zaradio crveni karton u 52. minuti u domaÄ‡em porazu od AnÅ¾ija od 2:0.</p>\r\n<h4>\r\n	Dejan Lovren (Lyon)</h4>\r\n<p>Odigrao svih 90 minuta u utakmici Europa lige protiv Ironi Kiryata koja je zavrÅ¡ila pobjedom francuskog kluba rezultatom 4:3. TakoÄ‘er, cijeli susret odigrao je i u prvenstvu protiv Lorienta. ZavrÅ¡ilo je 1:1.</p>\r\n<h4>\r\n	Manuel PamiÄ‡ (Sparta Prag)</h4>\r\n<p>Odigrao svih 90 minuta protiv Athletic Bilbaa u Europa ligi. Sparta je upisala vrijednu pobjedu od 3:1. Prvenstveni dvoboj protiv Banika iz Ostrave igra se tek danas.</p>\r\n<h4>\r\n	Luka ModriÄ‡ (Real Madrid)</h4>\r\n<p>Utakmicu Lige prvaka protiv Ajaxa odgledao s klupe, jednako kao i nedjeljni El clasico protiv Barcelone.</p>\r\n<h4>\r\n	Niko KranjÄar (Dynamo Kijev)</h4>\r\n<p>Igrao prvo poluvrijeme utakmice Lige prvaka protiv Dinama. ZavrÅ¡ilo je 2:0 za domaÄ‡ina. U prvenstvenom dvoboju protiv Dnipra nije ulazio u igru.</p>\r\n<h4>\r\n	Ognjen VukojeviÄ‡ (Dynamo Kijev)</h4>\r\n<p>Odigrao svih 90 minuta protiv zagrebaÄkog Dinama u Ligi prvaka. Asistirao za prvi pogodak i zaradio Å¾uti karton u drugom poluvremenu. ZavrÅ¡ilo je 2:0 za kijevski klub. U prvenstvenom porazu od Dnipra rezultatom 2:1 ostao na klupi za priÄuve.</p>\r\n<h4>\r\n	Ivan PeriÅ¡iÄ‡ (Borussia Dortmund)</h4>\r\n<p>Utakmicu protiv Manchester Cityja odgledao s klupe. ZavrÅ¡ilo je 1:1. U prvenstvenom dvoboju protiv Hannovera takoÄ‘er nije ulazio u igru.</p>\r\n<h4>\r\n	Ivan RakitiÄ‡ (Sevilla)</h4>\r\n<p>U porazu od Celte Vigo rezultatom 2:0 nije bio niti na klupi za priÄuve.</p>\r\n<h4>\r\n	Milan Badelj (HSV)</h4>\r\n<p>Odigrao svih 90 minuta u pobjedi HSV-a protiv Greuther Furtha rezultatom 1:0. Badelj je sluÅ¾beno proglaÅ¡en najboljim igraÄem utakmice.</p>\r\n<h4>\r\n	Ivo IliÄeviÄ‡ (HSV)</h4>\r\n<p>Zbog ozljede nije konkurirao za ovotjedni prvenstveni dvoboj protiv Greuther Furtha.</p>\r\n<h4>\r\n	Josip RadoÅ¡eviÄ‡ (Hajduk)</h4>\r\n<p>Odigrao svih 90 minuta protiv Cibalije u pobjedi Hajduka od 4:0. Zaradio Å¾uti karton pred kraj prvog poluvremena.</p>\r\n<h4>\r\n	Jorge Sammir (Dinamo Zagreb)</h4>\r\n<p>Igrao do 80. minute protiv Dynama u Ligi prvaka. Protiv Slaven Belupa nije ulazio u igru.</p>\r\n<h4>\r\n	Mario MandÅ¾ukiÄ‡ (Bayern)</h4>\r\n<p>Igrao do 75. minute u gostujuÄ‡em porazu Bayerna od BATE Borisova rezultatom 3:1. U 2:0 pobjedi protiv Hoffenheima odigrao svih 90 minuta.</p>\r\n<h4>\r\n	Ivica OliÄ‡ (Wolfsburg)</h4>\r\n<p>UÅ¡ao u igru u 52. minuti u porazu Wolfsburga od Schalkea rezultatom 3:0</p>\r\n<h4>\r\n	Nikica JelaviÄ‡ (Everton)</h4>\r\n<p>Odigrao cijeli susret protiv Wigana te zabio prvi gol na utakmici veÄ‡ u 11. minuti. U drugom dijelu zaradio Å¾uti karton.</p>\r\n<h4>\r\n	Eduardo da Silva (Å ahtar)</h4>\r\n<p>U utakmici Lige prvaka protiv Juventusa nije ulazio s klupe za priÄuve. Protiv Metalista, u prvenstvu, uÅ¡ao u 65. minuti u utakmici koja je zavrÅ¡ila pobjedom Å ahtara od 2:0.</p>\r\n<h4>\r\n	Nikola KaliniÄ‡ (Dnipro)</h4>\r\n<p>Odigrao cijelu utakmicu protiv AIK-a u Europa ligi. Postigao prvi pogodak na utakmici i vodio svoju momÄad do pobjede rezultatom 3:2. U utakmici protiv Dynama ostao na klupi za priÄuve.</p>\r\n<h4>\r\n	Ante VukuÅ¡iÄ‡ (Pescara)</h4>\r\n<p>Igrao do 66. minute utakmice protiv Lazija. Pescara je poraÅ¾ena s visokih 3:0.</p>\r\n<h4>\r\n	IgraÄ tjedna: Nikica JelaviÄ‡</h4>\r\n<p>Nikica JelaviÄ‡ nakon povratka od ozljede igra sjajno. Nakon Å¡to je u proÅ¡lom kolu Premiershipa zabio dva pogotka, u ovom je dodao joÅ¡ jedan te definitivno &#39;zacementirao&#39; svoju poziciju u vrhu napada protiv Makedonije. Tamo Ä‡e mu se sigurno pridruÅ¾iti i Mario MandÅ¾ukiÄ‡ koji, iako ovaj tjedan nije zabio, igra u odliÄnoj formi â€“ veoma aktivno i rastrÄano. Å to se tiÄe obrane, posebno nam je drago vidjeti da se Å imuniÄ‡ vraÄ‡a u najbolju formu, kao i da Dejan Lovren redovito nastupa za Lyon.</p>', 1, '2012-11-17', '2012-11-16 11:57:45', '2012-11-16 12:49:15');
 
 -- --------------------------------------------------------
 
@@ -57,6 +64,21 @@ CREATE TABLE IF NOT EXISTS `hns_actualityCoverImage` (
   PRIMARY KEY (`actualityId`),
   UNIQUE KEY `filename` (`filename`),
   KEY `hns_FK_actualityCoverImageHasActuality` (`actualityId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_actualityHasCustomModule`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_actualityHasCustomModule` (
+  `actualityId` int(10) unsigned NOT NULL,
+  `customModuleId` int(10) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`actualityId`,`customModuleId`),
+  KEY `hns_FK_actualityHasCustomModuleHasActuality` (`actualityId`),
+  KEY `hns_FK_actualityHasCustomModuleHasCustomModule` (`customModuleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -96,6 +118,212 @@ CREATE TABLE IF NOT EXISTS `hns_bannerImage` (
 -- --------------------------------------------------------
 
 --
+-- Tablična struktura za tablicu `hns_customModule`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModule` (
+  `customModuleId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `class` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`customModuleId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=46 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModule`
+--
+
+INSERT INTO `hns_customModule` (`customModuleId`, `class`, `created`, `modified`) VALUES
+(42, NULL, '2012-11-20 13:26:53', '2012-11-20 13:26:53'),
+(43, NULL, '2012-11-20 13:36:25', '2012-11-20 13:36:25'),
+(44, NULL, '2012-11-20 14:23:02', '2012-11-20 14:23:02'),
+(45, NULL, '2012-11-20 14:24:19', '2012-11-20 14:24:19');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleHasNewsItem`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleHasNewsItem` (
+  `customModuleId` int(10) unsigned NOT NULL,
+  `newsItemId` int(10) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`customModuleId`,`newsItemId`),
+  KEY `hns_FK_customModuleHasNewsItemHasCustomModule` (`customModuleId`),
+  KEY `hns_FK_customModuleHasNewsItemHasNewsItem` (`newsItemId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleHasPage`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleHasPage` (
+  `customModuleId` int(10) unsigned NOT NULL,
+  `pageId` int(10) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`customModuleId`,`pageId`),
+  KEY `hns_FK_customModuleHasPageHasCustomModule` (`customModuleId`),
+  KEY `hns_FK_customModuleHasPageHasPage` (`pageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModuleHasPage`
+--
+
+INSERT INTO `hns_customModuleHasPage` (`customModuleId`, `pageId`, `created`) VALUES
+(44, 36, '0000-00-00 00:00:00'),
+(45, 36, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleImage`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleImage` (
+  `customModuleImageId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customModuleItemId` int(10) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`customModuleImageId`),
+  KEY `customMouleItemId` (`customModuleItemId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=47 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModuleImage`
+--
+
+INSERT INTO `hns_customModuleImage` (`customModuleImageId`, `customModuleItemId`, `title`, `created`, `modified`) VALUES
+(40, 49, NULL, '2012-11-20 13:26:58', '2012-11-20 13:26:58'),
+(41, 50, NULL, '2012-11-20 13:27:07', '2012-11-20 13:27:07'),
+(42, 52, NULL, '2012-11-20 13:36:31', '2012-11-20 13:36:31'),
+(43, 53, NULL, '2012-11-20 13:36:41', '2012-11-20 13:36:41'),
+(44, 55, NULL, '2012-11-20 14:23:13', '2012-11-20 14:23:13'),
+(45, 56, NULL, '2012-11-20 14:23:28', '2012-11-20 14:23:28'),
+(46, 58, NULL, '2012-11-20 14:24:24', '2012-11-20 14:24:24');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleImageImage`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleImageImage` (
+  `customModuleImageId` int(10) unsigned NOT NULL,
+  `filename` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `width` smallint(5) unsigned NOT NULL,
+  `height` smallint(5) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`customModuleImageId`),
+  UNIQUE KEY `filename` (`filename`),
+  KEY `hns_FK_customModuleImageImageHasCustomModuleImage` (`customModuleImageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModuleImageImage`
+--
+
+INSERT INTO `hns_customModuleImageImage` (`customModuleImageId`, `filename`, `width`, `height`, `created`, `modified`) VALUES
+(40, 'gz89zc1oukebhqn1vff5hryg0czdp8qq.jpg', 640, 427, '2012-11-20 13:26:59', '0000-00-00 00:00:00'),
+(41, 'dwwq6zi7v1byz5lxgw2esfv0xbttcm4x.jpg', 640, 427, '2012-11-20 13:27:08', '0000-00-00 00:00:00'),
+(42, 'zdfvrl7wc63n870xa8i55e23mai3a181.jpg', 640, 427, '2012-11-20 13:36:31', '0000-00-00 00:00:00'),
+(43, '36u9gslkei8dcgwgb6d7rrvfmu4heha9.jpg', 640, 427, '2012-11-20 13:36:42', '0000-00-00 00:00:00'),
+(44, '2a5z1cvmb98ge4ec8h4m0il6hrj0db8t.jpg', 640, 427, '2012-11-20 14:23:14', '0000-00-00 00:00:00'),
+(45, 'vsa5g0225c4xb5rmz7pgnm7092vf8j2r.jpg', 640, 427, '2012-11-20 14:23:29', '0000-00-00 00:00:00'),
+(46, '4rm8s7g2e4zfujs6fxzc106sw1dp15ar.jpg', 640, 427, '2012-11-20 14:24:24', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleItem`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleItem` (
+  `customModuleItemId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customModuleItemSizeId` int(10) unsigned NOT NULL,
+  `customModuleId` int(10) unsigned NOT NULL,
+  `position` int(10) unsigned NOT NULL,
+  `class` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`customModuleItemId`),
+  KEY `hns_FK_customModuleItemHasCustomModuleItemSize` (`customModuleItemSizeId`),
+  KEY `hns_FK_customModuleItemHasCustomModule` (`customModuleId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=59 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModuleItem`
+--
+
+INSERT INTO `hns_customModuleItem` (`customModuleItemId`, `customModuleItemSizeId`, `customModuleId`, `position`, `class`, `created`, `modified`) VALUES
+(49, 2, 42, 1, NULL, '2012-11-20 13:26:58', '2012-11-20 13:27:36'),
+(50, 1, 42, 2, NULL, '2012-11-20 13:27:07', '2012-11-20 13:27:36'),
+(51, 1, 42, 3, NULL, '2012-11-20 13:27:36', '2012-11-20 13:27:36'),
+(52, 2, 43, 1, NULL, '2012-11-20 13:36:31', '2012-11-20 13:36:56'),
+(53, 1, 43, 2, NULL, '2012-11-20 13:36:41', '2012-11-20 13:36:56'),
+(54, 1, 43, 3, NULL, '2012-11-20 13:36:56', '2012-11-20 13:36:56'),
+(55, 2, 44, 1, NULL, '2012-11-20 14:23:13', '2012-11-20 14:23:58'),
+(56, 1, 44, 2, NULL, '2012-11-20 14:23:28', '2012-11-20 14:23:58'),
+(57, 1, 44, 3, NULL, '2012-11-20 14:23:58', '2012-11-20 14:23:58'),
+(58, 2, 45, 1, NULL, '2012-11-20 14:24:24', '2012-11-20 14:24:40');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleItemSize`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleItemSize` (
+  `customModuleItemSizeId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `key` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`customModuleItemSizeId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModuleItemSize`
+--
+
+INSERT INTO `hns_customModuleItemSize` (`customModuleItemSizeId`, `name`, `key`, `created`, `modified`) VALUES
+(1, 'Usko', 'small', '2012-11-19 14:10:53', NULL),
+(2, 'Široko', 'wide', '2012-11-19 14:10:53', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_customModuleText`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_customModuleText` (
+  `customModuleTextId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customModuleItemId` int(10) unsigned NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `footnote` text COLLATE utf8_unicode_ci,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`customModuleTextId`),
+  KEY `customModuleItemId` (`customModuleItemId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_customModuleText`
+--
+
+INSERT INTO `hns_customModuleText` (`customModuleTextId`, `customModuleItemId`, `content`, `footnote`, `created`, `modified`) VALUES
+(7, 51, 'Neki tekst u modulu, vezano za slike.', 'Fusnota, na slici gore Å timac, lijevo JelaviÄ‡.', '2012-11-20 13:27:36', '2012-11-20 13:27:36'),
+(8, 54, 'I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.', 'NA SLICI\r\nAutor fotogracije (ako ima)', '2012-11-20 13:36:56', '2012-11-20 13:36:56'),
+(9, 57, 'I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.', 'NA SLICI\nAutor fotogracije (ako ima)', '2012-11-20 14:23:58', '2012-11-20 14:23:58');
+
+-- --------------------------------------------------------
+
+--
 -- Tablična struktura za tablicu `hns_gallery`
 --
 
@@ -104,7 +332,15 @@ CREATE TABLE IF NOT EXISTS `hns_gallery` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`galleryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_gallery`
+--
+
+INSERT INTO `hns_gallery` (`galleryId`, `created`, `modified`) VALUES
+(1, '2012-11-16 14:41:14', '2012-11-16 14:41:14'),
+(2, '2012-11-16 14:41:58', '2012-11-16 14:41:58');
 
 -- --------------------------------------------------------
 
@@ -125,6 +361,16 @@ CREATE TABLE IF NOT EXISTS `hns_galleryI18n` (
   KEY `hns_FK_galleryI18nHasLanguage` (`languageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Izbacivanje podataka za tablicu `hns_galleryI18n`
+--
+
+INSERT INTO `hns_galleryI18n` (`galleryId`, `languageId`, `title`, `slug`, `category`, `created`, `modified`) VALUES
+(1, 'eng', 'Test gallery', 'test-gallery', 'Category 1', '2012-11-16 14:41:14', '2012-11-16 14:41:14'),
+(1, 'hrv', 'Testna galerija 1', 'testna-galerija-1', 'Kategorija 1', '2012-11-16 14:41:14', '2012-11-16 14:41:14'),
+(2, 'eng', 'Gallery 2', 'gallery-2', 'Category 2', '2012-11-16 14:41:58', '2012-11-16 14:41:58'),
+(2, 'hrv', 'Galerija 2', 'galerija-2', 'Kategorija 2', '2012-11-16 14:41:58', '2012-11-16 14:41:58');
+
 -- --------------------------------------------------------
 
 --
@@ -144,7 +390,20 @@ CREATE TABLE IF NOT EXISTS `hns_galleryImage` (
   UNIQUE KEY `filename` (`filename`),
   UNIQUE KEY `galleryImage` (`galleryId`,`imageId`),
   KEY `hns_FK_galleryImageHasGallery` (`galleryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_galleryImage`
+--
+
+INSERT INTO `hns_galleryImage` (`imageId`, `galleryId`, `position`, `filename`, `width`, `height`, `created`, `modified`) VALUES
+(1, 1, 1, 'm2e8qyzq4rflb639herm77v9ip814q5g.jpg', 719, 429, '2012-11-16 14:41:29', '2012-11-16 14:41:29'),
+(2, 1, 2, 'yhhjqmlojecwxj2n10jwea756tt0vkst.jpg', 719, 429, '2012-11-16 14:41:29', '2012-11-16 14:41:29'),
+(3, 1, 3, 'osxq57micxn4wteyx1o2y0vv6std20t2.jpg', 719, 429, '2012-11-16 14:41:30', '2012-11-16 14:41:30'),
+(4, 1, 4, 'ryrtwlz8jcb60y548n83w5xiim7dlu96.jpg', 719, 429, '2012-11-16 14:41:30', '2012-11-16 14:41:30'),
+(5, 2, 5, '92zs2vqr4md3zy86u64y9ud10cw9ia15.jpg', 719, 429, '2012-11-16 14:42:05', '2012-11-16 14:42:05'),
+(6, 2, 6, '3ykmj2v81ssv4uo3vidqxg8edx1zsm7y.jpg', 719, 429, '2012-11-16 14:42:06', '2012-11-16 14:42:06'),
+(7, 2, 7, 'asibf4djbtljkmiu0r1e1yenveilgupo.jpg', 719, 429, '2012-11-16 14:42:06', '2012-11-16 14:42:06');
 
 -- --------------------------------------------------------
 
@@ -247,43 +506,44 @@ CREATE TABLE IF NOT EXISTS `hns_page` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`pageId`),
   KEY `hns_FK_pageHasPage` (`parentId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_page`
 --
 
 INSERT INTO `hns_page` (`pageId`, `lft`, `rgt`, `parentId`, `isException`, `isVisible`, `isEditable`, `isPublished`, `canAddChildren`, `canBeDeleted`, `class`, `created`, `modified`) VALUES
-(1, 1, 60, NULL, 1, 0, 0, 1, 0, 0, NULL, '2012-11-14 14:47:33', '2012-11-16 10:44:25'),
-(2, 2, 17, 1, 1, 1, 0, 1, 1, 0, 'hns', '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
-(3, 18, 29, 1, 1, 1, 1, 1, 1, 0, 'selection', '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
-(4, 30, 43, 1, 1, 1, 1, 1, 1, 0, 'competitions', '2012-11-14 15:11:09', '2012-11-14 15:26:41'),
-(5, 44, 57, 1, 1, 1, 0, 1, 1, 0, 'infocenter', '2012-11-14 15:12:12', '2012-11-14 15:12:12'),
-(6, 58, 59, 1, 1, 1, 0, 1, 1, 0, 'press', '2012-11-14 15:13:00', '2012-11-14 15:13:00'),
-(7, 3, 4, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:14:49', '2012-11-14 16:07:43'),
-(8, 5, 6, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:16:12', '2012-11-14 15:16:12'),
-(9, 7, 8, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:17:24', '2012-11-14 15:17:24'),
-(10, 9, 10, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:18:25', '2012-11-14 15:18:25'),
-(11, 11, 12, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:19:45', '2012-11-14 15:19:45'),
-(12, 13, 14, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:20:41', '2012-11-14 15:20:41'),
-(13, 15, 16, 2, 1, 1, 1, 1, 1, 0, 'contact', '2012-11-14 15:21:23', '2012-11-14 15:21:23'),
-(14, 19, 20, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:22:36', '2012-11-14 15:22:36'),
-(15, 21, 22, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:11', '2012-11-14 15:23:11'),
-(16, 23, 24, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:55', '2012-11-14 15:23:55'),
-(17, 25, 26, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:24:56', '2012-11-14 15:24:56'),
-(18, 27, 28, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:26:00', '2012-11-14 15:26:00'),
-(19, 31, 32, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:27:59', '2012-11-14 15:28:23'),
-(21, 33, 34, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:32:26', '2012-11-14 15:32:26'),
-(22, 35, 36, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
-(23, 37, 38, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
-(24, 39, 40, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
-(25, 41, 42, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
-(26, 45, 46, 5, 1, 1, 0, 1, 0, 0, 'news', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
-(27, 47, 48, 5, 1, 1, 0, 1, 0, 0, 'actualities', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
-(28, 49, 50, 5, 1, 1, 0, 1, 0, 0, 'tv', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
-(29, 51, 52, 5, 1, 1, 0, 1, 0, 0, 'gallery', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
-(30, 53, 54, 5, 1, 1, 0, 1, 0, 0, 'blog', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
-(31, 55, 56, 5, 1, 1, 0, 1, 0, 0, 'magazine', '2012-11-14 15:44:23', '2012-11-16 10:41:55');
+(1, 1, 64, NULL, 1, 0, 0, 1, 0, 0, NULL, '2012-11-14 14:47:33', '2012-11-16 10:44:25'),
+(2, 2, 21, 1, 1, 1, 0, 1, 1, 0, 'hns', '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
+(3, 22, 33, 1, 1, 1, 1, 1, 1, 0, 'selection', '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
+(4, 34, 47, 1, 1, 1, 1, 1, 1, 0, 'competitions', '2012-11-14 15:11:09', '2012-11-14 15:26:41'),
+(5, 48, 61, 1, 1, 1, 0, 1, 1, 0, 'infocenter', '2012-11-14 15:12:12', '2012-11-14 15:12:12'),
+(6, 62, 63, 1, 1, 1, 0, 1, 1, 0, 'press', '2012-11-14 15:13:00', '2012-11-14 15:13:00'),
+(7, 3, 8, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:14:49', '2012-11-14 16:07:43'),
+(8, 9, 10, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:16:12', '2012-11-14 15:16:12'),
+(9, 11, 12, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:17:24', '2012-11-14 15:17:24'),
+(10, 13, 14, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:18:25', '2012-11-14 15:18:25'),
+(11, 15, 16, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:19:45', '2012-11-14 15:19:45'),
+(12, 17, 18, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:20:41', '2012-11-14 15:20:41'),
+(13, 19, 20, 2, 1, 1, 1, 1, 1, 0, 'contact', '2012-11-14 15:21:23', '2012-11-14 15:21:23'),
+(14, 23, 24, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:22:36', '2012-11-14 15:22:36'),
+(15, 25, 26, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:11', '2012-11-14 15:23:11'),
+(16, 27, 28, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:55', '2012-11-14 15:23:55'),
+(17, 29, 30, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:24:56', '2012-11-14 15:24:56'),
+(18, 31, 32, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:26:00', '2012-11-14 15:26:00'),
+(19, 35, 36, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:27:59', '2012-11-14 15:28:23'),
+(21, 37, 38, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:32:26', '2012-11-14 15:32:26'),
+(22, 39, 40, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
+(23, 41, 42, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
+(24, 43, 44, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
+(25, 45, 46, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
+(26, 49, 50, 5, 1, 1, 0, 1, 0, 0, 'news', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
+(27, 51, 52, 5, 1, 1, 0, 1, 0, 0, 'actualities', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
+(28, 53, 54, 5, 1, 1, 0, 1, 0, 0, 'tv', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
+(29, 55, 56, 5, 1, 1, 0, 1, 0, 0, 'gallery', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
+(30, 57, 58, 5, 1, 1, 0, 1, 0, 0, 'blog', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
+(31, 59, 60, 5, 1, 1, 0, 1, 0, 0, 'magazine', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
+(36, 4, 5, 7, 0, 1, 1, 1, 1, 1, NULL, '2012-11-20 14:26:59', '2012-11-20 14:29:36');
 
 -- --------------------------------------------------------
 
@@ -393,7 +653,8 @@ INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `
 (30, 'eng', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
 (30, 'hrv', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
 (31, 'eng', 'CFF Magazine', 'CFF Magazine', 'cff-magazine', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
-(31, 'hrv', 'HNS ÄŒasopis', 'HNS ÄŒasopis', 'hns-casopis', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55');
+(31, 'hrv', 'HNS ÄŒasopis', 'HNS ÄŒasopis', 'hns-casopis', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
+(36, 'hrv', 'Test', 'Test', 'test', '<p>When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing, Oh, would I could describe these conceptions, could impress upon paper all that is living so full and warm within me, that it might be the mirror of my soul, as my soul is the mirror of the infinite God!</p>\r\n<p>O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. {{module44}} I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.</p>\r\n<p>I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing.</p>\r\n<p>I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.</p>\r\n<p>{{module45}}</p>\r\n<p>Player, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing.</p>', '<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</p>', NULL, NULL, NULL, 'Test', '2012-11-20 14:26:59', '2012-11-20 14:29:36');
 
 -- --------------------------------------------------------
 
@@ -597,10 +858,56 @@ ALTER TABLE `hns_actualityCoverImage`
   ADD CONSTRAINT `hns_actualitycoverimage_ibfk_1` FOREIGN KEY (`actualityId`) REFERENCES `hns_actuality` (`actualityId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ograničenja za tablicu `hns_actualityHasCustomModule`
+--
+ALTER TABLE `hns_actualityHasCustomModule`
+  ADD CONSTRAINT `hns_actualityhascustommodule_ibfk_1` FOREIGN KEY (`actualityId`) REFERENCES `hns_actuality` (`actualityId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_actualityhascustommodule_ibfk_2` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ograničenja za tablicu `hns_bannerImage`
 --
 ALTER TABLE `hns_bannerImage`
   ADD CONSTRAINT `hns_bannerImage_ibfk_1` FOREIGN KEY (`bannerId`) REFERENCES `hns_banner` (`bannerId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_customModuleHasNewsItem`
+--
+ALTER TABLE `hns_customModuleHasNewsItem`
+  ADD CONSTRAINT `hns_custommodulehasnewsitem_ibfk_1` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_custommodulehasnewsitem_ibfk_2` FOREIGN KEY (`newsItemId`) REFERENCES `hns_newsitem` (`newsItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_customModuleHasPage`
+--
+ALTER TABLE `hns_customModuleHasPage`
+  ADD CONSTRAINT `hns_custommodulehaspage_ibfk_1` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_custommodulehaspage_ibfk_2` FOREIGN KEY (`pageId`) REFERENCES `hns_page` (`pageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_customModuleImage`
+--
+ALTER TABLE `hns_customModuleImage`
+  ADD CONSTRAINT `hns_custommoduleimage_ibfk_1` FOREIGN KEY (`customModuleItemId`) REFERENCES `hns_custommoduleitem` (`customModuleItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_customModuleImageImage`
+--
+ALTER TABLE `hns_customModuleImageImage`
+  ADD CONSTRAINT `hns_custommoduleimageimage_ibfk_1` FOREIGN KEY (`customModuleImageId`) REFERENCES `hns_custommoduleimage` (`customModuleImageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_customModuleItem`
+--
+ALTER TABLE `hns_customModuleItem`
+  ADD CONSTRAINT `hns_custommoduleitem_ibfk_1` FOREIGN KEY (`customModuleItemSizeId`) REFERENCES `hns_custommoduleitemsize` (`customModuleItemSizeId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_custommoduleitem_ibfk_2` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_customModuleText`
+--
+ALTER TABLE `hns_customModuleText`
+  ADD CONSTRAINT `hns_custommoduletext_ibfk_1` FOREIGN KEY (`customModuleItemId`) REFERENCES `hns_custommoduleitem` (`customModuleItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_galleryI18n`
