@@ -707,6 +707,9 @@ class FormHelper {
           elseif (method_exists ($options[0], 'getTitle')) {
             $method = 'getTitle';
           }
+          else {
+            $method = 'getId';
+          }
         }
         $value = $val->getId();
         $text = $val->$method();

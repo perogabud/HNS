@@ -56,6 +56,15 @@ class NewsItemRepository extends Repository {
 
     $newsItem = Factory::getNewsItem ($results[0]);
 
+    $customModuleRepository = new CustomModuleRepository ();
+    $customModules = $customModuleRepository->getCustomModules (
+      array (
+        'newsItemId' => $newsItem->getId (),
+        'relationName' => 'customModule'
+      )
+    );
+    $newsItem->setCustomModules ($customModules);
+
     return $newsItem;
   }
 
@@ -282,6 +291,22 @@ class NewsItemRepository extends Repository {
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
 
+      // Handle many-to-many Custom Module relation
+      if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
+        foreach ($data['customModuleId'] as $customModuleId) {
+          $query = "
+            INSERT INTO " . DBP . "customModuleHasNewsItem
+            SET `newsItemId` = :newsItemId,
+                `customModuleId` = :customModuleId
+          ";
+          $queryParams = array (
+            ':newsItemId' => array ($newsItemId, PDO::PARAM_INT),
+            ':customModuleId' => array ($customModuleId, PDO::PARAM_INT),
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+        }
+      }
+
       $this->commit ();
     }
     catch (Exception $e) {
@@ -371,6 +396,38 @@ class NewsItemRepository extends Repository {
         ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+
+      // Handle many-to-many Custom Module relation
+      $customModuleIdParams = array ();
+      $queryParams = array (
+        ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
+      );
+      for ($i = 0; $i < count ($data['customModuleId']); $i++) {
+        $customModuleIdParams[] = ':id' . $i;
+        $queryParams[':id' . $i] = $data['customModuleId'][$i];
+      }
+      $query = "
+        DELETE FROM " . DBP . "customModuleHasNewsItem
+        WHERE `newsItemId` = :newsItemId
+          AND `customModuleId` NOT IN (". implode (', ', $customModuleIdParams) .")
+      ";
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
+        foreach ($data['customModuleId'] as $customModuleId) {
+          $query = "
+            INSERT INTO " . DBP . "customModuleHasNewsItem
+            SET `newsItemId` = :newsItemId,
+                `customModuleId` = :customModuleId
+            ON DUPLICATE KEY UPDATE
+                `newsItemId` = `newsItemId`
+          ";
+          $queryParams = array (
+            ':newsItemId' => array ($newsItemId, PDO::PARAM_INT),
+            ':customModuleId' => array ($customModuleId, PDO::PARAM_INT),
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+          }
+      }
       $this->commit ();
     }
     catch (Exception $e) {

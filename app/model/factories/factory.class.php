@@ -365,5 +365,107 @@ class Factory {
     return $bannerImages;
   }
 
+  public static function getCustomModule (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModule = new CustomModule ($data, $config);
+    return $customModule;
+  }
+
+  public static function getCustomModules (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModules = array ();
+    foreach ($data as $row) {
+      $customModules[] = new CustomModule ($row, $config);
+    }
+    return $customModules;
+  }
+
+  public static function getCustomModuleItem (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleItem = new CustomModuleItem ($data, $config);
+    return $customModuleItem;
+  }
+
+  public static function getCustomModuleItems (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleItems = array ();
+    foreach ($data as $row) {
+      $customModuleItems[] = new CustomModuleItem ($row, $config);
+    }
+    return $customModuleItems;
+  }
+
+  public static function getCustomModuleItemSize (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleItemSize = new CustomModuleItemSize ($data, $config);
+    return $customModuleItemSize;
+  }
+
+  public static function getCustomModuleItemSizes (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleItemSizes = array ();
+    foreach ($data as $row) {
+      $customModuleItemSizes[] = new CustomModuleItemSize ($row, $config);
+    }
+    return $customModuleItemSizes;
+  }
+
+  public static function getCustomModuleImage (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleImage = new CustomModuleImage ($data, $config);
+    return $customModuleImage;
+  }
+
+  public static function getCustomModuleImages (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleImages = array ();
+    foreach ($data as $row) {
+      $customModuleImages[] = new CustomModuleImage ($row, $config);
+    }
+    return $customModuleImages;
+  }
+
+  public static function getCustomModuleImageImage (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleImageImage = new CustomModuleImageImage ($data, $config);
+    return $customModuleImageImage;
+  }
+
+  public static function getCustomModuleImageImages (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleImageImages = array ();
+    foreach ($data as $row) {
+      $customModuleImageImages[] = new CustomModuleImageImage ($row, $config);
+    }
+    return $customModuleImageImages;
+  }
+
+  public static function getCustomModuleText (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleText = new CustomModuleText ($data, $config);
+    return $customModuleText;
+  }
+
+  public static function getCustomModuleTexts (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $customModuleTexts = array ();
+    foreach ($data as $row) {
+      $customModuleTexts[] = new CustomModuleText ($row, $config);
+    }
+    return $customModuleTexts;
+  }
+
 }
 ?>

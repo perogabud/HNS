@@ -24,8 +24,8 @@ class Page extends ModelObject {
   protected $_canBeDeleted;
   protected $_class;
   protected $_navigationDescription;
-
   protected $_coverImage;
+  protected $_customModules;
 
   public function __construct ($data, $dataLang, $config = array ()) {
     parent::__construct ($data);
@@ -91,8 +91,16 @@ class Page extends ModelObject {
     return $this->_getLanguageMember ($this->_navigationName, $lang);
   }
 
-  public function getContent ($lang = NULL) {
-    return $this->_getLanguageMember ($this->_content, $lang);
+  public function getContent ($lang = NULL, $includeModule = FALSE) {
+    $content = $this->_getLanguageMember ($this->_content, $lang);
+    if ($includeModule && $this->_customModules)
+      foreach ($this->_customModules as $customModule) {
+        $selector = '{{module'. $customModule->getId () .'}}';
+        $content = str_replace ('<p>'. $selector .'</p>', $selector, $content);
+        $content = str_replace ($selector, FrontHelper::printCustomModuleHtml ($customModule, FALSE, TRUE), $content);
+      }
+    return $content;
+    FrontHelper::printCustomModuleHtml ($customModule);
   }
 
   public function getLead ($lang = NULL) {
@@ -151,6 +159,21 @@ class Page extends ModelObject {
     $this->_coverImage = $coverImage;
   }
 
+  public function getCustomModules () {
+    return $this->_customModules;
+  }
 
+  public function setCustomModules ($customModules) {
+    $this->_customModules = $customModules;
+  }
+
+  public function getCustomModule ($customModuleId) {
+    if ($this->_customModules) foreach ($this->_customModules as $customModule) {
+      if ($customModule->getId () == $customModuleId) {
+        return $customModule;
+      }
+    }
+    return NULL;
+  }
 }
 ?>

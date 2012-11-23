@@ -28,7 +28,7 @@ class StandardContentManager extends ContentManager {
       )
     );
 
-    $this->_setData (array ('activePage12345' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
+    $this->_setData (array ('activePage' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
 
     // Parse parameters
     switch ($this->params[0]) {
@@ -36,6 +36,10 @@ class StandardContentManager extends ContentManager {
        * Home page.
        */
       case '':
+        Tools::redirect ('/index.html');
+        break;
+
+      case 'home':
         if ($this->_checkParams (1)) {
           $this->_setTemplate ('home');
           $newsItemController = NewsItemController::getInstance ();

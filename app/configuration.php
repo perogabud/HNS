@@ -45,3 +45,14 @@ Config::write ('actualityCoverImageLargeThumbnailDimensions', array ('width' => 
 Config::write ('actualityCoverImageSmallThumbnailPath', Config::read ('sitePath') . 'img/actuality/coverImage/smallThumbnail/');
 Config::write ('actualityCoverImageSmallThumbnailDimensions', array ('width' => 79, 'height' => 79));
 
+Config::write ('customModuleImageImagePath', Config::read ('sitePath') . 'img/customModuleImage/image/');
+Config::write ('customModuleImageImageDimensions', array ('width' => 640, 'height' => NULL));
+
+Config::write ('customModuleImageImageSmallImagePath', Config::read ('sitePath') . 'img/customModuleImage/image/smallImage/');
+Config::write ('customModuleImageImageSmallImageDimensions', array ('width' => 320, 'height' => 320));
+
+Config::write ('customModuleImageImageThumbnailPath', Config::read ('sitePath') . 'img/customModuleImage/image/thumbnail/');
+Config::write ('customModuleImageImageThumbnailDimensions', array ('width' => 100, 'height' => NULL));
+
+Config::write ('customModuleImageImageSmallThumbnailPath', Config::read ('sitePath') . 'img/customModuleImage/image/smallThumbnail/');
+Config::write ('customModuleImageImageSmallThumbnailDimensions', array ('width' => 50, 'height' => 50));

@@ -1380,6 +1380,141 @@ class AdminContentManager extends ContentManager {
         }
         break;
 
+      case 'ajax':
+        $this->_setTemplate ('ajax');
+        switch ($this->params[1]) {
+          case 'customModule':
+            if ($this->_checkParams (3, TRUE)) {
+              switch ($this->params[2]) {
+                case 'add':
+                  $customModuleController = CustomModuleController::getInstance ();
+                  $customModule = $customModuleController->addCustomModule (array ());
+                  if ($customModule) {
+                    $this->_setElements (
+                      array (
+                        'mainContent' => array (
+                          'filename' => 'ajax/json',
+                          'data' => array (
+                            'data' => array (
+                              'moduleId' => $customModule->getId ()
+                            )
+                          )
+                        )
+                      )
+                    );
+                  }
+                  return;
+
+                default:
+                  $customModuleController = CustomModuleController::getInstance ();
+                  $customModule = $customModuleController->getCustomModuleById ($this->params[2]);
+                  if ($customModule) {
+                    $this->_setElements (
+                      array (
+                        'mainContent' => array (
+                          'filename' => 'ajax/customModuleHtml',
+                          'data' => array (
+                            'customModule' => $customModule
+                          )
+                        )
+                      )
+                    );
+                  }
+                  return;
+              }
+            }
+            elseif ($this->_checkParams (4)) {
+              switch ($this->params[2]) {
+                case 'delete':
+                  // Delete
+                  return;
+
+                case 'uploadImage':
+                  $customModuleItemController = CustomModuleItemController::getInstance ();
+                  $customModuleItem = $customModuleItemController->addCustomModuleItem (
+                    array (
+                      'customModuleItemSizeId' => 1,
+                      'customModuleId' => $this->params[3]
+                    )
+                  );
+                  if ($customModuleItem) {
+                    $customModuleImageController = CustomModuleImageController::getInstance ();
+                    $customModuleImage = $customModuleImageController->addCustomModuleImage (
+                      array (
+                        'customModuleItemId' => $customModuleItem->getId ()
+                      )
+                    );
+                    if ($customModuleImage) {
+                      $this->_setElements (
+                        array (
+                          'mainContent' => array (
+                            'filename' => 'ajax/json',
+                            'data' => array (
+                              'data' => array (
+                                'itemId' => $customModuleItem->getId (),
+                                'imageUrl' => array (
+                                  'wide' => $customModuleImage->getImage ()->getUrl (),
+                                  'small' => $customModuleImage->getImage ()->getSmallImageUrl ()
+                                )
+                              )
+                            )
+                          )
+                        )
+                      );
+                    }
+                  }
+                  return;
+
+                case 'updateImage':
+                  $customModuleItemController = CustomModuleItemController::getInstance ();
+                  $customModuleItem = $customModuleItemController->editCustomModuleItem (
+                    $this->params[3],
+                    array (
+                      'customModuleItemSizeId' => $_POST['size'],
+                      'position' => $_POST['position']
+                    )
+                  );
+                  return;
+
+                case 'uploadText':
+                  $customModuleItemController = CustomModuleItemController::getInstance ();
+                  $customModuleItem = $customModuleItemController->addCustomModuleItem (
+                    array (
+                      'customModuleItemSizeId' => $_POST['size'],
+                      'customModuleId' => $this->params[3],
+                      'position' => $_POST['position']
+                    )
+                  );
+                  if ($customModuleItem) {
+                    $customModuleTextController = CustomModuleTextController::getInstance ();
+                    $customModuleText = $customModuleTextController->addCustomModuleText (
+                      array (
+                        'customModuleItemId' => $customModuleItem->getId (),
+                        'content' => $_POST['content'],
+                        'footnote' => $_POST['footnote']
+                      )
+                    );
+                    if ($customModuleText) {
+                      $this->_setElements (
+                        array (
+                          'mainContent' => array (
+                            'filename' => 'ajax/json',
+                            'data' => array (
+                              'data' => array (
+                                'success' => TRUE
+                              )
+                            )
+                          )
+                        )
+                      );
+                    }
+                  }
+                  return;
+              }
+            }
+            break;
+        }
+        break;
 
       default:
         $this->set404 ();

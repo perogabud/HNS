@@ -2,56 +2,32 @@
 
 class FrontHelper {
 
-  public static function printNavigation ($pages, $params) {
-    echo '<ul class="mainNav">';
-    $activePage = NULL;
-    if ($pages) foreach ($pages as $page) {
-      if ($page->getSlug () === $params[0]) {
-        $activePage = $page;
-        echo '<li class="active">';
-        if (count ($params) > 1) {
-          echo '<a href="'. $page->getUrl () .'">'. $page->getNavigationName () .'</a>';
-        }
-        else {
-          echo '<span>'. $page->getNavigationName () .'</span>';
-        }
-        echo '</li>';
-      }
-      else {
-        echo '<li><a href="'. $page->getUrl () .'">'. $page->getNavigationName () .'</a></li>';
-      }
-    }
-    echo '</ul>';
-    if ($activePage) {
-      echo '<ul class="subNav">';
-      if ($activePage->getSubpages ()) foreach ($activePage->getSubpages () as $page) {
-        if (count($params) > 1 && $page->getSlug () === $params[1]) {
-          echo '<li class="active">';
-          echo '<span>'. $page->getNavigationName () .'</span>';
-          echo '</li>';
-        }
-        else {
-          echo '<li><a href="'. $page->getUrl () .'">'. $page->getNavigationName () .'</a></li>';
-        }
-      }
-      echo '</ul>';
-    }
-  }
+  public static function printCustomModuleHtml ($customModule, $input = TRUE, $return = FALSE) {
+    $echo = '';
+    if ($input) $echo .= '<li>';
+    $echo .= '<div class="module" id="module'. $customModule->Id .'">';
+    if ($input) $echo .= FormHelper::input ('text', NULL, NULL, array ('readonly' => TRUE, 'value' => '{{module'. $customModule->Id .'}}'), TRUE);
+    if ($customModule->CustomModuleItems) {
+      foreach ($customModule->CustomModuleItems as $customModuleItem) {
+        $echo .= '<div class="'. $customModuleItem->CustomModuleItemSize->Key .'">';
 
-  public static function printSets (array $sets) {
-    $_sets = array ();
-    foreach ($sets as $set) {
-      $_sets[] = '<a href="/gallery#set:' . $set->getId () . ':' . $set->getSlug () . '">'.$set->getName ().'</a>';
-    }
-    echo implode (', ', $_sets);
-  }
+        if ($customModuleItem->customModuleImage && $customModuleItem->customModuleImage->Image) {
+          $echo .= '<img src="'. ($customModuleItem->CustomModuleItemSize->Key == 'wide' ? $customModuleItem->customModuleImage->Image->getUrl () : $customModuleItem->customModuleImage->Image->getSmallImageUrl ()). '" alt=""/>';
+        }
+        elseif ($customModuleItem->customModuleText) {
+          $echo .= '<p class="content">'. $customModuleItem->customModuleText->Content .'</p>';
+          $echo .= '<p class="footnote">'. $customModuleItem->customModuleText->Footnote .'</p>';
+        }
 
-  public static function printTags (array $tags) {
-    $_tags = array ();
-    foreach ($tags as $tag) {
-      $_tags[] = '<a href="/gallery#tag:' . $tag->getId () . ':' . $tag->getSlug () . '">'.$tag->getName ().'</a>';
+        $echo .= '</div>';
+      }
     }
-    echo implode (', ', $_tags);
+    $echo .= '</div>';
+    if ($input) $echo .= '</li>';
+    if ($return) {
+      return $echo;
+    }
+    echo $echo;
   }
 
 }

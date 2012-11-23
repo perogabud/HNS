@@ -7,6 +7,6 @@
   <div class="lead">
     <?php echo $page->Lead; ?>
   </div>
-  <?php echo $page->Content; ?>
+  <?php echo $page->getContent (NULL, TRUE); ?>
 </section>
 <?php endif; ?>

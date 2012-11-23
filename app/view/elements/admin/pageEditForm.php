@@ -27,6 +27,7 @@
     else {
       if ($page->IsEditable && !$page->IsException) FormHelper::input ('file', 'coverImage[]', 'coverImage', array ('label' => array ('text' => 'Naslovna slika'), 'info' => 'Ostavite polje prazno da zadržite trenutnu sliku.<br />Dimenzije slike biti će prilagođene na: <strong>719px širine</strong> i <strong>429px visine</strong>.<br/>Ovo su također i minimalne dimenzije.'));
     }
+    FormHelper::multipleSelect ('customModuleId', 'customModuleId', $page->getCustomModules (), array ('selected' => $page->getCustomModules (), 'label' => array ('text' => ''), 'class' => 'hidden', 'method' => 'getId'));
     echo '<div class="tabs">';
     $this->getElement ('admin/languageTabs');
     foreach (Config::read ('supportedLangs') as $lang) {

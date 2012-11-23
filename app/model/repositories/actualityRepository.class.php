@@ -56,6 +56,15 @@ class ActualityRepository extends Repository {
 
     $actuality = Factory::getActuality ($results[0]);
 
+    $customModuleRepository = new CustomModuleRepository ();
+    $customModules = $customModuleRepository->getCustomModules (
+      array (
+        'actualityId' => $actuality->getId (),
+        'relationName' => 'customModule'
+      )
+    );
+    $actuality->setCustomModules ($customModules);
+
     return $actuality;
   }
 
@@ -275,6 +284,22 @@ class ActualityRepository extends Repository {
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
 
+      // Handle many-to-many Custom Module relation
+      if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
+        foreach ($data['customModuleId'] as $customModuleId) {
+          $query = "
+            INSERT INTO " . DBP . "actualityHasCustomModule
+            SET `actualityId` = :actualityId,
+                `customModuleId` = :customModuleId
+          ";
+          $queryParams = array (
+            ':actualityId' => array ($actualityId, PDO::PARAM_INT),
+            ':customModuleId' => array ($customModuleId, PDO::PARAM_INT),
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+        }
+      }
+
       $this->commit ();
     }
     catch (Exception $e) {
@@ -364,6 +389,39 @@ class ActualityRepository extends Repository {
         ':actualityId' => array ($actualityId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+
+      // Handle many-to-many Custom Module relation
+      $customModuleIdParams = array ();
+      $queryParams = array (
+        ':actualityId' => array ($actualityId, PDO::PARAM_INT)
+      );
+      for ($i = 0; $i < count ($data['customModuleId']); $i++) {
+        $customModuleIdParams[] = ':id' . $i;
+        $queryParams[':id' . $i] = $data['customModuleId'][$i];
+      }
+      $query = "
+        DELETE FROM " . DBP . "actualityHasCustomModule
+        WHERE `actualityId` = :actualityId
+          AND `customModuleId` NOT IN (". implode (', ', $customModuleIdParams) .")
+      ";
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
+        foreach ($data['customModuleId'] as $customModuleId) {
+          $query = "
+            INSERT INTO " . DBP . "actualityHasCustomModule
+            SET `actualityId` = :actualityId,
+                `customModuleId` = :customModuleId
+            ON DUPLICATE KEY UPDATE
+                `actualityId` = `actualityId`
+          ";
+          $queryParams = array (
+            ':actualityId' => array ($actualityId, PDO::PARAM_INT),
+            ':customModuleId' => array ($customModuleId, PDO::PARAM_INT),
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+          }
+      }
+
       $this->commit ();
     }
     catch (Exception $e) {

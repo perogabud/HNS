@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="<?php echo Config::read ('siteUrlRoot'); ?>css/admin/style.css" media="screen,projection" type="text/css" />
     <link rel="stylesheet" href="<?php echo Config::read ('siteUrlRoot'); ?>js/chosen/chosenAdmin.css" media="screen,projection" type="text/css" />
     <link rel="stylesheet" href="<?php echo Config::read ('siteUrlRoot'); ?>js/admin/jquery-ui-1.9.1.custom/css/custom-theme/jquery-ui-1.9.1.custom.min.css" media="screen,projection" type="text/css" />
+    <link href="/js/admin/custom-scrollbar-plugin/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
     <script type="text/javascript">document.documentElement.className = 'js';</script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/chosen/chosen.jquery.min.js"></script>
+    <script src="/js/admin/custom-scrollbar-plugin/jquery.mousewheel.min.js"></script>
+    <script src="/js/admin/custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
   </head>
 
   <body>

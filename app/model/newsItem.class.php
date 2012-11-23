@@ -9,8 +9,8 @@ class NewsItem extends ModelObject {
   protected $_content;
   protected $_isPublished;
   protected $_publishDate;
-
   protected $_coverImage;
+  protected $_customModules;
 
   public function __construct ($data, $config = array ()) {
     parent::__construct ($data);
@@ -60,6 +60,13 @@ class NewsItem extends ModelObject {
     $this->_coverImage = $coverImage;
   }
 
+  public function getCustomModules () {
+    return $this->_customModules;
+  }
+
+  public function setCustomModules ($customModules) {
+    $this->_customModules = $customModules;
+  }
 
 }
 ?>

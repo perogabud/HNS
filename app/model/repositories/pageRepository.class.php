@@ -194,7 +194,16 @@ class PageRepository extends Repository {
       $coverImage = $this->getCoverImage ($results[0]['pageId']);
       $results[0]['coverImage'] = $coverImage;
 
+      $customModuleRepository = new CustomModuleRepository ();
+      $customModules = $customModuleRepository->getCustomModules (
+        array (
+          'pageId' => $results[0]['pageId'],
+          'relationName' => 'customModule'
+        )
+      );
+
       $page = Factory::getPage ($results);
+      $page->setCustomModules ($customModules);
 
       return $page;
     }
@@ -433,6 +442,22 @@ class PageRepository extends Repository {
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
 
+      // Handle many-to-many Custom Module relation
+      if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
+        foreach ($data['customModuleId'] as $customModuleId) {
+          $query = "
+            INSERT INTO " . DBP . "customModuleHasPage
+            SET `pageId` = :pageId,
+                `customModuleId` = :customModuleId
+          ";
+          $queryParams = array (
+            ':pageId' => array ($pageId, PDO::PARAM_INT),
+            ':customModuleId' => array ($customModuleId, PDO::PARAM_INT),
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+        }
+      }
+
     }
     catch (Exception $e) {
       $this->rollback ();
@@ -582,6 +607,37 @@ class PageRepository extends Repository {
         }
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
+      // Handle many-to-many Custom Module relation
+      $customModuleIdParams = array ();
+      $queryParams = array (
+        ':pageId' => array ($pageId, PDO::PARAM_INT)
+      );
+      for ($i = 0; $i < count ($data['customModuleId']); $i++) {
+        $customModuleIdParams[] = ':id' . $i;
+        $queryParams[':id' . $i] = $data['customModuleId'][$i];
+      }
+      $query = "
+        DELETE FROM " . DBP . "customModuleHasPage
+        WHERE `pageId` = :pageId
+          AND `customModuleId` NOT IN (". implode (', ', $customModuleIdParams) .")
+      ";
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
+        foreach ($data['customModuleId'] as $customModuleId) {
+          $query = "
+            INSERT INTO " . DBP . "customModuleHasPage
+            SET `pageId` = :pageId,
+                `customModuleId` = :customModuleId
+            ON DUPLICATE KEY UPDATE
+                `pageId` = `pageId`
+          ";
+          $queryParams = array (
+            ':pageId' => array ($pageId, PDO::PARAM_INT),
+            ':customModuleId' => array ($customModuleId, PDO::PARAM_INT),
+          );
+          $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+          }
+      }
       }
       $this->commit ();
       return TRUE;
@@ -607,7 +663,7 @@ class PageRepository extends Repository {
     try {
       $this->startTransaction ();
 
-      $this->_deleteCoverImage ();
+      $this->_deleteCoverImage ($pageId);
       // Get 'lft', 'rgt' and width values from page that will be deleted
       $query = "
         SELECT lft, rgt, (rgt - lft + 1) AS width

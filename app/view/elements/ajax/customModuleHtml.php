@@ -1,0 +1,1 @@
+<?php FrontHelper::printCustomModuleHtml ($customModule); ?>

@@ -1060,3 +1060,152 @@ td.info img { cursor: help; }
 }
 
 .ui-tabs .langContent { display: none; }
+
+div#contentModuleMenu {
+  position: fixed;
+  width: 640px;
+  margin-left: -320px;
+  top: 10%;
+  left: 50%;
+  min-height: 320px;
+  height: 80%;
+  max-height: 80%;
+  background: #F5F5F5;
+  -webkit-box-shadow:  0px 0px 30px 0px rgba(00, 00, 00, 0.3);
+  box-shadow:  0px 0px 30px 0px rgba(00, 00, 00, 0.3);
+  opacity: 0.95;
+}
+
+div#contentModuleMenu div.wrapper { position: relative; }
+
+div#contentModuleMenu div.wrapper ul li {
+  position: relative;
+  float: left;
+  width: 640px;
+  min-height: 320px;
+  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(00, 00, 00, 0.15);
+  box-shadow: inset 0px 0px 10px 0px rgba(00, 00, 00, 0.15);
+}
+div#contentModuleMenu div.wrapper ul li.small {
+  width: 320px;
+}
+
+div#contentModuleMenu div.wrapper ul li.moduleItem > a,
+div#contentModuleMenu div.wrapper ul li.moduleItem > select {
+  position: absolute;
+  display: block;
+  top: 10px;
+  z-index: 1;
+  -webkit-box-shadow:  0px 0px 10px 0px rgba(00, 00, 00, 0.3);
+  box-shadow:  0px 0px 10px 0px rgba(00, 00, 00, 0.3);
+}
+
+li.moduleItem > a.remove,
+li.moduleItem > a.moveUp,
+li.moduleItem > a.moveDown {
+  text-indent: -9999px;
+  overflow: hidden;
+  font-size: 0;
+  height: 16px;
+  width: 16px;
+}
+
+div#contentModuleMenu div.wrapper ul li.moduleItem img {
+  display: block;
+}
+
+div#contentModuleMenu div.wrapper ul li.moduleItem > a.remove { right: 10px; background: url(/img/admin/delete.png) center center no-repeat transparent; }
+div#contentModuleMenu div.wrapper ul li.moduleItem > a.moveUp { right: 30px; background: url(/img/admin/arrowUp.png) center center no-repeat transparent; }
+div#contentModuleMenu div.wrapper ul li.moduleItem > a.moveDown { right: 50px; background: url(/img/admin/arrowDown.png) center center no-repeat transparent; }
+div#contentModuleMenu div.wrapper ul li.moduleItem > select { left: 10px; top: 10px; }
+div#contentModuleMenu div.wrapper ul li.moduleItem > a.addImage { left: 10px; top: 50px; }
+div#contentModuleMenu div.wrapper ul li.moduleItem > a.addText { left: 10px; top: 70px; }
+
+div#contentModuleMenu div.wrapper ul li.moduleItem textarea {
+  width: 96%;
+  padding: 0 2%;
+  border-left: none;
+  border-right: none;
+}
+
+li.moduleItem > object {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  margin: -15px 0 0 -60px;
+  top: 50%;
+  left: 50%;
+  -webkit-box-shadow:  0px 0px 10px 0px rgba(00, 00, 00, 0.3);
+  box-shadow:  0px 0px 10px 0px rgba(00, 00, 00, 0.3);
+}
+
+li.moduleItem > a.newItem {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 320px;
+  top: 0 !important;
+}
+
+div#contentModuleMenu > a,
+div#contentModuleMenu > div > div > a {
+  position: absolute;
+  left: 0;
+  bottom: -2em;
+}
+
+div#contentModuleMenu a#contentModuleMenuCancel {
+  left: 5em;
+}
+
+div#contentModuleMenu div.uploadifyQueue {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  max-width: 80%;
+}
+
+div#contentModuleMenu .mCSB_container {
+  margin-right: 0 !important;
+}
+
+div#contentModuleMenu .mCustomScrollBox .mCSB_scrollTools {
+  margin-left: -30px;
+}
+
+div#contentModuleMenu .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background: none repeat scroll 0 0 rgba(20, 20, 20, 0.25);
+}
+
+div#contentModuleMenu .mCSB_scrollTools .mCSB_draggerRail {
+  background: none repeat scroll 0 0 rgba(20, 20, 20, 0.1);
+}
+
+ul.contentModules li {
+  float: left;
+  width: 20%;
+  margin-right: 5%;
+}
+
+ul.contentModules li input {
+  width: 100%;
+  padding: inherit 0;
+}
+
+ul.contentModules li div {
+  float: left;
+  width: 100%;
+}
+
+ul.contentModules li div p {
+  font-size: 5px;
+  width: 90%;
+  padding: 5%;
+}
+
+ul.contentModules li img {
+  display: block;
+}
+
+ul.contentModules li div.wide { width: 100%; }
+ul.contentModules li div.small { width: 50%; }
