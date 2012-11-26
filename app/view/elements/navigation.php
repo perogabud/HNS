@@ -1,8 +1,8 @@
 <?php if (isset ($navPages)): ?>
-<nav>
+<nav id="menu">
   <ul>
   <?php foreach ($navPages as $page): ?>
-    <li><a href="<?php echo $page->Url; ?>"><?php echo $page->NavigationName; ?></a></li>
+    <li><a href="<?php echo $page->Url; ?>"><?php echo $page->NavigationName; ?></a>
     <?php if ($page->Subpages): ?>
       <ul>
       <?php foreach ($page->Subpages as $subPage): ?>
@@ -13,7 +13,9 @@
       <?php endforeach; ?>
       </ul>
     <?php endif; ?>
+    </li>
   <?php endforeach; ?>
+  	<li class="lang"><a href="" >HRV</a><a href="" >ENG</a></li>
   </ul>
 </nav>
 <?php endif; ?>

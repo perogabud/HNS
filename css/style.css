@@ -1,3 +1,7 @@
+/*font*/
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300&subset=latin,latin-ext);
+
+
 /* Reset v1.0 | 20080212 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -54,6 +58,7 @@ a img {
   padding: 0;
   margin: 0;
   border: 0;
+  float: left;
 }
 
 /* Framework reset */
@@ -70,11 +75,6 @@ textarea, input, select, label, blockquote, form, fieldset, legend {
 
 input, textarea, select { width: auto; }
 
-a img {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
 
 a,
 input.submit,
@@ -119,32 +119,243 @@ input[type=button]
 a,
 a:link,
 a:visited {
-  font-weight: bold;
+/*  font-weight: bold;*/
   text-decoration: none;
   cursor: pointer;
-  color: #000;
+/*  color: #000;*/
 }
 
-a:hover { color: teal; }
+
 
 body {
-  background: #000;
-  color: #EEE;
-  font-size: 0.75em;
-  line-height: 1.5;
-  font-family: Arial, sans-serif;
+  background: #f2f2f2 url('/img/bg.png') repeat-x;
+  color: #666;
+  font-size: 1em;
+/*  line-height: 1.5;*/
+  font-family: Oswald, sans-serif;
+  font-weight: 300;
 }
 
 /*custom*/
-=======
-div[role="wrapper"] {
+div#wrapper {
 	width: 961px;
 	margin: 0 auto;	
 }
 
-h1 {
+
+/*sidebar left*/
+
+aside#sidebar {
 	width: 241px;
-	padding: 161px 75px 20px 74px;
-	background: ;	
+	float: left;
 }
 
+h1 {
+	width: 241px;
+	height: 241px;
+	background: url('/img/hns.png') no-repeat;	
+}
+
+h1 a {
+	padding: 161px 70px 20px;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	color: #fff;	
+}
+
+section.raspored table {
+	width: 100%;
+	text-align: center;
+}
+
+section.raspored table tr td.home {
+	text-align: right;
+}
+
+section.raspored table tr td.result {
+	width: 38px;
+}
+
+section.raspored table tr td.guest {
+	text-align: left;
+}
+
+
+/*navigation*/
+nav#menu {
+	width: 720px;
+	height: 51px;
+	float: left;
+}
+
+nav#menu ul li {
+	width: 119px;
+	height: 33px;
+	padding-top: 16px;
+	border: 1px solid #808080;
+	border-right: 0;
+	background: url('/img/nav_bg.png');
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+
+nav#menu ul li:first-child {
+	border-left: 0;
+}
+
+nav#menu ul li.lang {
+	width: 118px;
+	border-right: 1px solid #808080;
+}
+
+nav#menu ul li a {
+	height: auto;
+/*	padding-top: 14px;*/
+	display: block;
+	color: #fff;
+	font-weight: 400;
+}
+
+nav#menu ul li.lang a {
+	display: inline;
+}
+
+nav#menu ul li ul {
+	display: none;
+}
+
+/*main column*/
+section.main_home, section.main {
+	width: 720px;
+	float: left;
+}
+
+section.main_home {
+	padding-top: 43px;
+}
+
+section.main_home aside:first-child {
+	width: 121px;
+	float: left;
+	margin-left: -1px;
+	margin-right: -1px;
+}
+
+section.main_home aside:first-child ul li {
+	height: 121px;
+	margin-bottom: -1px;
+}
+
+section.main_home aside:first-child ul li.decoration_top {
+	height: 147px;
+	background: transparent url('/img/slider_top.png') 1px 1px no-repeat;
+}
+
+section.main_home aside:first-child ul li.ulaznice {
+	margin-bottom: 0;
+}
+
+section.main_home aside:first-child ul li.decoration_bottom {
+	background: transparent url('/img/slider_bottom.png') no-repeat;
+}
+
+section.tabs {
+	width: 601px;
+	float: left;
+}
+
+section.tabs div.ui-tabs-panel {
+	width: 599px;
+	height: 385px;
+	border: 1px solid #999;
+}
+
+section.tabs div#aktualno section {
+	width: auto;
+	height: 337px;
+	padding-left: 5px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 1px;
+}
+
+section.tabs div#aktualno section article {
+	width: 170px;
+	height: 295px;
+	margin: 25px 13px 18px;
+	float: left;
+}
+
+section.tabs div.caption {
+	height: 48px;
+	margin-top: -1px;
+	background: #4d4d4d;
+	text-align: right;
+}
+
+section.tabs div.caption a {
+	vertical-align: middle;
+}
+
+section.tabs div.caption img {
+	float: none;
+}
+
+section.tabs ul {
+	margin-top: -1px;
+}
+
+section.tabs ul li {
+	width: 121px;
+	height: 121px;
+	margin-right: -1px;
+	display: inline-block;
+	float: left;
+}
+
+section.tabs ul li a {
+	height: 121px;
+	display: block;
+}
+
+section.tabs ul li.tv a {
+	background: url('/img/hns_tv.png') no-repeat;
+}
+
+section.tabs ul li.galerija a {
+	background: url('/img/galerija.png') no-repeat;
+}
+
+section.tabs ul li.aktualno a {
+	background: url('/img/aktualno.png') no-repeat;
+}
+
+section.tabs ul li.reprezentacija a {
+	background: url('/img/a_reprezentacija.png') no-repeat;
+}
+
+section.tabs ul li.casopis a {
+	background: url('/img/hns_casopis.png') no-repeat;
+}
+
+section.content {
+	width: 599px;
+	float: left;	
+}
+
+nav#info {
+	width: 121px;
+	float: left;
+}
+
+
+/*footer*/
+footer {
+	width: 961px;
+	margin: 0 auto;
+	clear: both;
+	text-align: center;
+}
