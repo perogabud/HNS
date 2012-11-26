@@ -1,4 +1,261 @@
 $().ready (function () {
+  
+  $('a#contentModuleMenuSave').live('click', function () {
+    
+      $('li.moduleItem').each (function () {
+        var $this = $(this),
+            index = $this.index (),
+            itemId = $(this).attr ('data-item-id'),
+            size = $this.find ('select.size').val ();
+        switch ($this.attr ('data-type')) {
+          case 'image':
+            $.ajax ({
+              type: 'POST',
+              url: "/admin/ajax/customModule/updateImage/" + itemId,
+              data: {
+                position : index + 1,
+                size: size
+              },
+              dataType: 'json',
+              beforeSend: function (jqXHR, settings) {
+                //showLoader ($institutionProfiles.siblings ('label'));
+              },
+              success: function (data, textStatus, jqXHR) {
+                if (data && data.moduleId) {
+                  $('#contentModuleMenu a.newItem').attr('data-module-id', data.moduleId);
+                }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.log ('Error: ', textStatus, errorThrown);
+              },
+              complete: function (jqXHR, textStatus) {}
+            });
+            break;
+          case 'text':
+            $.ajax ({
+              type: 'POST',
+              url: "/admin/ajax/customModule/uploadText/" + $('#contentModuleMenu a.newItem').attr('data-module-id'),
+              data: {
+                itemId: itemId,
+                content : $this.find ('textarea.content').val (),
+                footnote : $this.find ('textarea.footnote').val (),
+                position : index + 1,
+                size : size
+              },
+              dataType: 'json',
+              beforeSend: function (jqXHR, settings) {
+                //showLoader ($institutionProfiles.siblings ('label'));
+              },
+              success: function (data, textStatus, jqXHR) {
+                if (data && data.moduleId) {
+                  $('#contentModuleMenu a.newItem').attr('data-module-id', data.moduleId);
+                }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.log ('Error: ', textStatus, errorThrown);
+              },
+              complete: function (jqXHR, textStatus) {}
+            });
+            break;
+        }
+      });
+      
+    
+    // Place HTML for module
+    $.ajax ({
+      type: 'GET',
+      url: "/admin/ajax/customModule/" + $('#contentModuleMenu a.newItem').attr('data-module-id'),
+      dataType: 'html',
+      beforeSend: function (jqXHR, settings) {
+        //showLoader ($institutionProfiles.siblings ('label'));
+      },
+      success: function (data, textStatus, jqXHR) {
+        if (data) {
+          if ($('ul.contentModules div#module' + $moduleId).size() == 0) {
+            $('ul.contentModules').prepend (data);
+            $('#customModuleId').append ('<option selected="selected" value="'+ $('#contentModuleMenu a.newItem').attr('data-module-id') +'"></option>');
+          } else {
+            $('ul.contentModules div#module' + $moduleId).parents('li').first().replaceWith(data);
+            $('#customModuleId option').attr('selected', false);
+            $('#customModuleId option[value="'+ $('#contentModuleMenu a.newItem').attr('data-module-id') +'"]').attr('selected', 'selected');
+          }
+        }
+        $('#contentModuleMenu').fadeOut (200, function () { $('#contentModuleMenu').remove (); });
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log ('Error: ', textStatus, errorThrown);
+      },
+      complete: function (jqXHR, textStatus) {}
+    });
+    return false;
+  });
+  
+  $('a.deleteModuleButton').live('click', function() {  
+    var diagRes = confirm('Jeste li sigurni da želite izbrisati ovaj modul?');
+
+    if (diagRes) {
+      $moduleId = $(this).attr('data-module-id');
+
+      $.ajax ({
+        type: 'GET',
+        url: "/admin/ajax/customModule/delete/" + $moduleId,
+        dataType: 'json',
+        beforeSend: function (jqXHR, settings) {
+          //showLoader ($institutionProfiles.siblings ('label'));
+        },
+        success: function (data, textStatus, jqXHR) {
+          $('div#module' + $moduleId).parents('li').first().fadeOut(300);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log ('Error: ', textStatus, errorThrown);
+        },
+        complete: function (jqXHR, textStatus) {}
+      });
+
+    }
+  });
+  
+  $('a#contentModuleMenuCancel').live('click', function () {
+      var diagRes = confirm('Jeste li sigurni da želite izbrisati ovaj modul?');
+
+      if (diagRes) {
+        $moduleId = $(this).attr('data-module-id');
+
+        $.ajax ({
+          type: 'GET',
+          url: "/admin/ajax/customModule/delete/" + $moduleId,
+          dataType: 'json',
+          beforeSend: function (jqXHR, settings) {
+            //showLoader ($institutionProfiles.siblings ('label'));
+          },
+          success: function (data, textStatus, jqXHR) {
+            $('#contentModuleMenu').remove();
+            $('div#module' + $moduleId).parents('li').first().fadeOut(300, function() {
+              $(this).remove();
+            });
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.log ('Error: ', textStatus, errorThrown);
+          },
+          complete: function (jqXHR, textStatus) {}
+        });
+
+      }
+  });
+  
+  $('#contentModuleMenu a.newItem').live('click', function () {
+    var $newItem = $('<li class="moduleItem small"><select class="size"><option value="1">Usko</option><option value="2">Široko</option></select><a class="addText">Dodaj tekst</a><a class="addImage">Dodaj sliku</a> <a class="remove">Obriši</a><a class="moveUp">Gore</a><a class="moveDown">Dolje</a></li>');
+    
+    $moduleId = $(this).attr('data-module-id');
+    
+    // Add image behavior
+    $newItem.find ('a.addImage').click (function () {
+      var inputId = 'upload'+ parseInt (Math.random() * (1000 - 1) + 1);
+      $newItem.find ('a.addImage, a.addText').remove ();
+      $newItem.attr ('data-type', 'image');
+      $newItem.append ('<input type="file" name="image[]" id="'+ inputId +'" class="newImage" />');
+      $newItem.find ('input#' + inputId).uploadify ({
+        'uploader'        : '/js/uploadify/uploadify.swf',
+        'script'          : '/admin/ajax/customModule/uploadImage/' + $moduleId,
+        'scriptData'      : {
+          'SESSION_ID' : $('input#sessid').val ()
+        },
+        'cancelImg'       : '/js/uploadify/cancel.png',
+        'auto'            : true,
+        'fileDataName'    : 'image[]',
+        'fileExt'         : '*.jpg',
+        'fileDesc'        : 'JPEG Image Files',
+        'multi'           : false,
+        'removeCompleted' : true,
+        'onComplete'      : function (event, ID, fileObj, response, data) {
+          $newItem.find ('img').remove ();
+          response = $.parseJSON (response);
+          console.log ('completed', response, data);
+          $newItem.data ('itemId', response.itemId);
+          var $img = $('<img src="'+ response.imageUrl.small +'" data-wide="'+ response.imageUrl.wide +'" data-small="'+ response.imageUrl.small +'" alt=""/>');
+          $newItem.append ($img);
+        },
+        'onOpen'          : function (event, ID, fileObj) {
+          console.log ('OnOpen', ID, fileObj);
+        },
+        'onError'         : function (event, ID, fileObj, errorObj) {
+          console.log ('Error', event, Id, fileObj, errorObj);
+        }
+      });
+    });
+    // Add text behavior
+    $newItem.find ('a.addText').click (function () {
+      $newItem.attr ('data-type', 'text');
+      $newItem.find ('a.addImage, a.addText').remove ();
+      $newItem.append ('<div class="input"><label for="">Sadržaj</label><textarea class="content textarea" name="content" id="" rows="5" cols="50"></textarea></div>');
+      $newItem.append ('<div class="input"><label for="">Fusnota</label><textarea class="footnote textarea" name="footnote" id="" rows="5" cols="50"></textarea></div>');
+    });
+
+    $(this).parents ('li').before ($newItem);
+    $('#contentModuleMenu div.wrapper').first().mCustomScrollbar ('update');
+    return false;
+  });
+  
+  // Remove behaviour
+  $('#contentModuleMenu a.remove').live('click', function () {
+    $itemId = $(this).parents('li').first().attr('data-item-id');
+    
+    if ($itemId) {
+      $.ajax ({
+        type: 'GET',
+        url: "/admin/ajax/customModuleItemDelete/?itemId=" + $itemId,
+        dataType: 'json',
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log ('Error: ', textStatus, errorThrown);
+        },
+        complete: function (jqXHR, textStatus) {
+          
+        }
+      });
+      
+      $(this).parents('li').first().remove();
+    }
+  });
+  // Move up
+  $('#contentModuleMenu a.moveUp').live('click', function () {
+    if ($(this).parents('li').first().prev()) {
+      $(this).parents('li').first().insertBefore ($(this).parents('li').first().prev());
+    }
+  });
+  // Move down
+  $('#contentModuleMenu a.moveDown').live('click', function () {
+    if ($(this).parents('li').first().next()) {
+      $(this).parents('li').first().insertAfter ($(this).parents('li').first().next());
+    }
+  });
+  
+  $('#contentModuleMenu select.size').live('change', function () {
+    var $sibling = $(this).siblings ('img');
+    if ($(this).val () == '1') {
+      $(this).parents ('li.moduleItem').addClass ('small');
+      $sibling.attr ('src', $sibling.attr ('data-small'));
+    }
+    else {
+      $(this).parents ('li.moduleItem').removeClass ('small');
+      $sibling.attr ('src', $sibling.attr ('data-wide'));
+    }
+  });
+  
+  $('a.editModuleButton').live('click', function() {
+    $moduleId = $(this).attr('data-module-id');
+    
+    $.ajax ({
+      type: 'GET',
+      url: "/admin/ajax/editCustomModule/" + $moduleId,
+      success: function (data, textStatus, jqXHR) {
+        $('body').append(data)
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log ('Error: ', textStatus, errorThrown);
+      },
+      complete: function (jqXHR, textStatus) {}
+    });
+  });
 
   if ($('input.datetime').length > 0) {
     $('input.datetime').datetimepicker ({

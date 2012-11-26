@@ -347,6 +347,9 @@ class CustomModuleRepository extends Repository {
    */
   public function deleteCustomModule ($customModuleId) {
     try {
+      
+      $customModule = $this->getCustomModule(array('customModuleId' => $customModuleId));
+      
       $this->startTransaction ();
       $query = "
         DELETE FROM " . DBP . "customModule
@@ -356,6 +359,14 @@ class CustomModuleRepository extends Repository {
         ':customModuleId' => array ($customModuleId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      
+      if ($customModule->CustomModuleItems) {
+        foreach ($customModule->CustomModuleItems as $customModuleItem) {
+          if ($customModuleItem->customModuleImage && $customModuleItem->customModuleImage->Image) {
+            $customModuleItem->customModuleImage->Image->deleteFiles();
+          }
+        }
+      }
 
       $this->commit ();
 

@@ -29,6 +29,13 @@ class CustomModuleTextRepository extends Repository {
       ";
       $queryParams[':customModuleTextId'] = array (intval ($params['customModuleTextId']), PDO::PARAM_INT);
     }
+    
+    if (array_key_exists ('customModuleItemId', $params)) {
+      $query .= "
+        AND c.customModuleItemId = :customModuleItemId
+      ";
+      $queryParams[':customModuleItemId'] = array (intval ($params['customModuleItemId']), PDO::PARAM_INT);
+    }
 
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
@@ -251,6 +258,29 @@ class CustomModuleTextRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting custom module text record';
+        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+      }
+  }
+  
+  public function deleteCustomModuleTextByItem($customModuleItemId) {
+    try {
+      $this->startTransaction ();
+      $query = "
+        DELETE FROM " . DBP . "customModuleText
+        WHERE `customModuleItemId` = :customModuleItemId
+      ";
+      $queryParams = array (
+        ':customModuleItemId' => array ($customModuleItemId, PDO::PARAM_INT)
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+
+      $this->commit ();
+
+      return TRUE;
+     }
+      catch (Exception $e) {
+        $this->rollback ();
+        $message = 'An error occurred while deleting custom module text records';
         throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
       }
   }
