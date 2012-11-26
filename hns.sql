@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Računalo: localhost
--- Vrijeme generiranja: Stu 23, 2012 u 02:41 PM
+-- Vrijeme generiranja: Stu 26, 2012 u 04:06 PM
 -- Verzija poslužitelja: 5.5.24-log
 -- PHP verzija: 5.4.3
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `hns_customModule` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`customModuleId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=48 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_customModule`
@@ -136,8 +136,8 @@ CREATE TABLE IF NOT EXISTS `hns_customModule` (
 INSERT INTO `hns_customModule` (`customModuleId`, `class`, `created`, `modified`) VALUES
 (42, NULL, '2012-11-20 13:26:53', '2012-11-20 13:26:53'),
 (43, NULL, '2012-11-20 13:36:25', '2012-11-20 13:36:25'),
-(44, NULL, '2012-11-20 14:23:02', '2012-11-20 14:23:02'),
-(45, NULL, '2012-11-20 14:24:19', '2012-11-20 14:24:19');
+(46, NULL, '2012-11-26 16:49:32', '2012-11-26 16:49:32'),
+(47, NULL, '2012-11-26 16:54:12', '2012-11-26 16:54:12');
 
 -- --------------------------------------------------------
 
@@ -174,8 +174,7 @@ CREATE TABLE IF NOT EXISTS `hns_customModuleHasPage` (
 --
 
 INSERT INTO `hns_customModuleHasPage` (`customModuleId`, `pageId`, `created`) VALUES
-(44, 36, '0000-00-00 00:00:00'),
-(45, 36, '0000-00-00 00:00:00');
+(47, 38, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -191,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `hns_customModuleImage` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`customModuleImageId`),
   KEY `customMouleItemId` (`customModuleItemId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=51 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_customModuleImage`
@@ -202,9 +201,10 @@ INSERT INTO `hns_customModuleImage` (`customModuleImageId`, `customModuleItemId`
 (41, 50, NULL, '2012-11-20 13:27:07', '2012-11-20 13:27:07'),
 (42, 52, NULL, '2012-11-20 13:36:31', '2012-11-20 13:36:31'),
 (43, 53, NULL, '2012-11-20 13:36:41', '2012-11-20 13:36:41'),
-(44, 55, NULL, '2012-11-20 14:23:13', '2012-11-20 14:23:13'),
-(45, 56, NULL, '2012-11-20 14:23:28', '2012-11-20 14:23:28'),
-(46, 58, NULL, '2012-11-20 14:24:24', '2012-11-20 14:24:24');
+(47, 59, NULL, '2012-11-26 16:49:45', '2012-11-26 16:49:45'),
+(48, 60, NULL, '2012-11-26 16:49:59', '2012-11-26 16:49:59'),
+(49, 62, NULL, '2012-11-26 16:54:17', '2012-11-26 16:54:17'),
+(50, 63, NULL, '2012-11-26 16:54:24', '2012-11-26 16:54:24');
 
 -- --------------------------------------------------------
 
@@ -233,9 +233,10 @@ INSERT INTO `hns_customModuleImageImage` (`customModuleImageId`, `filename`, `wi
 (41, 'dwwq6zi7v1byz5lxgw2esfv0xbttcm4x.jpg', 640, 427, '2012-11-20 13:27:08', '0000-00-00 00:00:00'),
 (42, 'zdfvrl7wc63n870xa8i55e23mai3a181.jpg', 640, 427, '2012-11-20 13:36:31', '0000-00-00 00:00:00'),
 (43, '36u9gslkei8dcgwgb6d7rrvfmu4heha9.jpg', 640, 427, '2012-11-20 13:36:42', '0000-00-00 00:00:00'),
-(44, '2a5z1cvmb98ge4ec8h4m0il6hrj0db8t.jpg', 640, 427, '2012-11-20 14:23:14', '0000-00-00 00:00:00'),
-(45, 'vsa5g0225c4xb5rmz7pgnm7092vf8j2r.jpg', 640, 427, '2012-11-20 14:23:29', '0000-00-00 00:00:00'),
-(46, '4rm8s7g2e4zfujs6fxzc106sw1dp15ar.jpg', 640, 427, '2012-11-20 14:24:24', '0000-00-00 00:00:00');
+(47, 'y5exb56bro1ko03vwvxzrxn45euybtlr.jpg', 640, 427, '2012-11-26 16:49:46', '0000-00-00 00:00:00'),
+(48, 'iva06whf8fef6i04zqss699dnl06wv5y.jpg', 640, 427, '2012-11-26 16:49:59', '0000-00-00 00:00:00'),
+(49, 'xpj766pnkucpmup7brhf4ovay7n5bezq.jpg', 640, 427, '2012-11-26 16:54:17', '0000-00-00 00:00:00'),
+(50, '7wmi2ss0sm7dzj1mj61fxhel57xglaqv.jpg', 640, 427, '2012-11-26 16:54:25', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -254,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `hns_customModuleItem` (
   PRIMARY KEY (`customModuleItemId`),
   KEY `hns_FK_customModuleItemHasCustomModuleItemSize` (`customModuleItemSizeId`),
   KEY `hns_FK_customModuleItemHasCustomModule` (`customModuleId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=59 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=65 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_customModuleItem`
@@ -267,10 +268,12 @@ INSERT INTO `hns_customModuleItem` (`customModuleItemId`, `customModuleItemSizeI
 (52, 2, 43, 1, NULL, '2012-11-20 13:36:31', '2012-11-20 13:36:56'),
 (53, 1, 43, 2, NULL, '2012-11-20 13:36:41', '2012-11-20 13:36:56'),
 (54, 1, 43, 3, NULL, '2012-11-20 13:36:56', '2012-11-20 13:36:56'),
-(55, 2, 44, 1, NULL, '2012-11-20 14:23:13', '2012-11-20 14:23:58'),
-(56, 1, 44, 2, NULL, '2012-11-20 14:23:28', '2012-11-20 14:23:58'),
-(57, 1, 44, 3, NULL, '2012-11-20 14:23:58', '2012-11-20 14:23:58'),
-(58, 2, 45, 1, NULL, '2012-11-20 14:24:24', '2012-11-20 14:24:40');
+(59, 1, 46, 4, NULL, '2012-11-26 16:49:45', '2012-11-26 16:49:45'),
+(60, 1, 46, 5, NULL, '2012-11-26 16:49:59', '2012-11-26 16:49:59'),
+(61, 1, 46, 2, NULL, '2012-11-26 16:50:06', '2012-11-26 16:50:06'),
+(62, 2, 47, 1, NULL, '2012-11-26 16:54:17', '2012-11-26 16:56:29'),
+(63, 1, 47, 2, NULL, '2012-11-26 16:54:24', '2012-11-26 16:56:29'),
+(64, 1, 47, 3, NULL, '2012-11-26 16:54:31', '2012-11-26 16:56:29');
 
 -- --------------------------------------------------------
 
@@ -310,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `hns_customModuleText` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`customModuleTextId`),
   KEY `customModuleItemId` (`customModuleItemId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_customModuleText`
@@ -319,7 +322,8 @@ CREATE TABLE IF NOT EXISTS `hns_customModuleText` (
 INSERT INTO `hns_customModuleText` (`customModuleTextId`, `customModuleItemId`, `content`, `footnote`, `created`, `modified`) VALUES
 (7, 51, 'Neki tekst u modulu, vezano za slike.', 'Fusnota, na slici gore Å timac, lijevo JelaviÄ‡.', '2012-11-20 13:27:36', '2012-11-20 13:27:36'),
 (8, 54, 'I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.', 'NA SLICI\r\nAutor fotogracije (ako ima)', '2012-11-20 13:36:56', '2012-11-20 13:36:56'),
-(9, 57, 'I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.', 'NA SLICI\nAutor fotogracije (ako ima)', '2012-11-20 14:23:58', '2012-11-20 14:23:58');
+(10, 61, 'bla', 'blah', '2012-11-26 16:50:06', '2012-11-26 16:50:06'),
+(13, 64, 'kpokpok', 'pokpo', '2012-11-26 16:56:29', '2012-11-26 16:56:29');
 
 -- --------------------------------------------------------
 
@@ -430,6 +434,147 @@ INSERT INTO `hns_language` (`languageId`, `name`, `code2`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tablična struktura za tablicu `hns_member`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_member` (
+  `memberId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `memberCategoryId` int(10) unsigned NOT NULL,
+  `teamId` int(10) unsigned NOT NULL,
+  `firstName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lastName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `position` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `birthDate` date DEFAULT NULL,
+  `birthPlace` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `height` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `club` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pastClubs` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `playCount` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `firstPlayDate` date DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`memberId`),
+  KEY `hns_FK_memberHasMemberCategory` (`memberCategoryId`),
+  KEY `hns_FK_memberHasTeam` (`teamId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_member`
+--
+
+INSERT INTO `hns_member` (`memberId`, `memberCategoryId`, `teamId`, `firstName`, `slug`, `lastName`, `position`, `birthDate`, `birthPlace`, `height`, `club`, `pastClubs`, `playCount`, `firstPlayDate`, `created`, `modified`) VALUES
+(1, 3, 1, 'Domagoj', 'domagoj', 'Vida', 'srednji braniÄ, desni boÄni', '1989-04-29', 'Osijek', '182 cm', 'GNK Dinamo Zagreb (CRO)', 'NK Osijek, Bayer Leverkusen', '14', '2010-05-23', '2012-11-26 12:21:42', '2012-11-26 12:40:45');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_memberCategory`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_memberCategory` (
+  `memberCategoryId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`memberCategoryId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_memberCategory`
+--
+
+INSERT INTO `hns_memberCategory` (`memberCategoryId`, `created`, `modified`) VALUES
+(1, '2012-11-26 11:49:23', '2012-11-26 11:49:23'),
+(2, '2012-11-26 11:49:31', '2012-11-26 11:49:31'),
+(3, '2012-11-26 11:49:40', '2012-11-26 11:49:40'),
+(4, '2012-11-26 11:49:48', '2012-11-26 11:49:48'),
+(5, '2012-11-26 11:49:53', '2012-11-26 11:49:53'),
+(6, '2012-11-26 11:50:05', '2012-11-26 11:50:05'),
+(7, '2012-11-26 11:50:16', '2012-11-26 11:50:16');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_memberCategoryI18n`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_memberCategoryI18n` (
+  `memberCategoryId` int(10) unsigned NOT NULL,
+  `languageId` char(3) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`memberCategoryId`,`languageId`),
+  KEY `hns_FK_memberCategoryI18nHasMemberCategory` (`memberCategoryId`),
+  KEY `hns_FK_memberCategoryI18nHasLanguage` (`languageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Izbacivanje podataka za tablicu `hns_memberCategoryI18n`
+--
+
+INSERT INTO `hns_memberCategoryI18n` (`memberCategoryId`, `languageId`, `name`, `slug`, `created`, `modified`) VALUES
+(1, 'hrv', 'Izbornik', 'izbornik', '2012-11-26 11:49:23', '2012-11-26 11:49:23'),
+(2, 'hrv', 'Vratar', 'vratar', '2012-11-26 11:49:31', '2012-11-26 11:49:31'),
+(3, 'hrv', 'Obrana', 'obrana', '2012-11-26 11:49:40', '2012-11-26 11:49:40'),
+(4, 'hrv', 'Vezni red', 'vezni-red', '2012-11-26 11:49:48', '2012-11-26 11:49:48'),
+(5, 'hrv', 'Napad', 'napad', '2012-11-26 11:49:53', '2012-11-26 11:49:53'),
+(6, 'hrv', 'StruÄni stoÅ¾er', 'strucni-stozer', '2012-11-26 11:50:05', '2012-11-26 11:50:05'),
+(7, 'hrv', 'Å iri struÄni stoÅ¾er', 'siri-strucni-stozer', '2012-11-26 11:50:16', '2012-11-26 11:50:16');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_memberI18n`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_memberI18n` (
+  `memberId` int(10) unsigned NOT NULL,
+  `languageId` char(3) COLLATE utf8_unicode_ci NOT NULL,
+  `biography` text COLLATE utf8_unicode_ci,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`memberId`,`languageId`),
+  KEY `hns_FK_memberI18nHasMember` (`memberId`),
+  KEY `hns_FK_memberI18nHasLanguage` (`languageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Izbacivanje podataka za tablicu `hns_memberI18n`
+--
+
+INSERT INTO `hns_memberI18n` (`memberId`, `languageId`, `biography`, `created`, `modified`) VALUES
+(1, 'hrv', '<p>Biografija ovdje...</p>', '2012-11-26 12:21:42', '2012-11-26 12:40:45');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_memberImage`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_memberImage` (
+  `memberId` int(10) unsigned NOT NULL,
+  `filename` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `width` smallint(5) unsigned NOT NULL,
+  `height` smallint(5) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`memberId`),
+  UNIQUE KEY `filename` (`filename`),
+  KEY `hns_FK_memberImageHasMember` (`memberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Izbacivanje podataka za tablicu `hns_memberImage`
+--
+
+INSERT INTO `hns_memberImage` (`memberId`, `filename`, `width`, `height`, `created`, `modified`) VALUES
+(1, 'unqnpx731ocb91g9bi07q0x1hu82zeb4.jpg', 719, 429, '2012-11-26 12:21:42', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Tablična struktura za tablicu `hns_newsItem`
 --
 
@@ -506,44 +651,45 @@ CREATE TABLE IF NOT EXISTS `hns_page` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`pageId`),
   KEY `hns_FK_pageHasPage` (`parentId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_page`
 --
 
 INSERT INTO `hns_page` (`pageId`, `lft`, `rgt`, `parentId`, `isException`, `isVisible`, `isEditable`, `isPublished`, `canAddChildren`, `canBeDeleted`, `class`, `created`, `modified`) VALUES
-(1, 1, 64, NULL, 1, 0, 0, 1, 0, 0, NULL, '2012-11-14 14:47:33', '2012-11-16 10:44:25'),
-(2, 2, 21, 1, 1, 1, 0, 1, 1, 0, 'hns', '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
-(3, 22, 33, 1, 1, 1, 1, 1, 1, 0, 'selection', '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
-(4, 34, 47, 1, 1, 1, 1, 1, 1, 0, 'competitions', '2012-11-14 15:11:09', '2012-11-14 15:26:41'),
-(5, 48, 61, 1, 1, 1, 0, 1, 1, 0, 'infocenter', '2012-11-14 15:12:12', '2012-11-14 15:12:12'),
-(6, 62, 63, 1, 1, 1, 0, 1, 1, 0, 'press', '2012-11-14 15:13:00', '2012-11-14 15:13:00'),
-(7, 3, 8, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:14:49', '2012-11-14 16:07:43'),
-(8, 9, 10, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:16:12', '2012-11-14 15:16:12'),
-(9, 11, 12, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:17:24', '2012-11-14 15:17:24'),
-(10, 13, 14, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:18:25', '2012-11-14 15:18:25'),
-(11, 15, 16, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:19:45', '2012-11-14 15:19:45'),
-(12, 17, 18, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:20:41', '2012-11-14 15:20:41'),
-(13, 19, 20, 2, 1, 1, 1, 1, 1, 0, 'contact', '2012-11-14 15:21:23', '2012-11-14 15:21:23'),
-(14, 23, 24, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:22:36', '2012-11-14 15:22:36'),
-(15, 25, 26, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:11', '2012-11-14 15:23:11'),
-(16, 27, 28, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:55', '2012-11-14 15:23:55'),
-(17, 29, 30, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:24:56', '2012-11-14 15:24:56'),
-(18, 31, 32, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:26:00', '2012-11-14 15:26:00'),
-(19, 35, 36, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:27:59', '2012-11-14 15:28:23'),
-(21, 37, 38, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:32:26', '2012-11-14 15:32:26'),
-(22, 39, 40, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
-(23, 41, 42, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
-(24, 43, 44, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
-(25, 45, 46, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
-(26, 49, 50, 5, 1, 1, 0, 1, 0, 0, 'news', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
-(27, 51, 52, 5, 1, 1, 0, 1, 0, 0, 'actualities', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
-(28, 53, 54, 5, 1, 1, 0, 1, 0, 0, 'tv', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
-(29, 55, 56, 5, 1, 1, 0, 1, 0, 0, 'gallery', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
-(30, 57, 58, 5, 1, 1, 0, 1, 0, 0, 'blog', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
-(31, 59, 60, 5, 1, 1, 0, 1, 0, 0, 'magazine', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
-(36, 4, 5, 7, 0, 1, 1, 1, 1, 1, NULL, '2012-11-20 14:26:59', '2012-11-20 14:29:36');
+(1, 1, 66, NULL, 1, 0, 0, 1, 0, 0, NULL, '2012-11-14 14:47:33', '2012-11-16 10:44:25'),
+(2, 2, 23, 1, 1, 1, 0, 1, 1, 0, 'hns', '2012-11-14 15:08:19', '2012-11-16 10:08:42'),
+(3, 24, 35, 1, 1, 1, 1, 1, 1, 0, 'selection', '2012-11-14 15:10:07', '2012-11-14 15:10:07'),
+(4, 36, 49, 1, 1, 1, 1, 1, 1, 0, 'competitions', '2012-11-14 15:11:09', '2012-11-14 15:26:41'),
+(5, 50, 63, 1, 1, 1, 0, 1, 1, 0, 'infocenter', '2012-11-14 15:12:12', '2012-11-14 15:12:12'),
+(6, 64, 65, 1, 1, 1, 0, 1, 1, 0, 'press', '2012-11-14 15:13:00', '2012-11-14 15:13:00'),
+(7, 3, 10, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:14:49', '2012-11-14 16:07:43'),
+(8, 11, 12, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:16:12', '2012-11-14 15:16:12'),
+(9, 13, 14, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:17:24', '2012-11-14 15:17:24'),
+(10, 15, 16, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:18:25', '2012-11-14 15:18:25'),
+(11, 17, 18, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:19:45', '2012-11-14 15:19:45'),
+(12, 19, 20, 2, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:20:41', '2012-11-14 15:20:41'),
+(13, 21, 22, 2, 1, 1, 1, 1, 1, 0, 'contact', '2012-11-14 15:21:23', '2012-11-14 15:21:23'),
+(14, 25, 26, 3, 1, 1, 1, 1, 0, 0, 'team', '2012-11-14 15:22:36', '2012-11-26 13:17:04'),
+(15, 27, 28, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:11', '2012-11-14 15:23:11'),
+(16, 29, 30, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:23:55', '2012-11-14 15:23:55'),
+(17, 31, 32, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:24:56', '2012-11-14 15:24:56'),
+(18, 33, 34, 3, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:26:00', '2012-11-14 15:26:00'),
+(19, 37, 38, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:27:59', '2012-11-14 15:28:23'),
+(21, 39, 40, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:32:26', '2012-11-14 15:32:26'),
+(22, 41, 42, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
+(23, 43, 44, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
+(24, 45, 46, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
+(25, 47, 48, 4, 0, 1, 1, 1, 1, 1, NULL, '2012-11-14 15:39:30', '2012-11-14 15:39:30'),
+(26, 51, 52, 5, 1, 1, 0, 1, 0, 0, 'news', '2012-11-14 15:41:00', '2012-11-16 10:43:11'),
+(27, 53, 54, 5, 1, 1, 0, 1, 0, 0, 'actualities', '2012-11-14 15:41:43', '2012-11-16 10:42:57'),
+(28, 55, 56, 5, 1, 1, 0, 1, 0, 0, 'tv', '2012-11-14 15:42:30', '2012-11-16 10:42:44'),
+(29, 57, 58, 5, 1, 1, 0, 1, 0, 0, 'gallery', '2012-11-14 15:43:01', '2012-11-16 10:41:27'),
+(30, 59, 60, 5, 1, 1, 0, 1, 0, 0, 'blog', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
+(31, 61, 62, 5, 1, 1, 0, 1, 0, 0, 'magazine', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
+(37, 4, 5, 7, 0, 0, 0, 0, 0, 0, NULL, '2012-11-26 16:50:45', '2012-11-26 16:50:45'),
+(38, 6, 7, 7, 0, 1, 1, 1, 0, 0, NULL, '2012-11-26 16:54:39', '2012-11-26 16:56:30');
 
 -- --------------------------------------------------------
 
@@ -621,7 +767,7 @@ INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `
 (13, 'eng', 'Contact', 'Contact', 'contact', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:21:23', '2012-11-14 15:21:23'),
 (13, 'hrv', 'Kontakti', 'Kontakti', 'kontakti', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:21:23', '2012-11-14 15:21:23'),
 (14, 'eng', 'A representation', 'A representation', 'a-representation', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:22:36', '2012-11-14 15:22:36'),
-(14, 'hrv', 'A reprezentacija', 'A reprezentacija', 'a-reprezentacija', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:22:36', '2012-11-14 15:22:36'),
+(14, 'hrv', 'A reprezentacija', 'A reprezentacija', 'a-reprezentacija', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:22:36', '2012-11-26 13:17:04'),
 (15, 'eng', 'U-21', 'U-21', 'u21', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:23:11', '2012-11-14 15:23:11'),
 (15, 'hrv', 'U-21', 'U-21', 'u21', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:23:11', '2012-11-14 15:23:11'),
 (16, 'eng', 'Football for youth', 'Footbal for youth', 'footbal-for-youth', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:23:55', '2012-11-14 15:23:55'),
@@ -636,7 +782,7 @@ INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `
 (21, 'hrv', '2. HNL', '2. HNL', '2-hnl', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:32:26', '2012-11-14 15:32:26'),
 (22, 'eng', 'Regional Alliances', 'Regional Alliances', 'regional-alliances', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
 (22, 'hrv', 'Å½upanijski savezi', 'Å½upanijski savezi', 'zupanijski-savezi', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
-(23, 'eng', 'Klub Licencing', 'Klub Licencing', 'club-licencing', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
+(23, 'eng', 'Club Licencing', 'Club Licencing', 'club-licencing', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
 (23, 'hrv', 'Licenciranje klubova', 'Licenciranje klubova', 'licenciranje-klubova', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
 (24, 'eng', 'Player Licencing', 'Player Licencing', 'player-licencing', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
 (24, 'hrv', 'Licenciranje igraÄa', 'Licenciranje igraÄa', 'licenciranje-igraca', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
@@ -654,7 +800,56 @@ INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `
 (30, 'hrv', 'Blog', 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:43:43', '2012-11-16 10:42:09'),
 (31, 'eng', 'CFF Magazine', 'CFF Magazine', 'cff-magazine', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
 (31, 'hrv', 'HNS ÄŒasopis', 'HNS ÄŒasopis', 'hns-casopis', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:44:23', '2012-11-16 10:41:55'),
-(36, 'hrv', 'Test', 'Test', 'test', '<p>When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing, Oh, would I could describe these conceptions, could impress upon paper all that is living so full and warm within me, that it might be the mirror of my soul, as my soul is the mirror of the infinite God!</p>\r\n<p>O my friend -- but it is too much for my strength -- I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. {{module44}} I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.</p>\r\n<p>I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing.</p>\r\n<p>I sink under the weight of the splendour of these visions! A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single.</p>\r\n<p>{{module45}}</p>\r\n<p>Player, who formed us in his own image, and the breath of that universal love which bears and sustains us, as it floats around us in an eternity of bliss; and then, my friend, when darkness overspreads my eyes, and heaven and earth seem to dwell in my soul and absorb its power, like the form of a beloved mistress, then I often think with longing.</p>', '<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</p>', NULL, NULL, NULL, 'Test', '2012-11-20 14:26:59', '2012-11-20 14:29:36');
+(37, 'hrv', 'Test2', 'Test2', 'test2', '<p>Blah</p>\r\n<p>{{module46}}</p>', NULL, NULL, NULL, NULL, NULL, '2012-11-26 16:50:45', '2012-11-26 16:50:45'),
+(38, 'hrv', 'Test', 'Test', 'test', '<p>hiuhilu</p>\r\n<p>{{module47}}</p>', NULL, NULL, NULL, NULL, 'Test', '2012-11-26 16:54:39', '2012-11-26 16:56:30');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_team`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_team` (
+  `teamId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`teamId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Izbacivanje podataka za tablicu `hns_team`
+--
+
+INSERT INTO `hns_team` (`teamId`, `created`, `modified`) VALUES
+(1, '2012-11-26 11:46:48', '2012-11-26 13:34:19'),
+(2, '2012-11-26 11:47:05', '2012-11-26 13:34:09');
+
+-- --------------------------------------------------------
+
+--
+-- Tablična struktura za tablicu `hns_teamI18n`
+--
+
+CREATE TABLE IF NOT EXISTS `hns_teamI18n` (
+  `teamId` int(10) unsigned NOT NULL,
+  `languageId` char(3) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`teamId`,`languageId`),
+  UNIQUE KEY `name` (`name`,`languageId`),
+  KEY `hns_FK_teamI18nHasTeam` (`teamId`),
+  KEY `hns_FK_teamI18nHasLanguage` (`languageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Izbacivanje podataka za tablicu `hns_teamI18n`
+--
+
+INSERT INTO `hns_teamI18n` (`teamId`, `languageId`, `name`, `slug`, `created`, `modified`) VALUES
+(1, 'hrv', 'A Reprezentacija', 'a-reprezentacija', '2012-11-26 11:46:48', '2012-11-26 13:34:19'),
+(2, 'hrv', 'B Reprezentacija', 'b-reprezentacija', '2012-11-26 11:47:05', '2012-11-26 13:34:09');
 
 -- --------------------------------------------------------
 
@@ -671,14 +866,15 @@ CREATE TABLE IF NOT EXISTS `hns_user` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`userId`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Izbacivanje podataka za tablicu `hns_user`
 --
 
 INSERT INTO `hns_user` (`userId`, `username`, `slug`, `password`, `created`, `modified`) VALUES
-(1, 'fiktiv', '', '5cff90e3fd8e26e008af629b5a081493', '2012-11-14 14:38:47', NULL);
+(1, 'fiktiv', '', '5cff90e3fd8e26e008af629b5a081493', '2012-11-14 14:38:47', NULL),
+(2, 'hns', 'hns', '7815696ecbf1c96e6894b779456d330e', '2012-11-26 16:35:51', '2012-11-26 16:35:51');
 
 -- --------------------------------------------------------
 
@@ -700,7 +896,8 @@ CREATE TABLE IF NOT EXISTS `hns_userHasUserRole` (
 --
 
 INSERT INTO `hns_userHasUserRole` (`userId`, `userRoleId`, `created`) VALUES
-(1, 1, '2012-11-14 14:38:47');
+(1, 1, '2012-11-14 14:38:47'),
+(2, 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -776,6 +973,44 @@ CREATE TABLE IF NOT EXISTS `hns_vw_gallery` (
 -- --------------------------------------------------------
 
 --
+-- Unutarnja struktura za pregledavanje `hns_vw_member`
+--
+CREATE TABLE IF NOT EXISTS `hns_vw_member` (
+`memberId` int(10) unsigned
+,`languageId` char(3)
+,`memberCategoryId` int(10) unsigned
+,`teamId` int(10) unsigned
+,`firstName` varchar(50)
+,`slug` varchar(255)
+,`lastName` varchar(50)
+,`position` varchar(100)
+,`birthDate` date
+,`birthPlace` varchar(100)
+,`height` varchar(20)
+,`club` varchar(50)
+,`pastClubs` varchar(255)
+,`playCount` varchar(100)
+,`firstPlayDate` date
+,`biography` text
+,`created` datetime
+,`modified` datetime
+);
+-- --------------------------------------------------------
+
+--
+-- Unutarnja struktura za pregledavanje `hns_vw_memberCategory`
+--
+CREATE TABLE IF NOT EXISTS `hns_vw_memberCategory` (
+`memberCategoryId` int(10) unsigned
+,`languageId` char(3)
+,`name` varchar(255)
+,`slug` varchar(255)
+,`created` datetime
+,`modified` datetime
+);
+-- --------------------------------------------------------
+
+--
 -- Unutarnja struktura za pregledavanje `hns_vw_pagetree`
 --
 CREATE TABLE IF NOT EXISTS `hns_vw_pagetree` (
@@ -808,6 +1043,19 @@ CREATE TABLE IF NOT EXISTS `hns_vw_pagetree` (
 -- --------------------------------------------------------
 
 --
+-- Unutarnja struktura za pregledavanje `hns_vw_team`
+--
+CREATE TABLE IF NOT EXISTS `hns_vw_team` (
+`teamId` int(10) unsigned
+,`languageId` char(3)
+,`name` varchar(255)
+,`slug` varchar(255)
+,`created` datetime
+,`modified` datetime
+);
+-- --------------------------------------------------------
+
+--
 -- Unutarnja struktura za pregledavanje `hns_vw_video`
 --
 CREATE TABLE IF NOT EXISTS `hns_vw_video` (
@@ -832,11 +1080,38 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Struktura za pregledavanje `hns_vw_member`
+--
+DROP TABLE IF EXISTS `hns_vw_member`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hns_vw_member` AS select `member`.`memberId` AS `memberId`,`memberI18n`.`languageId` AS `languageId`,`member`.`memberCategoryId` AS `memberCategoryId`,`member`.`teamId` AS `teamId`,`member`.`firstName` AS `firstName`,`member`.`slug` AS `slug`,`member`.`lastName` AS `lastName`,`member`.`position` AS `position`,`member`.`birthDate` AS `birthDate`,`member`.`birthPlace` AS `birthPlace`,`member`.`height` AS `height`,`member`.`club` AS `club`,`member`.`pastClubs` AS `pastClubs`,`member`.`playCount` AS `playCount`,`member`.`firstPlayDate` AS `firstPlayDate`,`memberI18n`.`biography` AS `biography`,`member`.`created` AS `created`,`member`.`modified` AS `modified` from (`hns_member` `member` join `hns_memberI18n` `memberI18n` on((`member`.`memberId` = `memberI18n`.`memberId`)));
+
+-- --------------------------------------------------------
+
+--
+-- Struktura za pregledavanje `hns_vw_memberCategory`
+--
+DROP TABLE IF EXISTS `hns_vw_memberCategory`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hns_vw_memberCategory` AS select `memberCategory`.`memberCategoryId` AS `memberCategoryId`,`memberCategoryI18n`.`languageId` AS `languageId`,`memberCategoryI18n`.`name` AS `name`,`memberCategoryI18n`.`slug` AS `slug`,`memberCategory`.`created` AS `created`,`memberCategory`.`modified` AS `modified` from (`hns_memberCategory` `memberCategory` join `hns_memberCategoryI18n` `memberCategoryI18n` on((`memberCategory`.`memberCategoryId` = `memberCategoryI18n`.`memberCategoryId`)));
+
+-- --------------------------------------------------------
+
+--
 -- Struktura za pregledavanje `hns_vw_pagetree`
 --
 DROP TABLE IF EXISTS `hns_vw_pagetree`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hns_vw_pagetree` AS select `page`.`pageId` AS `pageId`,`page`.`lft` AS `lft`,`page`.`rgt` AS `rgt`,`page`.`parentId` AS `parentId`,`pagei18n`.`languageId` AS `languageId`,(count(distinct `parent`.`pageId`) - 1) AS `depth`,group_concat(distinct `parenti18n`.`slug` separator '/') AS `fullUri`,`pagei18n`.`title` AS `title`,`pagei18n`.`navigationName` AS `navigationName`,`pagei18n`.`slug` AS `slug`,`pagei18n`.`content` AS `content`,`pagei18n`.`lead` AS `lead`,`pagei18n`.`metaTitle` AS `metaTitle`,`pagei18n`.`metaDescription` AS `metaDescription`,`pagei18n`.`metaKeywords` AS `metaKeywords`,`page`.`isException` AS `isException`,`page`.`isVisible` AS `isVisible`,`page`.`isEditable` AS `isEditable`,`page`.`isPublished` AS `isPublished`,`page`.`canAddChildren` AS `canAddChildren`,`page`.`canBeDeleted` AS `canBeDeleted`,`page`.`class` AS `class`,`pagei18n`.`navigationDescription` AS `navigationDescription`,`page`.`created` AS `created`,`page`.`modified` AS `modified` from ((((((`hns_page` `page` left join `hns_pageI18n` `pagei18n` on((`page`.`pageId` = `pagei18n`.`pageId`))) join `hns_language` `language` on((`pagei18n`.`languageId` = `language`.`languageId`))) left join `hns_page` `parentpage` on((`parentpage`.`pageId` = `page`.`parentId`))) join `hns_page` `parent`) left join `hns_pageI18n` `parenti18n` on(((`parent`.`pageId` = `parenti18n`.`pageId`) and (`parenti18n`.`languageId` = `pagei18n`.`languageId`)))) left join `hns_pageI18n` `parentpagei18n` on(((`page`.`parentId` = `parentpagei18n`.`pageId`) and (`parentpagei18n`.`languageId` = `pagei18n`.`languageId`)))) where (`page`.`lft` between `parent`.`lft` and `parent`.`rgt`) group by `page`.`pageId`,`language`.`languageId` order by `page`.`lft`;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura za pregledavanje `hns_vw_team`
+--
+DROP TABLE IF EXISTS `hns_vw_team`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hns_vw_team` AS select `team`.`teamId` AS `teamId`,`teamI18n`.`languageId` AS `languageId`,`teamI18n`.`name` AS `name`,`teamI18n`.`slug` AS `slug`,`team`.`created` AS `created`,`team`.`modified` AS `modified` from (`hns_team` `team` join `hns_teamI18n` `teamI18n` on((`team`.`teamId` = `teamI18n`.`teamId`)));
 
 -- --------------------------------------------------------
 
@@ -923,6 +1198,33 @@ ALTER TABLE `hns_galleryImage`
   ADD CONSTRAINT `hns_galleryImage_ibfk_1` FOREIGN KEY (`galleryId`) REFERENCES `hns_gallery` (`galleryId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ograničenja za tablicu `hns_member`
+--
+ALTER TABLE `hns_member`
+  ADD CONSTRAINT `hns_member_ibfk_1` FOREIGN KEY (`memberCategoryId`) REFERENCES `hns_membercategory` (`memberCategoryId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_member_ibfk_2` FOREIGN KEY (`teamId`) REFERENCES `hns_team` (`teamId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_memberCategoryI18n`
+--
+ALTER TABLE `hns_memberCategoryI18n`
+  ADD CONSTRAINT `hns_membercategoryi18n_ibfk_1` FOREIGN KEY (`memberCategoryId`) REFERENCES `hns_membercategory` (`memberCategoryId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_membercategoryi18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_memberI18n`
+--
+ALTER TABLE `hns_memberI18n`
+  ADD CONSTRAINT `hns_memberi18n_ibfk_1` FOREIGN KEY (`memberId`) REFERENCES `hns_member` (`memberId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_memberi18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_memberImage`
+--
+ALTER TABLE `hns_memberImage`
+  ADD CONSTRAINT `hns_memberimage_ibfk_1` FOREIGN KEY (`memberId`) REFERENCES `hns_member` (`memberId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ograničenja za tablicu `hns_newsItemCoverImage`
 --
 ALTER TABLE `hns_newsItemCoverImage`
@@ -946,6 +1248,13 @@ ALTER TABLE `hns_pageCoverImage`
 ALTER TABLE `hns_pageI18n`
   ADD CONSTRAINT `hns_pageI18n_ibfk_1` FOREIGN KEY (`pageId`) REFERENCES `hns_page` (`pageId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hns_pageI18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograničenja za tablicu `hns_teamI18n`
+--
+ALTER TABLE `hns_teamI18n`
+  ADD CONSTRAINT `hns_teami18n_ibfk_1` FOREIGN KEY (`teamId`) REFERENCES `hns_team` (`teamId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_teami18n_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `hns_language` (`languageId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_userHasUserRole`
