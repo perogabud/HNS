@@ -42,6 +42,13 @@ class StandardContentManager extends ContentManager {
       case 'home':
         if ($this->_checkParams (1)) {
           $this->_setTemplate ('home');
+			    $this->_setElements (
+			      array (
+			        'scripts' => array (
+			          'filename' => 'homeScripts'
+			        )
+			      )
+			    );
           $newsItemController = NewsItemController::getInstance ();
           $this->_setData (
             array (
