@@ -9,3 +9,4 @@
 /app/core/configuration.php
 .htaccess
 /img/customModuleImage/
+error_log.txt
