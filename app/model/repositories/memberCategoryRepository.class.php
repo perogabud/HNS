@@ -37,7 +37,7 @@ class MemberCategoryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching member category record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -94,7 +94,7 @@ class MemberCategoryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of member category records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['memberCategoryCount']);
@@ -147,7 +147,7 @@ class MemberCategoryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching member category records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -207,7 +207,7 @@ class MemberCategoryRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding member category record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getMemberCategory (array ('memberCategoryId' => $memberCategoryId));
   }
@@ -261,7 +261,7 @@ class MemberCategoryRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating member category record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -291,7 +291,7 @@ class MemberCategoryRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting member category record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
   

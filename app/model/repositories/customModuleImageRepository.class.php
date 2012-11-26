@@ -35,7 +35,7 @@ class CustomModuleImageRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching custom module image record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -71,7 +71,7 @@ class CustomModuleImageRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching custom module image record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -119,7 +119,7 @@ class CustomModuleImageRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of custom module image records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['customModuleImageCount']);
@@ -170,7 +170,7 @@ class CustomModuleImageRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching custom module image records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -264,7 +264,7 @@ class CustomModuleImageRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding custom module image record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getCustomModuleImage (array ('customModuleImageId' => $customModuleImageId));
   }
@@ -345,7 +345,7 @@ class CustomModuleImageRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating custom module image record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -377,7 +377,7 @@ class CustomModuleImageRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting custom module image record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
 

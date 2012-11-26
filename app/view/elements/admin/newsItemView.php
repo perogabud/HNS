@@ -8,8 +8,8 @@
     </ul>
     <dl class="info">
       <dt>Jezik</dt>
-      <?php if ($newsItem->getJezik ()): ?>
-      <dd><?php echo $newsItem->getJezik ()->getName(); ?></dd>
+      <?php if ($newsItem->getLanguage ()): ?>
+      <dd><?php echo $newsItem->getLanguage ()->getName(); ?></dd>
       <?php endif; ?>
       <dt>Naslov</dt>
       <?php if ($newsItem->getTitle ()): ?>

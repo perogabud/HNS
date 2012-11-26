@@ -31,17 +31,16 @@ class Member extends ModelObject {
 
   public static function getLanguageFields () {
     return array (
-      'slug',
       'biography'
     );
   }
 
-  public function getSlug ($lang = NULL) {
-    return $this->_getLanguageMember ($this->_slug, $lang);
+  public function getSlug () {
+    return $this->_slug;
   }
 
   public function getUrl () {
-    return $this->_rootUrl . 'member' . '/' . $this->_slug;
+    return $this->_rootUrl . Dict::read ('slug_selections') .'/' . $this->_team->getSlug () . '/' . $this->_slug;
   }
 
   public function getName ($lastFirst = FALSE) {

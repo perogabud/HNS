@@ -44,7 +44,7 @@ class UserRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching user record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -117,7 +117,7 @@ class UserRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of user records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['userCount']);
@@ -177,7 +177,7 @@ class UserRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching user records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -240,7 +240,7 @@ class UserRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding user record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getUser (array ('userId' => $userId));
   }
@@ -312,7 +312,7 @@ class UserRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating user record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -342,7 +342,7 @@ class UserRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting user record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
   

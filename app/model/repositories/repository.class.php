@@ -203,12 +203,16 @@ class Repository {
       foreach ($params as $name => &$value) {
         if (is_array ($value)) {
           $statement->bindValue ($name, $value[0], $value[1]);
+          //echo 'Bind (' . $name . ', ' . $value[0] . ', ' . $value[1] . ')' . "<br />";
         }
         else {
-          $statement->bindValue ($name, $value);
+          $statement->bindValue ($name, $value, PDO::PARAM_STR);
         }
       }
 
+      /*echo '<pre>';
+      print_r ($statement);
+      echo '</pre>';*/
       $startTime = Tools::microtimeFloat ();
       $result = $statement->execute ();
       $endTime = Tools::microtimeFloat ();
@@ -228,13 +232,15 @@ class Repository {
         FB::info ($paramsString, 'Params');
       }
 
+      //$statement->debugDumpParams ();
+      
       // Get debug string
-      if (Config::read ('debug')) {
+      /*if (Config::read ('debug')) {
         ob_start ();
         $statement->debugDumpParams ();
         $output = ob_get_contents ();
         ob_end_clean ();
-      }
+      }*/
       //FB::log ($output);
       FB::log ($query);
 
@@ -839,14 +845,75 @@ class Repository {
     }
 
     $query = "
-			ORDER BY `$order` $direction
+			ORDER BY $order $direction
 		";
-    if (!is_null ($limit)) {
+    if (isset ($params['limitStart']) && !is_null ($limit)) {
+      $query .= "
+				LIMIT " . intval ($params['limitStart']) . ", $limit
+			";
+    }
+    elseif (!is_null ($limit)) {
       $query .= "
 				LIMIT " . ($iteration - 1) * $limit . ", $limit
 			";
     }
     return $query;
+  }
+
+  public function getLanguage ($params = array ()) {
+    if (empty ($params)) {
+        return NULL;
+}
+
+    $query = "
+      SELECT *
+      FROM ". DBP ."language AS l
+      WHERE 1 = 1
+    ";
+
+    $queryParams = array ();
+
+    if (array_key_exists ('languageId', $params)) {
+      $query .= "
+        AND l.languageId = :languageId
+      ";
+      $queryParams[':languageId'] = trim ($params['languageId']);
+    }
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news item record';
+      throw new Exception ($message . $e->getMessage());
+    }
+
+    if (!$results || empty ($results)) {
+      return NULL;
+    }
+
+    return Factory::getLanguage ($results[0]);
+  }
+
+  public function getLanguages ($params = array ()) {
+
+    $query = "
+      SELECT *
+      FROM ". DBP ."language AS l
+      WHERE 1 = 1
+    ";
+    $queryParams = array ();
+
+		$languages = array ();
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news item records';
+      throw new Exception ($message . $e->getMessage());
+    }
+
+    return Factory::getLanguages ($results);
   }
 
 }

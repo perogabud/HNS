@@ -35,7 +35,7 @@ class BannerRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching banner record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -71,7 +71,7 @@ class BannerRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching banner record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -119,7 +119,7 @@ class BannerRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of banner records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['bannerCount']);
@@ -174,7 +174,7 @@ class BannerRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching banner records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -266,7 +266,7 @@ class BannerRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding banner record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getBanner (array ('bannerId' => $bannerId));
   }
@@ -336,7 +336,7 @@ class BannerRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating banner record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -387,7 +387,7 @@ class BannerRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting banner record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
   

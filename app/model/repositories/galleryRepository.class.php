@@ -42,7 +42,7 @@ class GalleryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching gallery record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -79,7 +79,7 @@ class GalleryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching gallery records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -129,7 +129,7 @@ class GalleryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of gallery records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['galleryCount']);
@@ -182,7 +182,7 @@ class GalleryRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching gallery records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -245,7 +245,7 @@ class GalleryRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding gallery record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getGallery (array ('galleryId' => $galleryId));
   }
@@ -274,19 +274,14 @@ class GalleryRepository extends Repository {
 
       foreach (Config::read ('supportedLangs') as $lang) {
         $query = "
-          INSERT INTO " . DBP . "galleryI18n
-          SET `title` = :title,
-              `slug` = :slug,
-              `category` = :category,
-              `modified` = NOW(),
-              `galleryId` = :galleryId,
-              `languageId` = :languageId,
-              `created` = NOW()
-          ON DUPLICATE KEY UPDATE
+          UPDATE " . DBP . "galleryI18n
+          SET 
               `title` = :title,
               `slug` = :slug,
               `category` = :category,
               `modified` = NOW()
+              WHERE `galleryId` = :galleryId AND
+              `languageId` = :languageId
         ";
         $queryParams = array (
           ':title' => Tools::stripTags (trim ($data['title_' . $lang]), 'strict'),
@@ -302,7 +297,7 @@ class GalleryRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating gallery record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -332,7 +327,7 @@ class GalleryRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting gallery record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
 
@@ -492,7 +487,7 @@ class GalleryRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while deleting image record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 

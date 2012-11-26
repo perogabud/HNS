@@ -56,6 +56,7 @@ class StandardContentManager extends ContentManager {
 			      )
 			    );
           $newsItemController = NewsItemController::getInstance ();
+          $memberController = MemberController::getInstance ();
           $this->_setData (
             array (
               'newsItems' => $newsItemController->getNewsItemsByParams (
@@ -64,6 +65,14 @@ class StandardContentManager extends ContentManager {
                   'orderDirection' => 'DESC',
                   'limit' => 10,
                   'languageId' => Config::read ('lang')
+                )
+              ),
+              'members' => $memberController->getMembersByParams (
+                array (
+                  'orderBy' => 'lastName',
+                  'orderDirection' => 'ASC',
+                  'limit' => 10,
+                  'team' => TRUE
                 )
               )
             )
@@ -111,26 +120,29 @@ class StandardContentManager extends ContentManager {
                * Team Member.
                */
               elseif ($this->_checkParams (3, TRUE)) {
-                $newsItemController = NewsItemController::getInstance ();
-                $newsItem = $newsItemController->getNewsItemBySlug ($this->params[2]);
+                $memberController = MemberController::getInstance ();
+                $member = $memberController->getMemberBySlug ($this->params[2]);
                 FB::warn ('here');
-                if ($newsItem) {
+                if ($member) {
                   $this->_setElements (
                     array (
                       'mainContent' => array (
-                        'filename' => 'newsItem',
+                        'filename' => 'member',
                         'data' => array (
-                          'newsItem' => $newsItem
+                          'member' => $member
                         )
                       )
                     )
                   );
                   $this->_setHtmlHead (
                     array (
-                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $newsItem->getTitle ()
+                      'pageTitle' => $member->getName ()
                     )
                   );
                   return;
+                }
+                else {
+                  $this->set404 ();
                 }
               }
 

@@ -42,7 +42,7 @@ class ActualityRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching actuality record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -90,7 +90,7 @@ class ActualityRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching actuality record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -137,7 +137,7 @@ class ActualityRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of actuality records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['actualityCount']);
@@ -194,7 +194,7 @@ class ActualityRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching actuality records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -305,7 +305,7 @@ class ActualityRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding actuality record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getActuality (array ('actualityId' => $actualityId));
   }
@@ -427,7 +427,7 @@ class ActualityRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating actuality record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -458,7 +458,7 @@ class ActualityRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting actuality record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
 

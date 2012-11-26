@@ -127,6 +127,8 @@
           <?php endfor; ?>
 	    		<p><a href=""> pogledaj sve vijesti</a></p>
 	    	</section>
+        
+        <a href="<?php echo $members[0]->Url; ?>"><img src="<?php echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $members[0]->Name; ?>"/></a>
 
 				<?php $this->getElement ('info'); ?>
 

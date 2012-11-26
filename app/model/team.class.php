@@ -22,8 +22,8 @@ class Team extends ModelObject {
     );
   }
   
-  public function getSlug () {
-    return $this->_slug;
+  public function getSlug ($lang = NULL) {
+    return $this->_getLanguageMember ($this->_slug, $lang);
   }
 
   public function getUrl ($lang = NULL) {

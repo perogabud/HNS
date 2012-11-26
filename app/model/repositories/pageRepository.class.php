@@ -38,7 +38,7 @@ class PageRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching page record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -87,7 +87,7 @@ class PageRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of page records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['pageCount']);
@@ -462,7 +462,7 @@ class PageRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding page record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     $this->commit ();
@@ -541,16 +541,16 @@ class PageRepository extends Repository {
         WHERE `pageId` = :pageId
       ";
       $queryParams = array (
-
-        ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '',
-        ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '',
-        ':class' => empty ($data['class']) ? NULL : Tools::stripTags ($data['class']),
         ':pageId' => array ($pageId, PDO::PARAM_INT)
       );
       if (Config::read ('debug')) {
         $queryParams = array_merge (
           $queryParams,
-          array (    ':isException' => Config::read ('debug') ? (isset ($data['isException']) ? '1' : '0') : '',
+          array (    
+            ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '',
+        ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '',
+        ':class' => empty ($data['class']) ? NULL : Tools::stripTags ($data['class']),
+            ':isException' => Config::read ('debug') ? (isset ($data['isException']) ? '1' : '0') : '',
         ':isVisible' => Config::read ('debug') ? (isset ($data['isVisible']) ? '1' : '0') : '',
         ':isEditable' => Config::read ('debug') ? (isset ($data['isEditable']) ? '1' : '0') : '',
         ':isPublished' => Config::read ('debug') ? (isset ($data['isPublished']) ? '1' : '0') : ''
@@ -561,7 +561,7 @@ class PageRepository extends Repository {
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
       foreach (Config::read ('supportedLangs') as $lang) {
-        $query = "
+        /*$query = "
           INSERT INTO " . DBP . "pageI18n
           SET `title` = " . ($page->IsEditable ? ":title" : "`title`") . ",
               `navigationName` = " . ($page->IsEditable && !$page->IsException ? ":navigationName" : "`navigationName`") . ",
@@ -587,6 +587,22 @@ class PageRepository extends Repository {
               `metaKeywords` = :metaKeywords,
               `navigationDescription` = " . ($page->IsEditable ? ":navigationDescription" : "`navigationDescription`") . ",
               `modified` = NOW()
+        ";*/
+        $query = "
+          
+           UPDATE " . DBP . "pageI18n
+          SET
+              `title` = " . ($page->IsEditable ? ":title" : "`title`") . ",
+              `navigationName` = " . ($page->IsEditable && !$page->IsException ? ":navigationName" : "`navigationName`") . ",
+              `slug` = " . ($page->IsEditable && !$page->IsException ? ":slug" : "`slug`") . ",
+              `content` = " . ($page->IsEditable ? ":content" : "`content`") . ",
+              `lead` = " . ($page->IsEditable ? ":lead" : "`lead`") . ",
+              `metaTitle` = :metaTitle,
+              `metaDescription` = :metaDescription,
+              `metaKeywords` = :metaKeywords,
+              `navigationDescription` = " . ($page->IsEditable ? ":navigationDescription" : "`navigationDescription`") . ",
+              `modified` = NOW()
+              WHERE pageId = :pageId AND languageId = :languageId
         ";
         $queryParams = array (
           ':metaTitle' => empty ($data['metaTitle_' . $lang]) ? NULL : Tools::stripTags (trim ($data['metaTitle_' . $lang])),
@@ -605,6 +621,7 @@ class PageRepository extends Repository {
           $queryParams[':navigationName'] = Tools::stripTags (trim ($data['navigationName_' . $lang]), 'strict');
           $queryParams[':slug'] = Tools::formatURI (Tools::stripTags (trim ($data['navigationName_' . $lang])));
         }
+        
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
       // Handle many-to-many Custom Module relation
@@ -645,7 +662,7 @@ class PageRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while updating page record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
     }
   }

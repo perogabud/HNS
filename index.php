@@ -1,6 +1,6 @@
 <?php
 
-ob_start ();
+//ob_start ();
 
 require_once ('app/core/config.class.php');
 require_once ('app/core/bootstrap.php');
@@ -13,6 +13,6 @@ $view = new View ();
 // Run process
 $view->process ($uri);
 
-ob_end_flush ();
+//ob_end_flush ();
 
 ?>

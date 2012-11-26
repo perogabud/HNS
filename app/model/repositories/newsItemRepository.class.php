@@ -42,7 +42,7 @@ class NewsItemRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching news item record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -90,7 +90,7 @@ class NewsItemRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching news item record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -137,7 +137,7 @@ class NewsItemRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of news item records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['newsItemCount']);
@@ -201,7 +201,7 @@ class NewsItemRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching news item records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -312,7 +312,7 @@ class NewsItemRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding news item record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getNewsItem (array ('newsItemId' => $newsItemId));
   }
@@ -398,7 +398,7 @@ class NewsItemRepository extends Repository {
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
       // Handle many-to-many Custom Module relation
-      $customModuleIdParams = array ();
+      $customModuleIdParams = array (0);
       $queryParams = array (
         ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
       );
@@ -433,7 +433,7 @@ class NewsItemRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating news item record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -464,7 +464,7 @@ class NewsItemRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting news item record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
 

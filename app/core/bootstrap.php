@@ -17,7 +17,8 @@ require_once (Config::read ('sitePath') . 'app/model/repositories/repository.cla
 require_once (Config::read ('sitePath') . 'app/view/view.class.php');
 
 require_once (Config::read ('sitePath') . 'app/vendors/FirePHPCore/fb.php');
-FB::setEnabled (Config::read ('debug'));
+//FB::setEnabled (Config::read ('debug'));
+FB::setEnabled (TRUE);
 
 ini_set ('url_rewriter.tags', '');
 

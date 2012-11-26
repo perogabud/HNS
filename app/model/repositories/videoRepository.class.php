@@ -37,7 +37,7 @@ class VideoRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching video record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -94,7 +94,7 @@ class VideoRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of video records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['videoCount']);
@@ -147,7 +147,7 @@ class VideoRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching video records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
@@ -209,7 +209,7 @@ class VideoRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding video record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getVideo (array ('videoId' => $videoId));
   }
@@ -267,7 +267,7 @@ class VideoRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating video record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -297,7 +297,7 @@ class VideoRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting video record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
   

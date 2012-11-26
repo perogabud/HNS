@@ -52,7 +52,7 @@ class MemberRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching member record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     if (!$results || empty ($results)) {
@@ -96,7 +96,7 @@ class MemberRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching member record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
+      throw new Exception ($message . $e->getMessage());
     }
   }
 
@@ -161,7 +161,7 @@ class MemberRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fething a count of member records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return intval ($results[0]['memberCount']);
@@ -229,16 +229,16 @@ class MemberRepository extends Repository {
     }
     catch (Exception $e) {
       $message = 'An error occurred while fetching member records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     foreach ($results as &$result) {
 
-    if (isset ($params['memberCategory'])) {
+    //if (isset ($params['memberCategory'])) {
       $memberCategoryRepository = new MemberCategoryRepository ();
       $memberCategory = $memberCategoryRepository->getMemberCategory (array ('memberCategoryId' => $result['memberCategoryId']));
       $result['memberCategory'] = $memberCategory;
-    }
+    //}
 
     if (isset ($params['team'])) {
       $teamRepository = new TeamRepository ();
@@ -246,10 +246,10 @@ class MemberRepository extends Repository {
       $result['team'] = $team;
     }
 
-    if (isset ($params['image'])) {
+    //if (isset ($params['image'])) {
       $image = $this->getImage ($result['memberId']);
       $result['image'] = $image;
-    }
+    //}
 
     }
 
@@ -290,7 +290,7 @@ class MemberRepository extends Repository {
       $queryParams = array (
         ':memberCategoryId' => array ($data['memberCategoryId'], PDO::PARAM_INT),':teamId' => array ($data['teamId'], PDO::PARAM_INT),
         ':firstName' => Tools::stripTags (trim ($data['firstName'])),
-        ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['firstName']))),
+        ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['firstName'] . ' ' . $data['lastName']))),
         ':lastName' => Tools::stripTags (trim ($data['lastName'])),
         ':position' => empty ($data['position']) ? NULL : Tools::stripTags (trim ($data['position'])),
         ':birthDate' => empty ($data['birthDate']) ? NULL : array ($data['birthDate'], PDO::PARAM_INT),
@@ -364,7 +364,7 @@ class MemberRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while adding member record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 3, $e);
+      throw new Exception ($message . $e->getMessage());
     }
     return $this->getMember (array ('memberId' => $memberId));
   }
@@ -441,7 +441,7 @@ class MemberRepository extends Repository {
         ':memberCategoryId' => array ($data['memberCategoryId'], PDO::PARAM_INT),
         ':teamId' => array ($data['teamId'], PDO::PARAM_INT),
         ':firstName' => Tools::stripTags (trim ($data['firstName'])),
-        ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['firstName']))),
+        ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['firstName'] . ' ' . $data['lastName']))),
         ':lastName' => Tools::stripTags (trim ($data['lastName'])),
         ':position' => empty ($data['position']) ? NULL : Tools::stripTags (trim ($data['position'])),
         ':birthDate' => empty ($data['birthDate']) ? NULL : array ($data['birthDate'], PDO::PARAM_INT),
@@ -457,15 +457,12 @@ class MemberRepository extends Repository {
 
       foreach (Config::read ('supportedLangs') as $lang) {
         $query = "
-          INSERT INTO " . DBP . "memberI18n
-          SET `biography` = :biography,
-              `modified` = NOW(),
-              `memberId` = :memberId,
-              `languageId` = :languageId,
-              `created` = NOW()
-          ON DUPLICATE KEY UPDATE
+          UPDATE " . DBP . "memberI18n
+          SET 
               `biography` = :biography,
               `modified` = NOW()
+              WHERE `memberId` = :memberId AND
+              `languageId` = :languageId
         ";
         $queryParams = array (
           ':biography' => empty ($data['biography_' . $lang]) ? NULL : Tools::stripTags (trim ($data['biography_' . $lang]), 'loose'),
@@ -479,7 +476,7 @@ class MemberRepository extends Repository {
     catch (Exception $e) {
       $this->rollback ();
       $message = 'An error occurred while updating member record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 4, $e);
+      throw new Exception ($message . $e->getMessage());
     }
 
     return TRUE;
@@ -511,7 +508,7 @@ class MemberRepository extends Repository {
       catch (Exception $e) {
         $this->rollback ();
         $message = 'An error occurred while deleting member record';
-        throw new Exception ($message . ': ' . $e->getMessage(), 5, $e);
+        throw new Exception ($message . $e->getMessage());
       }
   }
 

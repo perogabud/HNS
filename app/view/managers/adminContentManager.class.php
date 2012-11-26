@@ -20,7 +20,7 @@ class AdminContentManager extends ContentManager {
     // Parse params
     switch ($this->params[0]) {
       case '':
-        Tools::redirect ('/admin/page');
+        Tools::redirect ('/admin/newsItem');
         break;
 
       case 'login':
