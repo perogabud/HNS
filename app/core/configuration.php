@@ -13,7 +13,7 @@ ini_set ('error_log', Config::read ('sitepath') . 'error_log.txt');
 
 Config::write ('optionsDelimiter', '!');
 
-Config::write ('siteDomain', 'hns.local');
+Config::write ('siteDomain', 'localhost.hns');
 Config::write ('siteUrl', 'http://' . Config::read ('siteDomain'));
 Config::write ('siteUrlRoot', Config::read ('siteUrl') . '/');
 Config::write ('siteUrlRootNoLang', Config::read ('siteUrlRoot'));

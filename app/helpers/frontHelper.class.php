@@ -7,6 +7,8 @@ class FrontHelper {
     if ($input) $echo .= '<li>';
     $echo .= '<div class="module" id="module'. $customModule->Id .'">';
     if ($input) $echo .= FormHelper::input ('text', NULL, NULL, array ('readonly' => TRUE, 'value' => '{{module'. $customModule->Id .'}}'), TRUE);
+    if ($input) $echo .= '<a data-module-id="'. $customModule->Id .'" href="javascript:void(0)" class="deleteModuleButton"></a>';
+    if ($input) $echo .= '<a data-module-id="'. $customModule->Id .'" href="javascript:void(0)" class="editModuleButton"></a>';
     if ($customModule->CustomModuleItems) {
       foreach ($customModule->CustomModuleItems as $customModuleItem) {
         $echo .= '<div class="'. $customModuleItem->CustomModuleItemSize->Key .'">';

@@ -1383,6 +1383,30 @@ class AdminContentManager extends ContentManager {
       case 'ajax':
         $this->_setTemplate ('ajax');
         switch ($this->params[1]) {
+          case 'editCustomModule':
+            if ($this->_checkParams(3, TRUE)) {
+              $customModuleController = CustomModuleController::getInstance ();
+              $customModule = $customModuleController->getCustomModuleById ($this->params[2]);
+              if ($customModule) {
+                $this->_setElements (
+                  array (
+                    'mainContent' => array (
+                      'filename' => 'admin/editCustomModule',
+                      'data' => array (
+                        'customModule' => $customModule
+                      )
+                    )
+                  )
+                );
+              }
+            }
+            break;
+            
+          case 'customModuleItemDelete':
+            $customModuleItemController = CustomModuleItemController::getInstance();
+            $customModuleItemController->deleteCustomModuleItem($_GET['itemId']);
+            break;
+            
           case 'customModule':
             if ($this->_checkParams (3, TRUE)) {
               switch ($this->params[2]) {
@@ -1426,7 +1450,23 @@ class AdminContentManager extends ContentManager {
             elseif ($this->_checkParams (4)) {
               switch ($this->params[2]) {
                 case 'delete':
-                  // Delete
+                    $moduleId = $this->params[3];
+                    $customModuleController = CustomModuleController::getInstance ();
+                    $customModuleController->deleteCustomModule($moduleId);
+                    
+                    $this->_setElements (
+                        array (
+                          'mainContent' => array (
+                            'filename' => 'ajax/json',
+                            'dataType' => 'json',
+                            'data' => array (
+                              'data' => array (
+                                'success' => TRUE
+                              )
+                            )
+                          )
+                        )
+                      );
                   return;
 
                 case 'uploadImage':
@@ -1477,16 +1517,36 @@ class AdminContentManager extends ContentManager {
                   return;
 
                 case 'uploadText':
+                  
                   $customModuleItemController = CustomModuleItemController::getInstance ();
-                  $customModuleItem = $customModuleItemController->addCustomModuleItem (
-                    array (
-                      'customModuleItemSizeId' => $_POST['size'],
-                      'customModuleId' => $this->params[3],
-                      'position' => $_POST['position']
-                    )
-                  );
+                  
+                  $customModuleItem = NULL;
+                  if ($_POST['itemId']) {
+                    $customModuleItem = $customModuleItemController->getCustomModuleItemById($_POST['itemId']);
+                  }
+                  
+                  if ($customModuleItem) {
+                    $customModuleItemController->editCustomModuleItem (
+                      (int)$_POST['itemId'],
+                      array (
+                        'customModuleItemSizeId' => $_POST['size'],
+                        'position' => $_POST['position']
+                      )
+                    );
+                  } else {
+                    $customModuleItem = $customModuleItemController->addCustomModuleItem (
+                      array (
+                        'customModuleItemSizeId' => $_POST['size'],
+                        'customModuleId' => $this->params[3],
+                        'position' => $_POST['position']
+                      )
+                    );
+                  }
+                  
                   if ($customModuleItem) {
                     $customModuleTextController = CustomModuleTextController::getInstance ();
+                    $customModuleText = $customModuleTextController->deleteCustomModuleTextByItem($customModuleItem->getId());
+
                     $customModuleText = $customModuleTextController->addCustomModuleText (
                       array (
                         'customModuleItemId' => $customModuleItem->getId (),
@@ -1494,6 +1554,7 @@ class AdminContentManager extends ContentManager {
                         'footnote' => $_POST['footnote']
                       )
                     );
+                    
                     if ($customModuleText) {
                       $this->_setElements (
                         array (

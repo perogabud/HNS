@@ -787,6 +787,7 @@ form.searchForm table div.checkbox input {
   margin-right: 1em;
 }
 
+a.buttonTeal,
 input.submit {
   background: teal;
   color: white;
@@ -800,10 +801,12 @@ input.submit {
   cursor: pointer;
 }
 
+a.buttonTeal:hover,
 input.submit:hover {
   background: lightseagreen;
 }
 
+a.buttonTeal:active,
 input.submit:active {
   background: teal;
 }
@@ -1157,6 +1160,9 @@ div#contentModuleMenu > div > div > a {
 div#contentModuleMenu a#contentModuleMenuCancel {
   left: 5em;
 }
+div#contentModuleMenu a#contentModuleMenuCancelEditing {
+  left: 5em;
+}
 
 div#contentModuleMenu div.uploadifyQueue {
   position: absolute;
@@ -1209,3 +1215,31 @@ ul.contentModules li img {
 
 ul.contentModules li div.wide { width: 100%; }
 ul.contentModules li div.small { width: 50%; }
+div.module > .input.readOnly {
+  width: 65%;
+}
+a.deleteModuleButton {
+  float: right;
+  display: block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  margin-top: 10px;
+  background: url('/img/admin/binClosed.png') no-repeat center;
+}
+a.editModuleButton {
+  float: right;
+  display: block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  margin-top: 10px;
+  background: url('/img/admin/edit.png') no-repeat center;
+  margin-right: 8px;
+}
+.addContentModule {
+  margin-bottom: 10px;
+  display: inline-block;
+}
