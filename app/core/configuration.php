@@ -65,10 +65,3 @@ Config::write ('dbhost', 'localhost');
 Config::write ('dbname', 'hns');
 Config::write ('dbuser', 'root');
 Config::write ('dbpass', '');
-
-// Default database configuration
-Config::write ('dbprefix', 'hns_');
-Config::write ('dbhost', 'localhost');
-Config::write ('dbname', 'hnscff24');
-Config::write ('dbuser', 'hnscff24');
-Config::write ('dbpass', 'rZ6uB3Re');
