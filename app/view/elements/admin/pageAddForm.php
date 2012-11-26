@@ -61,11 +61,11 @@
             complete: function (jqXHR, textStatus) {}
           });
           
+          $('body').append ($menu);
+          
           $('#contentModuleMenu div.wrapper').first().mCustomScrollbar ({
             set_height: '100%'
           });
-
-          $('body').append ($menu);
 
           // Stvori modul - AJAX
           // Uhvati moduleId
