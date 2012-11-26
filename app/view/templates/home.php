@@ -12,7 +12,7 @@
   	<div id="wrapper">
 			<aside id="sidebar">
 				<?php $this->getElement ('header'); ?>
-			
+
 				<section class="raspored">
 					<table>
 						<caption>raspored utakmica</caption>
@@ -28,14 +28,14 @@
 					</table>
 					<table style="display: none;"></table>
 				</section>
-				
+
 				<section class="shop_timeline">
 					<ul>
 						<li class="hns-shop"><a href=""><img src="/img/hns_shop.png" alt="HNS SHOP" /></a></li>
 						<li class="timeline"><a href=""><img src="/img/timeline.png" alt="TIMELINE" /></a></li>
 					</ul>
 				</section>
-				
+
 				<section class="vatreni">
 					<ul>
 						<li></li>
@@ -48,13 +48,13 @@
 						<li><a href="" ></a></li>
 					</ul>
 				</section>
-				
+
 				<section class="uvijekvjerni">
 					<a href="http://uvijekvjerni.hr" ><img src="/img/uvijek_vjerni.png" alt="UVIJEK VJERNI" /></a>
 				</section>
-				
+
 				<section class="facebook">
-				
+
 				</section>
 			</aside>
 
@@ -69,7 +69,7 @@
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
 	    	</aside>
-    	
+
 	    	<section class="tabs">
 	    		<div id="hns-tv">
 	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -104,7 +104,7 @@
 	    		</div>
 	    		<div id="a-reprezentacija">a reprezentacija content</div>
 	    		<div id="hns-casopis">hns časopis content</div>
-	    		
+
 	    		<ul>
 	    			<li class="tv"><a href="#hns-tv" ></a></li>
 	    			<li class="galerija"><a href="#galerija" ></a></li>
@@ -113,38 +113,25 @@
 	    			<li class="casopis"><a href="#hns-casopis" ></a></li>
 	    		</ul>
 	    	</section>
-	    	
+
 	    	<section class="content">
 	    		<h2>VIJESTI</h2>
-		    	<article>
-		    		<time pubdate="pubdate" datetime="2012-10-06">06.10.2012.</time>
-		    		<h3>David Moyes mnogo očekuje od Nikice Jelavića</h3>
-		    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat velit est, id elementum neque. Quisque condimentum dictum eros, id eleifend nisl bibendum vitae.</p>
-		    	</article>
-	
-		    	<article>
-		    		<time pubdate="pubdate" datetime="2012-10-03">03.10.2012.</time>
-		    		<h3>Ulaznice Hrvatska - Wales</h3>
-		    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat velit est, id elementum neque. Quisque condimentum dictum eros, id eleifend nisl bibendum vitae.</p>
-		    	</article>
-		    	
-		    	<article>
-		    		<time pubdate="pubdate" datetime="2012-10-04">04.10.2012.</time>
-		    		<h3>Demanti teksta u Jutarnjem listu</h3>
-		    	</article>
-		    	
-		    	<article>
-		    		<time pubdate="pubdate" datetime="2012-10-03">03.10.2012.</time>
-		    		<h3>Press konferencija zakazana za 5.10.2012.</h3>
-		    	</article>
-	    		
-	    		<p><a href="">> pogledaj sve vijesti</a></p>
+          <?php for ($i = 0; $i < count ($newsItems); $i++): $newsItem = $newsItems[$i]; ?>
+          <article>
+		    		<time pubdate="pubdate" datetime="<?php echo $newsItem->getPublishDate ('Y-m-d'); ?>"><?php echo $newsItem->getPublishDate ('m.d.Y.'); ?></time>
+            <h3><a href="<?php echo $newsItem->Url; ?>"><?php echo $newsItem->Title; ?></a></h3>
+            <?php if ($i < 2): ?>
+		    		<?php echo $newsItem->Lead; ?>
+            <?php endif; ?>
+          </article>
+          <?php endfor; ?>
+	    		<p><a href=""> pogledaj sve vijesti</a></p>
 	    	</section>
-	    	
+
 				<?php $this->getElement ('info'); ?>
-	    	
+
 	    </section>
-	    
+
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>
 	  </div>

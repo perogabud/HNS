@@ -51,6 +51,16 @@ class Dict {
       'deu' => '',
       'eng' => 'gallery',
       'hrv' => 'galerija'
+    ),
+    'slug_selections' => array (
+      'deu' => '',
+      'eng' => '',
+      'hrv' => 'selekcije'
+    ),
+    'slug_ARepresentation' => array (
+      'deu' => '',
+      'eng' => '',
+      'hrv' => 'a-reprezentacija'
     )
 
   );

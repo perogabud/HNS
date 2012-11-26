@@ -636,7 +636,7 @@ INSERT INTO `hns_pageI18n` (`pageId`, `languageId`, `title`, `navigationName`, `
 (21, 'hrv', '2. HNL', '2. HNL', '2-hnl', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:32:26', '2012-11-14 15:32:26'),
 (22, 'eng', 'Regional Alliances', 'Regional Alliances', 'regional-alliances', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
 (22, 'hrv', 'Å½upanijski savezi', 'Å½upanijski savezi', 'zupanijski-savezi', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:33:49', '2012-11-14 15:33:49'),
-(23, 'eng', 'Club Licencing', 'Club Licencing', 'club-licencing', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
+(23, 'eng', 'Klub Licencing', 'Klub Licencing', 'club-licencing', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
 (23, 'hrv', 'Licenciranje klubova', 'Licenciranje klubova', 'licenciranje-klubova', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:37:18', '2012-11-14 15:37:18'),
 (24, 'eng', 'Player Licencing', 'Player Licencing', 'player-licencing', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:38:58', '2012-11-14 15:38:58'),
 (24, 'hrv', 'Licenciranje igraÄa', 'Licenciranje igraÄa', 'licenciranje-igraca', NULL, NULL, NULL, NULL, NULL, 'Lorem ipsum dolor', '2012-11-14 15:38:58', '2012-11-14 15:38:58'),

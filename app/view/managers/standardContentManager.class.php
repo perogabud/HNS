@@ -67,6 +67,71 @@ class StandardContentManager extends ContentManager {
         }
 
       /*
+       * Selections.
+       */
+      case Dict::read ('slug_selections'):
+        if (count ($this->params) > 1) {
+          switch ($this->params[1]) {
+            /*
+            * Representation / Team.
+            */
+            case Dict::read ('slug_ARepresentation'):
+              if ($this->_checkParams (2, TRUE)) {
+                $teamController = TeamController::getInstance ();
+                $team = $teamController->getTeamBySlug ($this->params[1]);
+                if ($team) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'team',
+                        'data' => array (
+                          'team' => $team
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news')
+                    )
+                  );
+                }
+                else {
+                  $this->set404 ();
+                }
+                return;
+              }
+              /*
+               * Team Member.
+               */
+              elseif ($this->_checkParams (3, TRUE)) {
+                $newsItemController = NewsItemController::getInstance ();
+                $newsItem = $newsItemController->getNewsItemBySlug ($this->params[2]);
+                FB::warn ('here');
+                if ($newsItem) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'newsItem',
+                        'data' => array (
+                          'newsItem' => $newsItem
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $newsItem->getTitle ()
+                    )
+                  );
+                  return;
+                }
+              }
+
+          }
+        }
+
+      /*
        * Info Center.
        */
       case Dict::read ('slug_infoCenter'):

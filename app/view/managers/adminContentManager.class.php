@@ -1516,6 +1516,468 @@ class AdminContentManager extends ContentManager {
         }
         break;
 
+      /*
+       * Team.
+       */
+      case 'team':
+        if ($this->_checkParams (1, TRUE)) {
+          $teamController = TeamController::getInstance ();
+          $this->_setElements (
+            array (
+              'mainContent' => array (
+                'filename' => 'admin/teamTable',
+                'data' => array (
+                  'teams' => $teamController->getTeams (
+                    isset ($_GET['orderBy']) ? $_GET['orderBy'] : NULL,
+                    isset ($_GET['orderDirection']) ? $_GET['orderDirection'] : NULL,
+                    isset ($_GET['page']) ? $_GET['page'] : NULL,
+                    Config::read ('iterationLimit'),
+                    isset ($_GET['searchSubmit']) ? $_GET : NULL
+                  ),
+                  'teamCount' => $teamController->getTeamCount (isset ($_GET['searchSubmit']) ? $_GET : NULL)
+                )
+              )
+            )
+          );
+          break;
+        }
+        elseif ($this->_checkParams (2, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * Add team.
+             * /team/add/
+             */
+            case 'add':
+              if (!empty ($_POST)) {
+                $teamController = TeamController::getInstance ();
+                try {
+                  $team = $teamController->addTeam ($_POST);
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+                if (isset ($team)) {
+                  MessageManager::setSuccessMessage ('Team successfully added!');
+                  Tools::redirect (Config::read ('siteUrlRoot') . 'admin/team/view/' . $team->getId ());
+                }
+              }
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/teamAddForm',
+                    'data' => array (
+                    )
+                  )
+                )
+              );
+              break;
+          }
+        }
+        elseif ($this->_checkParams (3, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * View team.
+             * /team/view/\{teamId\}
+             */
+            case 'view':
+              $teamId = $this->params[2];
+              $teamController = TeamController::getInstance ();
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/teamView',
+                    'data' => array (
+                      'team' => $teamController->getTeamById ($teamId)
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Edit team.
+             * /team/edit/\{teamId\}
+             */
+            case 'edit':
+              $teamId = $this->params[2];
+              $teamController = TeamController::getInstance ();
+              if (!empty ($_POST)) {
+                try {
+                  if ($teamController->editTeam ($teamId, $_POST)) {
+                    MessageManager::setSuccessMessage ('Team successfully edited!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/team/view/' . $teamId);
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/teamEditForm',
+                    'data' => array (
+                      'team' => $teamController->getTeamById ($teamId),
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Delete team.
+             * /team/delete/\{teamId\}
+             */
+            case 'delete':
+              $teamId = $this->params[2];
+              $teamController = TeamController::getInstance ();
+              if (isset ($_POST['submitNo'])) {
+                Tools::redirect (Config::read ('siteUrlRoot') . 'admin/team/');
+              }
+              elseif (isset ($_POST['submitYes'])) {
+                try {
+                  if ($teamController->deleteTeam ($teamId)) {
+                    MessageManager::setSuccessMessage ('Team successfully deleted!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/team/');
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              else {
+                $this->_setElements (
+                  array (
+                    'mainContent' => array (
+                      'filename' => 'admin/teamDeleteForm',
+                      'data' => array (
+                        'team' => $teamController->getTeamById ($teamId)
+                      )
+                    )
+                  )
+                );
+              }
+              break;
+          }
+        }
+        break;
+
+      /*
+       * Member.
+       */
+      case 'member':
+        if ($this->_checkParams (1, TRUE)) {
+          $memberController = MemberController::getInstance ();
+          $this->_setElements (
+            array (
+              'mainContent' => array (
+                'filename' => 'admin/memberTable',
+                'data' => array (
+                  'members' => $memberController->getMembers (
+                    isset ($_GET['orderBy']) ? $_GET['orderBy'] : NULL,
+                    isset ($_GET['orderDirection']) ? $_GET['orderDirection'] : NULL,
+                    isset ($_GET['page']) ? $_GET['page'] : NULL,
+                    Config::read ('iterationLimit'),
+                    isset ($_GET['searchSubmit']) ? $_GET : NULL
+                  ),
+                  'memberCount' => $memberController->getMemberCount (isset ($_GET['searchSubmit']) ? $_GET : NULL)
+                )
+              )
+            )
+          );
+          break;
+        }
+        elseif ($this->_checkParams (2, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * Add member.
+             * /member/add/
+             */
+            case 'add':
+              if (!empty ($_POST)) {
+                $memberController = MemberController::getInstance ();
+                try {
+                  $member = $memberController->addMember ($_POST);
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+                if (isset ($member)) {
+                  MessageManager::setSuccessMessage ('Member successfully added!');
+                  if (isset ($_GET['teamId'])) {
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/team/view/' . intval ($_GET['teamId']));
+                  }
+                  Tools::redirect (Config::read ('siteUrlRoot') . 'admin/member/view/' . $member->getId ());
+                }
+              }
+              $memberCategoryController = new MemberCategoryController ();
+              $teamController = new TeamController ();
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/memberAddForm',
+                    'data' => array (
+                      'memberCategorys' => $memberCategoryController->getMemberCategorys (),
+                      'team' => isset ($_GET['teamId']) ? $teamController->getTeamById ($_GET['teamId']) : NULL,
+                      'teams' => $teamController->getTeams (),
+                    )
+                  )
+                )
+              );
+              break;
+          }
+        }
+        elseif ($this->_checkParams (3, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * View member.
+             * /member/view/\{memberId\}
+             */
+            case 'view':
+              $memberId = $this->params[2];
+              $memberController = MemberController::getInstance ();
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/memberView',
+                    'data' => array (
+                      'member' => $memberController->getMemberById ($memberId)
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Edit member.
+             * /member/edit/\{memberId\}
+             */
+            case 'edit':
+              $memberId = $this->params[2];
+              $memberController = MemberController::getInstance ();
+              if (!empty ($_POST)) {
+                try {
+                  if ($memberController->editMember ($memberId, $_POST)) {
+                    MessageManager::setSuccessMessage ('Member successfully edited!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/member/view/' . $memberId);
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              $memberCategoryController = new MemberCategoryController ();
+              $teamController = new TeamController ();
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/memberEditForm',
+                    'data' => array (
+                      'member' => $memberController->getMemberById ($memberId),
+                      'memberCategorys' => $memberCategoryController->getMemberCategorys (),
+                      'teams' => $teamController->getTeams (),
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Delete member.
+             * /member/delete/\{memberId\}
+             */
+            case 'delete':
+              $memberId = $this->params[2];
+              $memberController = MemberController::getInstance ();
+              if (isset ($_POST['submitNo'])) {
+                Tools::redirect (Config::read ('siteUrlRoot') . 'admin/member/');
+              }
+              elseif (isset ($_POST['submitYes'])) {
+                try {
+                  if ($memberController->deleteMember ($memberId)) {
+                    MessageManager::setSuccessMessage ('Member successfully deleted!');
+                    if (isset ($_GET['teamId'])) {
+                      Tools::redirect (Config::read ('siteUrlRoot') . 'admin/team/view/' . intval ($_GET['teamId']));
+                    }
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/member/');
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              else {
+                $this->_setElements (
+                  array (
+                    'mainContent' => array (
+                      'filename' => 'admin/memberDeleteForm',
+                      'data' => array (
+                        'member' => $memberController->getMemberById ($memberId)
+                      )
+                    )
+                  )
+                );
+              }
+              break;
+          }
+        }
+        break;
+
+      /*
+       * MemberCategory.
+       */
+      case 'memberCategory':
+        if ($this->_checkParams (1, TRUE)) {
+          $memberCategoryController = MemberCategoryController::getInstance ();
+          $this->_setElements (
+            array (
+              'mainContent' => array (
+                'filename' => 'admin/memberCategoryTable',
+                'data' => array (
+                  'memberCategorys' => $memberCategoryController->getMemberCategorys (
+                    isset ($_GET['orderBy']) ? $_GET['orderBy'] : NULL,
+                    isset ($_GET['orderDirection']) ? $_GET['orderDirection'] : NULL,
+                    isset ($_GET['page']) ? $_GET['page'] : NULL,
+                    Config::read ('iterationLimit'),
+                    isset ($_GET['searchSubmit']) ? $_GET : NULL
+                  ),
+                  'memberCategoryCount' => $memberCategoryController->getMemberCategoryCount (isset ($_GET['searchSubmit']) ? $_GET : NULL)
+                )
+              )
+            )
+          );
+          break;
+        }
+        elseif ($this->_checkParams (2, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * Add memberCategory.
+             * /memberCategory/add/
+             */
+            case 'add':
+              if (!empty ($_POST)) {
+                $memberCategoryController = MemberCategoryController::getInstance ();
+                try {
+                  $memberCategory = $memberCategoryController->addMemberCategory ($_POST);
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+                if (isset ($memberCategory)) {
+                  MessageManager::setSuccessMessage ('Member Category successfully added!');
+                  Tools::redirect (Config::read ('siteUrlRoot') . 'admin/memberCategory/view/' . $memberCategory->getId ());
+                }
+              }
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/memberCategoryAddForm',
+                    'data' => array (
+                    )
+                  )
+                )
+              );
+              break;
+          }
+        }
+        elseif ($this->_checkParams (3, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * View memberCategory.
+             * /memberCategory/view/\{memberCategoryId\}
+             */
+            case 'view':
+              $memberCategoryId = $this->params[2];
+              $memberCategoryController = MemberCategoryController::getInstance ();
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/memberCategoryView',
+                    'data' => array (
+                      'memberCategory' => $memberCategoryController->getMemberCategoryById ($memberCategoryId)
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Edit memberCategory.
+             * /memberCategory/edit/\{memberCategoryId\}
+             */
+            case 'edit':
+              $memberCategoryId = $this->params[2];
+              $memberCategoryController = MemberCategoryController::getInstance ();
+              if (!empty ($_POST)) {
+                try {
+                  if ($memberCategoryController->editMemberCategory ($memberCategoryId, $_POST)) {
+                    MessageManager::setSuccessMessage ('Member Category successfully edited!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/memberCategory/view/' . $memberCategoryId);
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/memberCategoryEditForm',
+                    'data' => array (
+                      'memberCategory' => $memberCategoryController->getMemberCategoryById ($memberCategoryId),
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Delete memberCategory.
+             * /memberCategory/delete/\{memberCategoryId\}
+             */
+            case 'delete':
+              $memberCategoryId = $this->params[2];
+              $memberCategoryController = MemberCategoryController::getInstance ();
+              if (isset ($_POST['submitNo'])) {
+                Tools::redirect (Config::read ('siteUrlRoot') . 'admin/memberCategory/');
+              }
+              elseif (isset ($_POST['submitYes'])) {
+                try {
+                  if ($memberCategoryController->deleteMemberCategory ($memberCategoryId)) {
+                    MessageManager::setSuccessMessage ('Member Category successfully deleted!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/memberCategory/');
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              else {
+                $this->_setElements (
+                  array (
+                    'mainContent' => array (
+                      'filename' => 'admin/memberCategoryDeleteForm',
+                      'data' => array (
+                        'memberCategory' => $memberCategoryController->getMemberCategoryById ($memberCategoryId)
+                      )
+                    )
+                  )
+                );
+              }
+              break;
+          }
+        }
+        break;
+
       default:
         $this->set404 ();
         break;

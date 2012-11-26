@@ -31,6 +31,8 @@
           <li <?php echo $activeTab == 'video' ? $activeClass : ''; ?>><a href="/admin/video">HNS TV</a></li>
           <li <?php echo $activeTab == 'gallery' ? $activeClass : ''; ?>><a href="/admin/gallery">Galerije</a></li>
           <li <?php echo $activeTab == 'banner' ? $activeClass : ''; ?>><a href="/admin/banner">Baneri</a></li>
+          <li <?php echo $activeTab == 'team' ? $activeClass : ''; ?>><a href="/admin/team">Reprezentacije</a></li>
+          <li <?php echo $activeTab == 'member' ? $activeClass : ''; ?>><a href="/admin/member">Igrači i članovi momčadi</a></li>
           <li class="logout"><a href="/admin/logout">Odjava</a></li>
         </ul>
       </div>

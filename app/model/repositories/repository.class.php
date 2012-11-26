@@ -28,22 +28,6 @@ class Repository {
     }
   }
 
-  protected function changeDatabase (array $params) {
-    $databaseName = $params['databaseName'];
-    try {
-      self::$_dbh = new PDO (
-          'mysql:host=' . Config::read ('dbhost') . ';dbname=' . $databaseName,
-          Config::read ('dbuser'),
-          Config::read ('dbpass'),
-          array (PDO::ATTR_PERSISTENT => TRUE)
-      );
-      self::$_dbh->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch (PDOException $e) {
-      throw $e;
-    }
-  }
-
   public function __call ($methodName, $args) {
     // Automatically handle 'getObject' methods
     $match = array ();
@@ -188,6 +172,26 @@ class Repository {
     }
   }
 
+  protected function _emailExists($email, $emailTableName, $emailColumnName = 'email') {
+     $query = "
+      SELECT *
+      FROM " . DBP . "$emailTableName
+      WHERE $emailColumnName = :email
+    ";
+
+    $queryParams = array (
+      ":email" => $email
+    );
+
+    $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+
+    if (!empty($result)) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
   protected function _preparedQuery ($query, $params, $fileName = null, $lineNumber = null, $message = NULL, $die = FALSE) {
     if (!Config::read ('debug')) {
       $die = FALSE;
@@ -216,7 +220,13 @@ class Repository {
       FB::group ('QueryDebug [' . sprintf ("%2.5f", $time) . ' sec][' . $numRows . '] ' . $message, array ('Color' => $numRows ? 'green' : 'gray'));
       FB::info (sprintf ("%2.5f", $time) . ' sec', 'Time');
       FB::info ($numRows, 'Rows');
-      FB::info ($params, 'Params');
+      if (Config::read ('debug')) {
+        $paramsString = '';
+        foreach ($params as $key => $param) {
+          $paramsString .= '"'. $key . '" = ' . (is_array ($param) ? $param[0] : $param) . '; ';
+        }
+        FB::info ($paramsString, 'Params');
+      }
 
       // Get debug string
       if (Config::read ('debug')) {
@@ -231,7 +241,7 @@ class Repository {
       $results = array ();
       if ($statement->columnCount ()) {
         $results = $statement->fetchAll (PDO::FETCH_ASSOC);
-        if (Config::read ('debug') == 2) {
+        if (Config::read ('debug') > 0) {
           FB::log ($results, 'Results');
         }
         FB::groupEnd ();
@@ -609,7 +619,7 @@ class Repository {
     return $data;
   }
 
-  public function validateData ($input, $rules) {
+  public function validateData ($input, $rules, $emailTableName = NULL, $emailColumnName = 'email') {
     $valid = TRUE;
     // Not empty
     if (isset ($rules['rules']['notEmpty'])) {
@@ -722,6 +732,28 @@ class Repository {
         }
       }
     }
+    // Href
+    if (isset ($rules['rules']['href'])) {
+      foreach ($rules['rules']['href'] as $name => $message) {
+        if (isset ($input[$name])) {
+          if (!preg_match ('/^https?:\/\/([a-z0-9_\.\-]+)\.([a-z\.]{2,6})(\/([\/\w\s\.\-_\%\#\&\=\?]*)*\/?)?$/  ', $input[$name])) {
+            $valid = FALSE;
+            MessageManager::setInputMessage ($name, $message);
+          }
+        }
+      }
+    }
+    // Email exists
+    if (isset ($rules['rules']['emailExists'])) {
+      foreach ($rules['rules']['emailExists'] as $name => $message) {
+        if (isset ($input[$name]) && isset($emailTableName)) {
+          if ($this->_emailExists($input[$name], $emailTableName, $emailColumnName)) {
+            $valid = FALSE;
+            MessageManager::setInputMessage ($name, $message);
+          }
+        }
+      }
+    }
     // Date
     if (isset ($rules['rules']['date'])) {
       foreach ($rules['rules']['date'] as $name => $message) {
@@ -807,75 +839,14 @@ class Repository {
     }
 
     $query = "
-			ORDER BY $order $direction
+			ORDER BY `$order` $direction
 		";
-    if (isset ($params['limitStart']) && !is_null ($limit)) {
-      $query .= "
-				LIMIT " . intval ($params['limitStart']) . ", $limit
-			";
-    }
-    elseif (!is_null ($limit)) {
+    if (!is_null ($limit)) {
       $query .= "
 				LIMIT " . ($iteration - 1) * $limit . ", $limit
 			";
     }
     return $query;
-  }
-
-  public function getLanguage ($params = array ()) {
-    if (empty ($params)) {
-        return NULL;
-      }
-
-    $query = "
-      SELECT *
-      FROM ". DBP ."language AS l
-      WHERE 1 = 1
-    ";
-
-    $queryParams = array ();
-
-    if (array_key_exists ('languageId', $params)) {
-      $query .= "
-        AND l.languageId = :languageId
-      ";
-      $queryParams[':languageId'] = trim ($params['languageId']);
-    }
-
-    try {
-      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-    }
-    catch (Exception $e) {
-      $message = 'An error occurred while fetching news item record';
-      throw new Exception ($message . ': ' . $e->getMessage(), 1, $e);
-    }
-
-    if (!$results || empty ($results)) {
-      return NULL;
-    }
-
-    return Factory::getLanguage ($results[0]);
-  }
-
-  public function getLanguages ($params = array ()) {
-
-    $query = "
-      SELECT *
-      FROM ". DBP ."language AS l
-      WHERE 1 = 1
-    ";
-    $queryParams = array ();
-
-		$languages = array ();
-    try {
-      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
-    }
-    catch (Exception $e) {
-      $message = 'An error occurred while fetching news item records';
-      throw new Exception ($message . ': ' . $e->getMessage(), 2, $e);
-    }
-
-    return Factory::getLanguages ($results);
   }
 
 }

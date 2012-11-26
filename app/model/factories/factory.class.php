@@ -467,5 +467,157 @@ class Factory {
     return $customModuleTexts;
   }
 
+  public static function getTeam (&$dataArrays = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $dataLang = array();
+    $data = array();
+    // Get non-language data
+    foreach ($dataArrays[0] as $name => $value) {
+      if (!in_array ($name, Team::getLanguageFields ())) {
+        $data[$name] = $value;
+      }
+    }
+    // Get language data
+    foreach ($dataArrays as $array) {
+      if (key_exists ('languageId', $array) && in_array ($array['languageId'], Config::read ('supportedLangs'))) {
+        foreach ($array as $name => &$value) {
+          if (in_array ($name, Team::getLanguageFields ())) {
+            $dataLang[$array['languageId']][$name] = $value;
+          }
+        }
+      }
+    }
+    $team = new Team ($data, $dataLang, $config);
+    return $team;
+  }
+
+  public static function getTeams (&$results = array ()) {
+    $teams = array ();
+    if (!empty ($results)) {
+      $teamId = NULL;
+      $teamData = array ();
+      foreach ($results as $result) {
+        if ($result['teamId'] != $teamId) {
+          if (!is_null ($teamId)) {
+            $teams[] = self::getTeam ($teamData);
+            $teamData = array ();
+          }
+        }
+        $teamData[] = $result;
+        $teamId = $result['teamId'];
+      }
+      $teams[] = self::getTeam ($teamData);
+    }
+    return $teams;
+  }
+
+  public static function getMember (&$dataArrays = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $dataLang = array();
+    $data = array();
+    // Get non-language data
+    foreach ($dataArrays[0] as $name => $value) {
+      if (!in_array ($name, Member::getLanguageFields ())) {
+        $data[$name] = $value;
+      }
+    }
+    // Get language data
+    foreach ($dataArrays as $array) {
+      if (key_exists ('languageId', $array) && in_array ($array['languageId'], Config::read ('supportedLangs'))) {
+        foreach ($array as $name => &$value) {
+          if (in_array ($name, Member::getLanguageFields ())) {
+            $dataLang[$array['languageId']][$name] = $value;
+          }
+        }
+      }
+    }
+    $member = new Member ($data, $dataLang, $config);
+    return $member;
+  }
+
+  public static function getMembers (&$results = array ()) {
+    $members = array ();
+    if (!empty ($results)) {
+      $memberId = NULL;
+      $memberData = array ();
+      foreach ($results as $result) {
+        if ($result['memberId'] != $memberId) {
+          if (!is_null ($memberId)) {
+            $members[] = self::getMember ($memberData);
+            $memberData = array ();
+          }
+        }
+        $memberData[] = $result;
+        $memberId = $result['memberId'];
+      }
+      $members[] = self::getMember ($memberData);
+    }
+    return $members;
+  }
+
+  public static function getMemberImage (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $memberImage = new MemberImage ($data, $config);
+    return $memberImage;
+  }
+
+  public static function getMemberImages (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $memberImages = array ();
+    foreach ($data as $row) {
+      $memberImages[] = new MemberImage ($row, $config);
+    }
+    return $memberImages;
+  }
+
+  public static function getMemberCategory (&$dataArrays = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $dataLang = array();
+    $data = array();
+    // Get non-language data
+    foreach ($dataArrays[0] as $name => $value) {
+      if (!in_array ($name, MemberCategory::getLanguageFields ())) {
+        $data[$name] = $value;
+      }
+    }
+    // Get language data
+    foreach ($dataArrays as $array) {
+      if (key_exists ('languageId', $array) && in_array ($array['languageId'], Config::read ('supportedLangs'))) {
+        foreach ($array as $name => &$value) {
+          if (in_array ($name, MemberCategory::getLanguageFields ())) {
+            $dataLang[$array['languageId']][$name] = $value;
+          }
+        }
+      }
+    }
+    $memberCategory = new MemberCategory ($data, $dataLang, $config);
+    return $memberCategory;
+  }
+
+  public static function getMemberCategorys (&$results = array ()) {
+    $memberCategorys = array ();
+    if (!empty ($results)) {
+      $memberCategoryId = NULL;
+      $memberCategoryData = array ();
+      foreach ($results as $result) {
+        if ($result['memberCategoryId'] != $memberCategoryId) {
+          if (!is_null ($memberCategoryId)) {
+            $memberCategorys[] = self::getMemberCategory ($memberCategoryData);
+            $memberCategoryData = array ();
+          }
+        }
+        $memberCategoryData[] = $result;
+        $memberCategoryId = $result['memberCategoryId'];
+      }
+      $memberCategorys[] = self::getMemberCategory ($memberCategoryData);
+    }
+    return $memberCategorys;
+  }
+
 }
 ?>

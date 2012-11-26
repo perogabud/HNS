@@ -56,3 +56,9 @@ Config::write ('customModuleImageImageThumbnailDimensions', array ('width' => 10
 
 Config::write ('customModuleImageImageSmallThumbnailPath', Config::read ('sitePath') . 'img/customModuleImage/image/smallThumbnail/');
 Config::write ('customModuleImageImageSmallThumbnailDimensions', array ('width' => 50, 'height' => 50));
+
+Config::write ('memberImagePath', Config::read ('sitePath') . 'img/member/image/');
+Config::write ('memberImageDimensions', array ('width' => 719, 'height' => 429));
+
+Config::write ('memberImageThumbnailPath', Config::read ('sitePath') . 'img/member/image/thumbnail/');
+Config::write ('memberImageThumbnailDimensions', array ('width' => 79, 'height' => 79));
