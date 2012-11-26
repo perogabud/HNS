@@ -286,3 +286,152 @@
 [26-Nov-2012 15:56:29 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
 [26-Nov-2012 15:56:29 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
 [26-Nov-2012 15:56:29 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 20:11:05 UTC] Calling non-existing method getLanguages with arguments {Array
+(
+)
+}
+[26-Nov-2012 20:11:09 UTC] Calling non-existing method getLanguages with arguments {Array
+(
+)
+}
+[26-Nov-2012 20:11:13 UTC] Calling non-existing method getLanguages with arguments {Array
+(
+)
+}
+[26-Nov-2012 20:15:15 UTC] PHP Fatal error:  Call to undefined method NewsItem::getJezik() in C:\wamp\www\HNS\app\view\elements\admin\newsItemView.php on line 11
+[26-Nov-2012 20:15:15 UTC] PHP Stack trace:
+[26-Nov-2012 20:15:15 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[26-Nov-2012 20:15:15 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[26-Nov-2012 20:15:15 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[26-Nov-2012 20:15:15 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
+[26-Nov-2012 20:15:15 UTC] PHP   5. View->getElement() C:\wamp\www\HNS\app\view\templates\admin.php:40
+[26-Nov-2012 20:15:15 UTC] PHP   6. include() C:\wamp\www\HNS\app\view\view.class.php:255
+[26-Nov-2012 23:36:20 UTC] PHP Warning:  require_once(C:\wamp\www\HNS\app/controllers/membersController.class.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in C:\wamp\www\HNS\app\core\bootstrap.php on line 49
+[26-Nov-2012 23:36:20 UTC] PHP Stack trace:
+[26-Nov-2012 23:36:20 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[26-Nov-2012 23:36:20 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[26-Nov-2012 23:36:20 UTC] PHP   3. View->_handleRequest() C:\wamp\www\HNS\app\view\view.class.php:34
+[26-Nov-2012 23:36:20 UTC] PHP   4. StandardContentManager->route() C:\wamp\www\HNS\app\view\view.class.php:141
+[26-Nov-2012 23:36:20 UTC] PHP   5. __autoload() C:\wamp\www\HNS\app\view\view.class.php:0
+[26-Nov-2012 23:36:20 UTC] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'C:\wamp\www\HNS\app/controllers/membersController.class.php' (include_path='.;C:\php\pear') in C:\wamp\www\HNS\app\core\bootstrap.php on line 49
+[26-Nov-2012 23:36:20 UTC] PHP Stack trace:
+[26-Nov-2012 23:36:20 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[26-Nov-2012 23:36:20 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[26-Nov-2012 23:36:20 UTC] PHP   3. View->_handleRequest() C:\wamp\www\HNS\app\view\view.class.php:34
+[26-Nov-2012 23:36:20 UTC] PHP   4. StandardContentManager->route() C:\wamp\www\HNS\app\view\view.class.php:141
+[26-Nov-2012 23:36:20 UTC] PHP   5. __autoload() C:\wamp\www\HNS\app\view\view.class.php:0
+[26-Nov-2012 23:43:21 UTC] PHP Fatal error:  Maximum function nesting level of '100' reached, aborting! in C:\wamp\www\HNS\app\vendors\FirePHPCore\FirePHP.class.php on line 1153
+[26-Nov-2012 23:43:21 UTC] PHP Stack trace:
+[26-Nov-2012 23:43:21 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[26-Nov-2012 23:43:21 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[26-Nov-2012 23:43:21 UTC] PHP   3. View->_handleRequest() C:\wamp\www\HNS\app\view\view.class.php:34
+[26-Nov-2012 23:43:21 UTC] PHP   4. StandardContentManager->route() C:\wamp\www\HNS\app\view\view.class.php:141
+[26-Nov-2012 23:43:21 UTC] PHP   5. MemberController->getMembersByParams() C:\wamp\www\HNS\app\view\managers\standardContentManager.class.php:76
+[26-Nov-2012 23:43:21 UTC] PHP   6. MemberRepository->getMembers() C:\wamp\www\HNS\app\controllers\memberController.class.php:32
+[26-Nov-2012 23:43:21 UTC] PHP   7. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP   8. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP   9. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  10. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  11. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  12. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  13. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  14. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  15. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  16. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  17. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  18. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  19. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  20. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  21. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  22. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  23. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  24. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  25. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  26. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  27. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  28. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  29. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  30. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  31. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  32. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  33. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  34. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  35. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  36. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  37. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  38. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  39. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  40. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  41. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  42. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  43. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  44. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  45. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  46. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  47. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  48. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  49. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  50. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  51. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  52. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  53. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  54. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  55. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  56. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  57. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  58. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  59. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  60. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  61. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  62. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  63. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  64. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  65. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  66. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  67. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  68. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  69. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  70. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  71. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  72. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  73. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  74. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  75. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  76. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  77. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  78. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  79. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  80. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  81. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  82. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  83. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  84. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  85. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  86. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  87. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  88. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  89. TeamRepository->getTeam() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:245
+[26-Nov-2012 23:43:21 UTC] PHP  90. MemberRepository->getMembers() C:\wamp\www\HNS\app\model\repositories\teamRepository.class.php:60
+[26-Nov-2012 23:43:21 UTC] PHP  91. Repository->_getOrderAndLimit() C:\wamp\www\HNS\app\model\repositories\memberRepository.class.php:224
+[26-Nov-2012 23:43:21 UTC] PHP  92. FB::log() C:\wamp\www\HNS\app\model\repositories\repository.class.php:825
+[26-Nov-2012 23:43:21 UTC] PHP  93. FB::send() C:\wamp\www\HNS\app\vendors\FirePHPCore\fb.php:180
+[26-Nov-2012 23:43:21 UTC] PHP  94. call_user_func_array() C:\wamp\www\HNS\app\vendors\FirePHPCore\fb.php:141
+[26-Nov-2012 23:43:21 UTC] PHP  95. FirePHP->fb() C:\wamp\www\HNS\app\vendors\FirePHPCore\fb.php:141
+[26-Nov-2012 23:43:21 UTC] PHP  96. FirePHP->jsonEncode() C:\wamp\www\HNS\app\vendors\FirePHPCore\FirePHP.class.php:842
+[26-Nov-2012 23:43:21 UTC] PHP  97. FirePHP->encodeObject() C:\wamp\www\HNS\app\vendors\FirePHPCore\FirePHP.class.php:964
+[26-Nov-2012 23:43:21 UTC] PHP  98. FirePHP->encodeObject() C:\wamp\www\HNS\app\vendors\FirePHPCore\FirePHP.class.php:1132
+[26-Nov-2012 23:43:21 UTC] PHP  99. FirePHP::is_utf8() C:\wamp\www\HNS\app\vendors\FirePHPCore\FirePHP.class.php:1135
+[26-Nov-2012 23:44:28 UTC] PHP Warning:  include(C:\wamp\www\HNS\app/view/elements/member.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in C:\wamp\www\HNS\app\view\view.class.php on line 255
+[26-Nov-2012 23:44:28 UTC] PHP Stack trace:
+[26-Nov-2012 23:44:28 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[26-Nov-2012 23:44:28 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[26-Nov-2012 23:44:28 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[26-Nov-2012 23:44:28 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
+[26-Nov-2012 23:44:28 UTC] PHP   5. View->getElement() C:\wamp\www\HNS\app\view\templates\default.php:13
+[26-Nov-2012 23:44:28 UTC] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'C:\wamp\www\HNS\app/view/elements/member.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\HNS\app\view\view.class.php on line 255
+[26-Nov-2012 23:44:28 UTC] PHP Stack trace:
+[26-Nov-2012 23:44:28 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[26-Nov-2012 23:44:28 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[26-Nov-2012 23:44:28 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[26-Nov-2012 23:44:28 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
+[26-Nov-2012 23:44:28 UTC] PHP   5. View->getElement() C:\wamp\www\HNS\app\view\templates\default.php:13

@@ -3,11 +3,11 @@
 // Core configuration
 
 Config::write ('options', TRUE);
-Config::write ('debug', 1);
+Config::write ('debug', 0);
 Config::write ('cache', TRUE);
 
-error_reporting (Config::read ('debug') ? -1 : 0);
-ini_set ('display_errors', Config::read ('debug') ? 1 : 0);
+error_reporting (-1);
+ini_set ('display_errors', 1);
 ini_set ('log_errors', 1);
 ini_set ('error_log', Config::read ('sitepath') . 'error_log.txt');
 
