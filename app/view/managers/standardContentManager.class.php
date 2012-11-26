@@ -30,6 +30,12 @@ class StandardContentManager extends ContentManager {
 
     $this->_setData (array ('activePage' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
 
+    $userController = UserController::getInstance ();
+    $loggedUser = $userController->getLoggedUser ();
+    if (!$loggedUser && !in_array ($this->params[0], array ('login', ''))) {
+      Tools::redirect (Config::read ('siteUrlRoot') . 'admin/login');
+    }
+
     // Parse parameters
     switch ($this->params[0]) {
       /*

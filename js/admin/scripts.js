@@ -1,7 +1,7 @@
 $().ready (function () {
-  
+
   $('a#contentModuleMenuSave').live('click', function () {
-    
+
       $('li.moduleItem').each (function () {
         var $this = $(this),
             index = $this.index (),
@@ -59,8 +59,8 @@ $().ready (function () {
             break;
         }
       });
-      
-    
+
+
     // Place HTML for module
     $.ajax ({
       type: 'GET',
@@ -89,8 +89,8 @@ $().ready (function () {
     });
     return false;
   });
-  
-  $('a.deleteModuleButton').live('click', function() {  
+
+  $('a.deleteModuleButton').live('click', function() {
     var diagRes = confirm('Jeste li sigurni da želite izbrisati ovaj modul?');
 
     if (diagRes) {
@@ -114,7 +114,7 @@ $().ready (function () {
 
     }
   });
-  
+
   $('a#contentModuleMenuCancel').live('click', function () {
       var diagRes = confirm('Jeste li sigurni da želite izbrisati ovaj modul?');
 
@@ -142,12 +142,12 @@ $().ready (function () {
 
       }
   });
-  
+
   $('#contentModuleMenu a.newItem').live('click', function () {
     var $newItem = $('<li class="moduleItem small"><select class="size"><option value="1">Usko</option><option value="2">Široko</option></select><a class="addText">Dodaj tekst</a><a class="addImage">Dodaj sliku</a> <a class="remove">Obriši</a><a class="moveUp">Gore</a><a class="moveDown">Dolje</a></li>');
-    
+
     $moduleId = $(this).attr('data-module-id');
-    
+
     // Add image behavior
     $newItem.find ('a.addImage').click (function () {
       var inputId = 'upload'+ parseInt (Math.random() * (1000 - 1) + 1);
@@ -195,11 +195,11 @@ $().ready (function () {
     $('#contentModuleMenu div.wrapper').first().mCustomScrollbar ('update');
     return false;
   });
-  
+
   // Remove behaviour
   $('#contentModuleMenu a.remove').live('click', function () {
     $itemId = $(this).parents('li').first().attr('data-item-id');
-    
+
     if ($itemId) {
       $.ajax ({
         type: 'GET',
@@ -209,10 +209,10 @@ $().ready (function () {
           console.log ('Error: ', textStatus, errorThrown);
         },
         complete: function (jqXHR, textStatus) {
-          
+
         }
       });
-      
+
       $(this).parents('li').first().remove();
     }
   });
@@ -228,7 +228,7 @@ $().ready (function () {
       $(this).parents('li').first().insertAfter ($(this).parents('li').first().next());
     }
   });
-  
+
   $('#contentModuleMenu select.size').live('change', function () {
     var $sibling = $(this).siblings ('img');
     if ($(this).val () == '1') {
@@ -240,10 +240,10 @@ $().ready (function () {
       $sibling.attr ('src', $sibling.attr ('data-wide'));
     }
   });
-  
+
   $('a.editModuleButton').live('click', function() {
     $moduleId = $(this).attr('data-module-id');
-    
+
     $.ajax ({
       type: 'GET',
       url: "/admin/ajax/editCustomModule/" + $moduleId,

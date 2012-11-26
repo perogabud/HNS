@@ -99,3 +99,190 @@
 [26-Nov-2012 12:34:25 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
 [26-Nov-2012 12:34:25 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
 [26-Nov-2012 12:34:25 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\default.php:13
+[26-Nov-2012 15:48:40 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:48:40 UTC] PHP Stack trace:
+[26-Nov-2012 15:48:40 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:48:40 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:48:40 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:48:40 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:48:40 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:48:40 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:48:40 UTC] PHP Stack trace:
+[26-Nov-2012 15:48:40 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:48:40 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:48:40 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:48:40 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:48:40 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:49:28 UTC] PHP Notice:  Undefined index: text in C:\wamp\www\hns\app\helpers\formHelper.class.php on line 677
+[26-Nov-2012 15:49:28 UTC] PHP Stack trace:
+[26-Nov-2012 15:49:28 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:49:28 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:49:28 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:49:28 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:49:28 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:40
+[26-Nov-2012 15:49:28 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
+[26-Nov-2012 15:49:28 UTC] PHP   7. FormHelper::multipleSelect() C:\wamp\www\hns\app\view\elements\admin\pageAddForm.php:18
+[26-Nov-2012 15:50:06 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:50:06 UTC] PHP Stack trace:
+[26-Nov-2012 15:50:06 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:50:06 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:50:06 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:50:06 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:50:06 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:50:06 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:50:06 UTC] PHP Stack trace:
+[26-Nov-2012 15:50:06 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:50:06 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:50:06 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:50:06 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:50:06 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:50:06 UTC] PHP Notice:  Undefined index: itemId in C:\wamp\www\hns\app\view\managers\adminContentManager.class.php on line 1524
+[26-Nov-2012 15:50:06 UTC] PHP Stack trace:
+[26-Nov-2012 15:50:06 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:50:06 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:50:06 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[26-Nov-2012 15:50:06 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[26-Nov-2012 15:50:06 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:50:06 UTC] PHP Stack trace:
+[26-Nov-2012 15:50:06 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:50:06 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:50:06 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:50:06 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:50:06 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:50:06 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:50:06 UTC] PHP Stack trace:
+[26-Nov-2012 15:50:06 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:50:06 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:50:06 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:50:06 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:50:06 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:50:17 UTC] PHP Notice:  Undefined index: text in C:\wamp\www\hns\app\helpers\formHelper.class.php on line 677
+[26-Nov-2012 15:50:17 UTC] PHP Stack trace:
+[26-Nov-2012 15:50:17 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:50:17 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:50:17 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:50:17 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:50:17 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:40
+[26-Nov-2012 15:50:17 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
+[26-Nov-2012 15:50:17 UTC] PHP   7. FormHelper::multipleSelect() C:\wamp\www\hns\app\view\elements\admin\pageAddForm.php:18
+[26-Nov-2012 15:53:18 UTC] PHP Notice:  Undefined index: title_hrv in C:\wamp\www\hns\app\model\repositories\repository.class.php on line 637
+[26-Nov-2012 15:53:18 UTC] PHP Stack trace:
+[26-Nov-2012 15:53:18 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:53:18 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:53:18 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[26-Nov-2012 15:53:18 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[26-Nov-2012 15:53:18 UTC] PHP   5. PageController->editPage() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[26-Nov-2012 15:53:18 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[26-Nov-2012 15:53:18 UTC] PHP   7. PageRepository->editPage() C:\wamp\www\hns\app\controllers\controller.class.php:55
+[26-Nov-2012 15:53:18 UTC] PHP   8. PageRepository->_validatePageData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:478
+[26-Nov-2012 15:53:18 UTC] PHP   9. Repository->validateData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:1019
+[26-Nov-2012 15:53:26 UTC] PHP Notice:  Undefined index: title_hrv in C:\wamp\www\hns\app\model\repositories\repository.class.php on line 637
+[26-Nov-2012 15:53:26 UTC] PHP Stack trace:
+[26-Nov-2012 15:53:26 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:53:26 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:53:26 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[26-Nov-2012 15:53:26 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[26-Nov-2012 15:53:26 UTC] PHP   5. PageController->editPage() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[26-Nov-2012 15:53:26 UTC] PHP   6. Controller->__call() C:\wamp\www\hns\app\view\managers\adminContentManager.class.php:576
+[26-Nov-2012 15:53:26 UTC] PHP   7. PageRepository->editPage() C:\wamp\www\hns\app\controllers\controller.class.php:55
+[26-Nov-2012 15:53:26 UTC] PHP   8. PageRepository->_validatePageData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:478
+[26-Nov-2012 15:53:26 UTC] PHP   9. Repository->validateData() C:\wamp\www\hns\app\model\repositories\pageRepository.class.php:1019
+[26-Nov-2012 15:53:57 UTC] PHP Notice:  Undefined index: text in C:\wamp\www\hns\app\helpers\formHelper.class.php on line 677
+[26-Nov-2012 15:53:57 UTC] PHP Stack trace:
+[26-Nov-2012 15:53:57 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:53:57 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:53:57 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:53:57 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:53:57 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\admin.php:40
+[26-Nov-2012 15:53:57 UTC] PHP   6. include() C:\wamp\www\hns\app\view\view.class.php:255
+[26-Nov-2012 15:53:57 UTC] PHP   7. FormHelper::multipleSelect() C:\wamp\www\hns\app\view\elements\admin\pageAddForm.php:18
+[26-Nov-2012 15:54:31 UTC] PHP Notice:  Undefined index: itemId in C:\wamp\www\hns\app\view\managers\adminContentManager.class.php on line 1524
+[26-Nov-2012 15:54:31 UTC] PHP Stack trace:
+[26-Nov-2012 15:54:31 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:54:31 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:54:31 UTC] PHP   3. View->_handleRequest() C:\wamp\www\hns\app\view\view.class.php:34
+[26-Nov-2012 15:54:31 UTC] PHP   4. AdminContentManager->route() C:\wamp\www\hns\app\view\view.class.php:141
+[26-Nov-2012 15:54:31 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:54:31 UTC] PHP Stack trace:
+[26-Nov-2012 15:54:31 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:54:31 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:54:31 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:54:31 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:54:31 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:54:31 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:54:31 UTC] PHP Stack trace:
+[26-Nov-2012 15:54:31 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:54:31 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:54:31 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:54:31 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:54:31 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:54:31 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:54:31 UTC] PHP Stack trace:
+[26-Nov-2012 15:54:31 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:54:31 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:54:31 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:54:31 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:54:31 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:54:31 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:54:31 UTC] PHP Stack trace:
+[26-Nov-2012 15:54:31 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:54:31 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:54:31 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:54:31 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:54:31 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:16 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:16 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:16 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:16 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:16 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:16 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:16 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:16 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:16 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:16 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:16 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:16 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:16 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:16 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:16 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:16 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:16 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:16 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:16 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:16 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:16 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:16 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:16 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:16 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:16 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:16 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:16 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:16 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:29 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:29 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:29 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:29 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:29 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:29 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:29 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:29 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:29 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:29 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:29 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:29 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:29 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:29 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:29 UTC] PHP Warning:  include(C:\wamp\www\hns\app/view/elements/mainContent.php): failed to open stream: No such file or directory in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:29 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:29 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:29 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:29 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:29 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:29 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
+[26-Nov-2012 15:56:29 UTC] PHP Warning:  include(): Failed opening 'C:\wamp\www\hns\app/view/elements/mainContent.php' for inclusion (include_path='.;C:\php\pear') in C:\wamp\www\hns\app\view\view.class.php on line 255
+[26-Nov-2012 15:56:29 UTC] PHP Stack trace:
+[26-Nov-2012 15:56:29 UTC] PHP   1. {main}() C:\wamp\www\hns\index.php:0
+[26-Nov-2012 15:56:29 UTC] PHP   2. View->process() C:\wamp\www\hns\index.php:14
+[26-Nov-2012 15:56:29 UTC] PHP   3. View->_processTemplate() C:\wamp\www\hns\app\view\view.class.php:41
+[26-Nov-2012 15:56:29 UTC] PHP   4. include() C:\wamp\www\hns\app\view\view.class.php:173
+[26-Nov-2012 15:56:29 UTC] PHP   5. View->getElement() C:\wamp\www\hns\app\view\templates\ajax.php:5
