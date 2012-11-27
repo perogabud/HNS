@@ -56,7 +56,9 @@ class StandardContentManager extends ContentManager {
 			      )
 			    );
           $newsItemController = NewsItemController::getInstance ();
+          $actualityController = ActualityController::getInstance ();
           $memberController = MemberController::getInstance ();
+          $galleryController = GalleryController::getInstance ();
           $this->_setData (
             array (
               'newsItems' => $newsItemController->getNewsItemsByParams (
@@ -67,12 +69,27 @@ class StandardContentManager extends ContentManager {
                   'languageId' => Config::read ('lang')
                 )
               ),
+              'actualitys' => $actualityController->getActualitysByParams (
+                array (
+                  'orderBy' => 'publishDate',
+                  'orderDirection' => 'DESC',
+                  'limit' => 3,
+                  'languageId' => Config::read ('lang')
+                )
+              ),
               'members' => $memberController->getMembersByParams (
                 array (
                   'orderBy' => 'lastName',
                   'orderDirection' => 'ASC',
                   'limit' => 10,
                   'team' => TRUE
+                )
+              ),
+              'galleries' => $galleryController->getGallerysByParams (
+                array (
+                  'orderBy' => 'created',
+                  'orderDirection' => 'DESC',
+                  'limit' => 3
                 )
               )
             )

@@ -10,12 +10,14 @@
   </head>
   <body>
   	<div id="wrapper">
+  		<div class="bg_left"></div>
+  		<div class="bg_right"></div>
 			<aside id="sidebar">
 				<?php $this->getElement ('header'); ?>
-
+			
 				<section class="raspored">
-					<table>
-						<caption>raspored utakmica</caption>
+					<table class="results">
+						<caption><h5>raspored utakmica</h5></caption>
 						<tr>
 							<td class="home">HRVATSKA</td><td class="result">2:0</td><td class="guest">WALES</td>
 						</tr>
@@ -26,35 +28,56 @@
 							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">KAZAHSTAN</td>
 						</tr>
 					</table>
-					<table style="display: none;"></table>
+					<table style="display: none;" class="zoom">
+						<tr><td colspan="3"><h5>raspored utakmica</h5></td></tr>
+						<tr>
+							<td class="home">HRVATSKA</td><td class="result">2:0</td><td class="guest">WALES</td>
+						</tr>
+						<tr>
+							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-18">18.10.2012.</time> <small>Kvalifikacija za Svjetsko prvenstvo</small><span>A</span></td>
+						</tr>
+						<tr>
+							<td class="home">IZRAEL</td><td class="result">1:1</td><td class="guest">HRVATSKA</td>
+						</tr>
+						<tr>
+							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-18">18.10.2012.</time><small>Kvalifikacija za Svjetsko prvenstvo</small><span>A</span></td>
+						</tr>
+						<tr>
+							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">KAZAHSTAN</td>
+						</tr>
+						<tr>
+							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-18">18.10.2012.</time><small>Kvalifikacija za Svjetsko prvenstvo</small><span>A</span></td>
+						</tr>
+						<tr><td colspan="3"><p class="close"></p></td></tr>
+					</table>
 				</section>
-
+				
 				<section class="shop_timeline">
 					<ul>
 						<li class="hns-shop"><a href=""><img src="/img/hns_shop.png" alt="HNS SHOP" /></a></li>
 						<li class="timeline"><a href=""><img src="/img/timeline.png" alt="TIMELINE" /></a></li>
 					</ul>
 				</section>
-
+				
 				<section class="vatreni">
 					<ul>
-						<li></li>
-						<li><a href="" ></a></li>
-						<li><a href="" ></a></li>
-						<li><a href="" ></a></li>
-						<li><a href="" ></a></li>
-						<li><a href="" ></a></li>
-						<li><a href="" ></a></li>
-						<li><a href="" ></a></li>
+						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
+						<li><img src="/img/izbornik_facebook.png" alt="" /></li>
+						<li><img src="/img/vatreni.png" alt="vatreni" style="border: 1px solid #999; margin-top: -2px;" /></li>
+						<!--<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
+						<li><a href="<?php //echo $members[1]->Url; ?>"><img src="<?php //echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
+						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
+						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
+						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>-->
 					</ul>
 				</section>
-
+				
 				<section class="uvijekvjerni">
 					<a href="http://uvijekvjerni.hr" ><img src="/img/uvijek_vjerni.png" alt="UVIJEK VJERNI" /></a>
 				</section>
-
+				
 				<section class="facebook">
-
+				
 				</section>
 			</aside>
 
@@ -69,42 +92,42 @@
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
 	    	</aside>
-
+    	
 	    	<section class="tabs">
 	    		<div id="hns-tv">
 	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe>
-	    			<div class="caption">pogledaj sve video zapise &gt; <a href="">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
+	    			<div class="caption">pogledaj sve video zapise &gt; <a href="#">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
-	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
-	    			<div class="caption"><a href="#" class="details">detalji fotografije</a>pogledaj sve foto galerije &gt;&gt; <a href="/galerija">GALERIJA</a><div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div></div>
+            <?php if (isset ($galleries)): ?>
+	    			<img src="<?php echo $galleries[0]->Images[0]->Url; ?>" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
+	    			<div class="caption"><a href="<?php echo $galleries[0]->Url; ?>" class="details">detalji fotografije</a>pogledaj sve foto galerije &gt;&gt; <a href="<?php echo $galleries[0]->Url; ?>">GALERIJA</a><div class="img_details"><time pubdate="pubdate" datetime="<?php echo $galleries[0]->getCreated ('Y-m-d'); ?>"><?php echo $galleries[0]->getCreated ('d.m.Y.'); ?></time><?php echo $galleries[0]->Title; ?></div></div>
+            <?php endif; ?>
 	    		</div>
 	    		<div id="aktualno">
 	    			<section>
+              <?php foreach ($actualitys as $actuality): ?>
 		    			<article>
-		    				<img src="" alt="slika" />
-		    				<h3><a href="">Naslov</a></h3>
-		    				<p>sažetak</p>
-		    				<a href="">&gt;&gt;više</a>
+                <?php if ($actuality->CoverImage): ?>
+		    				<img src="<?php echo $actuality->CoverImage->Url; ?>" alt="slika" />
+                <?php endif; ?>
+		    				<h3><a href="<?php echo $actuality->Url; ?>"><?php echo $actuality->Title; ?></a></h3>
+		    				<p><?php echo $actuality->Lead; ?></p>
+		    				<a href="<?php echo $actuality->Url; ?>">&gt;&gt;više</a>
 		    			</article>
-		    			<article>
-		    				<img src="" alt="slika" />
-		    				<h3><a href="">Naslov</a></h3>
-		    				<p>sažetak</p>
-		    				<a href="">&gt;&gt;više</a>
-		    			</article>
-		    			<article>
-		    				<img src="" alt="slika" />
-		    				<h3><a href="">Naslov</a></h3>
-		    				<p>sažetak</p>
-		    				<a href="">&gt;&gt;više</a>
-		    			</article>
+              <?php endforeach; ?>
 	    			</section>
-	    			<div class="caption">pogledaj sve video zapise &gt; <a href="">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
+	    			<div class="caption">pogledaj sve video članke &gt;&gt; <a href="/info-centar/aktualnosti">AKTUALNO</a></div>
 	    		</div>
-	    		<div id="a-reprezentacija">a reprezentacija content</div>
-	    		<div id="hns-casopis">hns časopis content</div>
-
+	    		<div id="a-reprezentacija">
+	    			<img src="/img/a_reprezentacija.jpg" alt="A REPREZENTACIJA" />
+	    			<div class="caption">saznaj sve o &gt;&gt; <a href="">A REPREZENTACIJI</a></div>
+	    		</div>
+	    		<div id="hns-casopis">
+	    			<img src="/img/casopis.jpg" alt="Časopis" />
+	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
+	    		</div>
+	    		
 	    		<ul>
 	    			<li class="tv"><a href="#hns-tv" ></a></li>
 	    			<li class="galerija"><a href="#galerija" ></a></li>
@@ -113,7 +136,7 @@
 	    			<li class="casopis"><a href="#hns-casopis" ></a></li>
 	    		</ul>
 	    	</section>
-
+	    	
 	    	<section class="content">
 	    		<h2>VIJESTI</h2>
           <?php for ($i = 0; $i < count ($newsItems); $i++): $newsItem = $newsItems[$i]; ?>
@@ -125,15 +148,13 @@
             <?php endif; ?>
           </article>
           <?php endfor; ?>
-	    		<p><a href=""> pogledaj sve vijesti</a></p>
+	    		<p><a href="/info-centar/novosti"> pogledaj sve vijesti</a></p>
 	    	</section>
-        
-        <a href="<?php echo $members[0]->Url; ?>"><img src="<?php echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $members[0]->Name; ?>"/></a>
-
+	    	
 				<?php $this->getElement ('info'); ?>
-
+	    	
 	    </section>
-
+	    
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>
 	  </div>
