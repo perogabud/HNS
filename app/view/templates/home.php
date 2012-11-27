@@ -64,7 +64,7 @@
 						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
 <li class="wide"><img src="/img/izbornik_facebook.png" alt="" /></li>
             <?php foreach ($members as $member): ?>
-            <li><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+            <li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
             <?php endforeach; ?>
 						<!--<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
 						<li><a href="<?php //echo $members[1]->Url; ?>"><img src="<?php //echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>

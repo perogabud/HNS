@@ -273,6 +273,11 @@ section.vatreni ul li a img {
 	float: left;
 }
 
+section.vatreni ul li.member a img {
+	border: 1px solid #999;
+	margin: -1px -1px 0 0;
+}
+
 
 
 
@@ -657,6 +662,49 @@ section.main section.content {
 }
 
 
+/*members*/
+section.main figure {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+section.main figure figcaption {
+	width: 250px;
+/*	margin: -345px 0 0 30px;*/
+	font-family: Oswald, sans-serif;
+	font-size: 55px;
+	color: #005ca8;
+	text-transform: uppercase;
+	position: absolute;
+	top: 105px;
+	left: 30px; 
+}
+
+section.main section.member {
+	padding: 30px 30px 10px;
+}
+
+dl dt {
+	width: 145px;
+	float: left;
+	font-weight: bold;
+}
+
+dl dd {
+	width: 500px;
+	float: left;
+}
+
+section.main section.member h3 {
+	clear: both;
+	font-size: 22px;
+	font-family: Oswald, sans-serif;
+	color: #005ca8;
+	padding-top: 60px;
+}
+
+
 /*footer*/
 footer {
 	width: 961px;
@@ -678,4 +726,3 @@ footer img.footer_right {
 	position: absolute;
 	right: -55px;
 }
-
