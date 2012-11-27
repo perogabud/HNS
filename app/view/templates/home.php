@@ -99,10 +99,8 @@
 	    			<div class="caption">pogledaj sve video zapise &gt; <a href="#">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
-            <?php if (isset ($galleries)): ?>
-	    			<img src="<?php echo $galleries[0]->Images[0]->Url; ?>" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
-	    			<div class="caption"><a href="<?php echo $galleries[0]->Url; ?>" class="details">detalji fotografije</a>pogledaj sve foto galerije &gt;&gt; <a href="<?php echo $galleries[0]->Url; ?>">GALERIJA</a><div class="img_details"><time pubdate="pubdate" datetime="<?php echo $galleries[0]->getCreated ('Y-m-d'); ?>"><?php echo $galleries[0]->getCreated ('d.m.Y.'); ?></time><?php echo $galleries[0]->Title; ?></div></div>
-            <?php endif; ?>
+	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
+	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="/galerija">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
 	    		</div>
 	    		<div id="aktualno">
 	    			<section>
@@ -148,7 +146,7 @@
             <?php endif; ?>
           </article>
           <?php endfor; ?>
-	    		<p><a href="/info-centar/novosti"> pogledaj sve vijesti</a></p>
+	    		<p class="all_news"><a href="/info-centar/novosti"> pogledaj sve vijesti</a></p>
 	    	</section>
 	    	
 				<?php $this->getElement ('info'); ?>

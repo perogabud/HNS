@@ -1100,9 +1100,9 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 -- Struktura za pregledavanje `hns_vw_pagetree`
 --
-DROP TABLE IF EXISTS `hns_vw_pagetree`;
+DROP TABLE IF EXISTS `hns_vw_pageTree`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hns_vw_pagetree` AS select `page`.`pageId` AS `pageId`,`page`.`lft` AS `lft`,`page`.`rgt` AS `rgt`,`page`.`parentId` AS `parentId`,`pagei18n`.`languageId` AS `languageId`,(count(distinct `parent`.`pageId`) - 1) AS `depth`,group_concat(distinct `parenti18n`.`slug` separator '/') AS `fullUri`,`pagei18n`.`title` AS `title`,`pagei18n`.`navigationName` AS `navigationName`,`pagei18n`.`slug` AS `slug`,`pagei18n`.`content` AS `content`,`pagei18n`.`lead` AS `lead`,`pagei18n`.`metaTitle` AS `metaTitle`,`pagei18n`.`metaDescription` AS `metaDescription`,`pagei18n`.`metaKeywords` AS `metaKeywords`,`page`.`isException` AS `isException`,`page`.`isVisible` AS `isVisible`,`page`.`isEditable` AS `isEditable`,`page`.`isPublished` AS `isPublished`,`page`.`canAddChildren` AS `canAddChildren`,`page`.`canBeDeleted` AS `canBeDeleted`,`page`.`class` AS `class`,`pagei18n`.`navigationDescription` AS `navigationDescription`,`page`.`created` AS `created`,`page`.`modified` AS `modified` from ((((((`hns_page` `page` left join `hns_pageI18n` `pagei18n` on((`page`.`pageId` = `pagei18n`.`pageId`))) join `hns_language` `language` on((`pagei18n`.`languageId` = `language`.`languageId`))) left join `hns_page` `parentpage` on((`parentpage`.`pageId` = `page`.`parentId`))) join `hns_page` `parent`) left join `hns_pageI18n` `parenti18n` on(((`parent`.`pageId` = `parenti18n`.`pageId`) and (`parenti18n`.`languageId` = `pagei18n`.`languageId`)))) left join `hns_pageI18n` `parentpagei18n` on(((`page`.`parentId` = `parentpagei18n`.`pageId`) and (`parentpagei18n`.`languageId` = `pagei18n`.`languageId`)))) where (`page`.`lft` between `parent`.`lft` and `parent`.`rgt`) group by `page`.`pageId`,`language`.`languageId` order by `page`.`lft`;
+CREATE VIEW `hns_vw_pageTree` AS select `page`.`pageId` AS `pageId`,`page`.`lft` AS `lft`,`page`.`rgt` AS `rgt`,`page`.`parentId` AS `parentId`,`pagei18n`.`languageId` AS `languageId`,(count(distinct `parent`.`pageId`) - 1) AS `depth`,group_concat(distinct `parenti18n`.`slug` separator '/') AS `fullUri`,`pagei18n`.`title` AS `title`,`pagei18n`.`navigationName` AS `navigationName`,`pagei18n`.`slug` AS `slug`,`pagei18n`.`content` AS `content`,`pagei18n`.`lead` AS `lead`,`pagei18n`.`metaTitle` AS `metaTitle`,`pagei18n`.`metaDescription` AS `metaDescription`,`pagei18n`.`metaKeywords` AS `metaKeywords`,`page`.`isException` AS `isException`,`page`.`isVisible` AS `isVisible`,`page`.`isEditable` AS `isEditable`,`page`.`isPublished` AS `isPublished`,`page`.`canAddChildren` AS `canAddChildren`,`page`.`canBeDeleted` AS `canBeDeleted`,`page`.`class` AS `class`,`pagei18n`.`navigationDescription` AS `navigationDescription`,`page`.`created` AS `created`,`page`.`modified` AS `modified` from ((((((`hns_page` `page` left join `hns_pageI18n` `pagei18n` on((`page`.`pageId` = `pagei18n`.`pageId`))) join `hns_language` `language` on((`pagei18n`.`languageId` = `language`.`languageId`))) left join `hns_page` `parentpage` on((`parentpage`.`pageId` = `page`.`parentId`))) join `hns_page` `parent`) left join `hns_pageI18n` `parenti18n` on(((`parent`.`pageId` = `parenti18n`.`pageId`) and (`parenti18n`.`languageId` = `pagei18n`.`languageId`)))) left join `hns_pageI18n` `parentpagei18n` on(((`page`.`parentId` = `parentpagei18n`.`pageId`) and (`parentpagei18n`.`languageId` = `pagei18n`.`languageId`)))) where (`page`.`lft` between `parent`.`lft` and `parent`.`rgt`) group by `page`.`pageId`,`language`.`languageId` order by `page`.`lft`;
 
 -- --------------------------------------------------------
 
@@ -1137,7 +1137,7 @@ ALTER TABLE `hns_actualityCoverImage`
 --
 ALTER TABLE `hns_actualityHasCustomModule`
   ADD CONSTRAINT `hns_actualityhascustommodule_ibfk_1` FOREIGN KEY (`actualityId`) REFERENCES `hns_actuality` (`actualityId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_actualityhascustommodule_ibfk_2` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_actualityhascustommodule_ibfk_2` FOREIGN KEY (`customModuleId`) REFERENCES `hns_customModule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_bannerImage`
@@ -1149,40 +1149,40 @@ ALTER TABLE `hns_bannerImage`
 -- Ograničenja za tablicu `hns_customModuleHasNewsItem`
 --
 ALTER TABLE `hns_customModuleHasNewsItem`
-  ADD CONSTRAINT `hns_custommodulehasnewsitem_ibfk_1` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_custommodulehasnewsitem_ibfk_2` FOREIGN KEY (`newsItemId`) REFERENCES `hns_newsitem` (`newsItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_customModulehasnewsitem_ibfk_1` FOREIGN KEY (`customModuleId`) REFERENCES `hns_customModule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_customModulehasnewsitem_ibfk_2` FOREIGN KEY (`newsItemId`) REFERENCES `hns_newsItem` (`newsItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_customModuleHasPage`
 --
 ALTER TABLE `hns_customModuleHasPage`
-  ADD CONSTRAINT `hns_custommodulehaspage_ibfk_1` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_custommodulehaspage_ibfk_2` FOREIGN KEY (`pageId`) REFERENCES `hns_page` (`pageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_customModulehaspage_ibfk_1` FOREIGN KEY (`customModuleId`) REFERENCES `hns_customModule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_customModulehaspage_ibfk_2` FOREIGN KEY (`pageId`) REFERENCES `hns_page` (`pageId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_customModuleImage`
 --
 ALTER TABLE `hns_customModuleImage`
-  ADD CONSTRAINT `hns_custommoduleimage_ibfk_1` FOREIGN KEY (`customModuleItemId`) REFERENCES `hns_custommoduleitem` (`customModuleItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_customModuleImage_ibfk_1` FOREIGN KEY (`customModuleItemId`) REFERENCES `hns_customModuleItem` (`customModuleItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_customModuleImageImage`
 --
 ALTER TABLE `hns_customModuleImageImage`
-  ADD CONSTRAINT `hns_custommoduleimageimage_ibfk_1` FOREIGN KEY (`customModuleImageId`) REFERENCES `hns_custommoduleimage` (`customModuleImageId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_customModuleImageimage_ibfk_1` FOREIGN KEY (`customModuleImageId`) REFERENCES `hns_customModuleImage` (`customModuleImageId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_customModuleItem`
 --
 ALTER TABLE `hns_customModuleItem`
-  ADD CONSTRAINT `hns_custommoduleitem_ibfk_1` FOREIGN KEY (`customModuleItemSizeId`) REFERENCES `hns_custommoduleitemsize` (`customModuleItemSizeId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hns_custommoduleitem_ibfk_2` FOREIGN KEY (`customModuleId`) REFERENCES `hns_custommodule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_customModuleItem_ibfk_1` FOREIGN KEY (`customModuleItemSizeId`) REFERENCES `hns_customModuleItemsize` (`customModuleItemSizeId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hns_customModuleItem_ibfk_2` FOREIGN KEY (`customModuleId`) REFERENCES `hns_customModule` (`customModuleId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_customModuleText`
 --
 ALTER TABLE `hns_customModuleText`
-  ADD CONSTRAINT `hns_custommoduletext_ibfk_1` FOREIGN KEY (`customModuleItemId`) REFERENCES `hns_custommoduleitem` (`customModuleItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_customModuletext_ibfk_1` FOREIGN KEY (`customModuleItemId`) REFERENCES `hns_customModuleItem` (`customModuleItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_galleryI18n`
@@ -1228,7 +1228,7 @@ ALTER TABLE `hns_memberImage`
 -- Ograničenja za tablicu `hns_newsItemCoverImage`
 --
 ALTER TABLE `hns_newsItemCoverImage`
-  ADD CONSTRAINT `hns_newsitemcoverimage_ibfk_1` FOREIGN KEY (`newsItemId`) REFERENCES `hns_newsitem` (`newsItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hns_newsItemcoverimage_ibfk_1` FOREIGN KEY (`newsItemId`) REFERENCES `hns_newsItem` (`newsItemId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograničenja za tablicu `hns_page`

@@ -5,10 +5,29 @@
     <meta name="Keywords" content="" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript">document.documentElement.className = 'js';</script>
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
   </head>
   <body>
-  	<div role="wrapper">
-		  <?php $this->getElement ('header'); ?>
+  	<div id="wrapper">
+	  	<div class="bg_left"></div>
+  		<div class="bg_right"></div>
+  		<aside id="sidebar">
+			  <?php $this->getElement ('header'); ?>
+			  <section class="subpage_nav">
+			  	<ul>
+			  		<li class="hns-shop"><a href="" ><img src="/img/hns_shop_160.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/ulaznice_80.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/raspored_80.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/hns_tv_80.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/galerija_80.png" alt="" ></a></li>
+			  		<li><a href="/info-centar/aktualnosti" ><img src="/img/aktualno_80.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/a_reprezentacija_80.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/hns_casopis_80.png" alt="" ></a></li>
+			  	</ul>
+			  </section>
+			  <section class="fake">
+				</section>
+		  </aside>
 		  <?php $this->getElement ('navigation'); ?>
 		  <?php $this->getElement ('mainContent'); ?>
 		  <?php $this->getElement ('footer'); ?>
