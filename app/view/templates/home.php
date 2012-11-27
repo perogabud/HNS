@@ -14,7 +14,7 @@
   		<div class="bg_right"></div>
 			<aside id="sidebar">
 				<?php $this->getElement ('header'); ?>
-			
+
 				<section class="raspored">
 					<table class="results">
 						<caption><h5>raspored utakmica</h5></caption>
@@ -51,19 +51,21 @@
 						<tr><td colspan="3"><p class="close"></p></td></tr>
 					</table>
 				</section>
-				
+
 				<section class="shop_timeline">
 					<ul>
-						<li class="hns-shop"><a href=""><img src="/img/hns_shop.png" alt="HNS SHOP" /></a></li>
+						<li class="hns-shop"><a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/9-hns-hns-shop.html"><img src="/img/hns_shop.png" alt="HNS SHOP" /></a></li>
 						<li class="timeline"><a href=""><img src="/img/timeline.png" alt="TIMELINE" /></a></li>
 					</ul>
 				</section>
-				
+
 				<section class="vatreni">
 					<ul>
 						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
-						<li><img src="/img/izbornik_facebook.png" alt="" /></li>
-						<li><img src="/img/vatreni.png" alt="vatreni" style="border: 1px solid #999; margin-top: -2px;" /></li>
+<li class="wide"><img src="/img/izbornik_facebook.png" alt="" /></li>
+            <?php foreach ($members as $member): ?>
+            <li><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+            <?php endforeach; ?>
 						<!--<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
 						<li><a href="<?php //echo $members[1]->Url; ?>"><img src="<?php //echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
 						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
@@ -71,13 +73,13 @@
 						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>-->
 					</ul>
 				</section>
-				
+
 				<section class="uvijekvjerni">
 					<a href="http://uvijekvjerni.hr" ><img src="/img/uvijek_vjerni.png" alt="UVIJEK VJERNI" /></a>
 				</section>
-				
+
 				<section class="facebook">
-				
+
 				</section>
 			</aside>
 
@@ -92,15 +94,15 @@
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
 	    	</aside>
-    	
+
 	    	<section class="tabs">
 	    		<div id="hns-tv">
 	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe>
-	    			<div class="caption">pogledaj sve video zapise &gt; <a href="#">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
+	    			<div class="caption">pogledaj sve video zapise &gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/5-hns-hnstv.html">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
 	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
-	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="/galerija">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
+	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/6-hns-galerija.html">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
 	    		</div>
 	    		<div id="aktualno">
 	    			<section>
@@ -125,7 +127,7 @@
 	    			<img src="/img/casopis.jpg" alt="Časopis" />
 	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
 	    		</div>
-	    		
+
 	    		<ul>
 	    			<li class="tv"><a href="#hns-tv" ></a></li>
 	    			<li class="galerija"><a href="#galerija" ></a></li>
@@ -134,7 +136,7 @@
 	    			<li class="casopis"><a href="#hns-casopis" ></a></li>
 	    		</ul>
 	    	</section>
-	    	
+
 	    	<section class="content">
 	    		<h2>VIJESTI</h2>
           <?php for ($i = 0; $i < count ($newsItems); $i++): $newsItem = $newsItems[$i]; ?>
@@ -148,11 +150,11 @@
           <?php endfor; ?>
 	    		<p class="all_news"><a href="/info-centar/novosti"> pogledaj sve vijesti</a></p>
 	    	</section>
-	    	
+
 				<?php $this->getElement ('info'); ?>
-	    	
+
 	    </section>
-	    
+
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>
 	  </div>

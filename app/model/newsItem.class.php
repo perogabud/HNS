@@ -29,6 +29,7 @@ class NewsItem extends ModelObject {
   }
 
   public function getUrl () {
+    return 'http://www.bembelembe.com/test/hns/HNS-5.11.2012/8-hns-vijest-clanak.html';
     return $this->_rootUrl . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_news') . '/' . $this->_slug;
   }
 

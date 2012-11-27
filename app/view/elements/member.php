@@ -9,12 +9,6 @@
       <dd><?php echo $member->Position; ?></dd>
       <dt>Klub</dt>
       <dd><?php echo $member->Club; ?></dd>
-      <dt>Ostali podaci</dt>
-      <dd>
-        <pre>
-        <?php print_r ($member); ?>
-        </pre>
-      </dd>
     </dl>
 
 <?php endif; ?>
