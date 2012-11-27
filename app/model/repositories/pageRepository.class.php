@@ -356,12 +356,12 @@ class PageRepository extends Repository {
         ':parentId' => array ($parentId, PDO::PARAM_INT),
         ':lft' => array ($num + 1, PDO::PARAM_INT),
         ':rgt' => array ($num + 2, PDO::PARAM_INT),
-        ':isException' => Config::read ('debug') ? (isset ($data['isException']) ? '1' : '0') : '',
-        ':isVisible' => Config::read ('debug') ? (isset ($data['isVisible']) ? '1' : '0') : '',
-        ':isEditable' => Config::read ('debug') ? (isset ($data['isEditable']) ? '1' : '0') : '',
-        ':isPublished' => Config::read ('debug') ? (isset ($data['isPublished']) ? '1' : '0') : '',
-        ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '',
-        ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '',
+        ':isException' => Config::read ('debug') ? (isset ($data['isException']) ? '1' : '0') : '0',
+        ':isVisible' => Config::read ('debug') ? (isset ($data['isVisible']) ? '1' : '0') : '1',
+        ':isEditable' => Config::read ('debug') ? (isset ($data['isEditable']) ? '1' : '0') : '1',
+        ':isPublished' => Config::read ('debug') ? (isset ($data['isPublished']) ? '1' : '0') : '1',
+        ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '1',
+        ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '1',
         ':class' => empty ($data['class']) ? NULL : Tools::stripTags ($data['class'])
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
@@ -629,14 +629,10 @@ class PageRepository extends Repository {
       $queryParams = array (
         ':pageId' => array ($pageId, PDO::PARAM_INT)
       );
-      for ($i = 0; $i < count ($data['customModuleId']); $i++) {
-        $customModuleIdParams[] = ':id' . $i;
-        $queryParams[':id' . $i] = $data['customModuleId'][$i];
-      }
+      
       $query = "
         DELETE FROM " . DBP . "customModuleHasPage
         WHERE `pageId` = :pageId
-          AND `customModuleId` NOT IN (". implode (', ', $customModuleIdParams) .")
       ";
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       if (isset ($data['customModuleId']) && is_array ($data['customModuleId'])) {
@@ -645,8 +641,6 @@ class PageRepository extends Repository {
             INSERT INTO " . DBP . "customModuleHasPage
             SET `pageId` = :pageId,
                 `customModuleId` = :customModuleId
-            ON DUPLICATE KEY UPDATE
-                `pageId` = `pageId`
           ";
           $queryParams = array (
             ':pageId' => array ($pageId, PDO::PARAM_INT),

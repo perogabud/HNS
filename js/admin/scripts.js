@@ -36,7 +36,7 @@ $().ready (function () {
               type: 'POST',
               url: "/admin/ajax/customModule/uploadText/" + $('#contentModuleMenu a.newItem').attr('data-module-id'),
               data: {
-                itemId: itemId,
+                itemId : itemId,
                 content : $this.find ('textarea.content').val (),
                 footnote : $this.find ('textarea.footnote').val (),
                 position : index + 1,
@@ -172,6 +172,7 @@ $().ready (function () {
           response = $.parseJSON (response);
           console.log ('completed', response, data);
           $newItem.data ('itemId', response.itemId);
+          $newItem.attr ('data-item-id', response.itemId);
           var $img = $('<img src="'+ response.imageUrl.small +'" data-wide="'+ response.imageUrl.wide +'" data-small="'+ response.imageUrl.small +'" alt=""/>');
           $newItem.append ($img);
         },

@@ -31,6 +31,13 @@ class MemberRepository extends Repository {
       ";
       $queryParams[':memberId'] = array (intval ($params['memberId']), PDO::PARAM_INT);
     }
+    
+    if (array_key_exists ('slug', $params)) {
+      $query .= "
+        AND m.slug = :slug
+      ";
+      $queryParams[':slug'] = trim ($params['slug']);
+    }
 
 
       if (array_key_exists ('memberCategoryId', $params) && is_numeric ($params['memberCategoryId'])) {
