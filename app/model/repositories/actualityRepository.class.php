@@ -391,7 +391,7 @@ class ActualityRepository extends Repository {
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
       // Handle many-to-many Custom Module relation
-      $customModuleIdParams = array ();
+      $customModuleIdParams = array (0);
       $queryParams = array (
         ':actualityId' => array ($actualityId, PDO::PARAM_INT)
       );
