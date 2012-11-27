@@ -8,4 +8,12 @@ $(function() {
  
         // move the nav to the bottom
         $( ".tabs-bottom .ui-tabs-nav" ).appendTo( ".tabs-bottom" );
+        
+/*        $(".results").hover(function () {
+		      $(".zoom").css("display", "table");
+		    });
+		    
+		    $(".close").click(function () {
+		      $(".zoom").css("display", "none");
+		    });*/
 });
