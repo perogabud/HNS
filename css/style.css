@@ -531,7 +531,7 @@ section.tabs ul li.casopis a {
 	background: url('/img/hns_casopis.png') no-repeat;
 }
 
-section.content {
+section.main_home section.content {
 	width: 599px;
 	float: left;
 	background: #fff;
@@ -623,7 +623,35 @@ section.subpage_nav ul li a img {
 	float: left;
 }
 
+section.fake {
+	height: 250px;
+	clear: both;
+}
 
+section.main h2 {
+	font-family: Oswald, sans-serif;
+	font-size: 36px;
+	color: #005ca8;
+}
+
+section.main div.lead {
+	font-size: 21px;
+	color: #999;
+}
+
+section.main h2 {
+	margin: 1.2em 0 0.2em;
+	padding-left: 30px;
+}
+
+section.main p {
+	margin: 0.75em 0;
+}
+
+section.main section.content {
+	width: 660px;
+	padding: 0 30px 10px;
+}
 
 
 /*footer*/
