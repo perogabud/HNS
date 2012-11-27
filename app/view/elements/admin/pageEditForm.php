@@ -46,7 +46,9 @@
       <?php foreach ($page->CustomModules as $module) :
         FrontHelper::printCustomModuleHtml($module);
       endforeach; ?>
-      </ul> <?php
+      </ul>
+        
+        <?php
       
       FormHelper::input ('text', 'metaTitle', 'metaTitle', array ('label' => array ('text' => 'Meta Naslov'), 'value' => $page->getMetaTitle ($lang), 'lang' => $lang));
       FormHelper::input ('textarea', 'metaDescription', 'metaDescription', array ('label' => array ('text' => 'Meta Description'), 'value' => $page->getMetaDescription ($lang), 'lang' => $lang));
@@ -105,6 +107,7 @@
         });
       });
     </script>
+    
       
     <p class="info">Polja označena sa zvijezdicom (*) moraju biti ispunjena.</p>
     <?php FormHelper::input ('submit', 'submit', 'submit', array ('value' => 'Spremi')); ?>

@@ -44,6 +44,23 @@ class StandardContentManager extends ContentManager {
       case '':
         Tools::redirect ('/index.html');
         break;
+      
+      case 'magazine':
+          $this->_setElements (
+            array (
+              'mainContent' => array (
+                'filename' => 'mag',
+                'data' => array (
+                )
+              )
+            )
+          );
+          $this->_setHtmlHead (
+            array (
+              'pageTitle' => 'HNS Časopis'
+            )
+          );
+        break;
 
       case 'home':
         if ($this->_checkParams (1)) {

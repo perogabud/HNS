@@ -122,7 +122,9 @@
 	    			<div class="caption">saznaj sve o &gt;&gt; <a href="">A REPREZENTACIJI</a></div>
 	    		</div>
 	    		<div id="hns-casopis">
-	    			<img src="/img/casopis.jpg" alt="Časopis" />
+            <a href="/magazine">
+              <img src="/img/casopis.jpg" alt="Časopis" />
+            </a>
 	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
 	    		</div>
 	    		
