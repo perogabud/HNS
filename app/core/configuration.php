@@ -13,7 +13,7 @@ ini_set ('error_log', Config::read ('sitepath') . 'error_log.txt');
 
 Config::write ('optionsDelimiter', '!');
 
-Config::write ('siteDomain', 'hns.localdomain');
+Config::write ('siteDomain', 'hns.local');
 Config::write ('siteUrl', 'http://' . Config::read ('siteDomain'));
 Config::write ('siteUrlRoot', Config::read ('siteUrl') . '/');
 Config::write ('siteUrlRootNoLang', Config::read ('siteUrlRoot'));
@@ -63,5 +63,5 @@ Config::write ('langMeta', array (
 Config::write ('dbprefix', 'hns_');
 Config::write ('dbhost', 'localhost');
 Config::write ('dbname', 'hns');
-Config::write ('dbuser', 'hns');
-Config::write ('dbpass', 'hns');
+Config::write ('dbuser', 'root');
+Config::write ('dbpass', '');
