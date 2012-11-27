@@ -34,19 +34,19 @@
 							<td class="home">HRVATSKA</td><td class="result">2:0</td><td class="guest">WALES</td>
 						</tr>
 						<tr>
-							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-18">18.10.2012.</time> <small>Kvalifikacija za Svjetsko prvenstvo</small><span>A</span></td>
+							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-16">16.10.2012.</time> <small>SP 2014. (Q)</small><span>A</span></td>
 						</tr>
 						<tr>
-							<td class="home">IZRAEL</td><td class="result">1:1</td><td class="guest">HRVATSKA</td>
+							<td class="home">HRVATSKA</td><td class="result">1:1</td><td class="guest">SELEKCIJA MAXtv 1. LIGE</td>
 						</tr>
 						<tr>
-							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-18">18.10.2012.</time><small>Kvalifikacija za Svjetsko prvenstvo</small><span>A</span></td>
+							<td colspan="3"><time pubdate="pubdate" datetime="2012-11-14">14.11.2012.</time><small>Prijateljske utakmice</small><span>A</span></td>
 						</tr>
 						<tr>
-							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">KAZAHSTAN</td>
+							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">SRBIJA</td>
 						</tr>
 						<tr>
-							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-18">18.10.2012.</time><small>Kvalifikacija za Svjetsko prvenstvo</small><span>A</span></td>
+							<td colspan="3"><time pubdate="pubdate" datetime="2013-03-22">22.03.2013.</time><small>SP 2014. (Q)	</small><span>A</span></td>
 						</tr>
 						<tr><td colspan="3"><p class="close"></p></td></tr>
 					</table>
@@ -62,7 +62,7 @@
 				<section class="vatreni">
 					<ul>
 						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
-<li class="wide"><img src="/img/izbornik_facebook.png" alt="" /></li>
+<li class="wide"><a href="http://hr-hr.facebook.com/igor.stimac.officialpage"><img src="/img/izbornik_facebook.png" alt="" /></a></li>
             <?php foreach ($members as $member): ?>
             <li><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
             <?php endforeach; ?>

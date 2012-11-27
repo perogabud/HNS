@@ -175,7 +175,7 @@ aside#sidebar {
 h1 {
 	width: 241px;
 	height: 241px;
-	background: url('/img/hns.png') no-repeat;	
+	background: url('/img/hns.png') no-repeat;
 }
 
 h1 a {
@@ -187,7 +187,7 @@ h1 a {
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	color: #fff;	
+	color: #fff;
 }
 
 section.raspored {
@@ -330,7 +330,7 @@ nav#menu ul li.lang a {
 }
 
 nav#menu ul li.lang a.hr {
-	color: #e31f0e; 
+	color: #e31f0e;
 }
 
 nav#menu ul li.lang a.en {
@@ -679,3 +679,13 @@ footer img.footer_right {
 	right: -55px;
 }
 
+section.subpage p,
+section.subpage ul,
+section.subpage ol {
+  margin-bottom: 1em;
+}
+
+section.subpage h2 {
+  font-family: Oswald, sans-serif;
+  margin-bottom: 1em;
+}
