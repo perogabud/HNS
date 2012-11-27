@@ -64,11 +64,11 @@
 						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
 						<li class="wide"><img src="/img/izbornik_facebook.png" alt="" /></li>
 						<li><img src="/img/vatreni.png" alt="vatreni" style="border: 1px solid #999; margin-top: -2px;" /></li>
-						<!--<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[1]->Url; ?>"><img src="<?php //echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>-->
+						<li><a href="<?php echo $members[0]->Url; ?>"><img src="<?php echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $members[0]->Name; ?>"/></a></li>
+						<li><a href="<?php echo $members[1]->Url; ?>"><img src="<?php echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $members[0]->Name; ?>"/></a></li>
+						<li><a href="<?php echo $members[2]->Url; ?>"><img src="<?php echo $members[2]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $members[2]->Name; ?>"/></a></li>
+						<li><a href="<?php echo $members[3]->Url; ?>"><img src="<?php echo $members[3]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $members[3]->Name; ?>"/></a></li>
+<!--						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>-->
 					</ul>
 				</section>
 				
