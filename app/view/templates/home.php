@@ -22,10 +22,10 @@
 							<td class="home">HRVATSKA</td><td class="result">2:0</td><td class="guest">WALES</td>
 						</tr>
 						<tr>
-							<td class="home">IZRAEL</td><td class="result">1:1</td><td class="guest">HRVATSKA</td>
+							<td class="home">HRVATSKA</td><td class="result">1:1</td><td class="guest">MAXtv 1. LIGA</td>
 						</tr>
 						<tr>
-							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">KAZAHSTAN</td>
+							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">SRBIJA</td>
 						</tr>
 					</table>
 					<table style="display: none;" class="zoom">
