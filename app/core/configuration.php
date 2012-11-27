@@ -3,7 +3,7 @@
 // Core configuration
 
 Config::write ('options', TRUE);
-Config::write ('debug', 0);
+Config::write ('debug', 1);
 Config::write ('cache', TRUE);
 
 error_reporting (-1);
