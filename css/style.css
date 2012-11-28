@@ -70,7 +70,7 @@ p, h1, h2, h3, h4, h5, h6,
 textarea, input, select, label, blockquote, form, fieldset, legend {
 /*  position: relative;*/
 /*  float: left;*/
-  width: 100%;
+/*  width: 100%;*/
 }
 
 input, textarea, select { width: auto; }
@@ -172,16 +172,16 @@ aside#sidebar {
 	float: left;
 }
 
-h1 {
+aside#sidebar header h1 {
 	width: 241px;
 	height: 241px;
-	margin-bottom: -1px;
+	margin: 0 -1px -1px 0;
 	background: url('/img/hns.png') no-repeat;
 	position: relative;
 	z-index: 10;
 }
 
-h1 a {
+aside#sidebar header h1 a {
 	padding: 161px 70px 20px;
 	line-height: 1;
 	font-size: 20px;
@@ -360,6 +360,7 @@ nav#menu ul li:hover section {
 	position: absolute;
 	box-shadow: 0px 5px 5px 1px #666;
 	-webkit-box-shadow: 0px 5px 5px 1px #666;
+	z-index: 999;
 }
 
 nav#menu ul li:hover ul {
@@ -584,7 +585,7 @@ section.main_home section.content h3 {
 /*	float: right;*/
 }
 
-section.main_home section.content h3 a {
+section section.content h3 a {
 	color: #005ca8;
 }
 
@@ -634,7 +635,7 @@ section.subpage_nav ul li a img {
 	float: left;
 }
 
-section.fake {
+section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 	height: 250px;
 	clear: both;
 }
@@ -708,6 +709,39 @@ section.main section.member h3 {
 	padding-top: 60px;
 }
 
+section.subpage p,
+section.subpage ul,
+section.subpage ol {
+  margin-bottom: 1em;
+}
+
+section.content h2 {
+	font-size: 36px;
+  font-family: Oswald, sans-serif;
+  margin-bottom: 1em;
+  color: #005ca8;
+}
+
+section.content ul.galleries li {
+	width: 300px;
+	height: 291px;
+	float: left;
+}
+
+section.content ul.galleries li:nth-child(odd) {
+	margin-right: 40px;
+}
+
+section.content ul.galleries li small {
+	width: 100%;
+	display: inline-block;
+	font-size: 14px;
+	color: #4d4d4d;
+}
+
+
+
+
 
 /*footer*/
 footer {
@@ -731,13 +765,227 @@ footer img.footer_right {
 	right: -55px;
 }
 
-section.subpage p,
-section.subpage ul,
-section.subpage ol {
-  margin-bottom: 1em;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*gallery*/
+#gallery {
+    padding: 30px;
+    background: #ebebeb;
 }
 
-section.subpage h2 {
-  font-family: Oswald, sans-serif;
-  margin-bottom: 1em;
+#descriptions {
+    position: relative;
+    height: 50px;
+    background: #EEE;
+    margin-top: 10px;
+    width: 640px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+#descriptions .ad-image-description {
+    position: absolute;
+}
+
+#descriptions .ad-image-description .ad-description-title {
+    display: block;
+}
+
+.ad-gallery {
+  width: 719px;
+  height: 589px;
+  border: 1px solid #999;
+}
+.ad-gallery, .ad-gallery * {
+  margin: 0;
+  padding: 0;
+}
+  .ad-gallery .ad-image-wrapper {
+    width: 720px;
+    height: 429px;
+/*    margin-bottom: 10px;*/
+    position: relative;
+    overflow: hidden;
+  }
+    .ad-gallery .ad-image-wrapper .ad-loader {
+      position: absolute;
+      z-index: 10;
+      top: 48%;
+      left: 48%;
+      border: 1px solid #CCC;
+    }
+    .ad-gallery .ad-image-wrapper .ad-next {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 25%;
+      height: 100%;
+      cursor: pointer;
+      display: block;
+      z-index: 100;
+    }
+    .ad-gallery .ad-image-wrapper .ad-prev {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 25%;
+      height: 100%;
+      cursor: pointer;
+      display: block;
+      z-index: 100;
+    }
+    .ad-gallery .ad-image-wrapper .ad-prev, .ad-gallery .ad-image-wrapper .ad-next {
+      /* Or else IE will hide it */
+      background: url('/img/non-existing.jpg')\9
+    }
+      .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
+        background: url('/img/ad_prev.png');
+        width: 30px;
+        height: 30px;
+        display: none;
+        position: absolute;
+        top: 47%;
+        left: 0;
+        z-index: 101;
+      }
+      .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
+        background: url('/img/ad_next.png');
+        width: 30px;
+        height: 30px;
+        right: 0;
+        left: auto;
+      }
+    .ad-gallery .ad-image-wrapper .ad-image {
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 9;
+    }
+      .ad-gallery .ad-image-wrapper .ad-image a img {
+        border: 0;
+      }
+      .ad-gallery .ad-image-wrapper .ad-image .ad-image-description {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        padding: 7px;
+        text-align: left;
+        width: 100%;
+        z-index: 2;
+        background: url('/img/opa75.png');
+        color: #000;
+      }
+      * html .ad-gallery .ad-image-wrapper .ad-image .ad-image-description {
+        background: none;
+        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (enabled=true, sizingMethod=scale, src='opa75.png');
+      }
+        .ad-gallery .ad-image-wrapper .ad-image .ad-image-description .ad-description-title {
+          display: block;
+        }
+  .ad-gallery .ad-controls {
+    height: 0;
+    display: none;
+  }
+    .ad-gallery .ad-info {
+      float: left;
+    }
+    .ad-gallery .ad-slideshow-controls {
+      float: right;
+    }
+      .ad-gallery .ad-slideshow-controls .ad-slideshow-start, .ad-gallery .ad-slideshow-controls .ad-slideshow-stop {
+        padding-left: 5px;
+        cursor: pointer;
+      }
+      .ad-gallery .ad-slideshow-controls .ad-slideshow-countdown {
+        padding-left: 5px;
+        font-size: 0.9em;
+      }
+    .ad-gallery .ad-slideshow-running .ad-slideshow-start {
+      cursor: default;
+      font-style: italic;
+    }
+  .ad-gallery .ad-nav {
+    width: 719px;
+    height: 159px;
+    border-top: 1px solid #999;
+    position: relative;
+    background: #4d4d4d;
+  }
+  .ad-nav {
+    height: 79px;
+  }
+    .ad-gallery .ad-forward, .ad-gallery .ad-back {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      z-index: 10;
+    }
+    /* IE 6 doesn't like height: 100% */
+    * html .ad-gallery .ad-forward, .ad-gallery .ad-back {
+      height: 100px;
+    }
+    .ad-gallery .ad-back {
+      cursor: pointer;
+      left: 0px;
+      top: 0;
+      width: 79px;
+      height: 79px;
+      display: block;
+      background: url('/img/ad_scroll_back.png') no-repeat;
+    }
+    .ad-gallery .ad-forward {
+      cursor: pointer;
+      display: block;
+      width: 79px;
+      height: 79px;
+      top: 0;
+      right: 0px;
+      background: url('/img/ad_scroll_forward.png') no-repeat;
+    }
+    .ad-gallery .ad-nav .ad-thumbs {
+      overflow: hidden;
+      width: 559px;
+      margin: 0 auto;
+      border-left: 1px solid #999;
+      border-right: 1px solid #999;
+    }
+      .ad-gallery .ad-thumbs .ad-thumb-list {
+        float: left;
+        width: 9000px;
+        list-style: none;
+      }
+        .ad-gallery .ad-thumbs li {
+          float: left;
+          width: 79px;
+          height: 79px;
+        }
+          .ad-gallery .ad-thumbs li a {
+            display: block;
+          }
+            .ad-gallery .ad-thumbs li a img {
+              border-bottom: 1px solid #999;
+              display: block;
+            }
+            .ad-gallery .ad-thumbs li a.ad-active img {
+              border: 3px solid #616161;
+            }
+/* Can't do display none, since Opera won't load the images then */
+.ad-preloads {
+  position: absolute;
+  left: -9000px;
+  top: -9000px;
 }
