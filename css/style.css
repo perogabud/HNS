@@ -175,6 +175,7 @@ aside#sidebar {
 h1 {
 	width: 241px;
 	height: 241px;
+	margin-bottom: -1px;
 	background: url('/img/hns.png') no-repeat;
 	position: relative;
 	z-index: 10;
