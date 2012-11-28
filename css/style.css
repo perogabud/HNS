@@ -21,7 +21,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   background: transparent;
 }
 body {
-  line-height: 1;
+/*  line-height: 1;*/
 }
 ol, ul {
   list-style: none;
@@ -131,9 +131,9 @@ body {
   background: #f2f2f2 url('/img/bg.png') repeat-x;
   color: #666;
   font-size: 15px;
-  line-height: 1.2;
+/*  line-height: 1.2;*/
   font-family: Arial, sans-serif;
-  font-weight: 300;
+/*  font-weight: 300;*/
 }
 
 /*custom*/
@@ -176,6 +176,8 @@ h1 {
 	width: 241px;
 	height: 241px;
 	background: url('/img/hns.png') no-repeat;
+	position: relative;
+	z-index: 10;
 }
 
 h1 a {
@@ -191,8 +193,8 @@ h1 a {
 }
 
 section.raspored {
-	width: 240px;
-	height: 120px;
+	width: 241px;
+	height: 121px;
 	position: relative;
 	font-family: Oswald, sans-serif;
 	background: url('/img/results_bg.png') no-repeat;
@@ -295,7 +297,7 @@ nav#menu ul li {
 /*	padding-top: 16px;*/
 /*	padding-bottom: 16px;*/
 	border: 1px solid #808080;
-	border-right: 0;
+	border-left: 0;
 	background: url('/img/nav_bg.png');
 	display: inline-block;
 	float: left;
@@ -307,8 +309,8 @@ nav#menu ul li:first-child {
 }
 
 nav#menu ul li.lang {
-	width: 118px;
-	border-right: 1px solid #808080;
+/*	width: 118px;*/
+/*	border-right: 1px solid #808080;*/
 }
 
 nav#menu ul li a {
