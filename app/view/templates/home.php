@@ -61,31 +61,31 @@
 
 				<section class="vatreni">
 					<img src="/img/vatreni.png" alt="vatreni logo" class="vatreni" />
-					<ul class="slider1">
+					<div class="slider1">
             <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
-							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
             <? endfor ?>
-					</ul>
-					<ul class="slider2">
+					</div>
+					<div class="slider2">
             <?php for($i = 4; $i < 8; $i++) : $member = $members[$i]; ?>
 							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
             <? endfor ?>
-					</ul>
-					<ul class="slider3">
+					</div>
+					<div class="slider3">
             <?php for($i = 8; $i < 12; $i++) : $member = $members[$i]; ?>
 							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
             <? endfor ?>
-					</ul>
-					<ul class="slider4">
+					</div>
+					<div class="slider4">
             <?php for($i = 12; $i < 16; $i++) : $member = $members[$i]; ?>
 							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
             <? endfor ?>
-					</ul>
-					<ul class="slider4">
+					</div>
+					<div class="slider4">
             <?php for($i = 16; $i < 20; $i++) : $member = $members[$i]; ?>
 							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
             <? endfor ?>
-					</ul>
+					</div>
 				</section>
 				
 				<section class="fb">
