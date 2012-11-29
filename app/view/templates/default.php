@@ -25,7 +25,14 @@
 			  		<li><a href="" ><img src="/img/hns_casopis_80.png" alt="" ></a></li>
 			  	</ul>
 			  </section>
-			  <section class="fake">
+			  <section class="subpage_categories">
+		      <ul>
+		      <?php foreach ($page[0]->Subpages as $subPage) : ?>
+		        <li>
+		          <a href="<?php echo $subPage->Url; ?>"><?php echo $subPage->NavigationName; ?></a>
+		        </li>
+		      <?php endforeach; ?>
+		      </ul>
 				</section>
 		  </aside>
 		  <?php $this->getElement ('navigation'); ?>

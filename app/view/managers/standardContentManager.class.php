@@ -374,6 +374,9 @@ class StandardContentManager extends ContentManager {
         $pageController = PageController::getInstance ();
         $page = $pageController->getPage (array ('uri' => $this->params));
         if ($page) {
+        	$this->_setData(
+						array('page' => $pageController->getSubpages(null, 2, $page))        	
+        	);
           $this->_setElements (
             array (
               'mainContent' => array (
