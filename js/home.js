@@ -19,30 +19,30 @@ $(function() {
 		    
 				$('.slideshow1').cycle({ 
 				    delay:  2000, 
-				    speed:  500
+				    speed:  3000
 				});
 
 				$('.slideshow2').cycle({ 
 				    delay:  2000, 
-				    speed:  500,
+				    speed:  3000,
 				    timeout: 200
 				});
 				
 				$('.slideshow3').cycle({ 
 				    delay:  2000, 
-				    speed:  500,
+				    speed:  3000,
 				    timeout: 250
 				});
 				
 				$('.slideshow4').cycle({ 
 				    delay:  2000, 
-				    speed:  500,
+				    speed:  3000,
 				    timeout: 300
 				});
 				
 				$('.slideshow5').cycle({ 
 				    delay:  2000, 
-				    speed:  500,
+				    speed:  3000,
 				    timeout: 350
 				});
 
