@@ -60,7 +60,7 @@
 				</section>
 
 				<section class="vatreni">
-					<img src="/img/vatreni.jpg" alt="vatreni logo" class="vatreni" />
+					<img src="/img/vatreni.png" alt="vatreni logo" class="vatreni" />
 					<ul class="slider1">
             <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
 							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
