@@ -85,6 +85,11 @@
 					}(document, 'script', 'facebook-jssdk'));</script>
 					<div class="fb-activity" data-site="http://www.hns-cff.hr" data-width="241" data-height="241" data-header="true" data-border-color="#999" data-font="arial" data-recommendations="false"></div>
 				</section>
+				
+				<section class="twitter">
+					<a class="twitter-timeline"  href="https://twitter.com/HNS_CFF" data-widget-id="274156887522541569">Tweets by @HNS_CFF</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</section>
 
 				<section class="uvijekvjerni">
 					<a href="http://uvijekvjerni.hr" ><img src="/img/uvijek_vjerni.png" alt="UVIJEK VJERNI" /></a>
@@ -109,8 +114,7 @@
 
 	    	<section class="tabs">
 	    		<div id="hns-tv">
-	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe>
-	    			<div class="caption">pogledaj sve video zapise &gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/5-hns-hnstv.html">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
+	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe><div class="caption">pogledaj sve video zapise &gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/5-hns-hnstv.html">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
 	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
