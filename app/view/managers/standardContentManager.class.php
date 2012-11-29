@@ -44,7 +44,7 @@ class StandardContentManager extends ContentManager {
       case '':
         Tools::redirect ('/index.html');
         break;
-      
+
       case 'magazine':
           $this->_setElements (
             array (
