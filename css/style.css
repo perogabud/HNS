@@ -283,6 +283,7 @@ section.vatreni ul li.member a img {
 
 section.fb {
 	margin-bottom: -1px;
+	clear: both;
 }
 
 section.twitter {
