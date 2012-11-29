@@ -261,15 +261,15 @@ section.raspored table.zoom tr td p.close {
 	background: url('/img/plus.png') no-repeat;
 }
 
+section.vatreni {
+	margin-bottom: -1px;
+}
+
 section.vatreni ul li {
 	width: 80px;
 	height: 80px;
 	display: inline-block;
 	float: left;
-}
-
-section.vatreni ul li.wide {
-	width: 161px;
 }
 
 section.vatreni ul li a img {
@@ -279,6 +279,16 @@ section.vatreni ul li a img {
 section.vatreni ul li.member a img {
 	border: 1px solid #999;
 	margin: -1px -1px 0 0;
+}
+
+section.fb {
+	margin-bottom: -1px;
+}
+
+section.twitter {
+	width: 241px;
+	height: 321px;
+	margin-bottom: -1px;
 }
 
 

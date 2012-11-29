@@ -61,16 +61,9 @@
 
 				<section class="vatreni">
 					<ul>
-						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
-<li class="wide"><a href="http://hr-hr.facebook.com/igor.stimac.officialpage"><img src="/img/izbornik_facebook.png" alt="" /></a></li>
             <?php foreach ($members as $member): ?>
             <li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
             <?php endforeach; ?>
-						<!--<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[1]->Url; ?>"><img src="<?php //echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>-->
 					</ul>
 				</section>
 				
@@ -83,7 +76,7 @@
 					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
-					<div class="fb-activity" data-site="http://www.hns-cff.hr" data-width="241" data-height="241" data-header="true" data-border-color="#999" data-font="arial" data-recommendations="false"></div>
+					<div class="fb-activity" data-site="http://www.hns-cff.hr" data-width="241" data-height="321" data-header="true" data-border-color="#999" data-font="arial" data-recommendations="false"></div>
 				</section>
 				
 				<section class="twitter">
