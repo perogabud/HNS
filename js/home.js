@@ -16,4 +16,34 @@ $(function() {
 		    $(".close").click(function () {
 		      $(".zoom").css("display", "none");
 		    });*/
+		    
+				$('#slideshow1').cycle({ 
+				    delay:  2000, 
+				    speed:  500
+				});
+
+				$('#slideshow2').cycle({ 
+				    delay:  2000, 
+				    speed:  500,
+				    timeout: 200
+				});
+				
+				$('#slideshow3').cycle({ 
+				    delay:  2000, 
+				    speed:  500,
+				    timeout: 250
+				});
+				
+				$('#slideshow4').cycle({ 
+				    delay:  2000, 
+				    speed:  500,
+				    timeout: 300
+				});
+				
+				$('#slideshow5').cycle({ 
+				    delay:  2000, 
+				    speed:  500,
+				    timeout: 350
+				});
+
 });
