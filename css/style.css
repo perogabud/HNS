@@ -641,6 +641,7 @@ section.subpage_categories {
 section.subpage_categories h3 {
 	font: 22px Oswald, sans-serif;
 	color:  #4d4d4d;
+	text-align: center;
 	background: url('/img/subpages_categories_separator.png') no-repeat bottom center;
 }
 
@@ -663,6 +664,7 @@ section.subpage_categories ul li a {
 
 section.subpage_categories ul li ul {
 	width: auto;
+	padding: 0;
 	margin-left: 12px;
 }
 
