@@ -685,7 +685,7 @@ section.main section.content, section.main section.subpage {
 	padding: 25px 35px 10px 25px;
 }
 
-section.main section.content article {
+section.main_news section.content article {
 /*	width: 693px;*/
 	padding: 7px 0;
 	background: url('/img/separator-vijesti.png') no-repeat bottom center;
@@ -693,7 +693,7 @@ section.main section.content article {
 	display: block;
 }
 
-section.main section.content h2 {
+section.main_news section.content h2 {
 	font-family: Oswald, sans-serif;
 	font-size: 40px;
 	padding: 18px;
@@ -701,7 +701,7 @@ section.main section.content h2 {
 	background: url('/img/article_splitter.png') no-repeat bottom center;
 }
 
-section.main section.content time {
+section.main_news section.content time {
 	width: 108px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -720,7 +720,7 @@ section.main_news section.content h3 {
 	margin-left: 108px;
 }
 
-section.main section.content h3.lead {
+section.main_news section.content h3.lead {
 	font-size: 36px;
 }
 
@@ -728,19 +728,19 @@ section section.content h3 a {
 	color: #005ca8;
 }
 
-section.main section.content p {
+section.main_news section.content p {
 	width: 465px;
 	font-size: 14px;
 	color: #666;
 	margin-left: 108px;
 }
 
-section.main section.content ul.archive li h3 {
+section.main_news section.content ul.archive li h3 {
 	margin-left: 0;
 	margin-left: 0;
 }
 
-section.main section.content ul.archive li h3 time {
+section.main_news section.content ul.archive li h3 time {
 	width: 82px;
 	text-align: left;
 }
