@@ -275,18 +275,13 @@ section.vatreni img.vatreni {
 	height: 79px;
 }
 
-section.vatreni ul {
+section.vatreni div {
 	width: 79px;
 	height: 79px;
 	border: 1px solid #999;
 	margin: -1px -1px 0 0;
 	float: left;
 	overflow: hidden;	
-}
-
-section.vatreni ul li {
-	display: inline-block;
-	float: left;
 }
 
 section.vatreni ul li a img {
