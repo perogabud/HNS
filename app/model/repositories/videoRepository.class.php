@@ -68,7 +68,7 @@ class VideoRepository extends Repository {
     if (isset ($params['filterParams']) && is_array ($params['filterParams'])
       && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
       foreach ($params['filterParams']['inSearch'] as $attrName) {
-        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl'))) {
+        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl', 'isPublished'))) {
           if (in_array ($attrName, array ())) {
             $query .= "
               AND $attrName = :$attrName
@@ -118,7 +118,7 @@ class VideoRepository extends Repository {
     if (isset ($params['filterParams']) && is_array ($params['filterParams'])
       && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
       foreach ($params['filterParams']['inSearch'] as $attrName) {
-        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl'))) {
+        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl', 'isPublished'))) {
           if (in_array ($attrName, array ())) {
             $query .= "
               AND $attrName = :$attrName
@@ -173,11 +173,15 @@ class VideoRepository extends Repository {
       $query = "
         INSERT INTO " . DBP . "video
         SET `youtubeUrl` = :youtubeUrl,
+            `isPublished` = :isPublished,
+            `publishDate` = :publishDate,        
             `created` = NOW(),
             `modified` = NOW()
       ";
       $queryParams = array (
-        ':youtubeUrl' => Tools::stripTags (trim ($data['youtubeUrl']))
+        ':youtubeUrl' => Tools::stripTags (trim ($data['youtubeUrl'])),
+        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
+        ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
@@ -228,12 +232,16 @@ class VideoRepository extends Repository {
       $query = "
         UPDATE " . DBP . "video
         SET `youtubeUrl` = :youtubeUrl,
+            `isPublished` = :isPublished,
+            `publishDate` = :publishDate,
             `modified` = NOW()
         WHERE `videoId` = :videoId
       ";
       $queryParams = array (
         ':youtubeUrl' => Tools::stripTags (trim ($data['youtubeUrl'])),
-        ':videoId' => array ($videoId, PDO::PARAM_INT)
+        ':videoId' => array ($videoId, PDO::PARAM_INT),
+        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
+        ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
