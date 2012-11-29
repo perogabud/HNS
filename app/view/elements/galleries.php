@@ -1,19 +1,19 @@
 <section class="main">
 <?php if (isset ($gallerys[0])): ?>
 <section class="ad-gallery">
-<div class="ad-image-wrapper">
-            </div>
-            <div class="ad-controls">
-            </div>
-                        <div class="ad-nav">
-              <div class="ad-thumbs">
-                <ul class="ad-thumb-list">
-  <?php foreach ($gallerys[0]->Images as $image): ?>
-  <li><a href="<?php echo $image->Url; ?>" ><img src="<?php echo $image->SmallThumbnailUrl; ?>" width="79" height="79" alt=""/></a></li>
-  <?php endforeach; ?>
-  </ul>
-  </div>
-  </div>
+	<div class="ad-image-wrapper"></div>
+  <div class="ad-controls"></div>
+  <div class="ad-nav">
+    <div class="ad-thumbs">
+      <ul class="ad-thumb-list">
+  			<?php foreach ($gallerys[0]->Images as $image): ?>
+  			<li><a href="<?php echo $image->Url; ?>" ><img src="<?php echo $image->SmallThumbnailUrl; ?>" width="79" height="79" alt=""/></a></li>
+  			<?php endforeach; ?>
+  		</ul>
+  		<small>Aktualna galerija</small>
+    	<h3><?php echo $gallerys[0]->Title; ?></h3>
+  	</div>
+	</div>
 </section>
 <?php endif; ?>
 

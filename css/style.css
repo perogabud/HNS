@@ -641,6 +641,7 @@ section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 }
 
 section.main h2 {
+	margin: 1.2em 0 0.2em;
 	font-family: Oswald, sans-serif;
 	font-size: 36px;
 	color: #005ca8;
@@ -651,8 +652,7 @@ section.main div.lead {
 	color: #999;
 }
 
-section.main h2 {
-	margin: 1.2em 0 0.2em;
+section.main header h2 {
 	padding-left: 30px;
 }
 
