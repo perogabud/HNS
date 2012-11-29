@@ -60,23 +60,44 @@
 				</section>
 
 				<section class="vatreni">
-					<ul>
-            <?php foreach ($members as $member): ?>
-            <li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
-            <?php endforeach; ?>
+					<img src="/img/vatreni.jpg" alt="vatreni logo" class="vatreni" />
+					<ul class="slider1">
+            <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
+							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
+            <? endfor ?>
+					</ul>
+					<ul class="slider2">
+            <?php for($i = 4; $i < 8; $i++) : $member = $members[$i]; ?>
+							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
+            <? endfor ?>
+					</ul>
+					<ul class="slider3">
+            <?php for($i = 8; $i < 12; $i++) : $member = $members[$i]; ?>
+							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
+            <? endfor ?>
+					</ul>
+					<ul class="slider4">
+            <?php for($i = 12; $i < 16; $i++) : $member = $members[$i]; ?>
+							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
+            <? endfor ?>
+					</ul>
+					<ul class="slider4">
+            <?php for($i = 16; $i < 20; $i++) : $member = $members[$i]; ?>
+							<li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></li>
+            <? endfor ?>
 					</ul>
 				</section>
 				
 				<section class="fb">
-					<div id="fb-root"></div>
-					<script>(function(d, s, id) {
-					  var js, fjs = d.getElementsByTagName(s)[0];
-					  if (d.getElementById(id)) return;
-					  js = d.createElement(s); js.id = id;
-					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-					  fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));</script>
-					<div class="fb-activity" data-site="http://www.hns-cff.hr" data-width="241" data-height="321" data-header="true" data-border-color="#999" data-font="arial" data-recommendations="false"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like-box" data-href="https://www.facebook.com/cff.hns?fref=ts" data-width="241" data-height="321" data-show-faces="true" data-stream="false" data-header="false"></div>
 				</section>
 				
 				<section class="twitter">
@@ -86,10 +107,6 @@
 
 				<section class="uvijekvjerni">
 					<a href="http://uvijekvjerni.hr" ><img src="/img/uvijek_vjerni.png" alt="UVIJEK VJERNI" /></a>
-				</section>
-
-				<section class="facebook">
-
 				</section>
 			</aside>
 
