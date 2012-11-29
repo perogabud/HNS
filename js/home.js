@@ -17,30 +17,30 @@ $(function() {
 		      $(".zoom").css("display", "none");
 		    });*/
 		    
-				$('#slideshow1').cycle({ 
+				$('.slideshow1').cycle({ 
 				    delay:  2000, 
 				    speed:  500
 				});
 
-				$('#slideshow2').cycle({ 
+				$('.slideshow2').cycle({ 
 				    delay:  2000, 
 				    speed:  500,
 				    timeout: 200
 				});
 				
-				$('#slideshow3').cycle({ 
+				$('.slideshow3').cycle({ 
 				    delay:  2000, 
 				    speed:  500,
 				    timeout: 250
 				});
 				
-				$('#slideshow4').cycle({ 
+				$('.slideshow4').cycle({ 
 				    delay:  2000, 
 				    speed:  500,
 				    timeout: 300
 				});
 				
-				$('#slideshow5').cycle({ 
+				$('.slideshow5').cycle({ 
 				    delay:  2000, 
 				    speed:  500,
 				    timeout: 350
