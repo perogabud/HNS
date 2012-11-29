@@ -263,11 +263,28 @@ section.raspored table.zoom tr td p.close {
 
 section.vatreni {
 	margin-bottom: -1px;
+	clear: both;
+/*	border: 1px solid #999;*/
+}
+
+section.vatreni img.vatreni {
+	margin: -1px -1px 0 0;
+	border: 1px solid #999;
+	float: left;
+	width: 79px;
+	height: 79px;
+}
+
+section.vatreni ul {
+	width: 79px;
+	height: 79px;
+	border: 1px solid #999;
+	margin: -1px -1px 0 0;
+	float: left;
+	overflow: hidden;	
 }
 
 section.vatreni ul li {
-	width: 80px;
-	height: 80px;
 	display: inline-block;
 	float: left;
 }
@@ -277,8 +294,8 @@ section.vatreni ul li a img {
 }
 
 section.vatreni ul li.member a img {
-	border: 1px solid #999;
-	margin: -1px -1px 0 0;
+/*	border: 1px solid #999;*/
+/*	margin: -1px -1px 0 0;*/
 }
 
 section.fb {
@@ -287,9 +304,16 @@ section.fb {
 }
 
 section.twitter {
-	width: 241px;
-	height: 321px;
+	width: 239px;
+	height: 319px;
 	margin-bottom: -1px;
+	border: 1px solid #999;
+	display: none;
+}
+
+section.twitter #twitter-widget-0 {
+	height: 319px;
+	border: 0;
 }
 
 
@@ -870,7 +894,7 @@ section.content ul.galleries li small {
 /*footer*/
 footer {
 	width: 961px;
-	height: 280px;
+	height: 200px;
 	margin: 0 auto;
 	clear: both;
 	text-align: center;
