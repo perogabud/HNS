@@ -668,6 +668,10 @@ section.subpage_categories ul li ul {
 	margin-left: 12px;
 }
 
+section.subpage_categories ul li ul a {
+	font-weight: normal;
+}
+
 section.subpage_categories ul li ul li {
 	background: none;
 }
