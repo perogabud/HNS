@@ -26,13 +26,10 @@
 			  	</ul>
 			  </section>
 			  <section class="subpage_categories">
-		      <ul>
-		      <?php foreach ($page[0]->Subpages as $subPage) : ?>
-		        <li>
-		          <a href="<?php echo $subPage->Url; ?>"><?php echo $subPage->NavigationName; ?></a>
-		        </li>
-		      <?php endforeach; ?>
-		      </ul>
+          <?php if (isset ($sideNavPages[0])): ?>
+          <h3><?php echo $sideNavPages[0]->NavigationName; ?></h3>
+          <?php if (isset ($sideNavPages[0]->Subpages)) FrontHelper::printSidePages ($sideNavPages[0]->Subpages); ?>
+          <?php endif; ?>
 				</section>
 		  </aside>
 		  <?php $this->getElement ('navigation'); ?>

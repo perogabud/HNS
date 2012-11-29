@@ -44,7 +44,7 @@ class StandardContentManager extends ContentManager {
       case '':
         Tools::redirect ('/index.html');
         break;
-      
+
       case 'magazine':
           $this->_setElements (
             array (
@@ -347,14 +347,22 @@ class StandardContentManager extends ContentManager {
               elseif ($this->_checkParams (3, TRUE)) {
                 $galleryController = GalleryController::getInstance ();
                 $gallery = $galleryController->getGalleryBySlug ($this->params[2]);
+                $gallerys = $galleryController->getGallerysByParams (
+                  array (
+                    'orderBy' => 'created',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10
+                  )
+                );
                 FB::warn ('here');
                 if ($gallery) {
                   $this->_setElements (
                     array (
                       'mainContent' => array (
-                        'filename' => 'gallery',
+                        'filename' => 'galleries',
                         'data' => array (
-                          'gallery' => $gallery
+                          'gallery' => $gallery,
+                          'gallerys' => $gallerys,
                         )
                       )
                     )
@@ -375,7 +383,7 @@ class StandardContentManager extends ContentManager {
         $page = $pageController->getPage (array ('uri' => $this->params));
         if ($page) {
         	$this->_setData(
-						array('page' => $pageController->getSubpages(null, 2, $page))        	
+						array('sideNavPages' => $pageController->getSubpages (array ($this->params[0]), 3))
         	);
           $this->_setElements (
             array (
