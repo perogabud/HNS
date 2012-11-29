@@ -26,6 +26,7 @@
 			  	</ul>
 			  </section>
 			  <section class="subpage_categories">
+        <?php if (isset ($page) && $page[0]->Subpages): ?>
 		      <ul>
 		      <?php foreach ($page[0]->Subpages as $subPage) : ?>
 		        <li>
@@ -33,6 +34,7 @@
 		        </li>
 		      <?php endforeach; ?>
 		      </ul>
+        <?php endif; ?>
 				</section>
 		  </aside>
 		  <?php $this->getElement ('navigation'); ?>
