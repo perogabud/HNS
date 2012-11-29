@@ -383,7 +383,7 @@ class StandardContentManager extends ContentManager {
         $page = $pageController->getPage (array ('uri' => $this->params));
         if ($page) {
         	$this->_setData(
-						array('page' => $pageController->getSubpages(null, 2, $page))
+						array('sideNavPages' => $pageController->getSubpages (array ($this->params[0]), 3))
         	);
           $this->_setElements (
             array (

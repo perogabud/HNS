@@ -2,6 +2,19 @@
 
 class FrontHelper {
 
+  public static function printSidePages ($pages) {
+    if (!empty ($pages)) {
+      echo '<ul>';
+		  foreach ($pages as $subPage) {
+        echo '<li>';
+		    echo '<a href="'. $subPage->Url .'">'. $subPage->NavigationName .'</a>';
+        if ($subPage->Subpages) self::printSidePages ($subPage->Subpages);
+		    echo '</li>';
+      }
+		  echo '</ul>';
+    }
+  }
+
   public static function printCustomModuleHtml ($customModule, $input = TRUE, $return = FALSE) {
     $echo = '';
     if ($input) $echo .= '<li>';
