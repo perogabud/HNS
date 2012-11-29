@@ -1,3 +1,4 @@
+<section class="main">
 <?php if (isset ($actualitys)): ?>
 <h3>Aktualnosti</h3>
 <ul>
@@ -13,3 +14,4 @@
   <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+</section>
