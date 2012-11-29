@@ -13,10 +13,16 @@
       $printableNames = array (
         'title' => 'Naslov',
         'category' => 'Category',
-        'youtubeUrl' => 'Youtube URL',);
+        'youtubeUrl' => 'Youtube URL',
+        'isPublished' => 'Published'
+        );
       foreach ($_GET['inSearch'] as $name) {
-        if (in_array ($name, array ('title', 'category', 'youtubeUrl'))) {
-          if (in_array ($name, array ())) {
+        if (in_array ($name, array ('title', 'category', 'youtubeUrl', 'isPublished'))) {
+          if (in_array ($name, array ('isPublished'))) {
+            echo '<dt>'. $printableNames[$name] .'</dt><dd>';
+            TableHelper::iconYesNo (isset ($_GET[$name]));
+            echo '</dd>';
+          } elseif (in_array ($name, array ())) {
             echo '<dt>'. $printableNames[$name] .'</dt><dd>';
             TableHelper::iconYesNo (isset ($_GET[$name]));
             echo '</dd>';
@@ -39,6 +45,7 @@
         <tr>
           <th>Naslov <?php TableHelper::orderLinks ('admin/video', 'title'); ?></th>
           <th>Youtube URL <?php TableHelper::orderLinks ('admin/video', 'youtubeUrl'); ?></th>
+          <th>Published <?php TableHelper::orderLinks ('admin/video', 'isPublished'); ?></th>
           <th>Created <?php TableHelper::orderLinks ('admin/video', 'created'); ?></th>
           <th>Modified <?php TableHelper::orderLinks ('admin/video', 'modified'); ?></th>
           <th>Controls</th>
@@ -56,6 +63,7 @@
         <tr class="<?php echo Tools::toggleClass (); ?>">
           <td><?php echo $video->Title; ?></td>
           <td><?php echo $video->YoutubeUrl; ?></td>
+          <td><?php TableHelper::iconYesNo ($video->IsPublished); ?></td>
           <td><?php echo $video->Created; ?></td>
           <td><?php echo ($video->Created == $video->Modified) ? '-' : $video->Modified; ?></td>
           <td class="controls3">
@@ -99,6 +107,12 @@
         FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'youtubeUrl', 'div' => array ('class' => 'searchUse')));
         echo '</td><td>';
         FormHelper::input ('text', 'youtubeUrl', 'youtubeUrlSearch', array ('label' => array ('text' => 'Youtube URL')));
+        echo '</td></tr>';
+        echo '<tr class="'. Tools::toggleClass () .'">';
+        echo '<td>';
+        FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'isPublished', 'div' => array ('class' => 'searchUse')));
+        echo '</td><td>';
+        FormHelper::input ('checkbox', 'isPublished', 'isPublishedSearch', array ('label' => array ('text' => 'Published')));
         echo '</td></tr>';
       ?>
       </tbody>

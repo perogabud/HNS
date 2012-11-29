@@ -6,6 +6,8 @@ class Video extends ModelObject {
   protected $_rootUrl;
   protected $_category;
   protected $_youtubeUrl;
+  protected $_isPublished;
+  protected $_publishDate;
   
   public function __construct ($data, $dataLang, $config = array ()) {
     parent::__construct ($data);
@@ -42,6 +44,14 @@ class Video extends ModelObject {
 
   public function getYoutubeUrl () {
     return $this->_youtubeUrl;
+  }
+  
+  public function getIsPublished() {
+    return $this->_isPublished;
+  }
+  
+  public function getPublishDate() {
+    return $this->_publishDate;
   }
 
   
