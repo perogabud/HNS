@@ -83,7 +83,8 @@ class StandardContentManager extends ContentManager {
                   'orderBy' => 'publishDate',
                   'orderDirection' => 'DESC',
                   'limit' => 10,
-                  'languageId' => Config::read ('lang')
+                  'languageId' => Config::read ('lang'),
+                  'isFeatured' => 1
                 )
               ),
               'actualitys' => $actualityController->getActualitysByParams (

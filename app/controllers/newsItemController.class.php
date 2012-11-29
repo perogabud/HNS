@@ -9,6 +9,10 @@ class NewsItemController extends Controller {
   public function getNewsItemById ($newsItemId) {
     return $this->_repository->getNewsItem (array ('newsItemId' => $newsItemId));
   }
+  
+  public function getNewsCategoryById ($newsCategoryId) {
+    return $this->_repository->getNewsCategory (array ('newsCategoryId' => $newsCategoryId));
+  }
 
   public function getNewsItemBySlug ($slug) {
     return $this->_repository->getNewsItem (array ('slug' => $slug));

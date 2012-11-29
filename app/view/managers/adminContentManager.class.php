@@ -91,7 +91,8 @@ class AdminContentManager extends ContentManager {
                   'mainContent' => array (
                     'filename' => 'admin/newsItemAddForm',
                     'data' => array (
-                      'languages' => $newsItemController->getLanguages ()
+                      'languages' => $newsItemController->getLanguages (),
+                      'newsCategories' => $newsItemController->getNewsCategories()
                     )
                   )
                 )
@@ -113,7 +114,7 @@ class AdminContentManager extends ContentManager {
                   'mainContent' => array (
                     'filename' => 'admin/newsItemView',
                     'data' => array (
-                      'newsItem' => $newsItemController->getNewsItemById ($newsItemId)
+                      'newsItem' => $newsItemController->getNewsItemById ($newsItemId),
                     )
                   )
                 )
@@ -139,13 +140,15 @@ class AdminContentManager extends ContentManager {
                   MessageManager::setGlobalMessage ($e->getMessage ());
                 }
               }
+              
               $this->_setElements (
                 array (
                   'mainContent' => array (
                     'filename' => 'admin/newsItemEditForm',
                     'data' => array (
                       'newsItem' => $newsItemController->getNewsItemById ($newsItemId),
-                      'languages' => $newsItemController->getLanguages ()
+                      'languages' => $newsItemController->getLanguages (),
+                      'newsCategories' => $newsItemController->getNewsCategories()
                     )
                   )
                 )
@@ -181,6 +184,157 @@ class AdminContentManager extends ContentManager {
                       'filename' => 'admin/newsItemDeleteForm',
                       'data' => array (
                         'newsItem' => $newsItemController->getNewsItemById ($newsItemId)
+                      )
+                    )
+                  )
+                );
+              }
+              break;
+          }
+        }
+        break;
+        
+      /*
+       * NewsCategory.
+       */
+      case 'newsCategory':
+        if ($this->_checkParams (1, TRUE)) {
+          $newsItemController = NewsItemController::getInstance ();
+          $this->_setElements (
+            array (
+              'mainContent' => array (
+                'filename' => 'admin/newsCategoryTable',
+                'data' => array (
+                  'newsCategories' => $newsItemController->getnewsCategories (
+                    isset ($_GET['orderBy']) ? $_GET['orderBy'] : NULL,
+                    isset ($_GET['orderDirection']) ? $_GET['orderDirection'] : NULL,
+                    isset ($_GET['page']) ? $_GET['page'] : NULL,
+                    Config::read ('iterationLimit'),
+                    isset ($_GET['searchSubmit']) ? $_GET : NULL
+                  ),
+                  'newsCategoryCount' => $newsItemController->getNewsCategoryCount (isset ($_GET['searchSubmit']) ? $_GET : NULL)
+                )
+              )
+            )
+          );
+          break;
+        }
+        elseif ($this->_checkParams (2, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * Add newsCategory.
+             * /newsCategory/add/
+             */
+            case 'add':
+              $newsItemController = NewsItemController::getInstance ();
+              if (!empty ($_POST)) {
+                try {
+                  $newsCategory = $newsItemController->addNewsCategory ($_POST);
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+                if (isset ($newsCategory)) {
+                  MessageManager::setSuccessMessage ('News Category successfully added!');
+                  Tools::redirect (Config::read ('siteUrlRoot') . 'admin/newsCategory/view/' . $newsCategory->getId ());
+                }
+              }
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/newsCategoryAddForm',
+                    'data' => array (
+                      // none
+                    )
+                  )
+                )
+              );
+              break;
+          }
+        }
+        elseif ($this->_checkParams (3, TRUE)) {
+          switch ($this->params[1]) {
+            /*
+             * View newsCategory.
+             * /newsCategory/view/\{newsCategoryId\}
+             */
+            case 'view':
+              $newsCategoryId = $this->params[2];
+              $newsItemController = NewsItemController::getInstance ();
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/newsCategoryView',
+                    'data' => array (
+                      'newsCategory' => $newsItemController->getNewsCategoryById ($newsCategoryId),
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Edit newsCategory.
+             * /newsCategory/edit/\{newsCategoryId\}
+             */
+            case 'edit':
+              $newsCategoryId = $this->params[2];
+              $newsItemController = NewsItemController::getInstance ();
+              if (!empty ($_POST)) {
+                try {
+                  if ($newsItemController->editNewsCategory ($newsCategoryId, $_POST)) {
+                    MessageManager::setSuccessMessage ('News Category successfully edited!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/newsCategory/view/' . $newsCategoryId);
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              
+              $this->_setElements (
+                array (
+                  'mainContent' => array (
+                    'filename' => 'admin/newsCategoryEditForm',
+                    'data' => array (
+                      'newsCategory' => $newsItemController->getNewsCategoryById ($newsCategoryId)
+                    )
+                  )
+                )
+              );
+              break;
+
+            /*
+             * Delete newsCategory.
+             * /newsCategory/delete/\{newsCategoryId\}
+             */
+            case 'delete':
+              $newsCategoryId = $this->params[2];
+              $newsItemController = NewsItemController::getInstance ();
+              if (isset ($_POST['submitNo'])) {
+                Tools::redirect (Config::read ('siteUrlRoot') . 'admin/newsCategory/');
+              }
+              elseif (isset ($_POST['submitYes'])) {
+                try {
+                  if ($newsItemController->deleteNewsCategory ($newsCategoryId)) {
+                    MessageManager::setSuccessMessage ('News Category successfully deleted!');
+                    Tools::redirect (Config::read ('siteUrlRoot') . 'admin/newsCategory/');
+                  }
+                }
+                catch (Exception $e) {
+                  FB::error ($e);
+                  MessageManager::setGlobalMessage ($e->getMessage ());
+                }
+              }
+              else {
+                $this->_setElements (
+                  array (
+                    'mainContent' => array (
+                      'filename' => 'admin/newsCategoryDeleteForm',
+                      'data' => array (
+                        'newsCategory' => $newsItemController->getNewsCategoryById ($newsCategoryId)
                       )
                     )
                   )

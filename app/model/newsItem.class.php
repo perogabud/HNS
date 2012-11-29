@@ -8,9 +8,14 @@ class NewsItem extends ModelObject {
   protected $_lead;
   protected $_content;
   protected $_isPublished;
+  protected $_isFeatured;
   protected $_publishDate;
   protected $_coverImage;
   protected $_customModules;
+  protected $_newsCategoryId;
+  
+  // Should hold actual category
+  protected $_newsCategoryTitle;
 
   public function __construct ($data, $config = array ()) {
     parent::__construct ($data);
@@ -47,6 +52,10 @@ class NewsItem extends ModelObject {
   public function getIsPublished () {
     return $this->_isPublished;
   }
+  
+  public function getIsFeatured () {
+    return $this->_isFeatured;
+  }
 
   public function getPublishDate ($format = NULL) {
     return $this->_getDateByFormat ($this->_publishDate, $format);
@@ -66,6 +75,14 @@ class NewsItem extends ModelObject {
 
   public function setCustomModules ($customModules) {
     $this->_customModules = $customModules;
+  }
+  
+  public function getNewsCategoryId() {
+    return $this->_newsCategoryId;
+  }
+  
+  public function getNewsCategoryTitle() {
+    return $this->_newsCategoryTitle;
   }
 
 }
