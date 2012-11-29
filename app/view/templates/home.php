@@ -61,17 +61,27 @@
 
 				<section class="vatreni">
 					<ul>
-						<li><img src="/img/dekoracija_vatreni.png" alt="" /></li>
-<li class="wide"><a href="http://hr-hr.facebook.com/igor.stimac.officialpage"><img src="/img/izbornik_facebook.png" alt="" /></a></li>
             <?php foreach ($members as $member): ?>
             <li class="member"><a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
             <?php endforeach; ?>
-						<!--<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[1]->Url; ?>"><img src="<?php //echo $members[1]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>
-						<li><a href="<?php //echo $members[0]->Url; ?>"><img src="<?php //echo $members[0]->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php //echo $members[0]->Name; ?>"/></a></li>-->
 					</ul>
+				</section>
+				
+				<section class="fb">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-activity" data-site="http://www.hns-cff.hr" data-width="241" data-height="321" data-header="true" data-border-color="#999" data-font="arial" data-recommendations="false"></div>
+				</section>
+				
+				<section class="twitter">
+					<a class="twitter-timeline"  href="https://twitter.com/HNS_CFF" data-widget-id="274156887522541569">Tweets by @HNS_CFF</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</section>
 
 				<section class="uvijekvjerni">
@@ -97,8 +107,7 @@
 
 	    	<section class="tabs">
 	    		<div id="hns-tv">
-	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe>
-	    			<div class="caption">pogledaj sve video zapise &gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/5-hns-hnstv.html">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
+	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe><div class="caption">pogledaj sve video zapise &gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/5-hns-hnstv.html">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
 	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
