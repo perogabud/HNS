@@ -20,6 +20,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   vertical-align: baseline;
   background: transparent;
 }
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+}
+
 body {
 /*  line-height: 1;*/
 }
@@ -141,7 +146,6 @@ div#wrapper {
 	width: 961px;
 	margin: 0 auto;
 	position: relative;
-	background: #fff;
 }
 
 div.bg_left {
@@ -170,6 +174,7 @@ div.bg_right {
 aside#sidebar {
 	width: 241px;
 	float: left;
+	background: #fff;
 }
 
 aside#sidebar header h1 {
@@ -194,22 +199,26 @@ aside#sidebar header h1 a {
 }
 
 section.raspored {
-	width: 241px;
-	height: 121px;
+	width: 239px;
+	height: 119px;
+	border: 1px solid #999;
 	position: relative;
 	font-family: Oswald, sans-serif;
+	font-weight: 400;
 	background: url('/img/results_bg.png') no-repeat;
 }
 
 section.raspored table.results {
-	width: 100%;
+	width: 239px;
 }
 
-section.raspored table.results caption h5 {
-	margin: 10px 0;
-	font-size: 16px;
+section.raspored table.results th, section.raspored table.zoom th {
+	height: 18px;
+	padding: 10px 0 8px 61px;
+	font: 16px Oswald, sans-serif;
+	font-weight: 400;
 	color: #005ca8;
-	font-weight: normal;
+	text-align: left;
 }
 
 section.raspored table.results tr {
@@ -217,7 +226,8 @@ section.raspored table.results tr {
 }
 
 section.raspored table.results tr td {
-	padding: 3px 0;
+	width: 100px;
+	padding: 2px 0 1px;
 }
 
 section.raspored table.results tr td.home {
@@ -227,7 +237,7 @@ section.raspored table.results tr td.home {
 }
 
 section.raspored table.results tr td.result {
-	width: 38px;
+	width: 39px;
 	text-align: center;
 	color: #005ca8;
 	font-size: 12px;
@@ -242,23 +252,89 @@ section.raspored table.results tr td.guest {
 section.raspored table.zoom {
 	width: 361px;
 	height: 241px;
-	padding: 30px;
+	border: 1px solid #999;
 	position: absolute;
-	left: 0;
+	left: -1px;
 	top: -1px;
-	background: url('/img/zoom_bg.png') no-repeat -30px -30px;
+	font-family: Oswald, sans-serif;
+	font-weight: 400;
+	background: url('/img/zoom_bg.png') no-repeat;
 }
 
-section.raspored table.zoom tr td.close {
+section.raspored table.zoom tr:nth-last-of-type(even) td {
+	padding: 0 44px 0 26px;
+}
+
+section.raspored table.zoom tr:nth-of-type(even) {
+	background: url('/img/results_splitter_zoom.png') 9px 0 no-repeat;
+}
+
+section.raspored table.zoom tr td.home {
+	width: 100px;
+	height: 18px;
+	padding-left: 26px;
 	text-align: right;
+	font-size: 16px;
+	color: #4d4d4d;
 }
 
-section.raspored table.zoom tr td p.close {
+section.raspored table.zoom tr td.result {
+	width: 50px;
+	height: 18px;
+	text-align: center;
+	color: #005ca8;
+	font-size: 16px;
+}
+
+section.raspored table.zoom tr td.guest {
+	width: 100px;
+	height: 18px;
+	padding-right: 84px;
+	text-align: left;
+	font-size: 16px;
+	color: #4d4d4d;
+}
+
+section.raspored table.zoom tr:nth-of-type(odd) {
+	font: 12px Arial, sans-serif;
+	color: #666;
+}
+
+section.raspored table.zoom tr:nth-of-type(odd) td time {
+	width: 70px;
+	display: inline-block;
+	border-right: 1px solid #4d4d4d;
+}
+
+section.raspored table.zoom tr:nth-of-type(odd) td small {
+	display: inline-block;
+	padding: 0 8px;
+	margin-right: 8px;
+	border-right: 1px solid #4d4d4d;
+}
+
+section.raspored table.zoom tr:nth-of-type(odd) td span {
+	font-weight: bold;
+}
+
+
+section.raspored table.zoom tr.close td {
+	position: relative;
+}
+
+section.raspored table.zoom tr.close td p {
 	width: 18px;
 	height: 18px;
-	margin: 12px;
-	float: right;
+/*	margin: 12px;*/
+/*	float: right;*/
 	background: url('/img/plus.png') no-repeat;
+	position: absolute;
+	bottom: 7px;
+	right: 8px;
+}
+
+section.raspored table.zoom tr.close td p:hover {
+	cursor: pointer;
 }
 
 section.vatreni {
@@ -352,6 +428,7 @@ nav#menu ul li a {
 	font-family: Oswald, sans-serif;
 	font-weight: 400;
 	font-size: 16px;
+	text-transform: uppercase;
 }
 
 nav#menu ul li.lang {
@@ -644,6 +721,7 @@ nav#info {
 
 nav#info ul li img {
 	margin-top: -1px;
+	border: 1px solid #999;
 }
 
 
