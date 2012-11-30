@@ -102,11 +102,62 @@
 					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
-					<div class="fb-like-box" data-href="http://www.facebook.com/platform" data-width="241" data-height="365" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
+					
+					<div class="fb-like-box" data-href="https://www.facebook.com/cff.hns?fref=ts" data-width="241" data-height="290" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
 				</section>
 				
 				<section class="twitter">
-						
+					<div id="tweet">
+					    <h3><a href="https://twitter.com/hns_cff"><img src="/img/hns_twitter.png" alt="HNS" />HNS | CFF Tweets</a></h3>
+					    <ul id="twitterUpdate">
+					    </ul>
+					</div>
+					
+					<a href="https://twitter.com/hns_cff" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @hns_cff</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+				  <script type="text/javascript">
+				  function twitterCallback(twitters) {
+				    var statusHTML = [];
+				    for (var i=0; i<twitters.length; i++){
+				      var username = twitters[i].user.screen_name;
+				      var status = twitters[i].text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url) {
+				        return '<a target="_blank" href="'+url+'">'+url+'</a>';
+				      }).replace(/\B@([_a-z0-9]+)/ig, function(reply) {
+				        return  reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'">'+reply.substring(1)+'</a>';
+				      });
+				      statusHTML.push('<li><p>'+status+'</p> <small>'+relative_time(twitters[i].created_at)+'</small></li>');
+				    }
+				    document.getElementById ('twitterUpdate').innerHTML = statusHTML.join('');
+				  }
+				
+				  function relative_time(time_value) {
+				    var values = time_value.split(" ");
+				    time_value = values[1] + " " + values[2] + ", " + values[5] + " " + values[3];
+				    var parsed_date = Date.parse(time_value);
+				    var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
+				    var delta = parseInt((relative_to.getTime() - parsed_date) / 1000);
+				    delta = delta + (relative_to.getTimezoneOffset() * 60);
+				
+				    if (delta < 60) {
+				      return 'less than a minute ago';
+				    } else if(delta < 120) {
+				      return 'about a minute ago';
+				    } else if(delta < (60*60)) {
+				      return (parseInt(delta / 60)).toString() + ' minutes ago';
+				    } else if(delta < (120*60)) {
+				      return 'about an hour ago';
+				    } else if(delta < (24*60*60)) {
+				      return 'about ' + (parseInt(delta / 3600)).toString() + ' hours ago';
+				    } else if(delta < (48*60*60)) {
+				      return '1 day ago';
+				    } else {
+				      return (parseInt(delta / 86400)).toString() + ' days ago';
+				    }
+				  }
+				  </script>
+				  <script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline.json?screen_name=HNS_CFF&callback=twitterCallback&count=3">
+				  </script>		
 				</section>
 			</aside>
 
@@ -128,7 +179,7 @@
 	    		</div>
 	    		<div id="galerija">
 	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
-	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/6-hns-galerija.html">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
+	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="/info-centar/galerija">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
 	    		</div>
 	    		<div id="aktualno">
 	    			<section>
@@ -151,7 +202,7 @@
 	    		</div>
 	    		<div id="hns-casopis">
             <a href="/magazine">
-              <img src="/img/casopis.jpg" alt="Časopis" />
+              <img src="/img/casopis.jpg" alt="Časopis" style="float:none;" />
             </a>
 	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
 	    		</div>

@@ -201,6 +201,7 @@ aside#sidebar header h1 a {
 section.raspored {
 	width: 239px;
 	height: 119px;
+	margin-bottom: -1px;
 	border: 1px solid #999;
 	position: relative;
 	font-family: Oswald, sans-serif;
@@ -301,15 +302,14 @@ section.raspored table.zoom tr:nth-of-type(odd) {
 }
 
 section.raspored table.zoom tr:nth-of-type(odd) td time {
-	width: 70px;
 	display: inline-block;
-	border-right: 1px solid #4d4d4d;
 }
 
 section.raspored table.zoom tr:nth-of-type(odd) td small {
 	display: inline-block;
 	padding: 0 8px;
-	margin-right: 8px;
+	margin: 0 8px;
+	border-left: 1px solid #4d4d4d;
 	border-right: 1px solid #4d4d4d;
 }
 
@@ -370,23 +370,71 @@ section.vatreni ul li.member a img {
 }
 
 section.fb {
+	margin-top: -1px;
 	margin-bottom: -1px;
 	clear: both;
 }
 
 section.twitter {
-	width: 239px;
-	height: 319px;
-	margin-bottom: -1px;
+	width: 215px;
+	height: 324px;
+	padding: 12px;
 	border: 1px solid #999;
-	display: none;
+	background: url('/img/twitter_bg.png') no-repeat;
 }
 
-section.twitter #twitter-widget-0 {
-	height: 319px;
-	border: 0;
+section.twitter div#tweet {
+/*	position: relative;*/
 }
 
+section.twitter h3 {
+	width: 100%;
+	height: 57px;
+	margin-top: -13px;
+	background: url('/img/twitt_separator.png') bottom center no-repeat;
+}
+
+section.twitter h3 img {
+	float: left;
+	margin-top: -7px;
+	margin-right: 14px;
+	vertical-align: middle;
+}
+
+section.twitter h3 a {
+	font: 17px Oswald, sans-serif;
+	font-weight: 400;
+	color: #005ca8;
+}
+
+section.twitter ul#twitterUpdate {
+	height: 228px;
+	margin-top: -13px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	background: url('/img/twitt_separator.png') bottom center no-repeat;
+}
+
+section.twitter ul#twitterUpdate li {
+	padding: 8px 0 10px;
+	font: 12px Arial, sans-serif;
+	background: url('/img/twitt_separator.png') bottom center no-repeat;
+}
+
+section.twitter ul#twitterUpdate li a {
+	color: #005ca8;
+}
+
+section.twitter ul#twitterUpdate li p {
+	margin: 0 0 0.8em;
+}
+
+section.twitter ul#twitterUpdate li small {
+	font-size: 10px;
+	color: #808080;
+	display: inline-block;
+	clear: both;
+}
 
 
 
@@ -421,8 +469,8 @@ nav#menu ul li.lang {
 }
 
 nav#menu ul li a {
-	height: 33px;
-	padding-top: 16px;
+	height: 35px;
+	padding-top: 14px;
 	display: block;
 	color: #fff;
 	font-family: Oswald, sans-serif;
@@ -582,6 +630,24 @@ section.tabs div#aktualno section article {
 	margin: 25px 13px 18px;
 	float: left;
 }
+
+section.tabs div#aktualno section article p {
+	font: 12px Arial, sans-serif;
+	color: #4d4d4d;
+}
+
+section.tabs div#aktualno section article a {
+	font: 14px Arial, sans-serif;
+	color: #005ca8;
+	text-decoration: underline;
+}
+
+section.tabs div#aktualno section article h3 a {
+	font: 21px Oswald, sans-serif;
+	color: #005ca8;
+}
+
+
 
 section.tabs div.caption {
 	width: auto;
@@ -788,6 +854,18 @@ section.subpage_categories ul li ul li ul {
 	margin-left: 23px;
 }
 
+section.subpage h3 {
+	font: 21px Oswald, sans-serif;
+	font-weight: 400;
+	color: #005ca8
+}
+
+section.subpage h4 {
+	font: 15px Arial, sans-serif;
+	font-weight: bold;
+	color: #005ca8
+}
+
 
 section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 	height: 250px;
@@ -817,6 +895,7 @@ section.main p {
 section.main section.content, section.main section.subpage {
 	width: 660px;
 	padding: 25px 35px 10px 25px;
+	background: #fff;
 }
 
 section.main_news section.content article {
