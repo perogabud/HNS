@@ -883,6 +883,10 @@ section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 	clear: both;
 }
 
+section.main {
+	background: #fff;
+}
+
 section.main h2 {
 	margin: 1.2em 0 0.2em;
 	font-family: Oswald, sans-serif;
