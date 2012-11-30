@@ -31,7 +31,7 @@ class Video extends ModelObject {
   }
 
   public function getUrl ($lang = NULL) {
-    return $this->_rootUrl . 'video' . '/' . $this->_getLanguageMember ($this->_slug, $lang);
+    return $this->_rootUrl . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_videos') . '/' . $this->_getLanguageMember ($this->_slug, $lang);
   }
 
   public function getTitle ($lang = NULL) {
@@ -52,6 +52,18 @@ class Video extends ModelObject {
   
   public function getPublishDate() {
     return $this->_publishDate;
+  }
+  
+  public function getVideoKey() {
+    $isYoutube = preg_match('/(?:youtube(?:-nocookie)?\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i', $this->_youtubeUrl, $match);
+    
+    if ($isYoutube) {
+      return $match[1];
+    }
+  }
+  
+  public function getThumbnailUrl() {
+    return "http://img.youtube.com/vi/". $this->getVideoKey() ."/0.jpg";
   }
 
   
