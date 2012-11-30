@@ -435,3 +435,41 @@
 [26-Nov-2012 23:44:28 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
 [26-Nov-2012 23:44:28 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
 [26-Nov-2012 23:44:28 UTC] PHP   5. View->getElement() C:\wamp\www\HNS\app\view\templates\default.php:13
+[27-Nov-2012 06:04:22 UTC] PHP Warning:  error_log() [<a href='function.error-log'>function.error-log</a>]: Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\wamp\www\HNS\app\view\view.class.php on line 63
+[27-Nov-2012 06:04:22 UTC] PHP Stack trace:
+[27-Nov-2012 06:04:22 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[27-Nov-2012 06:04:22 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[27-Nov-2012 06:04:22 UTC] PHP   3. error_log() C:\wamp\www\HNS\app\view\view.class.php:63
+[27-Nov-2012 06:04:22 UTC] SQLSTATE[28000] [1045] Access denied for user 'hns'@'localhost' (using password: YES)
+[27-Nov-2012 06:04:24 UTC] PHP Warning:  error_log() [<a href='function.error-log'>function.error-log</a>]: Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\wamp\www\HNS\app\view\view.class.php on line 63
+[27-Nov-2012 06:04:24 UTC] PHP Stack trace:
+[27-Nov-2012 06:04:24 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[27-Nov-2012 06:04:24 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[27-Nov-2012 06:04:24 UTC] PHP   3. error_log() C:\wamp\www\HNS\app\view\view.class.php:63
+[27-Nov-2012 06:04:24 UTC] SQLSTATE[28000] [1045] Access denied for user 'hns'@'localhost' (using password: YES)
+[27-Nov-2012 06:05:14 UTC] SQLSTATE[28000] [1045] Access denied for user 'hns'@'localhost' (using password: YES)
+[27-Nov-2012 06:05:14 UTC] SQLSTATE[28000] [1045] Access denied for user 'hns'@'localhost' (using password: YES)
+[27-Nov-2012 06:16:35 UTC] PHP Notice:  Trying to get property of non-object in C:\wamp\www\HNS\app\view\templates\home.php on line 109
+[27-Nov-2012 06:16:35 UTC] PHP Stack trace:
+[27-Nov-2012 06:16:35 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[27-Nov-2012 06:16:35 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[27-Nov-2012 06:16:35 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[27-Nov-2012 06:16:35 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
+[27-Nov-2012 06:17:27 UTC] PHP Notice:  Trying to get property of non-object in C:\wamp\www\HNS\app\view\templates\home.php on line 109
+[27-Nov-2012 06:17:27 UTC] PHP Stack trace:
+[27-Nov-2012 06:17:27 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[27-Nov-2012 06:17:27 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[27-Nov-2012 06:17:27 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[27-Nov-2012 06:17:27 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
+[27-Nov-2012 06:24:47 UTC] PHP Notice:  Undefined variable: gallery in C:\wamp\www\HNS\app\view\templates\home.php on line 104
+[27-Nov-2012 06:24:47 UTC] PHP Stack trace:
+[27-Nov-2012 06:24:47 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[27-Nov-2012 06:24:47 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[27-Nov-2012 06:24:47 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[27-Nov-2012 06:24:47 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
+[27-Nov-2012 06:24:47 UTC] PHP Fatal error:  Call to a member function getCreated() on a non-object in C:\wamp\www\HNS\app\view\templates\home.php on line 104
+[27-Nov-2012 06:24:47 UTC] PHP Stack trace:
+[27-Nov-2012 06:24:47 UTC] PHP   1. {main}() C:\wamp\www\HNS\index.php:0
+[27-Nov-2012 06:24:47 UTC] PHP   2. View->process() C:\wamp\www\HNS\index.php:14
+[27-Nov-2012 06:24:47 UTC] PHP   3. View->_processTemplate() C:\wamp\www\HNS\app\view\view.class.php:41
+[27-Nov-2012 06:24:47 UTC] PHP   4. include() C:\wamp\www\HNS\app\view\view.class.php:173
