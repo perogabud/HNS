@@ -3,7 +3,7 @@
 // Core configuration
 
 Config::write ('options', TRUE);
-Config::write ('debug', 1);
+Config::write ('debug', 2);
 Config::write ('cache', TRUE);
 
 error_reporting (-1);
@@ -13,7 +13,7 @@ ini_set ('error_log', Config::read ('sitepath') . 'error_log.txt');
 
 Config::write ('optionsDelimiter', '!');
 
-Config::write ('siteDomain', 'localhost.hns');
+Config::write ('siteDomain', 'hns.local');
 Config::write ('siteUrl', 'http://' . Config::read ('siteDomain'));
 Config::write ('siteUrlRoot', Config::read ('siteUrl') . '/');
 Config::write ('siteUrlRootNoLang', Config::read ('siteUrlRoot'));

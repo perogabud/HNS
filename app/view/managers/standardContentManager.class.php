@@ -99,7 +99,7 @@ class StandardContentManager extends ContentManager {
                 array (
                   'orderBy' => 'lastName',
                   'orderDirection' => 'ASC',
-                  'limit' => 10,
+                  'limit' => 20,
                   'team' => TRUE
                 )
               ),

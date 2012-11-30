@@ -451,36 +451,42 @@ class Tools {
             return FALSE;
           }
 
-          if ($fileExtension == 'png') {
-            $thumb = imagecreatetruecolor ($type['width'], $type['height']);
-            imagealphablending ($thumb, false);
-            imagesavealpha ($thumb, true);
-
-            $source = imagecreatefrompng ($_FILES[$params['name']]['tmp_name'][$i]);
-            imagealphablending ($source, true);
-
-            imagecopyresampled ($thumb, $source, 0, 0, 0, 0, $type['width'], $type['height'], $dimensions[0], $dimensions[1]);
-
-            imagepng ($thumb, $targetPath);
+          if ($dimensions[0] == $type['width'] && $dimensions[1] == $type['height']) {
+            FB::info ('uploadImage [moving file]');
+            move_uploaded_file ($_FILES[$params['name']]['tmp_name'][$i], $targetPath);
           }
           else {
-            require_once (Config::read ('vendorsPath') . 'imageSnapshot.class.php');
-            $myimage = new ImageSnapshot; //new instance
-            $myimage->ImageFile = $_FILES[$params['name']]['tmp_name'][$i];
-            $myimage->Width = $type['width']; //width of output image
-            $myimage->Height = $type['height']; //height of output image
-            $myimage->Resize = true; // resize image before crop
-            $myimage->ResizeScale = 100; // between 1 and 100, 0 for no resizing before crop, 100 to shrink image completely before crop
-            $myimage->Position = 'center';
-            $myimage->Compression = 100; //jpg compression level
-            $result = $myimage->SaveImageAs ($targetPath);
-            FB::info ($result, 'uploadImagesDebug [result]');
+            if ($fileExtension == 'png') {
+              $thumb = imagecreatetruecolor ($type['width'], $type['height']);
+              imagealphablending ($thumb, false);
+              imagesavealpha ($thumb, true);
+
+              $source = imagecreatefrompng ($_FILES[$params['name']]['tmp_name'][$i]);
+              imagealphablending ($source, true);
+
+              imagecopyresampled ($thumb, $source, 0, 0, 0, 0, $type['width'], $type['height'], $dimensions[0], $dimensions[1]);
+
+              imagepng ($thumb, $targetPath);
+            }
+            else {
+              require_once (Config::read ('vendorsPath') . 'imageSnapshot.class.php');
+              $myimage = new ImageSnapshot; //new instance
+              $myimage->ImageFile = $_FILES[$params['name']]['tmp_name'][$i];
+              $myimage->Width = $type['width']; //width of output image
+              $myimage->Height = $type['height']; //height of output image
+              $myimage->Resize = true; // resize image before crop
+              $myimage->ResizeScale = 100; // between 1 and 100, 0 for no resizing before crop, 100 to shrink image completely before crop
+              $myimage->Position = 'center';
+              $myimage->Compression = 100; //jpg compression level
+              $result = $myimage->SaveImageAs ($targetPath);
+              FB::info ($result, 'uploadImagesDebug [result]');
+            }
+            $returnData[] = array (
+              'filename' => $filename,
+              'width' => $type['width'],
+              'height' => $type['height']
+            );
           }
-          $returnData[] = array (
-            'filename' => $filename,
-            'width' => $type['width'],
-            'height' => $type['height']
-          );
         }
       }
       else {

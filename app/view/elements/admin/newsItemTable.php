@@ -84,7 +84,8 @@
           <td><?php echo $newsItem->getPublishDate ('d.m.Y.'); ?></td>
           <td><?php echo $newsItem->getCreated ('d.m.Y. H:i:s'); ?></td>
           <td><?php echo ($newsItem->Created == $newsItem->Modified) ? '-' : $newsItem->getModified ('d.m.Y. H:i:s'); ?></td>
-          <td class="controls3">
+          <td class="controls4">
+            <a class="out" target="_blank" href="<?php echo $newsItem->Url; ?>"><?php TableHelper::icon('out'); ?></a>
             <a class="view" href="<?php echo Config::read ('siteUrlRoot'); ?>admin/newsItem/view/<?php echo $newsItem->Id; ?>"><?php TableHelper::icon('view'); ?></a>
             <a class="edit" href="<?php echo Config::read ('siteUrlRoot'); ?>admin/newsItem/edit/<?php echo $newsItem->Id; ?>"><?php TableHelper::icon('edit'); ?></a>
             <a class="delete" href="<?php echo Config::read ('siteUrlRoot'); ?>admin/newsItem/delete/<?php echo $newsItem->Id; ?>"><?php TableHelper::icon('delete'); ?></a>
