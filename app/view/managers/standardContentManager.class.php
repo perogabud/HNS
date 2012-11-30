@@ -76,6 +76,8 @@ class StandardContentManager extends ContentManager {
           $actualityController = ActualityController::getInstance ();
           $memberController = MemberController::getInstance ();
           $galleryController = GalleryController::getInstance ();
+          $videoController = VideoController::getInstance();
+          
           $this->_setData (
             array (
               'newsItems' => $newsItemController->getNewsItemsByParams (
@@ -83,7 +85,8 @@ class StandardContentManager extends ContentManager {
                   'orderBy' => 'publishDate',
                   'orderDirection' => 'DESC',
                   'limit' => 10,
-                  'languageId' => Config::read ('lang')
+                  'languageId' => Config::read ('lang'),
+                  'isFeatured' => 1
                 )
               ),
               'actualitys' => $actualityController->getActualitysByParams (
@@ -108,7 +111,8 @@ class StandardContentManager extends ContentManager {
                   'orderDirection' => 'DESC',
                   'limit' => 3
                 )
-              )
+              ),
+              'featuredVideo' => $videoController->getLastVideo()
             )
           );
           $this->_setHtmlHead (array ('pageTitle' => 'Naslovnica'));
@@ -375,6 +379,75 @@ class StandardContentManager extends ContentManager {
                   return;
                 }
               }
+              
+              /*
+             * Videos.
+             */
+            case Dict::read ('slug_videos'):
+              /*
+               * Video Listing.
+               */
+              if ($this->_checkParams (2, TRUE)) {
+                $videoController = VideoController::getInstance ();
+                $videos = $videoController->getVideosByParams (
+                  array (
+                    'orderBy' => 'publishDate',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10,
+                    'isPublished' => TRUE
+                  )
+                );
+                if ($videos) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'videoGalleries',
+                        'data' => array (
+                          'videos' => $videos
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_videoGalleries')
+                    )
+                  );
+                }
+                return;
+              }
+              elseif ($this->_checkParams (3, TRUE)) {
+                $videoController = VideoController::getInstance ();
+                $video = $videoController->getVideoBySlug ($this->params[2]);
+                $videos = $videoController->getVideosByParams (
+                  array (
+                    'orderBy' => 'publishDate',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10,
+                    'isPublished' => TRUE
+                  )
+                );
+
+                if ($video) {
+                  $this->_setElements (
+                    array (
+                      'mainContent' => array (
+                        'filename' => 'videoGalleries',
+                        'data' => array (
+                          'video' => $video,
+                          'videos' => $videos,
+                        )
+                      )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $video->getTitle ()
+                    )
+                  );
+                  return;
+                }
+              } /* --- */
           }
         }
 

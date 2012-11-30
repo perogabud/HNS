@@ -32,6 +32,27 @@ class VideoRepository extends Repository {
       $queryParams[':videoId'] = array (intval ($params['videoId']), PDO::PARAM_INT);
     }
     
+    if (array_key_exists ('slug', $params)) {
+      $query .= "
+        AND vi18n.slug = :slug
+      ";
+      $queryParams[':slug'] = Tools::stripTags (trim ($params['slug']));
+    }
+    
+    if (array_key_exists ('lastPublished', $params)) {
+      $query = "
+        SELECT *
+        FROM ". DBP ."video AS v
+        JOIN ". DBP ."videoI18n AS vi18n
+          ON v.videoId = vi18n.videoId
+        WHERE isPublished = 1
+          AND DATEDIFF(publishDate, CURDATE()) <= 0
+        ORDER BY publishDate DESC
+        LIMIT 1
+      ";
+      $queryParams = array();
+    }
+    
     try {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }
@@ -68,7 +89,7 @@ class VideoRepository extends Repository {
     if (isset ($params['filterParams']) && is_array ($params['filterParams'])
       && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
       foreach ($params['filterParams']['inSearch'] as $attrName) {
-        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl'))) {
+        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl', 'isPublished'))) {
           if (in_array ($attrName, array ())) {
             $query .= "
               AND $attrName = :$attrName
@@ -107,8 +128,10 @@ class VideoRepository extends Repository {
   public function getVideos ($params = array ()) {
     
     $query = "
-      SELECT *
-      FROM ". DBP ."vw_video
+      SELECT v.*, vi18n.languageId, vi18n.title, vi18n.slug, vi18n.category
+      FROM ". DBP ."video AS v
+      JOIN ". DBP ."videoI18n AS vi18n
+        ON v.videoId = vi18n.videoId
       WHERE languageId = :languageId
     ";
     $queryParams = array (
@@ -118,7 +141,7 @@ class VideoRepository extends Repository {
     if (isset ($params['filterParams']) && is_array ($params['filterParams'])
       && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
       foreach ($params['filterParams']['inSearch'] as $attrName) {
-        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl'))) {
+        if (in_array ($attrName, array ('title', 'category', 'youtubeUrl', 'isPublished'))) {
           if (in_array ($attrName, array ())) {
             $query .= "
               AND $attrName = :$attrName
@@ -135,10 +158,17 @@ class VideoRepository extends Repository {
       }
     }
     else {
-      // Handle parameters
-      
+      if (array_key_exists ('isPublished', $params) && $params['isPublished']) {
+        $query .= "
+          AND v.isPublished = :isPublished
+        ";
+        $queryParams[':isPublished'] = $params['isPublished'] ? '1' : '0';
+      }
     }
-    ;
+    if (!isset($params['orderBy']) || $params['orderBy'] == NULL) {
+      $params['orderBy'] = 'v.created';
+      $params['orderDirection'] = 'ASC';
+    }
 		$query .= $this->_getOrderAndLimit ($params);
 
 		$videos = array ();
@@ -146,7 +176,7 @@ class VideoRepository extends Repository {
       $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
     }
     catch (Exception $e) {
-      $message = 'An error occurred while fetching video records';
+      $message = 'An error occurred while fetching video records ';
       throw new Exception ($message . $e->getMessage());
     }
 
@@ -173,11 +203,15 @@ class VideoRepository extends Repository {
       $query = "
         INSERT INTO " . DBP . "video
         SET `youtubeUrl` = :youtubeUrl,
+            `isPublished` = :isPublished,
+            `publishDate` = :publishDate,        
             `created` = NOW(),
             `modified` = NOW()
       ";
       $queryParams = array (
-        ':youtubeUrl' => Tools::stripTags (trim ($data['youtubeUrl']))
+        ':youtubeUrl' => Tools::stripTags (trim ($data['youtubeUrl'])),
+        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
+        ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
@@ -228,12 +262,16 @@ class VideoRepository extends Repository {
       $query = "
         UPDATE " . DBP . "video
         SET `youtubeUrl` = :youtubeUrl,
+            `isPublished` = :isPublished,
+            `publishDate` = :publishDate,
             `modified` = NOW()
         WHERE `videoId` = :videoId
       ";
       $queryParams = array (
         ':youtubeUrl' => Tools::stripTags (trim ($data['youtubeUrl'])),
-        ':videoId' => array ($videoId, PDO::PARAM_INT)
+        ':videoId' => array ($videoId, PDO::PARAM_INT),
+        ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
+        ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 

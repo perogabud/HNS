@@ -63,6 +63,23 @@ class Factory {
     }
     return $newsItems;
   }
+  
+  public static function getNewsCategory (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $newsCategory = new NewsCategory ($data, $config);
+    return $newsCategory;
+  }
+
+  public static function getNewsCategories (&$data = array ()) {
+    $config['rootUrl'] = Config::read ('siteUrlRoot');
+    $config['uriSeparator'] = Config::read ('uriSeparator');
+    $newsCategories = array ();
+    foreach ($data as $row) {
+      $newsCategories[] = new NewsCategory ($row, $config);
+    }
+    return $newsCategories;
+  }
 
   public static function getNewsItemCoverImage (&$data = array ()) {
     $config['rootUrl'] = Config::read ('siteUrlRoot');

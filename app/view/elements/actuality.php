@@ -1,5 +1,5 @@
 <?php if (isset ($actuality)): ?>
-<section class="main>
+<section class="main">
   <header>
     <?php if ($actuality->CoverImage): ?>
     <img src="<?php echo $actuality->CoverImage->Url; ?>" width="719" height="429" alt="Slika za novost <?php echo $actuality->Title; ?>"/>
