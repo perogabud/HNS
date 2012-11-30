@@ -17,38 +17,42 @@
 
 				<section class="raspored">
 					<table class="results">
-						<caption><h5>raspored utakmica</h5></caption>
-						<tr>
-							<td class="home">HRVATSKA</td><td class="result">2:0</td><td class="guest">WALES</td>
-						</tr>
-						<tr>
-							<td class="home">HRVATSKA</td><td class="result">1:1</td><td class="guest">MAXtv 1. LIGA</td>
-						</tr>
-						<tr>
-							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">SRBIJA</td>
-						</tr>
+						<tbody>
+							<th colspan="3">raspored utakmica</th>
+							<tr>
+								<td class="home">HRVATSKA</td><td class="result">2 : 0</td><td class="guest">WALES</td>
+							</tr>
+							<tr>
+								<td class="home">HRVATSKA</td><td class="result">1 : 1</td><td class="guest">MAXtv 1. LIGA</td>
+							</tr>
+							<tr>
+								<td class="home">HRVATSKA</td><td class="result">- : -</td><td class="guest">SRBIJA</td>
+							</tr>
+						</tbody>
 					</table>
 					<table style="display: none;" class="zoom">
-						<tr><td colspan="3"><h5>raspored utakmica</h5></td></tr>
-						<tr>
-							<td class="home">HRVATSKA</td><td class="result">2:0</td><td class="guest">WALES</td>
-						</tr>
-						<tr>
-							<td colspan="3"><time pubdate="pubdate" datetime="2012-10-16">16.10.2012.</time> <small>SP 2014. (Q)</small><span>A</span></td>
-						</tr>
-						<tr>
-							<td class="home">HRVATSKA</td><td class="result">1:1</td><td class="guest">SELEKCIJA MAXtv 1. LIGE</td>
-						</tr>
-						<tr>
-							<td colspan="3"><time pubdate="pubdate" datetime="2012-11-14">14.11.2012.</time><small>Prijateljske utakmice</small><span>A</span></td>
-						</tr>
-						<tr>
-							<td class="home">HRVATSKA</td><td class="result">-:-</td><td class="guest">SRBIJA</td>
-						</tr>
-						<tr>
-							<td colspan="3"><time pubdate="pubdate" datetime="2013-03-22">22.03.2013.</time><small>SP 2014. (Q)	</small><span>A</span></td>
-						</tr>
-						<tr><td colspan="3"><p class="close"></p></td></tr>
+						<tbody>
+							<th colspan="3">raspored utakmica</th>
+							<tr>
+								<td class="home">HRVATSKA</td><td class="result">2 : 0</td><td class="guest">WALES</td>
+							</tr>
+							<tr>
+								<td colspan="3"><time pubdate="pubdate" datetime="2012-10-16">16.10.2012.</time> <small>SP 2014. (Q)</small><span>A</span></td>
+							</tr>
+							<tr>
+								<td class="home">HRVATSKA</td><td class="result">1 : 1</td><td class="guest">SELEKCIJA MAXtv 1. LIGE</td>
+							</tr>
+							<tr>
+								<td colspan="3"><time pubdate="pubdate" datetime="2012-11-14">14.11.2012.</time><small>Prijateljske utakmice</small><span>A</span></td>
+							</tr>
+							<tr>
+								<td class="home">HRVATSKA</td><td class="result">- : -</td><td class="guest">SRBIJA</td>
+							</tr>
+							<tr>
+								<td colspan="3"><time pubdate="pubdate" datetime="2013-03-22">22.03.2013.</time><small>SP 2014. (Q)	</small><span>A</span></td>
+							</tr>
+							<tr class="close"><td colspan="3"><p></p></td></tr>
+						</tbody>
 					</table>
 				</section>
 
@@ -89,24 +93,15 @@
 				</section>
 				
 				<section class="fb">
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-like-box" data-href="https://www.facebook.com/cff.hns?fref=ts" data-width="241" data-height="321" data-show-faces="true" data-stream="false" data-header="false"></div>
-				</section>
-				
-				<section class="twitter">
-					<a class="twitter-timeline"  href="https://twitter.com/HNS_CFF" data-widget-id="274156887522541569">Tweets by @HNS_CFF</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				</section>
-
-				<section class="uvijekvjerni">
-					<a href="http://uvijekvjerni.hr" ><img src="/img/uvijek_vjerni.png" alt="UVIJEK VJERNI" /></a>
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-like-box" data-href="http://www.facebook.com/platform" data-width="241" data-height="365" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
 				</section>
 			</aside>
 
