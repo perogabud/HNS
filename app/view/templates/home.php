@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
   </head>
   <body>
+  	<div id="bg_box">
   	<div id="wrapper">
   		<div class="bg_left"></div>
   		<div class="bg_right"></div>
@@ -67,27 +68,27 @@
 					<img src="/img/vatreni.png" alt="vatreni logo" class="vatreni" />
 					<div class="slideshow1">
             <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
-							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow2">
             <?php for($i = 4; $i < 8; $i++) : $member = $members[$i]; ?>
-							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow3">
             <?php for($i = 8; $i < 12; $i++) : $member = $members[$i]; ?>
-							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow4">
             <?php for($i = 12; $i < 16; $i++) : $member = $members[$i]; ?>
-							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow5">
             <?php for($i = 16; $i < 20; $i++) : $member = $members[$i]; ?>
-							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 				</section>
@@ -102,6 +103,10 @@
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
 					<div class="fb-like-box" data-href="http://www.facebook.com/platform" data-width="241" data-height="365" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
+				</section>
+				
+				<section class="twitter">
+						
 				</section>
 			</aside>
 
@@ -180,6 +185,7 @@
 
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>
+	  </div>
 	  </div>
   </body>
 </html>
