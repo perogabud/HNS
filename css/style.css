@@ -716,13 +716,15 @@ section.tabs ul li.casopis a {
 	background: url('/img/hns_casopis.png') no-repeat;
 }
 
-section.main_home section.content {
+section.main_home section.content,
+section.content.actualities {
 	width: 599px;
 	float: left;
 	background: #fff;
 }
 
-section.main_home section.content article {
+section.main_home section.content article,
+section.content.actualities article {
 	width: 563px;
 	padding: 18px;
 	background: url('/img/article_splitter.png') no-repeat bottom center;
@@ -730,7 +732,8 @@ section.main_home section.content article {
 	display: block;
 }
 
-section.main_home section.content h2 {
+section.main_home section.content h2,
+section.content.actualities h2 {
 	font-family: Oswald, sans-serif;
 	font-size: 40px;
 	padding: 18px;
@@ -738,7 +741,8 @@ section.main_home section.content h2 {
 	background: url('/img/article_splitter.png') no-repeat bottom center;
 }
 
-section.main_home section.content time {
+section.main_home section.content time,
+section.content.actualities time {
 	width: 108px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -749,7 +753,8 @@ section.main_home section.content time {
 	display: inline-block;
 }
 
-section.main_home section.content h3 {
+section.main_home section.content h3,
+section.content.actualities h3 {
 	width: 465px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -758,23 +763,27 @@ section.main_home section.content h3 {
 /*	float: right;*/
 }
 
-section section.content h3 a {
+section section.content h3 a,
+section.content.actualities a {
 	color: #005ca8;
 }
 
-section.main_home section.content p {
+section.main_home section.content p,
+section.content.actualities p {
 	width: 465px;
 	font-size: 14px;
 	color: #666;
 	margin-left: 108px;
 }
 
-section.main_home section.content p.all_news {
+section.main_home section.content p.all_news,
+section.content.actualities p.all_news {
 	padding: 18px;
 	text-align: right;
 }
 
-section.main_home section.content p.all_news a {
+section.main_home section.content p.all_news a,
+section.content.actualities p.all_news a {
 	font-size: 14px;
 	color: #666;
 	text-decoration: underline;
@@ -1109,6 +1118,10 @@ footer img.footer_right {
   width: 719px;
   height: 589px;
   border: 1px solid #999;
+}
+.ad-gallery.video {
+  width: 719px;
+  height: 428px;
 }
 .ad-gallery, .ad-gallery * {
   margin: 0;

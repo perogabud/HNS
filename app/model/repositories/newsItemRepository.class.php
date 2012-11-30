@@ -16,8 +16,10 @@ class NewsItemRepository extends Repository {
       }
 
     $query = "
-      SELECT *
+      SELECT n.*, nk.title AS newsCategoryTitle
       FROM ". DBP ."newsItem AS n
+      LEFT OUTER JOIN ". DBP ."newsCategory AS nk
+        ON n.newsCategoryId = nk.newsCategoryId
       WHERE 1 = 1
     ";
 
@@ -150,10 +152,12 @@ class NewsItemRepository extends Repository {
   public function getNewsItems ($params = array ()) {
 
     $query = "
-      SELECT *
+      SELECT n.*, nk.title AS newsCategoryTitle
       FROM ". DBP ."newsItem AS n
       JOIN ". DBP ."language AS l
         ON n.languageId = l.languageId
+      LEFT OUTER JOIN ". DBP ."newsCategory AS nk
+        ON n.newsCategoryId = nk.newsCategoryId
       WHERE 1 = 1
     ";
     $queryParams = array ();
@@ -183,9 +187,16 @@ class NewsItemRepository extends Repository {
       ";
       $queryParams[':languageId'] = trim ($params['languageId']);
     }
+    
     if (isset ($params['isPublished']) && $params['isPublished'] === TRUE) {
       $query .= "
         AND n.isPublished = 1
+      ";
+    }
+    
+    if (isset ($params['isFeatured']) && $params['isFeatured']) {
+      $query .= "
+        AND n.isFeatured = 1
       ";
     }
 
@@ -230,10 +241,12 @@ class NewsItemRepository extends Repository {
         INSERT INTO " . DBP . "newsItem
         SET `languageId` = :languageId,
             `title` = :title,
+            `newsCategoryId` = :newsCategoryId,
             `slug` = :slug,
             `lead` = :lead,
             `content` = :content,
             `isPublished` = :isPublished,
+            `isFeatured` = :isFeatured,
             `publishDate` = :publishDate,
             `created` = NOW(),
             `modified` = NOW()
@@ -241,10 +254,12 @@ class NewsItemRepository extends Repository {
       $queryParams = array (
         ':languageId' => Tools::stripTags (trim ($data['languageId'])),
         ':title' => Tools::stripTags (trim ($data['title']), 'strict'),
+        ':newsCategoryId' => array ($data['newsCategoryId'], PDO::PARAM_INT),
         ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['title']))),
         ':lead' => empty ($data['lead']) ? NULL : Tools::stripTags (trim ($data['lead']), 'loose'),
         ':content' => empty ($data['content']) ? NULL : Tools::stripTags (trim ($data['content']), 'loose'),
         ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
+        ':isFeatured' => isset ($data['isFeatured']) ? '1' : '0',
         ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
@@ -376,10 +391,12 @@ class NewsItemRepository extends Repository {
         UPDATE " . DBP . "newsItem
         SET `languageId` = :languageId,
             `title` = :title,
+            `newsCategoryId` = :newsCategoryId,
             `slug` = :slug,
             `lead` = :lead,
             `content` = :content,
             `isPublished` = :isPublished,
+            `isFeatured` = :isFeatured,
             `publishDate` = :publishDate,
             `modified` = NOW(),
             modified = NOW()
@@ -388,10 +405,12 @@ class NewsItemRepository extends Repository {
       $queryParams = array (
         ':languageId' => Tools::stripTags (trim ($data['languageId'])),
         ':title' => Tools::stripTags (trim ($data['title']), 'strict'),
+        ':newsCategoryId' => array ($data['newsCategoryId'], PDO::PARAM_INT),
         ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['title']))),
         ':lead' => empty ($data['lead']) ? NULL : Tools::stripTags (trim ($data['lead']), 'loose'),
         ':content' => empty ($data['content']) ? NULL : Tools::stripTags (trim ($data['content']), 'loose'),
         ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
+        ':isFeatured' => isset ($data['isFeatured']) ? '1' : '0',
         ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT),
         ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
       );
@@ -467,6 +486,145 @@ class NewsItemRepository extends Repository {
         throw new Exception ($message . $e->getMessage());
       }
   }
+  
+  public function getNewsCategories ($params = array ()) {
+
+    $query = "
+      SELECT *
+      FROM ". DBP ."newsCategory AS nk
+      WHERE 1 = 1
+    ";
+    $queryParams = array ();
+    // Handle filter parameters
+    if (isset ($params['filterParams']) && is_array ($params['filterParams'])
+      && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
+      foreach ($params['filterParams']['inSearch'] as $attrName) {
+        if (in_array ($attrName, array ('title'))) {
+          if (isset ($params['filterParams'][$attrName])) {
+            $query .= "
+              AND n.$attrName LIKE :$attrName
+            ";
+            $queryParams[":$attrName"] = '%'. $params['filterParams'][$attrName] .'%';
+          }
+        }
+      }
+    }
+    
+		$query .= $this->_getOrderAndLimit ($params);
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news category records';
+      throw new Exception ($message . $e->getMessage());
+    }
+
+    foreach ($results as &$result) {
+      // Empty ...
+    }
+
+    return Factory::getNewsCategories ($results);
+  }
+  
+  public function getNewsCategoryCount ($params = array ()) {
+
+    $query = "
+      SELECT COUNT(newsCategoryId) AS newsCategoryCount
+      FROM ". DBP ."newsCategory AS nk
+      WHERE 1 = 1
+    ";
+    $queryParams = array ();
+    // Handle filter parameters
+    if (isset ($params['filterParams']) && is_array ($params['filterParams'])
+      && isset ($params['filterParams']['inSearch']) && is_array ($params['filterParams']['inSearch'])) {
+      foreach ($params['filterParams']['inSearch'] as $attrName) {
+        if (in_array ($attrName, array ('title'))) {
+          if (isset ($params['filterParams'][$attrName])) {
+            $query .= "
+              AND n.$attrName LIKE :$attrName
+            ";
+            $queryParams[":$attrName"] = '%'. $params['filterParams'][$attrName] .'%';
+          }
+        }
+      }
+    }
+    else {
+      // Handle parameters
+
+    }
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fething a count of news category records';
+      throw new Exception ($message . $e->getMessage());
+    }
+
+    return intval ($results[0]['newsCategoryCount']);
+  }
+  
+  public function getNewsCategory ($params = array ()) {
+    if (empty ($params)) {
+      return NULL;
+    }
+
+    $query = "
+      SELECT *
+      FROM ". DBP ."newsCategory AS nk
+      WHERE 1 = 1
+    ";
+    $queryParams = array ();
+    
+    if (array_key_exists ('newsCategoryId', $params)) {
+      $query .= "
+        AND nk.newsCategoryId = :newsCategoryId
+      ";
+      $queryParams[':newsCategoryId'] = array (intval ($params['newsCategoryId']), PDO::PARAM_INT);
+    }
+    
+		$query .= $this->_getOrderAndLimit ($params);
+
+    try {
+      $results = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+    }
+    catch (Exception $e) {
+      $message = 'An error occurred while fetching news category record';
+      throw new Exception ($message . $e->getMessage());
+    }
+
+    return Factory::getNewsCategory ($results[0]);
+  }
+  
+  public function editNewsCategory ($newsCategoryId, $data) {
+    if (empty ($data) || !$this->_validateNewsCategoryData ($data)) {
+      throw new Exception ('Invalid data.', 10);
+    }
+    try {
+      $this->startTransaction ();
+      $query = "
+        UPDATE " . DBP . "newsCategory
+        SET `title` = :title,
+            `modified` = NOW()
+        WHERE `newsCategoryId` = :newsCategoryId
+      ";
+      $queryParams = array (
+        ':title' => Tools::stripTags (trim ($data['title']), 'strict'),
+        ':newsCategoryId' => array ($newsCategoryId, PDO::PARAM_INT)
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+
+      $this->commit ();
+    }
+    catch (Exception $e) {
+      $this->rollback ();
+      $message = 'An error occurred while updating news category record';
+      throw new Exception ($message . $e->getMessage());
+    }
+
+    return TRUE;
+  }
 
   private function _validateNewsItemData ($input) {
     if (!$this->checkSetData (
@@ -485,6 +643,84 @@ class NewsItemRepository extends Repository {
             'languageId' => 'Language cannot be empty.',
               'title' => 'Title cannot be empty.',
               'publishDate' => 'Publish Date cannot be empty.'
+          ),
+          'notEmptyLang' => array (
+
+          )
+        )
+      )
+    );
+  }
+  
+  public function deleteNewsCategory ($newsCategoryId) {
+    try {
+      $this->startTransaction ();
+      
+      $query = "
+        DELETE FROM " . DBP . "newsCategory
+        WHERE `newsCategoryId` = :newsCategoryId
+      ";
+      $queryParams = array (
+        ':newsCategoryId' => array ($newsCategoryId, PDO::PARAM_INT)
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+
+      $this->commit ();
+
+      return TRUE;
+     }
+      catch (Exception $e) {
+        $this->rollback ();
+        $message = 'An error occurred while deleting news category record';
+        throw new Exception ($message . $e->getMessage());
+      }
+  }
+  
+  public function addNewsCategory ($data) {
+    if (empty ($data) || !$this->_validateNewsCategoryData ($data)) {
+      throw new Exception ('News Category did not pass validation.', 10);
+    }
+
+    try {
+      $this->startTransaction ();
+
+      $query = "
+        INSERT INTO " . DBP . "newsCategory
+        SET `title` = :title,
+            `created` = NOW(),
+            `modified` = NOW()
+      ";
+      $queryParams = array (
+        ':title' => Tools::stripTags (trim ($data['title']), 'strict')
+      );
+      $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      $newsCategoryId = $this->lastInsertId ();
+
+      $this->commit ();
+    }
+    catch (Exception $e) {
+      $this->rollback ();
+      $message = 'An error occurred while adding news category record';
+      throw new Exception ($message . $e->getMessage());
+    }
+    return $this->getNewsCategory (array ('newsCategoryId' => $newsCategoryId));
+  }
+  
+  private function _validateNewsCategoryData ($input) {
+    if (!$this->checkSetData (
+        $input,
+        array ('title')
+      )
+    ) {
+      return FALSE;
+    }
+    return $this->validateData (
+      $input,
+       array (
+        'message' => 'Not all required fields have been filled in.',
+        'rules' => array (
+          'notEmpty' => array (
+            'title' => 'Title cannot be empty.',
           ),
           'notEmptyLang' => array (
 

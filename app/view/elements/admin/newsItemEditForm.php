@@ -9,9 +9,11 @@
     <?php
     FormHelper::select ('languageId', 'languageId', 'Jezik *', $languages, $newsItem->getLanguage ());
     FormHelper::input ('textarea', 'title', 'title', array ('label' => array ('text' => 'Naslov * '), 'value' => $newsItem->getTitle (), 'class' => 'simpleEditor'));
+    FormHelper::select ('newsCategoryId', 'newsCategoryId', 'Kategorija *', $newsCategories, $newsItem->getNewsCategoryId());
     FormHelper::input ('textarea', 'lead', 'lead', array ('label' => array ('text' => 'Uvodni tekst  '), 'value' => $newsItem->getLead (), 'class' => 'editor'));
     FormHelper::input ('textarea', 'content', 'content', array ('label' => array ('text' => 'Sadržaj  '), 'value' => $newsItem->getContent (), 'class' => 'editor'));
     FormHelper::input ('checkbox', 'isPublished', 'isPublished', array ('label' => array ('text' => 'Objavljeno * '), 'checked' => $newsItem->getIsPublished ()));
+    FormHelper::input ('checkbox', 'isFeatured', 'isFeatured', array ('label' => array ('text' => 'Naslovnica * '), 'checked' => $newsItem->getIsFeatured ()));
     FormHelper::input ('text', 'publishDate', 'publishDate', array ('label' => array ('text' => 'Datum objave * '), 'class' => 'date', 'value' => $newsItem->getPublishDate ()));
     if ($newsItem->getCoverImage ()) {
       echo '<div class="input"><img src="' . $newsItem->getCoverImage ()->getUrl () . '" /></div>';

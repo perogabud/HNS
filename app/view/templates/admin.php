@@ -27,6 +27,7 @@
         <ul id="tabs">
           <li <?php echo $activeTab == 'page' ? $activeClass : ''; ?>><a href="/admin/page">Stranice</a></li>
           <li <?php echo $activeTab == 'newsItem' ? $activeClass : ''; ?>><a href="/admin/newsItem">Novosti</a></li>
+          <li <?php echo $activeTab == 'newsCategory' ? $activeClass : ''; ?>><a href="/admin/newsCategory">Kategorije</a></li>
           <li <?php echo $activeTab == 'actuality' ? $activeClass : ''; ?>><a href="/admin/actuality">Aktualnosti</a></li>
           <!--<li <?php echo $activeTab == 'video' ? $activeClass : ''; ?>><a href="/admin/video">HNS TV</a></li>-->
           <li <?php echo $activeTab == 'gallery' ? $activeClass : ''; ?>><a href="/admin/gallery">Galerije</a></li>

@@ -11,6 +11,10 @@
       <?php if ($newsItem->getLanguage ()): ?>
       <dd><?php echo $newsItem->getLanguage ()->getName(); ?></dd>
       <?php endif; ?>
+      <dt>Kategorija</dt>
+      <?php if ($newsItem->getNewsCategoryId ()): ?>
+      <dd><?php echo $newsItem->getNewsCategoryTitle (); ?></dd>
+      <?php endif; ?>
       <dt>Naslov</dt>
       <?php if ($newsItem->getTitle ()): ?>
       <dd><?php echo $newsItem->getTitle (); ?></dd>
@@ -25,6 +29,8 @@
       <?php endif; ?>
       <dt>Objavljeno</dt>
       <dd class="check"><?php TableHelper::iconYesNo ($newsItem->getIsPublished ()); ?></dd>
+      <dt>Naslovnica</dt>
+      <dd class="check"><?php TableHelper::iconYesNo ($newsItem->getIsFeatured ()); ?></dd>
       <dt>Datum objave</dt>
       <?php if ($newsItem->getPublishDate ()): ?>
       <dd><?php echo $newsItem->getPublishDate (); ?></dd>

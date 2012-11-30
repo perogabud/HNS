@@ -175,7 +175,8 @@
 
 	    	<section class="tabs">
 	    		<div id="hns-tv">
-	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/QJCRibjaF98?rel=0" frameborder="0" allowfullscreen></iframe><div class="caption">pogledaj sve video zapise &gt; <a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/5-hns-hnstv.html">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
+	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/<?php echo $featuredVideo->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
+            <div class="caption">pogledaj sve video zapise &gt; <a href="<?php echo '/' . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_videos') ?>">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
 	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
@@ -220,7 +221,7 @@
 	    		<h2>VIJESTI</h2>
           <?php for ($i = 0; $i < count ($newsItems); $i++): $newsItem = $newsItems[$i]; ?>
           <article>
-		    		<time pubdate="pubdate" datetime="<?php echo $newsItem->getPublishDate ('Y-m-d'); ?>"><?php echo $newsItem->getPublishDate ('m.d.Y.'); ?></time>
+		    		<time pubdate="pubdate" datetime="<?php echo $newsItem->getPublishDate ('Y-m-d'); ?>"><?php echo $newsItem->getPublishDate ('d.m.Y.'); ?></time>
             <h3><a href="<?php echo $newsItem->Url; ?>"><?php echo $newsItem->Title; ?></a></h3>
             <?php if ($i < 2): ?>
 		    		<?php echo $newsItem->Lead; ?>

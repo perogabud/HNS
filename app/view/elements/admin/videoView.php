@@ -11,6 +11,12 @@
       <?php if ($video->getYoutubeUrl ()): ?>
       <dd><?php echo $video->getYoutubeUrl (); ?></dd>
       <?php endif; ?>
+      <dt>Is Published</dt>
+      <dd class="check"><?php TableHelper::iconYesNo ($video->getIsPublished ()); ?></dd>
+      <dt>Publish Date</dt>
+      <?php if ($video->getPublishDate ()): ?>
+      <dd><?php echo $video->getPublishDate (); ?></dd>
+      <?php endif; ?>
       <?php foreach (Config::read ('supportedLangs') as $lang): ?>
       <dt<?php echo !$video->getTitle ($lang) ? ' class="empty"' : '' ?>>Naslov [<?php echo strtoupper ($lang); ?>]</dt>
       <?php if ($video->getTitle ($lang)): ?>

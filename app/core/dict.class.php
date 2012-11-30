@@ -24,6 +24,11 @@ class Dict {
       'eng' => 'Gallery',
       'hrv' => 'Galerija'
     ),
+    'title_videos' => array (
+      'deu' => '',
+      'eng' => 'HSN TV',
+      'hrv' => 'HNS TV'
+    ),
 
     'text_youCanAlsoTry' => array (
       'deu' => 'Probieren Sie auch dies...',
@@ -51,6 +56,11 @@ class Dict {
       'deu' => '',
       'eng' => 'gallery',
       'hrv' => 'galerija'
+    ),
+    'slug_videos' => array (
+      'deu' => '',
+      'eng' => 'hns-tv',
+      'hrv' => 'hns-tv'
     ),
     'slug_selections' => array (
       'deu' => '',

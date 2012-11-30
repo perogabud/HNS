@@ -7,6 +7,8 @@
     </ul>
     <?php
     FormHelper::input ('textarea', 'youtubeUrl', 'youtubeUrl', array ('label' => array ('text' => 'Youtube URL * ')));
+    FormHelper::input ('text', 'publishDate', 'publishDate', array ('label' => array ('text' => 'Datum objave * '), 'class' => 'date', 'value' => date ('Y-m-d')));
+    FormHelper::input ('checkbox', 'isPublished', 'isPublished', array ('label' => array ('text' => 'Objavljeno'), 'checked' => TRUE));
     foreach (Config::read ('supportedLangs') as $lang) {
       echo '<h3 class="langContent">Data in '. Config::read ("langNamesEnglish", $lang) .' Jezik</h3>';
       FormHelper::input ('textarea', 'title', 'title', array ('label' => array ('text' => 'Naslov * '), 'lang' => $lang, 'class' => 'simpleEditor'));

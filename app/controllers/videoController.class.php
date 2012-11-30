@@ -42,6 +42,12 @@ class VideoController extends Controller {
   public function getVideoBySlug ($slug) {
     return $this->_repository->getVideo (array ('slug' => $slug));
   }
+  
+  public function getLastVideo() {
+    return $this->_repository->getVideo(array(
+      'lastPublished' => TRUE
+    ));
+  }
 }
 
 ?>

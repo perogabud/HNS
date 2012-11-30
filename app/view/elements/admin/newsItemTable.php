@@ -15,11 +15,17 @@
         'title' => 'Naslov',
         'lead' => 'Uvodni tekst',
         'content' => 'Sadržaj',
+        'newsCategoryTitle' => 'Kategorija',
         'isPublished' => 'Objavljeno',
+        'isFeatured' => 'Naslovnica',
         'publishDate' => 'Datum objave',);
       foreach ($_GET['inSearch'] as $name) {
-        if (in_array ($name, array ('languageId', 'title', 'lead', 'content', 'isPublished', 'publishDate'))) {
+        if (in_array ($name, array ('languageId', 'title', 'lead', 'content', 'isPublished', 'isFeatured', 'publishDate'))) {
           if (in_array ($name, array ('isPublished'))) {
+            echo '<dt>'. $printableNames[$name] .'</dt><dd>';
+            TableHelper::iconYesNo (isset ($_GET[$name]));
+            echo '</dd>';
+          } elseif (in_array ($name, array ('isFeatured'))) {
             echo '<dt>'. $printableNames[$name] .'</dt><dd>';
             TableHelper::iconYesNo (isset ($_GET[$name]));
             echo '</dd>';
@@ -49,8 +55,10 @@
         <tr>
           <th>Jezik <?php TableHelper::orderLinks ('admin/newsItem', 'languageId'); ?></th>
           <th>Naslov <?php TableHelper::orderLinks ('admin/newsItem', 'title'); ?></th>
+          <th>Kategorija <?php TableHelper::orderLinks ('admin/newsItem', 'newsCategoryTitle'); ?></th>
           <th>Uvodni tekst <?php TableHelper::orderLinks ('admin/newsItem', 'lead'); ?></th>
           <th>Objavljeno <?php TableHelper::orderLinks ('admin/newsItem', 'isPublished'); ?></th>
+          <th>Naslovnica <?php TableHelper::orderLinks ('admin/newsItem', 'isFeatured'); ?></th>
           <th>Datum objave <?php TableHelper::orderLinks ('admin/newsItem', 'publishDate'); ?></th>
           <th>Zapis stvoren <?php TableHelper::orderLinks ('admin/newsItem', 'created'); ?></th>
           <th>Zapis uređen <?php TableHelper::orderLinks ('admin/newsItem', 'modified'); ?></th>
@@ -69,8 +77,10 @@
         <tr class="<?php echo Tools::toggleClass (); ?>">
           <td><?php echo $newsItem->Language->Name; ?></td>
           <td><?php echo $newsItem->Title; ?></td>
+          <td><?php echo $newsItem->NewsCategoryTitle; ?></td>
           <td><?php echo $newsItem->Lead; ?></td>
           <td><?php TableHelper::iconYesNo ($newsItem->IsPublished); ?></td>
+          <td><?php TableHelper::iconYesNo ($newsItem->IsFeatured); ?></td>
           <td><?php echo $newsItem->getPublishDate ('d.m.Y.'); ?></td>
           <td><?php echo $newsItem->getCreated ('d.m.Y. H:i:s'); ?></td>
           <td><?php echo ($newsItem->Created == $newsItem->Modified) ? '-' : $newsItem->getModified ('d.m.Y. H:i:s'); ?></td>
@@ -127,6 +137,12 @@
         FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'isPublished', 'div' => array ('class' => 'searchUse')));
         echo '</td><td>';
         FormHelper::input ('checkbox', 'isPublished', 'isPublishedSearch', array ('label' => array ('text' => 'Objavljeno')));
+        echo '</td></tr>';
+        echo '<tr class="'. Tools::toggleClass () .'">';
+        echo '<td>';
+        FormHelper::input ('checkbox', 'inSearch[]', 'NULL', array ('value' => 'isFeatured', 'div' => array ('class' => 'searchUse')));
+        echo '</td><td>';
+        FormHelper::input ('checkbox', 'isFeatured', 'isFeaturedSearch', array ('label' => array ('text' => 'Naslovnica')));
         echo '</td></tr>';
         echo '<tr class="'. Tools::toggleClass () .'">';
         echo '<td>';
