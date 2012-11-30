@@ -355,6 +355,7 @@ $().ready (function () {
         format_tags : 'p;h3;h4',
         // Skin
         skin : 'admin',
+        forcePasteAsPlainText : true,
         resize_minHeight : 100,
         resize_minWidth : 550,
         resize_maxWidth : 898,
@@ -400,6 +401,7 @@ $().ready (function () {
       toolbar : [
         ['Bold', 'Italic', 'Underline'],
       ],
+      forcePasteAsPlainText : true,
       enterMode : CKEDITOR.ENTER_BR,
       removePlugins: 'elementspath',
       resize_enabled: false,
