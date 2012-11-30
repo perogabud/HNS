@@ -18,31 +18,31 @@ $(function() {
 		    });
 		    
 				$('.slideshow1').cycle({ 
-				    delay:  2000, 
-				    speed:  3000
+				    delay:  3000, 
+				    speed:  1500
 				});
 
 				$('.slideshow2').cycle({ 
-				    delay:  2000, 
-				    speed:  3000,
+				    delay:  3000, 
+				    speed:  2000,
 				    timeout: 200
 				});
 				
 				$('.slideshow3').cycle({ 
-				    delay:  2000, 
-				    speed:  3000,
-				    timeout: 250
+				    delay:  3000, 
+				    speed:  2500,
+				    timeout: 50
 				});
 				
 				$('.slideshow4').cycle({ 
-				    delay:  2000, 
-				    speed:  3000,
+				    delay:  3000, 
+				    speed:  1500,
 				    timeout: 300
 				});
 				
 				$('.slideshow5').cycle({ 
-				    delay:  2000, 
-				    speed:  3000,
+				    delay:  3000, 
+				    speed:  2200,
 				    timeout: 350
 				});
 
