@@ -917,6 +917,10 @@ footer img.footer_right {
   height: 589px;
   border: 1px solid #999;
 }
+.ad-gallery.video {
+  width: 719px;
+  height: 428px;
+}
 .ad-gallery, .ad-gallery * {
   margin: 0;
   padding: 0;
