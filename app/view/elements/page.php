@@ -18,4 +18,5 @@
 	  <?php echo $page->getContent (NULL, TRUE); ?>
 	</section>
 	<?php endif; ?>
+	<div class="content_bottom_bg"></div>
 </section>

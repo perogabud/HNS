@@ -922,28 +922,46 @@ section.subpage h3 {
 	color: #005ca8;
 }
 
-section.subpage section.stozer h3 {
-	color: #e31f0e;
-}
-
 section.subpage h4 {
 	font: 15px Arial, sans-serif;
 	font-weight: bold;
 	color: #005ca8
 }
 
-section.team section {
-	background-color: red;
+
+section.team h3 {
+	color: #e31f0e;
 }
 
-section.team dl dt {
-	width: 252px;
+section.team section.stozer h3 {
+	color: #005ca8;
+}
+
+section.team ul {
+	margin-top: 27px;
+}
+
+section.team ul li {
 	font: normal 15px Arial, sans-serif;
 }
 
-section.team dl dd {
+section.team ul li:last-of-type {
+	margin-bottom: 32px;
+	background: none;
+}
+
+section.team ul li span.name, section.team ul li span.position {
+	display: inline-block;
+}
+
+section.team ul li span.name {
+	width: 252px;
+}
+
+section.team ul li span.position {
 	width: 408px;
 }
+
 
 
 section.fake { /*prazni box za povecat visinu lijevog sidebara*/
@@ -989,7 +1007,7 @@ section.main section.content, section.main section.subpage {
 	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
-section.main_news section.content article {
+section.main_news section.content article, section.team ul li {
 /*	width: 693px;*/
 	padding: 7px 0;
 	background: url('/img/separator-vijesti.png') no-repeat bottom center;

@@ -14,7 +14,7 @@
 	    <?php echo $actuality->Lead; ?>
 	  </div>
 	  <?php echo $actuality->Content; ?>
-	  <div class="content_bottom_bg"></div>
 	</section>
+	<div class="content_bottom_bg"></div>
 </section>
 <?php endif; ?>

@@ -56,5 +56,6 @@
 	   		</article>
 	    <?php endif; ?>
     </section>
+    <div class="content_bottom_bg"></div>
 	</section>
 <?php endif; ?>

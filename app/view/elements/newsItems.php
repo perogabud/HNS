@@ -25,7 +25,7 @@
 			<li><h3><a href="#"><time datetime="2010">2010</time>arhiva &gt;</a></h3></li>
 			<li><h3><a href="#"><time datetime="2009">2009</time>arhiva &gt;</a></h3></li>
 		</ul>-->
-		<div class="content_bottom_bg"></div>
 	</section>
 	<?php endif; ?>
+	<div class="content_bottom_bg"></div>
 </section>

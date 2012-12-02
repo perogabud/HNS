@@ -14,7 +14,7 @@
 	    <?php echo $newsItem->Lead; ?>
 	  </div>
 	  <?php echo $newsItem->Content; ?>
-	  <div class="content_bottom_bg"></div>
 	</section>
+	<div class="content_bottom_bg"></div>
 </section>
 <?php endif; ?>
