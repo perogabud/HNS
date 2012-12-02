@@ -165,7 +165,7 @@
 	    	<aside>
 	    		<ul>
 	    			<li class="decoration_top"></li>
-	    			<li class="tickets"><a href="/ulaznice"><img src="/img/ulaznice.png" alt="ULAZNICE" /></a></li>
+	    			<li class="tickets"><a href="/selekcije/ulaznice"><img src="/img/ulaznice.png" alt="ULAZNICE" /></a></li>
 	    			<li><a href="http://www.fifa.com/worldcup/index.html"><img src="/img/brasil2014.png" alt="Brazil 2014 logo" /></a></li>
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
@@ -174,11 +174,11 @@
 	    	<section class="tabs">
 	    		<div class="tab_content">
 	    		<div id="hns-tv">
-	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/<?php echo $featuredVideo->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
+	    			<iframe width="599" height="337" src="http://www.youtube-nocookie.com/embed/<?php echo $featuredVideo->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
             <div class="caption">pogledaj sve video zapise &gt; <a href="<?php echo '/' . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_videos') ?>">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
-	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" />
+	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" width="599" height="337" />
 	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="/info-centar/galerija">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
 	    		</div>
 	    		<div id="aktualno">
@@ -186,7 +186,7 @@
               <?php foreach ($actualitys as $actuality): ?>
 		    			<article>
                 <?php if ($actuality->CoverImage): ?>
-		    				<img src="<?php echo $actuality->CoverImage->Url; ?>" alt="slika" />
+		    				<img src="<?php echo $actuality->CoverImage->Url; ?>" alt="slika" width="599" height="337" />
                 <?php endif; ?>
 		    				<h3><a href="<?php echo $actuality->Url; ?>"><?php echo $actuality->Title; ?></a></h3>
 		    				<p><?php echo $actuality->Lead; ?></p>
@@ -197,12 +197,12 @@
 	    			<div class="caption">pogledaj sve video članke &gt;&gt; <a href="/info-centar/aktualnosti">AKTUALNO</a></div>
 	    		</div>
 	    		<div id="a-reprezentacija">
-	    			<img src="/img/a_reprezentacija.jpg" alt="A REPREZENTACIJA" />
+	    			<img src="/img/a_reprezentacija.jpg" alt="A REPREZENTACIJA" width="599" height="337" />
 	    			<div class="caption">saznaj sve o &gt;&gt; <a href="">A REPREZENTACIJI</a></div>
 	    		</div>
 	    		<div id="hns-casopis">
             <a href="/magazine">
-              <img src="/img/casopis.jpg" alt="Časopis" style="float:none;" />
+              <img src="/img/casopis.jpg" alt="Časopis" style="float:none;" width="599" height="337" />
             </a>
 	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
 	    		</div>
@@ -221,11 +221,16 @@
 	    		<h2>VIJESTI</h2>
           <?php for ($i = 0; $i < count ($newsItems); $i++): $newsItem = $newsItems[$i]; ?>
           <article>
-		    		<time pubdate="pubdate" datetime="<?php echo $newsItem->getPublishDate ('Y-m-d'); ?>"><?php echo $newsItem->getPublishDate ('d.m.Y.'); ?></time>
+						<?php if($i < 2) : ?>
+						<time pubdate="pubdate" datetime="<?php echo $newsItem->getPublishDate ('Y-m-d'); ?>"><?php echo $newsItem->getPublishDate ('m.d.') ?> <br /> <?php echo $newsItem->getPublishDate ('Y.'); ?></time>
+						<?php else : ?>
+						<time pubdate="pubdate" datetime="<?php echo $newsItem->getPublishDate ('Y-m-d'); ?>"><?php echo $newsItem->getPublishDate ('m.d.Y.'); ?></time>
+						<?php endif; ?>
             <h3><a href="<?php echo $newsItem->Url; ?>"><?php echo $newsItem->Title; ?></a></h3>
             <?php if ($i < 2): ?>
 		    		<?php echo $newsItem->Lead; ?>
             <?php endif; ?>
+            <div style="clear: both;"></div>
           </article>
           <?php endfor; ?>
 	    		<p class="all_news"><a href="/info-centar/novosti"> pogledaj sve vijesti</a></p>
