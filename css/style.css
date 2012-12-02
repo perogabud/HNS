@@ -535,6 +535,7 @@ nav#menu ul li:hover ul {
 	background: #4d4d4d;
 	float: left;
 	z-index: 1000;
+	overflow: hidden;
 }
 
 nav#menu ul li:hover ul li {
@@ -629,7 +630,7 @@ section.tabs div.ui-tabs-panel {
 	border: 1px solid #999;*/
 }
 
-section.tabs div.ui-tabs-panel img {
+section.tabs div.ui-tabs-panel a img {
 /*	float: left;*/
 }
 
@@ -741,14 +742,20 @@ section.tabs ul li.casopis a {
 }
 
 section.main_home section.content,
-section.content.actualities {
+section.main section.actualities {
 	width: 599px;
 	float: left;
-	background: #fff;
+	background: #fff url('/img/content_top_bg.png') no-repeat;
+}
+
+div.content_bottom_bg {
+	width: 599px;
+	height: 100px;
+	background: #fff url('/img/content_bottom_bg.png') no-repeat;
 }
 
 section.main_home section.content article,
-section.content.actualities article {
+section.main section.actualities article {
 	width: 563px;
 	padding: 18px;
 	padding-left: 14px;
@@ -757,8 +764,10 @@ section.content.actualities article {
 	display: block;
 }
 
-section.main_home section.content h2,
-section.content.actualities h2 {
+
+
+section.main_home section.content h2/*,
+section.main section.actualities h2*/ {
 	font-family: Oswald, sans-serif;
 	font-size: 40px;
 	padding: 18px;
@@ -767,7 +776,7 @@ section.content.actualities h2 {
 }
 
 section.main_home section.content time,
-section.content.actualities time {
+section.main section.actualities time {
 	width: 108px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -778,8 +787,17 @@ section.content.actualities time {
 	display: inline-block;
 }
 
+section.main_home section.content article:nth-last-of-type(1) time,
+section.main section.actualities article:nth-of-type(1) time, section.main_home section.content article:nth-last-of-type(2) time,
+section.main section.actualities article:nth-of-type(2) time {
+/*	width: 80px;*/
+/*	padding: 0 14px;*/
+	font-size: 36px;
+/*	word-wrap:break-word;*/
+}
+
 section.main_home section.content h3,
-section.content.actualities h3 {
+section.main section.actualities h3 {
 	width: 465px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -788,13 +806,19 @@ section.content.actualities h3 {
 /*	float: right;*/
 }
 
+section.main_home section.content article:nth-of-type(1) h3,
+section.main section.actualities article:nth-of-type(1) h3, section.main_home section.content article:nth-of-type(2) h3,
+section.main section.actualities article:nth-of-type(2) h3 {
+	font-size: 36px;
+}
+
 section section.content h3 a,
-section.content.actualities a {
+section.main section.actualities a {
 	color: #005ca8;
 }
 
 section.main_home section.content p,
-section.content.actualities p {
+section.main section.actualities p {
 	width: 465px;
 	font-size: 14px;
 	color: #666;
@@ -802,7 +826,7 @@ section.content.actualities p {
 }
 
 section.main_home section.content p.all_news,
-section.content.actualities p.all_news {
+section.main section.actualities p.all_news {
 	width: auto;
 	margin-left: 0;
 	padding: 18px;
@@ -810,7 +834,7 @@ section.content.actualities p.all_news {
 }
 
 section.main_home section.content p.all_news a,
-section.content.actualities p.all_news a {
+section.main section.actualities p.all_news a {
 	font-size: 14px;
 	color: #666;
 	text-decoration: underline;
@@ -894,13 +918,26 @@ section.subpage_categories ul li ul li ul {
 section.subpage h3 {
 	font: 21px Oswald, sans-serif;
 	font-weight: 400;
-	color: #005ca8
+/*	color: #005ca8*/
+}
+
+section.subpage section.stozer h3 {
+	color: #e31f0e;
 }
 
 section.subpage h4 {
 	font: 15px Arial, sans-serif;
 	font-weight: bold;
 	color: #005ca8
+}
+
+section.team dl dt {
+	width: 252px;
+	font: normal 15px Arial, sans-serif;
+}
+
+section.team dl dd {
+	width: 408px;
 }
 
 
@@ -915,6 +952,7 @@ section.main {
 
 section.main h2 {
 /*	margin: 1.2em 0 0.2em;*/
+	margin-bottom: 0.8em;
 	font-family: Oswald, sans-serif;
 	font-size: 36px;
 	color: #005ca8;
@@ -929,6 +967,13 @@ section.main header h2 {
 	padding-left: 30px;
 }
 
+section.main figure.header {
+	width: 719px;
+	height: 429px;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999
+}
+
 section.main p {
 	margin: 0.75em 0;
 }
@@ -936,7 +981,7 @@ section.main p {
 section.main section.content, section.main section.subpage {
 	width: 660px;
 	padding: 25px 35px 10px 25px;
-	background: #fff;
+	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
 section.main_news section.content article {
@@ -1057,6 +1102,7 @@ section.subpage ol {
 }
 
 section.content h2 {
+	ma
 	font-size: 36px;
   font-family: Oswald, sans-serif;
   margin-bottom: 1em;
