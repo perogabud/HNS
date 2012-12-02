@@ -336,6 +336,12 @@ section.raspored table.zoom tr.close td p {
 	right: 8px;
 }
 
+section.raspored table.zoom tr.close td p a {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
 section.raspored table.zoom tr.close td p:hover {
 	cursor: pointer;
 }
@@ -673,6 +679,28 @@ section.tabs div#aktualno section article h3 a {
 }
 
 
+section.tabs div#casopis br { clear: both; }
+section.tabs div#casopis .cntSeparator {
+        font-size: 54px;
+        margin: 10px 7px;
+        color: #000;
+        margin-top:40px;
+      }
+section.tabs div#casopis .desc { margin: 7px 3px 0 45px; }
+section.tabs div#casopis .desc div {
+        float: left;
+        font-family: Arial;
+        width: 106px;
+        margin-right: 29px;
+        margin-top:10px;
+        font-size: 13px;
+        color: #666;
+      }
+section.tabs div#casopis p {font-family: Oswald; margin:0; padding:40px;text-align:center;font-size:21px;clear:both;}
+section.tabs div#casopis .redHr {color:#C13F20;}
+section.tabs div#casopis .bluHr {color:#345DA4;}
+section.tabs div#casopis div#brojac {background:white;height:337px;background:url(http://www.hns-cff.hr/img/aktualnosti_slider_bg.png);}
+
 
 section.tabs div.caption {
 	width: auto;
@@ -738,7 +766,10 @@ section.tabs ul li.reprezentacija a {
 }
 
 section.tabs ul li.casopis a {
-	background: url('/img/hns_casopis.png') no-repeat;
+	width: 119px;
+	height: 119px;
+	border: 1px solid #999;
+	background: url('/img/brojac.png') no-repeat;
 }
 
 section.main_home section.content,

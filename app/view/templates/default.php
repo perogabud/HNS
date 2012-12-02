@@ -23,7 +23,7 @@
 			  		<li><a href="" ><img src="/img/galerija_80.png" alt="" ></a></li>
 			  		<li><a href="/info-centar/aktualnosti" ><img src="/img/aktualno_80.png" alt="" ></a></li>
 			  		<li><a href="" ><img src="/img/a_reprezentacija_80.png" alt="" ></a></li>
-			  		<li><a href="" ><img src="/img/hns_casopis_80.png" alt="" ></a></li>
+			  		<li><a href="" ><img src="/img/brojac_80.png" alt="" ></a></li>
 			  	</ul>
 			  </section>
 			  <section class="subpage_categories">
