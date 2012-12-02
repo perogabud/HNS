@@ -186,7 +186,7 @@
               <?php foreach ($actualitys as $actuality): ?>
 		    			<article>
                 <?php if ($actuality->CoverImage): ?>
-		    				<img src="<?php echo $actuality->CoverImage->Url; ?>" alt="slika" width="599" height="337" />
+		    				<img src="<?php echo $actuality->CoverImage->Url; ?>" alt="slika" width="170" height="112" />
                 <?php endif; ?>
 		    				<h3><a href="<?php echo $actuality->Url; ?>"><?php echo $actuality->Title; ?></a></h3>
 		    				<p><?php echo $actuality->Lead; ?></p>

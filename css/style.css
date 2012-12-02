@@ -1136,8 +1136,7 @@ footer {
 	height: 200px;
 	margin: 0 auto;
 	clear: both;
-	text-align: center;
-	background: url('/img/footer.jpg') no-repeat;
+	background: url('/img/footer_bg.png') no-repeat;
 	position: relative;
 	clear: both;
 }
@@ -1153,7 +1152,153 @@ footer img.footer_right {
 	right: -55px;
 }
 
+footer ul {
+	padding: 0;
+	margin: 0;
+}
 
+footer section:first-of-type ul {
+	width: 816px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+footer ul li {
+	height: 100px;
+	display: inline-block;
+	float: left;
+}
+
+footer ul li a {
+	height: 100px;
+	display: block;
+}
+
+footer ul li a.nike {
+	width: 163px;
+	background: transparent url('/img/nike.png') no-repeat;
+}
+
+footer ul li a.nike:hover {
+	background: transparent url('/img/nike_on.png') no-repeat;
+}
+
+footer ul li a.ouzjsko {
+	width: 145px;
+	background: transparent url('/img/ozujsko.png') no-repeat;
+}
+
+footer ul li a.ozujsko:hover {
+	background: transparent url('/img/ozujsko_on.png') no-repeat;
+}
+
+footer ul li a.generali {
+	width: 160px;
+	background: transparent url('/img/generali.png') no-repeat;
+}
+
+footer ul li a.generali:hover {
+	background: transparent url('/img/generali_on.png') no-repeat;
+}
+
+footer ul li a.anicholding {
+	width: 152px;
+	background: transparent url('/img/anicholding.png') no-repeat;
+}
+
+footer ul li a.anicholding:hover {
+	background: transparent url('/img/anicholding_on.png') no-repeat;
+}
+
+footer ul li a.konzum {
+	width: 150px;
+	background: transparent url('/img/konzum.png') no-repeat;
+}
+
+footer ul li a.konzum:hover {
+	background: transparent url('/img/konzum_on.png') no-repeat;
+}
+
+footer ul li a.pbz {
+	width: 191px;
+	background: transparent url('/img/pbz.png') no-repeat;
+}
+
+footer ul li a.pbz:hover {
+	background: transparent url('/img/pbz_on.png') no-repeat;
+}
+
+footer ul li a.bantours {
+	width: 163px;
+	background: transparent url('/img/bantours.png') no-repeat;
+}
+
+footer ul li a.bantours:hover {
+	background: transparent url('/img/bantours_on.png') no-repeat;
+}
+
+footer ul li a.croatiabus {
+	width: 107px;
+	background: transparent url('/img/croatiabus.png') no-repeat;
+}
+
+footer ul li a.croatiabus:hover {
+	background: transparent url('/img/croatiabus_on.png') no-repeat;
+}
+
+footer ul li a.hyundai {
+	width: 95px;
+	background: transparent url('/img/hyundai.png') no-repeat;
+}
+
+footer ul li a.hyundai:hover {
+	background: transparent url('/img/hyundai_on.png') no-repeat;
+}
+
+footer ul li a.iskon {
+	width: 103px;
+	background: transparent url('/img/iskon.png') no-repeat;
+}
+
+footer ul li a.iskon:hover {
+	background: transparent url('/img/iskon_on.png') no-repeat;
+}
+
+footer ul li a.jamnica {
+	width: 99px;
+	background: transparent url('/img/jamnica.png') no-repeat;
+}
+
+footer ul li a.jamnica:hover {
+	background: transparent url('/img/jamnica_on.png') no-repeat;
+}
+
+footer ul li a.ledo {
+	width: 104px;
+	background: transparent url('/img/ledo.png') no-repeat;
+}
+
+footer ul li a.ledo:hover {
+	background: transparent url('/img/ledo_on.png') no-repeat;
+}
+
+footer ul li a.vindija {
+	width: 99px;
+	background: transparent url('/img/vindija.png') no-repeat;
+}
+
+footer ul li a.vindija:hover {
+	background: transparent url('/img/vindija_on.png') no-repeat;
+}
+
+footer ul li a.cityex {
+	width: 191px;
+	background: transparent url('/img/cityex.png') no-repeat;
+}
+
+footer ul li a.cityex:hover {
+	background: transparent url('/img/cityex_on.png') no-repeat;
+}
 
 
 

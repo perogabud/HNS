@@ -8,7 +8,7 @@ elseif (isset ($video))
 
 if (isset ($videoMain)): ?>
 <section class="ad-gallery video">
-  <iframe width="719" height="428" src="http://www.youtube-nocookie.com/embed/<?php echo $videoMain->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
+  <iframe width="719" height="429" src="http://www.youtube-nocookie.com/embed/<?php echo $videoMain->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
 </section>
 <?php endif; ?>
 
