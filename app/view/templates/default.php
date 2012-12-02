@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
   </head>
   <body>
+  	<div id="bg_box" class="bg<?php echo rand(1,3)?>">
   	<div id="wrapper">
 	  	<div class="bg_left"></div>
   		<div class="bg_right"></div>
@@ -36,6 +37,7 @@
 		  <?php $this->getElement ('mainContent'); ?>
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>
-  </div>
+	  </div>
+	  </div>
   </body>
 </html>
