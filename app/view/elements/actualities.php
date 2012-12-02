@@ -5,9 +5,9 @@
   <?php for ($i = 0; $i < count ($actualitys); $i++): $actuality = $actualitys[$i]; ?>
   <article>
     <?php if($i < 2) : ?>
-			<time pubdate="pubdate" datetime="<?php echo $actuality->getPublishDate ('Y-m-d'); ?>"><?php echo $actuality->getPublishDate ('m.d.') ?> <br /> <?php echo $actuality->getPublishDate ('Y.'); ?></time>
+			<time pubdate="pubdate" datetime="<?php echo $actuality->getPublishDate ('Y-m-d'); ?>"><?php echo $actuality->getPublishDate ('d.m.') ?> <br /> <?php echo $actuality->getPublishDate ('Y.'); ?></time>
 			<?php else : ?>
-			<time pubdate="pubdate" datetime="<?php echo $actuality->getPublishDate ('Y-m-d'); ?>"><?php echo $actuality->getPublishDate ('m.d.Y.'); ?></time>
+			<time pubdate="pubdate" datetime="<?php echo $actuality->getPublishDate ('Y-m-d'); ?>"><?php echo $actuality->getPublishDate ('d.m.Y.'); ?></time>
 			<?php endif; ?>
     <h3><a href="<?php echo $actuality->Url; ?>"><?php echo $actuality->Title; ?></a></h3>
     
