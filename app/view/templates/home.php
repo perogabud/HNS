@@ -50,15 +50,25 @@
 							<tr>
 								<td colspan="3"><time pubdate="pubdate" datetime="2013-03-22">22.03.2013.</time><small>SP 2014. (Q)	</small><span>A</span></td>
 							</tr>
-							<tr class="close"><td colspan="3"><p></p></td></tr>
+							<tr class="close"><td colspan="3"><p><a href="/selekcije/raspored-utakmica"></a></p></td></tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section class="shop_timeline">
 					<ul>
-						<li class="hns-shop"><a href="http://www.bembelembe.com/test/hns/HNS-5.11.2012/9-hns-hns-shop.html"><img src="/img/hns_shop.png" alt="HNS SHOP" /></a></li>
-						<li class="timeline"><a href=""><img src="/img/timeline.png" alt="TIMELINE" /></a></li>
+						<li class="hns-shop"><img src="/img/hns_shop.png" alt="HNS SHOP" /></li>
+						<li class="timeline" style="overflow:hidden;width:241px;height:121px;">
+							<ul>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/1998-francuska-suker-boban.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/1999-suker.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2003-Prso.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2007-Eduardo.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2009-Petric.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2012-Vukojevic.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/1996-prosinecki.jpg" alt="TIMELINE" /></a></li>
+							</ul>
+            </li>
 					</ul>
 				</section>
 
@@ -201,12 +211,20 @@
 	    			<div class="caption">saznaj sve o &gt;&gt; <a href="">A REPREZENTACIJI</a></div>
 	    		</div>
 	    		<div id="hns-casopis">
-            <a href="/magazine">
-              <img src="/img/casopis.jpg" alt="Časopis" style="float:none;" width="599" height="337" />
-            </a>
-	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
-	    		</div>
-	    		</div>
+	    			<div id="brojac">
+		    			<p>Još samo</p>
+		    			<div id="counter" style="margin-left:45px;"></div>
+						<div class="desc">
+							<div>dana</div>
+							<div>sati</div>
+						    <div>minuta</div>
+						    <div>sekundi</div>
+						</div>
+						<p>do utakmice</p>
+						<p style="padding:20px 0;font-size:38px;"><span class="redHr">HRVATSKA</span> : <span class="bluHr">SRBIJA</span></p>
+						</div>
+	    				<div class="caption">pogledaj nadolazeće utakmice &gt;&gt; <a href="/selekcije/raspored-utakmica">RASPORED UTAKMICA</a></div>
+	    			</div>	    		</div>
 
 	    		<ul>
 	    			<li class="tv"><a href="#hns-tv" ></a></li>

@@ -45,4 +45,5 @@
 	</section>
 	<?php endif; ?>
 	<?php endif; ?>
+	<div class="content_bottom_bg"></div>
 </section>

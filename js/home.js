@@ -46,5 +46,9 @@ $(function() {
 				    speed:  2200,
 				    timeout: 350
 				});
-
-});
+				
+				$('.timeline ul').cycle({ 
+				            delay:  7000, 
+				            speed:  2200            
+				        });
+				});

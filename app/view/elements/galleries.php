@@ -44,4 +44,5 @@ if (isset ($galleryMain)):
 <?php endif; ?>
 <div style="clear: both;"></div>
 </section>
+<div class="content_bottom_bg"></div>
 </section>

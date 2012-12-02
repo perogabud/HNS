@@ -20,7 +20,7 @@
 			<div style="clear: both;"></div>
 	  </article>
 	  <?php endfor; ?>
-	  <div class="content_bottom_bg"></div>
 	</section>
 	<?php endif; ?>
+	<div class="content_bottom_bg"></div>
 </section>
