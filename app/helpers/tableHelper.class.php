@@ -167,7 +167,7 @@ class TableHelper {
     foreach ($pageTree as $page) {
       // Page table row
       echo '<tr class="pageDepth' . $depth . '" title="'. $page->Title .'">';
-      echo '<td class="title" style="width: 70%;"><span class="dbg"> ' . $page->Lft . ' </span>' . $page->NavigationName . '<span class="dbg"> ' . $page->Rgt . ' </span></td>';
+      echo '<td class="title" style="width: 70%;"><span class="dbg"> ' . $page->Lft . ' </span>' . $page->NavigationName . '<span class="dbg"> ' . $page->Rgt . ' </span> <span class="dbg">ID:' . $page->Id . '; ParentId: '. $page->ParentId .' </span></td>';
       echo '<td class="info">
         <span>'. ($page->IsVisible ? TableHelper::icon ('eye', TRUE, 'Stranica je vidljiva u navigaciji') : '') .'</span>
         <span>'. ($page->IsPublished ? TableHelper::icon ('publish', TRUE, 'Stranica je objavljena') : '') .'</span>
@@ -179,18 +179,18 @@ class TableHelper {
       if ($depth >= 0) {
         // Position
         if ($depth > 1) {
-          if ($page != $pageTree[0]) {
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/move-up/' . $page->Id . '" title="Move up">' . self::icon ('moveUp', TRUE) . '</a>';
+          /*if ($page != $pageTree[0]) {
+            //echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/move-up/' . $page->Id . '" title="Move up">' . self::icon ('moveUp', TRUE) . '</a>';
           }
           else {
             echo '<a title="Move up">' . self::icon ('moveUpDisabled', TRUE) . '</a>';
           }
           if ($page != $pageTree[count ($pageTree) - 1]) {
-            echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/move-down/' . $page->Id . '" title="Move down">' . self::icon ('moveDown', TRUE) . '</a>';
+            //echo '<a href="' . Config::read ('siteUrlRoot') . 'admin/page/move-down/' . $page->Id . '" title="Move down">' . self::icon ('moveDown', TRUE) . '</a>';
           }
           else {
             echo '<a title="Move down">' . self::icon ('moveDownDisabled', TRUE) . '</a>';
-          }
+          }*/
         }
         // Add/Edit/Delete
         if ($page->CanAddChildren) {

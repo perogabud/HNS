@@ -277,19 +277,14 @@ class VideoRepository extends Repository {
 
       foreach (Config::read ('supportedLangs') as $lang) {
         $query = "
-          INSERT INTO " . DBP . "videoI18n
+          UPDATE " . DBP . "videoI18n
           SET `title` = :title,
               `slug` = :slug,
               `category` = :category,
               `modified` = NOW(),
-              `videoId` = :videoId,
-              `languageId` = :languageId,
-              `created` = NOW()
-          ON DUPLICATE KEY UPDATE
-              `title` = :title,
-              `slug` = :slug,
-              `category` = :category,
-              `modified` = NOW()
+              `languageId` = :languageId
+          WHERE
+            `videoId` = :videoId
         ";
         $queryParams = array (
           ':title' => Tools::stripTags (trim ($data['title_' . $lang]), 'strict'),

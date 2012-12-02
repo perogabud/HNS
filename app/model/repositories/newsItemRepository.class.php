@@ -181,6 +181,14 @@ class NewsItemRepository extends Repository {
         }
       }
     }
+    
+    if (isset ($params['newsCategoryId'])) {
+      $query .= "
+        AND n.newsCategoryId = :newsCategoryId
+      ";
+      $queryParams[':newsCategoryId'] = array ($params['newsCategoryId'], PDO::PARAM_INT);
+    }
+    
     if (isset ($params['languageId'])) {
       $query .= "
         AND n.languageId = :languageId
@@ -421,7 +429,7 @@ class NewsItemRepository extends Repository {
       $queryParams = array (
         ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
       );
-      for ($i = 0; $i < count ($data['customModuleId']); $i++) {
+      if (isset ($data['customModuleId'])) for ($i = 0; $i < count ($data['customModuleId']); $i++) {
         $customModuleIdParams[] = ':id' . $i;
         $queryParams[':id' . $i] = $data['customModuleId'][$i];
       }

@@ -458,6 +458,25 @@ class StandardContentManager extends ContentManager {
         	$this->_setData(
 						array('sideNavPages' => $pageController->getSubpages (array ($this->params[0]), 3))
         	);
+          if ($page->Class == 'academy') {
+            /**
+             * @todo Maknuti hardcode
+             */
+            $newsItemController = NewsItemController::getInstance ();
+            $this->_setData (
+              array (
+                'newsItems' => $newsItemController->getNewsItemsByParams (
+                  array (
+                    'orderBy' => 'publishDate',
+                    'orderDirection' => 'DESC',
+                    'limit' => 10,
+                    'languageId' => Config::read ('lang'),
+                    'newsCategoryId' => 6
+                  )
+                )
+              )
+            );
+          }
           $this->_setElements (
             array (
               'mainContent' => array (

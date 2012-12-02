@@ -302,16 +302,16 @@ class Repository {
     }
   }
 
-  protected function startTransaction () {
-    self::$_dbh->beginTransaction ();
+  protected function startTransaction ($autoCommit = FALSE) {
+    !$autoCommit ? self::$_dbh->beginTransaction () : $this->_preparedQuery ('SET autocommit = 0;', array ());
   }
 
   protected function rollback () {
     self::$_dbh->rollBack ();
   }
 
-  protected function commit () {
-    self::$_dbh->commit ();
+  protected function commit ($autoCommit = FALSE) {
+    !$autoCommit ? self::$_dbh->commit () : $this->_preparedQuery ('COMMIT;', array ());
   }
 
   protected function lastInsertId () {

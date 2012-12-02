@@ -51,6 +51,7 @@ class TeamRepository extends Repository {
 
     $team = Factory::getTeam ($results);
 
+    if (!isset ($params['simple'])) {
     $memberRepository = new MemberRepository ();
     $members = $memberRepository->getMembers (
       array (
@@ -59,6 +60,7 @@ class TeamRepository extends Repository {
       )
     );
     $team->setMembers ($members);
+    }
 
     return $team;
   }

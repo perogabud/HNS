@@ -800,7 +800,7 @@ class AdminContentManager extends ContentManager {
              * Move page down.
              * /page/move-down/\{pageId\}
              */
-            case 'move-up':
+            case 'move-down':
               $pageController = PageController::getInstance ();
               $pageController->movePage ($this->params[2], 'down');
               MessageManager::setSuccessMessage ('Page moved down!');

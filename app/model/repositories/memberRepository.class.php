@@ -67,11 +67,11 @@ class MemberRepository extends Repository {
     }
 
     $memberCategoryRepository = new MemberCategoryRepository ();
-    $memberCategory = $memberCategoryRepository->getMemberCategory (array ('memberCategoryId' => $results[0]['memberCategoryId']));
+    $memberCategory = $memberCategoryRepository->getMemberCategory (array ('memberCategoryId' => $results[0]['memberCategoryId'], 'simple' => TRUE));
     $results[0]['memberCategory'] = $memberCategory;
 
     $teamRepository = new TeamRepository ();
-    $team = $teamRepository->getTeam (array ('teamId' => $results[0]['teamId']));
+    $team = $teamRepository->getTeam (array ('teamId' => $results[0]['teamId'], 'simple' => TRUE));
     $results[0]['team'] = $team;
 
     $image = $this->getImage ($results[0]['memberId']);
@@ -243,13 +243,13 @@ class MemberRepository extends Repository {
 
     //if (isset ($params['memberCategory'])) {
       $memberCategoryRepository = new MemberCategoryRepository ();
-      $memberCategory = $memberCategoryRepository->getMemberCategory (array ('memberCategoryId' => $result['memberCategoryId']));
+      $memberCategory = $memberCategoryRepository->getMemberCategory (array ('memberCategoryId' => $result['memberCategoryId'], 'simple' => TRUE));
       $result['memberCategory'] = $memberCategory;
     //}
 
     if (isset ($params['team'])) {
       $teamRepository = new TeamRepository ();
-      $team = $teamRepository->getTeam (array ('teamId' => $result['teamId']));
+      $team = $teamRepository->getTeam (array ('teamId' => $result['teamId'], 'simple' => TRUE));
       $result['team'] = $team;
     }
 
