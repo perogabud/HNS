@@ -14,6 +14,7 @@
 		<?php if ($i < 2): ?>
 			<?php echo $actuality->Lead; ?>
 		<?php endif; ?>
+		<div style="clear: both;"></div>
   </article>
   <?php endfor; ?>
   <div class="content_bottom_bg"></div>

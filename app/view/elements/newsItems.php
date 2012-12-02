@@ -16,6 +16,7 @@
 			<?php if ($i < 2): ?>
 				<?php echo $newsItem->Lead; ?>
 			<?php endif; ?>
+			<div style="clear: both;"></div>
 		</article>
 		<?php endfor; ?>
 		
