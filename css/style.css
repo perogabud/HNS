@@ -772,8 +772,7 @@ section.tabs ul li.casopis a {
 	background: url('/img/brojac.png') no-repeat;
 }
 
-section.main_home section.content,
-section.main section.actualities {
+section.main_home section.content {
 	width: 599px;
 	float: left;
 	background: #fff url('/img/content_top_bg.png') no-repeat;
@@ -786,8 +785,7 @@ div.content_bottom_bg {
 	clear: both;
 }
 
-section.main_home section.content article,
-section.main section.actualities article {
+section.main_home section.content article {
 	width: 563px;
 	padding: 18px;
 	padding-left: 14px;
@@ -894,6 +892,7 @@ section.subpage_nav ul li {
 
 section.subpage_nav ul li.hns-shop {
 	width: 161px;
+	height: 120px;
 }
 
 section.subpage_nav ul li a img {
@@ -976,6 +975,11 @@ section.team ul li {
 	font: normal 15px Arial, sans-serif;
 }
 
+section.team ul li a {
+	color: #666;
+	text-transform: uppercase;
+}
+
 section.team ul li:last-of-type {
 	margin-bottom: 32px;
 	background: none;
@@ -1038,9 +1042,11 @@ section.main section.content, section.main section.subpage {
 	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
-section.main_news section.content article, section.team ul li {
+section.main_news section.content article, section.main section.actualities article, section.team ul li  {
 /*	width: 693px;*/
-	padding: 7px 0;
+/*	padding: 7px 0;*/
+	padding: 18px;
+	padding-left: 14px;
 	background: url('/img/separator-vijesti.png') no-repeat bottom center;
 	clear: both;
 	display: block;
@@ -1130,14 +1136,14 @@ section.main section.member {
 	padding: 30px 30px 10px;
 }
 
-dl dt {
+section.main section.member dl dt {
 	width: 145px;
 	float: left;
 	font-weight: bold;
 }
 
-dl dd {
-	width: 500px;
+section.main section.member dl dd {
+	width: 550px;
 	float: left;
 }
 
