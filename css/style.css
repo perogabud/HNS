@@ -787,7 +787,7 @@ section.main section.actualities time {
 	display: inline-block;
 }
 
-section.main_home section.content article:nth-last-of-type(1) time,
+section.main_home section.content article:nth-of-type(1) time,
 section.main section.actualities article:nth-of-type(1) time, section.main_home section.content article:nth-last-of-type(2) time,
 section.main section.actualities article:nth-of-type(2) time {
 /*	width: 80px;*/
