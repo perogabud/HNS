@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
   </head>
   <body>
-  	<div id="bg_box">
-  	<div id="wrapper">
-  		<div class="bg_left"></div>
-  		<div class="bg_right"></div>
+  	<div id="bg_box" class="bg<?php echo rand(1,3)?>">
+  	<div id="wrapper_home">
 			<aside id="sidebar">
 				<?php $this->getElement ('header'); ?>
 
@@ -156,7 +154,7 @@
 				    }
 				  }
 				  </script>
-				  <script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline.json?screen_name=HNS_CFF&callback=twitterCallback&count=3">
+				  <script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline.json?screen_name=HNS_CFF&callback=twitterCallback&count=4">
 				  </script>		
 				</section>
 			</aside>
@@ -167,13 +165,14 @@
 	    	<aside>
 	    		<ul>
 	    			<li class="decoration_top"></li>
-	    			<li class="tickets"><a href=""><img src="/img/ulaznice.png" alt="ULAZNICE" /></a></li>
-	    			<li><a href=""><img src="/img/brasil2014.png" alt="Brazil 2014 logo" /></a></li>
+	    			<li class="tickets"><a href="/ulaznice"><img src="/img/ulaznice.png" alt="ULAZNICE" /></a></li>
+	    			<li><a href="http://www.fifa.com/worldcup/index.html"><img src="/img/brasil2014.png" alt="Brazil 2014 logo" /></a></li>
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
 	    	</aside>
 
 	    	<section class="tabs">
+	    		<div class="tab_content">
 	    		<div id="hns-tv">
 	    			<iframe width="599" height="338" src="http://www.youtube-nocookie.com/embed/<?php echo $featuredVideo->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
             <div class="caption">pogledaj sve video zapise &gt; <a href="<?php echo '/' . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_videos') ?>">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
@@ -191,7 +190,7 @@
                 <?php endif; ?>
 		    				<h3><a href="<?php echo $actuality->Url; ?>"><?php echo $actuality->Title; ?></a></h3>
 		    				<p><?php echo $actuality->Lead; ?></p>
-		    				<a href="<?php echo $actuality->Url; ?>">&gt;&gt;više</a>
+		    				<p class="more"><a href="<?php echo $actuality->Url; ?>">&gt;&gt;više</a></p>
 		    			</article>
               <?php endforeach; ?>
 	    			</section>
@@ -206,6 +205,7 @@
               <img src="/img/casopis.jpg" alt="Časopis" style="float:none;" />
             </a>
 	    			<div class="caption">pogledaj sve brojeve u arhivi &gt;&gt; <a href="">HNS ČASOPIS</a></div>
+	    		</div>
 	    		</div>
 
 	    		<ul>

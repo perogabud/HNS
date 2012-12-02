@@ -42,5 +42,6 @@ if (isset ($galleryMain)):
   <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+<div style="clear: both;"></div>
 </section>
 </section>

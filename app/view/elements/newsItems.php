@@ -1,6 +1,6 @@
 <section class="main">
 	<figure class="news">
-		<img src="/img/utakmica_hrv-svi_(166).jpg" width="720" height="430" alt=""/>
+		<img src="/img/utakmica_hrv-svi_(166).jpg" width="719" height="429" alt=""/>
 		<figcaption>VIJESTI</figcaption>
 	</figure>
 	<?php if (isset ($newsItems)): ?>

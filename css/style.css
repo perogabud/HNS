@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-/*  line-height: 1;*/
+  line-height: 1.3;
 }
 ol, ul {
   list-style: none;
@@ -142,38 +142,41 @@ body {
 }
 
 /*custom*/
-div#wrapper {
+div#bg_box {
+	width: 100%;
+}
+
+div.bg1 {
+	background: url('/img/olic_modric.jpg') top center no-repeat;
+}
+
+div.bg2 {
+	background: url('/img/rakitic_mandzukic.jpg') top center no-repeat;
+}
+
+div.bg3 {
+	background: url('/img/corluka_simunic.jpg') top center no-repeat;
+}
+
+
+div#wrapper, div#wrapper_home {
 	width: 961px;
 	margin: 0 auto;
 	position: relative;
 }
 
-div.bg_left {
-	width: 525px;
-	height: 849px;
-	position: absolute;
-	top: 9px;
-	left: -392px;
-	background: url('/img/olic.jpg') no-repeat;
-	z-index: -1;
-}
-
-div.bg_right {
-	width: 609px;
-	height: 810px;
-	position: absolute;
-	top: 18px;
-	right: -423px;
-	background: url('/img/modric.jpg') no-repeat;
-	z-index: -1;
+div#wrapper {
+	background: url('/img/wrapper_bg.png') repeat-y;
 }
 
 
 /*sidebar left*/
-
 aside#sidebar {
 	width: 241px;
 	float: left;
+}
+
+#wrapper_home aside#sidebar {
 	background: #fff;
 }
 
@@ -337,6 +340,11 @@ section.raspored table.zoom tr.close td p:hover {
 	cursor: pointer;
 }
 
+section.shop_timeline img {
+	border: 1px solid #999;
+	margin-bottom: -1px;
+}
+
 section.vatreni {
 	margin-bottom: -1px;
 	clear: both;
@@ -373,6 +381,7 @@ section.fb {
 	margin-top: -1px;
 	margin-bottom: -1px;
 	clear: both;
+	line-height: 1;
 }
 
 section.twitter {
@@ -409,7 +418,7 @@ section.twitter h3 a {
 
 section.twitter ul#twitterUpdate {
 	height: 228px;
-	margin-top: -13px;
+	margin-top: -15px;
 	margin-bottom: 8px;
 	overflow: hidden;
 	background: url('/img/twitt_separator.png') bottom center no-repeat;
@@ -529,7 +538,7 @@ nav#menu ul li:hover ul {
 }
 
 nav#menu ul li:hover ul li {
-/*	width: 100%;*/
+	width: 100%;
 	padding: 6px 25px;
 	text-align: left;
 	border: 0;
@@ -577,20 +586,20 @@ section.main_home {
 }
 
 section.main_home aside:first-child {
-	width: 121px;
+	width: 119px;
 	float: left;
-	margin-left: -1px;
-	margin-right: -1px;
 }
 
-section.main_home aside:first-child ul li {
-	height: 121px;
-	margin-bottom: -1px;
+section.main_home aside ul li {
+	width: 119px;
+	height: 119px;
+/*	margin-bottom: -1px;*/
+	border-bottom: 1px solid #999;
 }
 
 section.main_home aside:first-child ul li.decoration_top {
-	height: 147px;
-	background: transparent url('/img/slider_top.png') 1px 1px no-repeat;
+	height: 146px;
+	background: transparent url('/img/slider_top.png') no-repeat;
 }
 
 section.main_home aside:first-child ul li.ulaznice {
@@ -603,15 +612,21 @@ section.main_home aside:first-child ul li.decoration_bottom {
 
 section.tabs {
 	width: 601px;
-	height: 507px;
-	overflow: hidden;
 	float: left;
 }
 
-section.tabs div.ui-tabs-panel {
+section.tabs div.tab_content {
 	width: 599px;
 	height: 385px;
 	border: 1px solid #999;
+	overflow: hidden;
+	line-height: 0;
+}
+
+section.tabs div.ui-tabs-panel {
+/*	width: 599px;
+	height: 385px;
+	border: 1px solid #999;*/
 }
 
 section.tabs div.ui-tabs-panel img {
@@ -623,7 +638,8 @@ section.tabs div#aktualno section {
 	height: 337px;
 	padding-left: 5px;
 	border-bottom: 1px solid #999;
-	margin-bottom: 1px;
+/*	margin-bottom: 1px;*/
+	background: url(/img/aktualnosti_slider_bg.png) no-repeat;
 }
 
 section.tabs div#aktualno section article {
@@ -631,21 +647,27 @@ section.tabs div#aktualno section article {
 	height: 295px;
 	margin: 25px 13px 18px;
 	float: left;
+	line-height: 1.3;
 }
 
 section.tabs div#aktualno section article p {
+	margin: 0.8em 0;
 	font: 12px Arial, sans-serif;
 	color: #4d4d4d;
 }
 
-section.tabs div#aktualno section article a {
+section.tabs div#aktualno section article p.more {
+	text-align: right;
+}
+
+section.tabs div#aktualno section article p.more a {
 	font: 14px Arial, sans-serif;
 	color: #005ca8;
 	text-decoration: underline;
 }
 
 section.tabs div#aktualno section article h3 a {
-	font: 21px Oswald, sans-serif;
+	font: 21px/26px Oswald, sans-serif;
 	color: #005ca8;
 }
 
@@ -653,9 +675,9 @@ section.tabs div#aktualno section article h3 a {
 
 section.tabs div.caption {
 	width: auto;
-	height: 32px;
-	margin-top: -1px;
-	padding-top: 16px;
+	height: 27px;
+/*	margin-top: -1px;*/
+	padding-top: 21px;
 	padding-right: 17px;
 	background: #4d4d4d;
 	text-align: right;
@@ -664,8 +686,8 @@ section.tabs div.caption {
 }
 
 section.tabs div#hns-tv div.caption {
-	height: 46px;
-	padding-top: 2px;
+	height: 43px;
+	padding-top: 5px;
 }
 
 section.tabs div.caption a {
@@ -729,6 +751,7 @@ section.main_home section.content article,
 section.content.actualities article {
 	width: 563px;
 	padding: 18px;
+	padding-left: 14px;
 	background: url('/img/article_splitter.png') no-repeat bottom center;
 	clear: both;
 	display: block;
@@ -780,6 +803,8 @@ section.content.actualities p {
 
 section.main_home section.content p.all_news,
 section.content.actualities p.all_news {
+	width: auto;
+	margin-left: 0;
 	padding: 18px;
 	text-align: right;
 }
@@ -820,6 +845,7 @@ section.subpage_nav ul li a img {
 }
 
 section.subpage_categories {
+	padding: 28px 0;
 	clear: both;
 }
 
@@ -883,8 +909,12 @@ section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 	clear: both;
 }
 
+section.main {
+	background: #fff;
+}
+
 section.main h2 {
-	margin: 1.2em 0 0.2em;
+/*	margin: 1.2em 0 0.2em;*/
 	font-family: Oswald, sans-serif;
 	font-size: 36px;
 	color: #005ca8;
