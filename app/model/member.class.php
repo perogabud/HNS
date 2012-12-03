@@ -40,10 +40,7 @@ class Member extends ModelObject {
   }
 
   public function getUrl () {
-    /** @todo hack :/ */
-    return isset ($this->_team) ?
-      $this->_rootUrl . Dict::read ('slug_selections') .'/' . $this->_team->getSlug () . '/' . $this->_slug :
-      $this->_rootUrl . Dict::read ('slug_selections') .'/a-reprezentacija/' . $this->_slug;
+    return $this->_rootUrl . Dict::read ('slug_selections') .'/' . $this->_team->getSlug () . '/' . $this->_slug;
   }
 
   public function getName ($lastFirst = FALSE) {

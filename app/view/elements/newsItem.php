@@ -5,10 +5,6 @@
     <figure class="header">
     	<img src="<?php echo $newsItem->CoverImage->Url; ?>" width="719" height="429" alt="Slika za novost <?php echo $newsItem->Title; ?>"/>
     </figure>
-    <?php else: ?>
-    <figure class="header">
-    	<img src="/img/news.jpg" width="719" height="429" alt="Slika za novost <?php echo $newsItem->Title; ?>"/>
-    </figure>
     <?php endif; ?>
   </header>
   <section class="content">

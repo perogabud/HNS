@@ -19,7 +19,7 @@ Config::write ('bannerImagePath', Config::read ('sitePath') . 'img/banner/image/
 Config::write ('bannerImageDimensions', array ('width' => 119, 'height' => 119));
 
 Config::write ('newsItemCoverImagePath', Config::read ('sitePath') . 'img/newsItem/coverImage/');
-Config::write ('newsItemCoverImageDimensions', array ('width' => 719, 'height' => 429));
+Config::write ('newsItemCoverImageDimensions', array ('width' => 729, 'height' => 429));
 
 Config::write ('newsItemCoverImageLargeThumbnailPath', Config::read ('sitePath') . 'img/newsItem/coverImage/largeThumbnail/');
 Config::write ('newsItemCoverImageLargeThumbnailDimensions', array ('width' => 300, 'height' => 200));

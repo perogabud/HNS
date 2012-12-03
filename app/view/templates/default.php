@@ -27,28 +27,7 @@
 			  	</ul>
 			  </section>
 			  <section class="subpage_categories">
-          <?php if (isset ($videos)): ?>
-          <h3>HNS TV</h3>
-          <ul>
-            <?php foreach ($videos as $video): ?>
-            <li><a href="<?php echo $video->Url; ?>"><?php echo $video->Title; ?></a></li>
-            <?php endforeach; ?>
-          </ul>
-          <?php elseif (isset ($sideNewsItems)): ?>
-          <h3>Novosti</h3>
-          <ul>
-            <?php foreach ($sideNewsItems as $newsItem): ?>
-            <li><a href="<?php echo $newsItem->Url; ?>"><?php echo $newsItem->Title; ?></a></li>
-            <?php endforeach; ?>
-          </ul>
-          <?php elseif (isset ($galleries)): ?>
-          <h3>Galerija</h3>
-          <ul>
-            <?php foreach ($galleries as $gallery): ?>
-            <li><a href="<?php echo $gallery->Url; ?>"><?php echo $gallery->Title; ?></a></li>
-            <?php endforeach; ?>
-          </ul>
-          <?php elseif (isset ($sideNavPages[0])): ?>
+          <?php if (isset ($sideNavPages[0])): ?>
           <h3><?php echo $sideNavPages[0]->NavigationName; ?></h3>
           <?php if (isset ($sideNavPages[0]->Subpages)) FrontHelper::printSidePages ($sideNavPages[0]->Subpages); ?>
           <?php endif; ?>

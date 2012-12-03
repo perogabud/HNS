@@ -751,19 +751,13 @@ class PageRepository extends Repository {
   public function movePage ($pageId, $direction) {
     try {
       $this->startTransaction ();
-      
-      
-      
       // Get position
       $query = "
         SELECT lft, rgt, parentId
         FROM " . DBP . "page
-        WHERE pageId = :pageId
+        WHERE pageId = '" . $this->dbinput ($pageId) . "'
       ";
-      $queryParams = array (
-        ':pageId' => array ($pageId, PDO::PARAM_INT)
-      );
-      $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
+      $result = $this->query ($query, __FILE__, __LINE__);
       if (!$result) {
         throw new Exception ('An error occured while moving page!', 1);
       }
@@ -771,7 +765,6 @@ class PageRepository extends Repository {
       $rgt = $result[0]['rgt'];
       $width = $rgt - $lft;
       $parentId = $result[0]['parentId'];
-      $dataa = print_r($result[0], TRUE);
       // Get max 'lft' and 'rgt'
       $query = "
         SELECT MAX(lft) as max_lft, MAX(rgt) as max_rgt, MIN(lft) as min_lft, MIN(rgt) as min_rgt
@@ -785,7 +778,7 @@ class PageRepository extends Repository {
 
       $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       if (!$result) {
-        throw new Exception ('An error occured while moving page; ' . $dataa, 2);
+        throw new Exception ('An error occured while moving page!', 2);
       }
       $maxLft = $result[0]['max_lft'];
       $maxRgt = $result[0]['max_rgt'];
@@ -819,7 +812,7 @@ class PageRepository extends Repository {
 
             $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
             if (!$result) {
-              throw new Exception ('An error occured while moving page!', 3);
+              throw new Exception ('An error occured while moving page!', 2);
             }
             $newLft = $result[0]['lft'];
             $newRgt = $newLft + $width;
@@ -838,7 +831,7 @@ class PageRepository extends Repository {
           );
           $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
           if (!$result) {
-            throw new Exception ('An error occured while moving page!', 4);
+            throw new Exception ('An error occured while moving page!', 2);
           }
           $childIds = array ();
           foreach ($result as $row) {
@@ -859,7 +852,7 @@ class PageRepository extends Repository {
           );
           $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
           if (!$result) {
-            throw new Exception ('An error occured while moving page!', 5);
+            throw new Exception ('An error occured while moving page!', 2);
           }
           $secondChildIds = array ();
           foreach ($result as $row) {
@@ -878,7 +871,7 @@ class PageRepository extends Repository {
             ':dif' => array ($lft - $newLft, PDO::PARAM_INT)
           );
           if (!$this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__)) {
-            throw new Exception ('An error occured while moving page!', 6);
+            throw new Exception ('An error occured while moving page!', 3);
           }
 
           $query = "
@@ -891,7 +884,7 @@ class PageRepository extends Repository {
             ':dif' => array ($width + 1, PDO::PARAM_INT)
           );
           if (!$this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__)) {
-            throw new Exception ('An error occured while moving page!', 7);
+            throw new Exception ('An error occured while moving page!', 3);
           }
           break;
 
@@ -917,7 +910,7 @@ class PageRepository extends Repository {
             );
             $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
             if (!$result) {
-              throw new Exception ('An error occured while moving page!', 8);
+              throw new Exception ('An error occured while moving page!', 2);
             }
             $newRgt = $result[0]['rgt'];
             $newLft = $newRgt - $width;
@@ -937,7 +930,7 @@ class PageRepository extends Repository {
           );
           $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
           if (!$result) {
-            throw new Exception ('An error occured while moving page!', 9);
+            throw new Exception ('An error occured while moving page!', 2);
           }
           $childIds = array ();
           foreach ($result as $row) {
@@ -958,7 +951,7 @@ class PageRepository extends Repository {
           );
           $result = $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
           if (!$result) {
-            throw new Exception ('An error occured while moving page!', 10);
+            throw new Exception ('An error occured while moving page!', 2);
           }
           $secondChildIds = array ();
           foreach ($result as $row) {
@@ -977,7 +970,7 @@ class PageRepository extends Repository {
             ':dif' => array ($rgt - $newRgt, PDO::PARAM_INT)
           );
           if (!$this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__)) {
-            throw new Exception ('An error occured while moving page!', 11);
+            throw new Exception ('An error occured while moving page!', 3);
           }
 
           $query = "
@@ -990,7 +983,7 @@ class PageRepository extends Repository {
             ':dif' => array ($width + 1, PDO::PARAM_INT)
           );
           if (!$this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__)) {
-            throw new Exception ('An error occured while moving page!', 12);
+            throw new Exception ('An error occured while moving page!', 3);
           }
           break;
       }

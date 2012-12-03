@@ -27,19 +27,8 @@ class StandardContentManager extends ContentManager {
         )
       )
     );
-    
-    if ($this->params[0] != 'home') {
-      $subPages = $pageController->getSubpages (array ($this->params[0]), 3);
-      $this->_setData (
-        array ('sideNavPages' => $subPages)
-      );
-    }
-    
-    $activePage = $pageController->getPage (array ('uri' => $this->params));
-    $this->_setData (array ('activePage' => $activePage));
-    if ($activePage) {
-      $this->_setHtmlHead (array ('page' => $activePage));
-    }
+
+    $this->_setData (array ('activePage' => $pageController->getPage (array ('uri' => array ($this->params[0])))));
 
     $userController = UserController::getInstance ();
     $loggedUser = $userController->getLoggedUser ();
@@ -95,9 +84,7 @@ class StandardContentManager extends ContentManager {
                 array (
                   'orderBy' => 'publishDate',
                   'orderDirection' => 'DESC',
-                  'limit' => 6,
-                  'isPublished' => TRUE,
-                  'publishDate' => TRUE,
+                  'limit' => 10,
                   'languageId' => Config::read ('lang'),
                   'isFeatured' => 1
                 )
@@ -114,7 +101,7 @@ class StandardContentManager extends ContentManager {
                 array (
                   'orderBy' => 'lastName',
                   'orderDirection' => 'ASC',
-                  'limit' => 20,
+                  'limit' => 10,
                   'team' => TRUE
                 )
               ),
@@ -154,6 +141,11 @@ class StandardContentManager extends ContentManager {
                           'team' => $team
                         )
                       )
+                    )
+                  );
+                  $this->_setHtmlHead (
+                    array (
+                      'pageTitle' => Dict::read ('title_news')
                     )
                   );
                 }
@@ -215,8 +207,6 @@ class StandardContentManager extends ContentManager {
                     'orderBy' => 'publishDate',
                     'orderDirection' => 'DESC',
                     'limit' => 10,
-                    'isPublished' => TRUE,
-                    'publishDate' => TRUE,
                     'languageId' => Config::read ('lang')
                   )
                 );
@@ -229,11 +219,6 @@ class StandardContentManager extends ContentManager {
                           'newsItems' => $newsItems
                         )
                       )
-                    )
-                  );
-                  $this->_setData (
-                    array (
-                      'sideNewsItems' => $newsItems
                     )
                   );
                   $this->_setHtmlHead (
@@ -345,9 +330,6 @@ class StandardContentManager extends ContentManager {
                   )
                 );
                 if ($gallerys) {
-                  
-                  $this->_setData(array ('galleries' => $gallerys));
-                  
                   $this->_setElements (
                     array (
                       'mainContent' => array (
@@ -378,9 +360,6 @@ class StandardContentManager extends ContentManager {
                 );
                 FB::warn ('here');
                 if ($gallery) {
-                  
-                  $this->_setData(array ('galleries' => $gallerys));
-                  
                   $this->_setElements (
                     array (
                       'mainContent' => array (
@@ -394,7 +373,7 @@ class StandardContentManager extends ContentManager {
                   );
                   $this->_setHtmlHead (
                     array (
-                      'pageTitle' => 'Galerija' . ' :: ' . $gallery->getTitle ()
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $gallery->getTitle ()
                     )
                   );
                   return;
@@ -408,7 +387,6 @@ class StandardContentManager extends ContentManager {
               /*
                * Video Listing.
                */
-              
               if ($this->_checkParams (2, TRUE)) {
                 $videoController = VideoController::getInstance ();
                 $videos = $videoController->getVideosByParams (
@@ -420,9 +398,6 @@ class StandardContentManager extends ContentManager {
                   )
                 );
                 if ($videos) {
-                  
-                  $this->_setData(array ('videos' => $videos));
-                  
                   $this->_setElements (
                     array (
                       'mainContent' => array (
@@ -452,8 +427,6 @@ class StandardContentManager extends ContentManager {
                     'isPublished' => TRUE
                   )
                 );
-                
-                $this->_setData(array ('videos' => $videos));
 
                 if ($video) {
                   $this->_setElements (
@@ -469,7 +442,7 @@ class StandardContentManager extends ContentManager {
                   );
                   $this->_setHtmlHead (
                     array (
-                      'pageTitle' => 'HNS TV :: ' . $video->getTitle ()
+                      'pageTitle' => Dict::read ('title_news') . ' :: ' . $video->getTitle ()
                     )
                   );
                   return;
@@ -482,36 +455,9 @@ class StandardContentManager extends ContentManager {
         $pageController = PageController::getInstance ();
         $page = $pageController->getPage (array ('uri' => $this->params));
         if ($page) {
-          $subPages = $pageController->getSubpages (array ($this->params[0]), 3);
-          if ($page->Redirect) {
-            $subPages = $pageController->getSubpages ($this->params);
-            Tools::redirect ($subPages[0]->Subpages[0]->Url);
-          }
-          
         	$this->_setData(
-						array('sideNavPages' => $subPages)
+						array('sideNavPages' => $pageController->getSubpages (array ($this->params[0]), 3))
         	);
-          if (is_numeric ($page->Class)) {
-            /**
-             * @todo Maknuti hardcode
-             */
-            $newsItemController = NewsItemController::getInstance ();
-            $this->_setData (
-              array (
-                'newsItems' => $newsItemController->getNewsItemsByParams (
-                  array (
-                    'orderBy' => 'publishDate',
-                    'orderDirection' => 'DESC',
-                    'limit' => 10,
-                    'isPublished' => TRUE,
-                    'publishDate' => TRUE,
-                    'languageId' => Config::read ('lang'),
-                    'newsCategoryId' => $page->Class
-                  )
-                )
-              )
-            );
-          }
           $this->_setElements (
             array (
               'mainContent' => array (

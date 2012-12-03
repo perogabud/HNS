@@ -26,7 +26,6 @@ class Page extends ModelObject {
   protected $_navigationDescription;
   protected $_coverImage;
   protected $_customModules;
-  protected $_redirect;
 
   public function __construct ($data, $dataLang, $config = array ()) {
     parent::__construct ($data);
@@ -176,10 +175,5 @@ class Page extends ModelObject {
     }
     return NULL;
   }
-  
-  public function getRedirect () {
-    return $this->_redirect;
-  }
-  
 }
 ?>
