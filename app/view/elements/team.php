@@ -31,7 +31,7 @@
   <?php if (in_array ($groupId, array (6, 7))) echo '<section class="stozer">'; ?>
   <ul>
     <?php foreach ($data['members'] as $member): ?>
-  	<li><span class="name"><a href="<?php echo $meber->Url; ?>"><?php echo $member->Name; ?></a></span><span class="position"><?php echo $member->Position; ?></span></li>
+  	<li><span class="name"><a href="<?php echo $member->Url; ?>"><?php echo $member->Name; ?></a></span><span class="position"><?php echo $member->Position; ?></span></li>
     <?php endforeach; ?>
   </ul>
   <?php if (in_array ($groupId, array (6, 7))) echo '</section>'; ?>
