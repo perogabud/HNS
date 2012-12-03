@@ -1002,6 +1002,7 @@ section.team ul {
 }
 
 section.team ul li {
+	padding: 5px 0;
 	font: normal 15px Arial, sans-serif;
 	background: url('/img/separator-vijesti.png') no-repeat bottom center;
 }
