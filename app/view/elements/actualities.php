@@ -1,6 +1,6 @@
 <section class="main">
 	<figure class="news header">
-		<img src="/img/utakmica_hrv-svi_(166).jpg" width="719" height="429" alt=""/>
+		<img src="/img/actuality.jpg" width="719" height="429" alt=""/>
 	</figure>
 	<?php if (isset ($actualitys)): ?>
 	<section class="content actualities">
