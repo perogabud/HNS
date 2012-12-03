@@ -72,7 +72,7 @@ $(function() {
 				
 				
 				$('ul#slidenav li').each(function(index) {
-				    $(this).css({"height":"138px","position":"absolute","left":(121*index)+"px"});
+				    $(this).css({"height":"138px","position":"absolute","left":(120*index)+"px"});
 				});				
 				
 });
