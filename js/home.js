@@ -1,5 +1,21 @@
 $(function() {
         $( ".tabs" ).tabs();
+        
+        $('.tab_content').cycle({  
+            speed:  'fast', 
+            timeout: 6000,
+            pager:  '#slidenav',
+            // callback fn that creates a thumbnail to use as pager anchor 
+            pagerAnchorBuilder: function(idx, slide) { 
+                return '<li><a href="#"><img src="http://www.hns-cff.hr/img/'+slide.id+'.png" /></a></li>'; 
+            } 
+        });
+        
+        $('#counter').countdown({
+          image: 'http://www.hns-cff.hr/img/digits.png',
+          startTime: '98:12:12:00'
+         //startTime: days+':'+hours+':'+mins+':'+secs
+        });
  
         // fix the classes
         $( ".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *" )

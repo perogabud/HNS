@@ -1580,3 +1580,29 @@ footer ul li a.cityex:hover {
   left: -9000px;
   top: -9000px;
 }
+
+ div#hns-casopis, div#aktualno {width:100%;}
+ 
+ 
+ 
+br { clear: both; }
+.cntSeparator {
+  font-size: 54px;
+  margin: 10px 7px;
+  color: #000;
+  margin-top:40px;
+}
+.desc { margin: 7px 3px 0 45px; }
+.desc div {
+  float: left;
+  font-family: Arial;
+  width: 106px;
+  margin-right: 29px;
+  margin-top:10px;
+  font-size: 13px;
+  color: #666;
+}
+div#hns-casopis p {font-family: Oswald; margin:0; padding:40px;text-align:center;font-size:21px;clear:both;}
+.redHr {color:#C13F20;}
+.bluHr {color:#345DA4;}
+div#brojac {background:white;height:337px;background:url(http://www.hns-cff.hr/img/aktualnosti_slider_bg.png);}

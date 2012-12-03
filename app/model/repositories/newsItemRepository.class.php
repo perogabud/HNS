@@ -202,6 +202,12 @@ class NewsItemRepository extends Repository {
       ";
     }
     
+    if (isset ($params['publishDate']) && $params['publishDate'] === TRUE) {
+      $query .= "
+        AND n.publishDate <= NOW()
+      ";
+    }
+    
     if (isset ($params['isFeatured']) && $params['isFeatured']) {
       $query .= "
         AND n.isFeatured = 1

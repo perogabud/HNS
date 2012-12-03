@@ -5,7 +5,7 @@
 		  <?php if ($page->CoverImage): ?>
 		  <img src="<?php echo $page->CoverImage->Url; ?>" width="719" height="429" alt=""/>
 		  <?php else: ?>
-		  <img src="http://placehold.it/719x429/E30101/FFFFFF&text=<?php echo urlencode ($page->Title); ?>" width="719" height="429" alt=""/>
+		  <img src="/img/default.jpg" width="719" height="429" alt="<?php echo $page->Title; ?>"/>
 		  <?php endif; ?>
 		</figure>
   </header>

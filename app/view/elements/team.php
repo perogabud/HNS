@@ -2,52 +2,40 @@
 <?php if (isset ($team)): ?>
 	<header>
 		<figure class="header">
-		  <img src="http://placehold.it/719x429/E30101/FFFFFF&text=<?php echo urlencode ($team->Name); ?>" width="719" height="429" alt=""/>
+		  <img src="/img/default.jpg" width="719" height="429" alt=""/>
 		</figure>
 	</header>
 	<section class="subpage team">
   <h2><?php echo $team->Name; ?></h2>
   
-
-  <h3>Izbornik</h3>
+  <?php 
+  $groupedMembers = array ();
+  foreach ($team->Members as $member):
+    if (!isset ($groupedMembers[$member->MemberCategory->Id])) {
+      $groupedMembers[$member->MemberCategory->Id] = array (
+        'name' => $member->MemberCategory->Name,
+        'members' => array ()
+      );
+    }  
+    $groupedMembers[$member->MemberCategory->Id]['members'][] = $member;
+  endforeach; 
+  ksort ($groupedMembers);
+  
+  echo '<pre style="display:none;">';
+  print_r ($groupedMembers);
+  echo '</pre>';
+  
+  foreach ($groupedMembers as $groupId => $data): 
+  ?>
+  <h3><?php echo $data['name']; ?></h3>
+  <?php if (in_array ($groupId, array (6, 7))) echo '<section class="stozer">'; ?>
   <ul>
-  	<li><span class="name">IGOR ŠTIMAC</span><span class="position">izbornik</span></li>
+    <?php foreach ($data['members'] as $member): ?>
+  	<li><span class="name"><a href="<?php echo $member->Url; ?>"><?php echo $member->Name; ?></a></span><span class="position"><?php echo $member->Position; ?></span></li>
+    <?php endforeach; ?>
   </ul>
-
-  <h3>Vratari</h3>
-  <ul>
-  	<li><span class="name">IME PREZIME</span><span class="position">pozicija</span></li>
-  </ul>
-
-  <h3>Obrana</h3>
-  <ul>
-  	<li><span class="name">IME PREZIME</span><span class="position">pozicija</span></li>
-  </ul>
-
-  <h3>Vezni red</h3>
-  <ul>
-  	<li><span class="name">IME PREZIME</span><span class="position">pozicija</span></li>
-  </ul>
-
-  <h3>Napad</h3>
-  <ul>
-  	<li><span class="name">IME PREZIME</span><span class="position">pozicija</span></li>
-  </ul>
-
-	<section class="stozer">
-	  <h3>Stručni stožer</h3>
-		<ul>
-	  	<li><span class="name">IME PREZIME</span><span class="position">pozicija</span></li>
-	  </ul>
-	</section>
-	
-	<section class="stozer">
-		<h3>Širi stručni stožer</h3>
-		<ul>
-	  	<li><span class="name">IME PREZIME</span><span class="position">pozicija</span></li>
-	  </ul>
-	</section>
-
+  <?php if (in_array ($groupId, array (6, 7))) echo '</section>'; ?>
+  <?php endforeach; ?>
   
 <!--  <?php foreach ($team->Members as $member): ?>
   <dl>
