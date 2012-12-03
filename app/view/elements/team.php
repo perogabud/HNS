@@ -2,7 +2,7 @@
 <?php if (isset ($team)): ?>
 	<header>
 		<figure class="header">
-		  <img src="/img/default.jpg" width="719" height="429" alt=""/>
+		  <img src="http://www.hns-cff.hr/img/page/coverImage/nyq44z6shb9h28pkadzssu6bguvt370g.jpg" width="719" height="429" alt=""/>
 		</figure>
 	</header>
 	<section class="subpage team">
