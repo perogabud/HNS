@@ -351,6 +351,10 @@ section.shop_timeline img {
 	margin-bottom: -1px;
 }
 
+section.shop_timeline ul li.hns-shop {
+	height: 120px;
+}
+
 section.vatreni {
 	margin-bottom: -1px;
 	clear: both;
@@ -479,6 +483,8 @@ nav#menu ul li:first-child {
 }
 
 nav#menu ul li.lang {
+/*	font: 12px Oswald, sans-serif;*/
+/*	font-weight: 400;*/
 /*	width: 118px;*/
 /*	border-right: 1px solid #808080;*/
 }
@@ -494,8 +500,11 @@ nav#menu ul li a {
 	text-transform: uppercase;
 }
 
-nav#menu ul li.lang {
-	font-size: 0.8em;
+nav#menu ul li.lang a {
+	height: 14px;
+	margin-top: 18px;
+	padding-top: 0;
+	font-size: 12px;
 	color: #fff;
 }
 
@@ -507,12 +516,19 @@ nav#menu ul li.lang a {
 	display: inline-block;
 }
 
+nav#menu ul li.lang a:hover, nav#menu ul li.lang a.active {
+	text-decoration: underline;
+}
+
 nav#menu ul li.lang a.hr {
 	color: #e31f0e;
+	padding-right: 4px;
+	border-right: 2px solid #fff;
 }
 
 nav#menu ul li.lang a.en {
 	color: #005ca8;
+	padding-left: 4px;
 }
 
 nav#menu ul li ul {
@@ -704,9 +720,9 @@ section.tabs div#casopis div#brojac {background:white;height:337px;background:ur
 
 section.tabs div.caption {
 	width: auto;
-	height: 27px;
+	height: 25px;
 /*	margin-top: -1px;*/
-	padding-top: 21px;
+	padding-top: 23px;
 	padding-right: 17px;
 	background: #4d4d4d;
 	text-align: right;
@@ -772,10 +788,10 @@ section.tabs ul li.casopis a {
 	background: url('/img/brojac.png') no-repeat;
 }
 
-section.main_home section.content,
-section.main section.actualities {
+section.main_home section.content {
 	width: 599px;
 	float: left;
+	clear: left;
 	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
@@ -786,8 +802,7 @@ div.content_bottom_bg {
 	clear: both;
 }
 
-section.main_home section.content article,
-section.main section.actualities article {
+section.main_home section.content article {
 	width: 563px;
 	padding: 18px;
 	padding-left: 14px;
@@ -803,6 +818,7 @@ section.main section.actualities h2*/ {
 	font-family: Oswald, sans-serif;
 	font-size: 40px;
 	padding: 18px;
+	margin-bottom: 0 !important;
 	color: #e31f0e;
 	background: url('/img/article_splitter.png') no-repeat bottom center;
 }
@@ -817,6 +833,10 @@ section.main section.actualities time {
 	float: left;
 	font-weight: 300;
 	display: inline-block;
+}
+
+section.main section.actualities time {
+	width: 90px;
 }
 
 section.main_home section.content article:nth-of-type(1) time,
@@ -939,8 +959,17 @@ section.subpage_categories ul li ul a {
 	font-weight: normal;
 }
 
+section.subpage_categories ul li ul a.active {
+	color: #e31f0e;
+}
+
 section.subpage_categories ul li ul li {
 	background: none;
+}
+
+section.subpage_categories ul li ul li a { /* makni ovo ako sam krivo skuzio */
+	text-transform: uppercase;
+	color: #005ca8;
 }
 
 section.subpage_categories ul li ul li ul {
@@ -974,6 +1003,12 @@ section.team ul {
 
 section.team ul li {
 	font: normal 15px Arial, sans-serif;
+	background: url('/img/separator-vijesti.png') no-repeat bottom center;
+}
+
+section.team ul li a {
+	color: #666;
+	text-transform: uppercase;
 }
 
 section.team ul li:last-of-type {
@@ -1038,12 +1073,19 @@ section.main section.content, section.main section.subpage {
 	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
-section.main_news section.content article, section.team ul li {
+section.main_news section.content article, section.main section.actualities article  {
 /*	width: 693px;*/
-	padding: 7px 0;
+/*	padding: 7px 0;*/
+	padding: 18px;
+	padding-left: 14px;
 	background: url('/img/separator-vijesti.png') no-repeat bottom center;
 	clear: both;
 	display: block;
+}
+
+section.main section.actualities article {
+	padding-left: 0;
+	padding-right: 0;
 }
 
 section.main_news section.content h2 {
@@ -1130,14 +1172,14 @@ section.main section.member {
 	padding: 30px 30px 10px;
 }
 
-dl dt {
+section.main section.member dl dt {
 	width: 145px;
 	float: left;
 	font-weight: bold;
 }
 
-dl dd {
-	width: 500px;
+section.main section.member dl dd {
+	width: 550px;
 	float: left;
 }
 
@@ -1416,7 +1458,7 @@ footer ul li a.cityex:hover {
       z-index: 10;
       top: 48%;
       left: 48%;
-      border: 1px solid #CCC;
+/*      border: 1px solid #CCC;*/
     }
     .ad-gallery .ad-image-wrapper .ad-next {
       position: absolute;
@@ -1444,18 +1486,18 @@ footer ul li a.cityex:hover {
     }
       .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
         background: url('/img/ad_prev.png');
-        width: 30px;
-        height: 30px;
+        width: 80px;
+        height: 80px;
         display: none;
         position: absolute;
-        top: 47%;
+        top: 45%;
         left: 0;
         z-index: 101;
       }
       .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
         background: url('/img/ad_next.png');
-        width: 30px;
-        height: 30px;
+        width: 80px;
+        height: 80px;
         right: 0;
         left: auto;
       }
@@ -1550,14 +1592,26 @@ footer ul li a.cityex:hover {
     .ad-gallery .ad-nav .ad-thumbs {
       overflow: hidden;
       width: 559px;
+      height: 159px;
+			text-align: center;
       margin: 0 auto;
-      border-left: 1px solid #999;
-      border-right: 1px solid #999;
+/*      border-left: 1px solid #999;*/
+/*      border-right: 1px solid #999;*/
+      font: 14px Arial, sans-serif;
+      color: #fff;
+    }
+    
+    .ad-gallery .ad-nav .ad-thumbs h3 {
+    	font: 23px Oswald, sans-serif;
+    	font-weight: 400;
     }
       .ad-gallery .ad-thumbs .ad-thumb-list {
         float: left;
         width: 9000px;
         list-style: none;
+        height: 79px;
+        overflow: hidden;
+        margin-bottom: 10px;
       }
         .ad-gallery .ad-thumbs li {
           float: left;
@@ -1568,11 +1622,12 @@ footer ul li a.cityex:hover {
             display: block;
           }
             .ad-gallery .ad-thumbs li a img {
-              border-bottom: 1px solid #999;
+              border: 1px solid #999;
+              margin: -1px -1px 0 0;
               display: block;
             }
             .ad-gallery .ad-thumbs li a.ad-active img {
-              border: 3px solid #616161;
+              border: 1px solid #e31f0e;
             }
 /* Can't do display none, since Opera won't load the images then */
 .ad-preloads {
