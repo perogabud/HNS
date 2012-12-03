@@ -6,6 +6,7 @@
     <meta name="Keywords" content="" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript">document.documentElement.className = 'js';</script>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
   </head>
   <body>
@@ -184,7 +185,48 @@
 	    	<section class="tabs">
 	    		<div class="tab_content">
 	    		<div id="hns-tv">
-	    			<iframe width="599" height="337" src="http://www.youtube-nocookie.com/embed/<?php echo $featuredVideo->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>
+	    			<!--<iframe width="599" height="337" src="http://www.youtube-nocookie.com/embed/<?php echo $featuredVideo->VideoKey; ?>" frameborder="0" allowfullscreen></iframe>-->
+            <div id="videoDiv" style="width:599px;height:337px">
+              <script type="text/javascript">
+                google.load("swfobject", "2.1");
+              </script>    
+              <script type="text/javascript">
+                /*
+                 * Polling the player for information
+                 */
+
+                // This function is called when the player changes state
+                function onPlayerStateChange(newState) {
+                  if(newState == 3 || newState == 1) {
+                    //alert('Video playing');
+                    $('.tab_content').cycle('pause');
+                  }
+                }
+
+                // This function is automatically called by the player once it loads
+                function onYouTubePlayerReady(playerId) {
+                  document.getElementById("ytPlayer").addEventListener("onStateChange", "onPlayerStateChange");
+                }
+
+                // The "main method" of this sample. Called when someone clicks "Run".
+                function loadPlayer() {
+                  // The video to load
+                  var videoID = "<?php echo $featuredVideo->VideoKey; ?>"
+                  // Lets Flash from another domain call JavaScript
+                  var params = { allowScriptAccess: "always" };
+                  // The element id of the Flash embed
+                  var atts = { id: "ytPlayer" };
+                  // All of the magic handled by SWFObject (http://code.google.com/p/swfobject/)
+                  swfobject.embedSWF("http://www.youtube.com/v/" + videoID + 
+                                     "&enablejsapi=1&playerapiid=player1", 
+                                     "videoDiv", "599", "337", "8", null, null, params, atts);
+                }
+                function _run() {
+                  loadPlayer();
+                }
+                google.setOnLoadCallback(_run);
+          </script>
+            </div>
             <div class="caption">pogledaj sve video zapise &gt; <a href="<?php echo '/' . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_videos') ?>">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
@@ -226,12 +268,8 @@
 	    				<div class="caption">pogledaj nadolazeće utakmice &gt;&gt; <a href="/selekcije/raspored-utakmica">RASPORED UTAKMICA</a></div>
 	    			</div>	    		</div>
 
-	    		<ul>
-	    			<li class="tv"><a href="#hns-tv" ></a></li>
-	    			<li class="galerija"><a href="#galerija" ></a></li>
-	    			<li class="aktualno"><a href="#aktualno" ></a></li>
-	    			<li class="reprezentacija"><a href="#a-reprezentacija" ></a></li>
-	    			<li class="casopis"><a href="#hns-casopis" ></a></li>
+	    		<ul id="slidenav">
+	    			
 	    		</ul>
 	    	</section>
 

@@ -1586,3 +1586,12 @@ footer ul li a.cityex:hover {
   left: -9000px;
   top: -9000px;
 }
+
+
+
+/*slider*/
+ul#slidenav li.activeSlide {margin-top:-17px;z-index:1000;}
+.onImage {display:none;}
+.ofImage {display:block;}
+ul#slidenav li.activeSlide .onImage {display:block;}
+ul#slidenav li.activeSlide .ofImage {display:none;}
