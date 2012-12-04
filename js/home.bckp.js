@@ -1,17 +1,15 @@
 $(function() {
         $( ".tabs" ).tabs();
 
-				$('.tab_content').cycle({
-				    speed:  'fast',
-				    timeout: 6000,
-				    //pause: 1,
-				    //pauseOnPagerHover: 1,
-				    pager:  '#slidenav',
-				    // callback fn that creates a thumbnail to use as pager anchor
-				    pagerAnchorBuilder: function(idx, slide) {
-				        return '<li style="height:121px;overflow:hidden;"><a href="#"><img src="http://www.hns-cff.hr/img/'+slide.id+'.png" class="ofImage" /><img src="http://www.hns-cff.hr/img/'+slide.id+'_on.png" class="onImage" /></a></li>';
-				    }
-				});
+        $('.tab_content').cycle({
+            speed:  'fast',
+            timeout: 6000,
+            pager:  '#slidenav',
+            // callback fn that creates a thumbnail to use as pager anchor
+            pagerAnchorBuilder: function(idx, slide) {
+                return '<li><a href="#"><img src="http://www.hns-cff.hr/img/'+slide.id+'.png" /></a></li>';
+            }
+        });
 
         $('#counter').countdown({
           image: 'http://www.hns-cff.hr/img/digits.png',
@@ -29,10 +27,10 @@ $(function() {
 
 				$(".raspored").hover(
 				  function () {
-				    $(".zoom").css("display", "table");
+		      $(".zoom").css("display", "table");
 				  },
 				  function () {
-				    $(".zoom").css("display", "none");
+		      $(".zoom").css("display", "none");
 				  }
 				);
 
@@ -68,11 +66,5 @@ $(function() {
 				$('.timeline ul').cycle({
 				            delay:  7000,
 				            speed:  2200
-				});
-
-
-				$('ul#slidenav li').each(function(index) {
-				    $(this).css({"height":"138px","position":"absolute","left":(120*index)+"px"});
-				});
-
 });
+				});

@@ -52,9 +52,9 @@ class StandardContentManager extends ContentManager {
       /*
        * Home page.
        */
-      case '':
+      /*case '':
         Tools::redirect ('/index.html');
-        break;
+        break;*/
 
       case 'magazine':
           $this->_setElements (
@@ -73,7 +73,7 @@ class StandardContentManager extends ContentManager {
           );
         break;
 
-      case 'home':
+      case '':
         if ($this->_checkParams (1)) {
           $this->_setTemplate ('home');
 			    $this->_setElements (
@@ -112,7 +112,7 @@ class StandardContentManager extends ContentManager {
               ),
               'members' => $memberController->getMembersByParams (
                 array (
-                  'orderBy' => 'lastName',
+                  'orderBy' => 'memberId',
                   'orderDirection' => 'ASC',
                   'limit' => 20,
                   'team' => TRUE

@@ -73,13 +73,13 @@
 						<li class="hns-shop"><img src="/img/hns_shop.png" alt="HNS SHOP" /></li>
 						<li class="timeline" style="overflow:hidden;width:241px;height:121px;">
 							<ul>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/1998-francuska-suker-boban.jpg" alt="TIMELINE" /></a></li>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/1999-suker.jpg" alt="TIMELINE" /></a></li>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2003-Prso.jpg" alt="TIMELINE" /></a></li>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2007-Eduardo.jpg" alt="TIMELINE" /></a></li>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2009-Petric.jpg" alt="TIMELINE" /></a></li>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/2012-Vukojevic.jpg" alt="TIMELINE" /></a></li>
-							  <li><a href="/hns/o-nama/timeline"><img src="/img/timeline/1996-prosinecki.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/1998-francuska-suker-boban.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/1999-suker.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/2003-Prso.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/2007-Eduardo.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/2009-Petric.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/2012-Vukojevic.jpg" alt="TIMELINE" /></a></li>
+							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/1996-prosinecki.jpg" alt="TIMELINE" /></a></li>
 							</ul>
             </li>
 					</ul>
@@ -113,7 +113,7 @@
             <? endfor ?>
 					</div>
 				</section>
-				
+
 				<section class="fb">
 					<div id="fb-root"></div>
 					<script>(function(d, s, id) {
@@ -123,17 +123,17 @@
 					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
-					
+
 					<div class="fb-like-box" data-href="https://www.facebook.com/cff.hns?fref=ts" data-width="241" data-height="290" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
 				</section>
-				
+
 				<section class="twitter">
 					<div id="tweet">
 					    <h3><a href="https://twitter.com/hns_cff"><img src="/img/hns_twitter.png" alt="HNS" />HNS | CFF Tweets</a></h3>
 					    <ul id="twitterUpdate">
 					    </ul>
 					</div>
-					
+
 					<a href="https://twitter.com/hns_cff" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @hns_cff</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
@@ -151,7 +151,7 @@
 				    }
 				    document.getElementById ('twitterUpdate').innerHTML = statusHTML.join('');
 				  }
-				
+
 				  function relative_time(time_value) {
 				    var values = time_value.split(" ");
 				    time_value = values[1] + " " + values[2] + ", " + values[5] + " " + values[3];
@@ -159,7 +159,7 @@
 				    var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
 				    var delta = parseInt((relative_to.getTime() - parsed_date) / 1000);
 				    delta = delta + (relative_to.getTimezoneOffset() * 60);
-				
+
 				    if (delta < 60) {
 				      return 'less than a minute ago';
 				    } else if(delta < 120) {
@@ -178,7 +178,7 @@
 				  }
 				  </script>
 				  <script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline.json?screen_name=HNS_CFF&callback=twitterCallback&count=4">
-				  </script>		
+				  </script>
 				</section>
 			</aside>
 
@@ -202,7 +202,7 @@
             <div id="videoDiv" style="width:599px;height:337px">
               <script type="text/javascript">
                 google.load("swfobject", "2.1");
-              </script>    
+              </script>
               <script type="text/javascript">
                 /*
                  * Polling the player for information
@@ -230,8 +230,8 @@
                   // The element id of the Flash embed
                   var atts = { id: "ytPlayer" };
                   // All of the magic handled by SWFObject (http://code.google.com/p/swfobject/)
-                  swfobject.embedSWF("http://www.youtube.com/v/" + videoID + 
-                                     "&enablejsapi=1&playerapiid=player1", 
+                  swfobject.embedSWF("http://www.youtube.com/v/" + videoID +
+                                     "&enablejsapi=1&playerapiid=player1",
                                      "videoDiv", "599", "337", "8", null, null, params, atts);
                 }
                 function _run() {
@@ -263,12 +263,12 @@
 	    		</div>
 	    		<div id="a-reprezentacija">
 	    			<img src="/img/a_reprezentacija.jpg" alt="A REPREZENTACIJA" width="599" height="337" />
-	    			<div class="caption">saznaj sve o &gt;&gt; <a href="">A REPREZENTACIJI</a></div>
+	    			<div class="caption">saznaj sve o &gt;&gt; <a href="/selekcije/a-reprezentacija">A REPREZENTACIJI</a></div>
 	    		</div>
 	    		<div id="hns-casopis">
 	    			<div id="brojac">
 		    			<p>Još samo</p>
-		    			<div id="counter" style="margin-left:45px;"></div>
+		    			<div id="counter" data-date="" style="margin-left:16px;"></div>
 						<div class="desc">
 							<div>dana</div>
 							<div>sati</div>
@@ -282,7 +282,7 @@
 	    			</div>	    		</div>
 
 	    		<ul id="slidenav">
-	    			
+
 	    		</ul>
 	    	</section>
 
