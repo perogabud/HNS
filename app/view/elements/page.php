@@ -1,3 +1,4 @@
+<div style="float: left;">
 <section class="main">
 <?php if (isset ($page)): ?>
 	<header>
@@ -47,3 +48,4 @@
 	<?php endif; ?>
 	<div class="content_bottom_bg"></div>
 </section>
+</div>
