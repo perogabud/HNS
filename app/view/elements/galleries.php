@@ -43,6 +43,7 @@ if (isset ($galleryMain)):
   <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+<div style="clear: both;"></div>
 </section>
 <div class="content_bottom_bg"></div>
 </section>
