@@ -28,7 +28,7 @@ class StandardContentManager extends ContentManager {
       )
     );
 
-    if ($this->params[0] != 'home') {
+    if ($this->params[0] != '') {
       $subPages = $pageController->getSubpages (array ($this->params[0]), 3);
       $this->_setData (
         array ('sideNavPages' => $subPages)
