@@ -6,6 +6,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript">document.documentElement.className = 'js';</script>
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
+		<!--[if lte IE 9]>
+	    <script src="/js/html5shiv.js"></script>
+	  <![endif]-->
+	  <!--[if lt IE 7]>
+	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+	  <![endif]-->
+	  <!--[if lt IE 8]>
+	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+	  <![endif]-->
+	  <!--[if lt IE 9]>
+	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	  <![endif]-->
   </head>
   <body>
   	<div id="wrapper">

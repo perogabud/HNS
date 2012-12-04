@@ -797,6 +797,60 @@ section.subpage_categories ul li ul li ul {
 	margin-left: 23px;
 }
 
+section.subpage h3 {
+	font: 21px Oswald, sans-serif;
+	font-weight: 400;
+	color: #005ca8;
+}
+
+section.subpage h4 {
+	font: 15px Arial, sans-serif;
+	font-weight: bold;
+	color: #005ca8
+}
+
+
+section.team h3 {
+	color: #e31f0e;
+}
+
+section.team section.stozer h3 {
+	color: #005ca8;
+}
+
+section.team ul {
+	margin-top: 27px;
+}
+
+section.team ul li {
+	padding: 5px 0;
+	font: normal 15px Arial, sans-serif;
+	background: url('/img/separator-vijesti.png') no-repeat bottom center;
+}
+
+section.team ul li a {
+	color: #666;
+	text-transform: uppercase;
+}
+
+section.team ul li:last-of-type {
+	margin-bottom: 32px;
+	background: none;
+}
+
+section.team ul li span.name, section.team ul li span.position {
+	display: inline-block;
+}
+
+section.team ul li span.name {
+	width: 252px;
+}
+
+section.team ul li span.position {
+	width: 408px;
+}
+
+
 
 section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 	height: 250px;

@@ -8,6 +8,18 @@
     <script type="text/javascript">document.documentElement.className = 'js';</script>
     <script src="http://www.google.com/jsapi" type="text/javascript"></script>
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
+		<!--[if lte IE 9]>
+	    <script src="/js/html5shiv.js"></script>
+	  <![endif]-->
+	  <!--[if lt IE 7]>
+	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+	  <![endif]-->
+	  <!--[if lt IE 8]>
+	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+	  <![endif]-->
+	  <!--[if lt IE 9]>
+	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	  <![endif]-->
   </head>
   <body>
   	<div id="bg_box" class="bg<?php echo rand(1,3)?>">
@@ -250,7 +262,7 @@
 	    		</div>
 	    		<div id="a-reprezentacija">
 	    			<img src="/img/a_reprezentacija.jpg" alt="A REPREZENTACIJA" width="599" height="337" />
-	    			<div class="caption">saznaj sve o &gt;&gt; <a href="/selekcije/a-reprezentacija">A REPREZENTACIJI</a></div>
+	    			<div class="caption">saznaj sve o &gt;&gt; <a href="">A REPREZENTACIJI</a></div>
 	    		</div>
 	    		<div id="hns-casopis">
 	    			<div id="brojac">
