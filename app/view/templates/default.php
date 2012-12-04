@@ -1,4 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" lang="hr">
+<!DOCTYPE html>
+<html lang="hr">
   <head>
     <title><?php echo $pageTitle; ?></title>
     <meta name="Description" content="" />

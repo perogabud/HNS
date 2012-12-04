@@ -15,7 +15,7 @@
                   <a href="<?php echo $subPage->Url; ?>"><?php echo $subPage->NavigationName; ?></a>
                   <small><?php echo $subPage->NavigationDescription; ?></small>
                 </li>
-                <?php if ($i % (ceil($count / 3)) == ceil($count / 3) - 1): ?>
+                <?php if ($i % (ceil($count / 3)) == ceil($count / 3) - 1 || $i == $count - 1): ?>
                 </ul>
                 <?php endif; ?>
               <?php endfor; ?>
