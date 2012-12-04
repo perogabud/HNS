@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-/*  line-height: 1;*/
+  line-height: 1.3;
 }
 ol, ul {
   list-style: none;
@@ -142,38 +142,41 @@ body {
 }
 
 /*custom*/
-div#wrapper {
+div#bg_box {
+	width: 100%;
+}
+
+div.bg1 {
+	background: url('/img/olic_modric.jpg') top center no-repeat;
+}
+
+div.bg2 {
+	background: url('/img/rakitic_mandzukic.jpg') top center no-repeat;
+}
+
+div.bg3 {
+	background: url('/img/corluka_simunic.jpg') top center no-repeat;
+}
+
+
+div#wrapper, div#wrapper_home {
 	width: 961px;
 	margin: 0 auto;
 	position: relative;
 }
 
-div.bg_left {
-	width: 525px;
-	height: 849px;
-	position: absolute;
-	top: 9px;
-	left: -392px;
-	background: url('/img/olic.jpg') no-repeat;
-	z-index: -1;
-}
-
-div.bg_right {
-	width: 609px;
-	height: 810px;
-	position: absolute;
-	top: 18px;
-	right: -423px;
-	background: url('/img/modric.jpg') no-repeat;
-	z-index: -1;
+div#wrapper {
+	background: url('/img/wrapper_bg.png') repeat-y;
 }
 
 
 /*sidebar left*/
-
 aside#sidebar {
 	width: 241px;
 	float: left;
+}
+
+#wrapper_home aside#sidebar {
 	background: #fff;
 }
 
@@ -201,6 +204,7 @@ aside#sidebar header h1 a {
 section.raspored {
 	width: 239px;
 	height: 119px;
+	margin-bottom: -1px;
 	border: 1px solid #999;
 	position: relative;
 	font-family: Oswald, sans-serif;
@@ -301,15 +305,14 @@ section.raspored table.zoom tr:nth-of-type(odd) {
 }
 
 section.raspored table.zoom tr:nth-of-type(odd) td time {
-	width: 70px;
 	display: inline-block;
-	border-right: 1px solid #4d4d4d;
 }
 
 section.raspored table.zoom tr:nth-of-type(odd) td small {
 	display: inline-block;
 	padding: 0 8px;
-	margin-right: 8px;
+	margin: 0 8px;
+	border-left: 1px solid #4d4d4d;
 	border-right: 1px solid #4d4d4d;
 }
 
@@ -333,8 +336,23 @@ section.raspored table.zoom tr.close td p {
 	right: 8px;
 }
 
+section.raspored table.zoom tr.close td p a {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
 section.raspored table.zoom tr.close td p:hover {
 	cursor: pointer;
+}
+
+section.shop_timeline img {
+	border: 1px solid #999;
+	margin-bottom: -1px;
+}
+
+section.shop_timeline ul li.hns-shop {
+	height: 120px;
 }
 
 section.vatreni {
@@ -357,7 +375,7 @@ section.vatreni div {
 	border: 1px solid #999;
 	margin: -1px -1px 0 0;
 	float: left;
-	overflow: hidden;	
+	overflow: hidden;
 }
 
 section.vatreni ul li a img {
@@ -370,23 +388,72 @@ section.vatreni ul li.member a img {
 }
 
 section.fb {
+	margin-top: -1px;
 	margin-bottom: -1px;
 	clear: both;
+	line-height: 1;
 }
 
 section.twitter {
-	width: 239px;
-	height: 319px;
-	margin-bottom: -1px;
+	width: 215px;
+	height: 324px;
+	padding: 12px;
 	border: 1px solid #999;
-	display: none;
+	background: url('/img/twitter_bg.png') no-repeat;
 }
 
-section.twitter #twitter-widget-0 {
-	height: 319px;
-	border: 0;
+section.twitter div#tweet {
+/*	position: relative;*/
 }
 
+section.twitter h3 {
+	width: 100%;
+	height: 57px;
+	margin-top: -13px;
+	background: url('/img/twitt_separator.png') bottom center no-repeat;
+}
+
+section.twitter h3 img {
+	float: left;
+	margin-top: -7px;
+	margin-right: 14px;
+	vertical-align: middle;
+}
+
+section.twitter h3 a {
+	font: 17px Oswald, sans-serif;
+	font-weight: 400;
+	color: #005ca8;
+}
+
+section.twitter ul#twitterUpdate {
+	height: 228px;
+	margin-top: -15px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	background: url('/img/twitt_separator.png') bottom center no-repeat;
+}
+
+section.twitter ul#twitterUpdate li {
+	padding: 8px 0 10px;
+	font: 12px Arial, sans-serif;
+	background: url('/img/twitt_separator.png') bottom center no-repeat;
+}
+
+section.twitter ul#twitterUpdate li a {
+	color: #005ca8;
+}
+
+section.twitter ul#twitterUpdate li p {
+	margin: 0 0 0.8em;
+}
+
+section.twitter ul#twitterUpdate li small {
+	font-size: 10px;
+	color: #808080;
+	display: inline-block;
+	clear: both;
+}
 
 
 
@@ -416,13 +483,15 @@ nav#menu ul li:first-child {
 }
 
 nav#menu ul li.lang {
+/*	font: 12px Oswald, sans-serif;*/
+/*	font-weight: 400;*/
 /*	width: 118px;*/
 /*	border-right: 1px solid #808080;*/
 }
 
 nav#menu ul li a {
-	height: 33px;
-	padding-top: 16px;
+	height: 35px;
+	padding-top: 14px;
 	display: block;
 	color: #fff;
 	font-family: Oswald, sans-serif;
@@ -431,8 +500,11 @@ nav#menu ul li a {
 	text-transform: uppercase;
 }
 
-nav#menu ul li.lang {
-	font-size: 0.8em;
+nav#menu ul li.lang a {
+	height: 14px;
+	margin-top: 18px;
+	padding-top: 0;
+	font-size: 12px;
 	color: #fff;
 }
 
@@ -444,12 +516,19 @@ nav#menu ul li.lang a {
 	display: inline-block;
 }
 
+nav#menu ul li.lang a:hover, nav#menu ul li.lang a.active {
+	text-decoration: underline;
+}
+
 nav#menu ul li.lang a.hr {
 	color: #e31f0e;
+	padding-right: 4px;
+	border-right: 2px solid #fff;
 }
 
 nav#menu ul li.lang a.en {
 	color: #005ca8;
+	padding-left: 4px;
 }
 
 nav#menu ul li ul {
@@ -478,10 +557,11 @@ nav#menu ul li:hover ul {
 	background: #4d4d4d;
 	float: left;
 	z-index: 1000;
+	overflow: hidden;
 }
 
 nav#menu ul li:hover ul li {
-/*	width: 100%;*/
+	width: 100%;
 	padding: 6px 25px;
 	text-align: left;
 	border: 0;
@@ -529,20 +609,20 @@ section.main_home {
 }
 
 section.main_home aside:first-child {
-	width: 121px;
+	width: 119px;
 	float: left;
-	margin-left: -1px;
-	margin-right: -1px;
 }
 
-section.main_home aside:first-child ul li {
-	height: 121px;
-	margin-bottom: -1px;
+section.main_home aside ul li {
+	width: 119px;
+	height: 119px;
+/*	margin-bottom: -1px;*/
+	border-bottom: 1px solid #999;
 }
 
 section.main_home aside:first-child ul li.decoration_top {
-	height: 147px;
-	background: transparent url('/img/slider_top.png') 1px 1px no-repeat;
+	height: 146px;
+	background: transparent url('/img/slider_top.png') no-repeat;
 }
 
 section.main_home aside:first-child ul li.ulaznice {
@@ -558,13 +638,21 @@ section.tabs {
 	float: left;
 }
 
-section.tabs div.ui-tabs-panel {
+section.tabs div.tab_content {
 	width: 599px;
 	height: 385px;
 	border: 1px solid #999;
+	overflow: hidden;
+	line-height: 0;
 }
 
-section.tabs div.ui-tabs-panel img {
+section.tabs div.ui-tabs-panel {
+/*	width: 599px;
+	height: 385px;
+	border: 1px solid #999;*/
+}
+
+section.tabs div.ui-tabs-panel a img {
 /*	float: left;*/
 }
 
@@ -573,7 +661,8 @@ section.tabs div#aktualno section {
 	height: 337px;
 	padding-left: 5px;
 	border-bottom: 1px solid #999;
-	margin-bottom: 1px;
+/*	margin-bottom: 1px;*/
+	background: url(/img/aktualnosti_slider_bg.png) no-repeat;
 }
 
 section.tabs div#aktualno section article {
@@ -581,13 +670,59 @@ section.tabs div#aktualno section article {
 	height: 295px;
 	margin: 25px 13px 18px;
 	float: left;
+	line-height: 1.3;
 }
+
+section.tabs div#aktualno section article p {
+	margin: 0.8em 0;
+	font: 12px Arial, sans-serif;
+	color: #4d4d4d;
+}
+
+section.tabs div#aktualno section article p.more {
+	text-align: right;
+}
+
+section.tabs div#aktualno section article p.more a {
+	font: 14px Arial, sans-serif;
+	color: #005ca8;
+	text-decoration: underline;
+}
+
+section.tabs div#aktualno section article h3 a {
+	font: 21px/26px Oswald, sans-serif;
+	color: #005ca8;
+}
+
+
+section.tabs div#casopis br { clear: both; }
+section.tabs div#casopis .cntSeparator {
+        font-size: 54px;
+        margin: 10px 7px;
+        color: #000;
+        margin-top:40px;
+      }
+section.tabs div#casopis .desc { margin: 7px 3px 0 45px; }
+section.tabs div#casopis .desc div {
+        float: left;
+        font-family: Arial;
+        width: 106px;
+        margin-right: 29px;
+        margin-top:10px;
+        font-size: 13px;
+        color: #666;
+      }
+section.tabs div#casopis p {font-family: Oswald; margin:0; padding:40px;text-align:center;font-size:21px;clear:both;}
+section.tabs div#casopis .redHr {color:#C13F20;}
+section.tabs div#casopis .bluHr {color:#345DA4;}
+section.tabs div#casopis div#brojac {background:white;height:337px;background:url(http://www.hns-cff.hr/img/aktualnosti_slider_bg.png);}
+
 
 section.tabs div.caption {
 	width: auto;
-	height: 32px;
-	margin-top: -1px;
-	padding-top: 16px;
+	height: 25px;
+/*	margin-top: -1px;*/
+	padding-top: 23px;
 	padding-right: 17px;
 	background: #4d4d4d;
 	text-align: right;
@@ -596,8 +731,8 @@ section.tabs div.caption {
 }
 
 section.tabs div#hns-tv div.caption {
-	height: 46px;
-	padding-top: 2px;
+	height: 43px;
+	padding-top: 5px;
 }
 
 section.tabs div.caption a {
@@ -647,36 +782,49 @@ section.tabs ul li.reprezentacija a {
 }
 
 section.tabs ul li.casopis a {
-	background: url('/img/hns_casopis.png') no-repeat;
+	width: 119px;
+	height: 119px;
+	border: 1px solid #999;
+	background: url('/img/brojac.png') no-repeat;
 }
 
-section.main_home section.content,
-section.content.actualities {
+section.main_home section.content {
 	width: 599px;
 	float: left;
-	background: #fff;
+	clear: left;
+	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
-section.main_home section.content article,
-section.content.actualities article {
+div.content_bottom_bg {
+	width: 660px;
+	height: 100px;
+	background: #fff url('/img/content_bottom_bg.png') bottom left no-repeat;
+	clear: both;
+}
+
+section.main_home section.content article {
 	width: 563px;
 	padding: 18px;
+	padding-left: 14px;
 	background: url('/img/article_splitter.png') no-repeat bottom center;
 	clear: both;
 	display: block;
 }
 
-section.main_home section.content h2,
-section.content.actualities h2 {
+
+
+section.main_home section.content h2/*,
+section.main section.actualities h2*/ {
 	font-family: Oswald, sans-serif;
 	font-size: 40px;
 	padding: 18px;
+	margin-bottom: 0 !important;
 	color: #e31f0e;
 	background: url('/img/article_splitter.png') no-repeat bottom center;
 }
 
 section.main_home section.content time,
-section.content.actualities time {
+section.main section.actualities time {
 	width: 108px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -687,8 +835,21 @@ section.content.actualities time {
 	display: inline-block;
 }
 
+section.main section.actualities time {
+	width: 90px;
+}
+
+section.main_home section.content article:nth-of-type(1) time,
+section.main section.actualities article:nth-of-type(1) time, section.main_home section.content article:nth-of-type(2) time,
+section.main section.actualities article:nth-of-type(2) time {
+/*	width: 80px;*/
+/*	padding: 0 14px;*/
+	font-size: 36px;
+/*	word-wrap:break-word;*/
+}
+
 section.main_home section.content h3,
-section.content.actualities h3 {
+section.main section.actualities h3 {
 	width: 465px;
 	font-family: Oswald, sans-serif;
 	font-size: 21px;
@@ -697,13 +858,19 @@ section.content.actualities h3 {
 /*	float: right;*/
 }
 
+section.main_home section.content article:nth-of-type(1) h3,
+section.main section.actualities article:nth-of-type(1) h3, section.main_home section.content article:nth-of-type(2) h3,
+section.main section.actualities article:nth-of-type(2) h3 {
+	font-size: 36px;
+}
+
 section section.content h3 a,
-section.content.actualities a {
+section.main section.actualities a {
 	color: #005ca8;
 }
 
 section.main_home section.content p,
-section.content.actualities p {
+section.main section.actualities p {
 	width: 465px;
 	font-size: 14px;
 	color: #666;
@@ -711,13 +878,15 @@ section.content.actualities p {
 }
 
 section.main_home section.content p.all_news,
-section.content.actualities p.all_news {
+section.main section.actualities p.all_news {
+	width: auto;
+	margin-left: 0;
 	padding: 18px;
 	text-align: right;
 }
 
 section.main_home section.content p.all_news a,
-section.content.actualities p.all_news a {
+section.main section.actualities p.all_news a {
 	font-size: 14px;
 	color: #666;
 	text-decoration: underline;
@@ -752,6 +921,7 @@ section.subpage_nav ul li a img {
 }
 
 section.subpage_categories {
+	padding: 28px 0;
 	clear: both;
 }
 
@@ -775,7 +945,7 @@ section.subpage_categories ul li {
 
 section.subpage_categories ul li a {
 	font-size: 14px;
-	font-weight: bold; 
+	font-weight: bold;
 	color: #4d4d4d;
 }
 
@@ -789,8 +959,17 @@ section.subpage_categories ul li ul a {
 	font-weight: normal;
 }
 
+section.subpage_categories ul li ul a.active {
+	color: #e31f0e;
+}
+
 section.subpage_categories ul li ul li {
 	background: none;
+}
+
+section.subpage_categories ul li ul li a { /* makni ovo ako sam krivo skuzio */
+	text-transform: uppercase;
+	color: #005ca8;
 }
 
 section.subpage_categories ul li ul li ul {
@@ -857,8 +1036,13 @@ section.fake { /*prazni box za povecat visinu lijevog sidebara*/
 	clear: both;
 }
 
+section.main {
+	background: #fff;
+}
+
 section.main h2 {
-	margin: 1.2em 0 0.2em;
+/*	margin: 1.2em 0 0.2em;*/
+	margin-bottom: 0.8em;
 	font-family: Oswald, sans-serif;
 	font-size: 36px;
 	color: #005ca8;
@@ -873,6 +1057,13 @@ section.main header h2 {
 	padding-left: 30px;
 }
 
+section.main figure.header {
+	width: 719px;
+	height: 429px;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999
+}
+
 section.main p {
 	margin: 0.75em 0;
 }
@@ -880,14 +1071,22 @@ section.main p {
 section.main section.content, section.main section.subpage {
 	width: 660px;
 	padding: 25px 35px 10px 25px;
+	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
-section.main_news section.content article {
+section.main_news section.content article, section.main section.actualities article  {
 /*	width: 693px;*/
-	padding: 7px 0;
+/*	padding: 7px 0;*/
+	padding: 18px;
+	padding-left: 14px;
 	background: url('/img/separator-vijesti.png') no-repeat bottom center;
 	clear: both;
 	display: block;
+}
+
+section.main section.actualities article {
+	padding-left: 0;
+	padding-right: 0;
 }
 
 section.main_news section.content h2 {
@@ -974,14 +1173,14 @@ section.main section.member {
 	padding: 30px 30px 10px;
 }
 
-dl dt {
+section.main section.member dl dt {
 	width: 145px;
 	float: left;
 	font-weight: bold;
 }
 
-dl dd {
-	width: 500px;
+section.main section.member dl dd {
+	width: 550px;
 	float: left;
 }
 
@@ -1000,6 +1199,7 @@ section.subpage ol {
 }
 
 section.content h2 {
+	ma
 	font-size: 36px;
   font-family: Oswald, sans-serif;
   margin-bottom: 1em;
@@ -1033,8 +1233,7 @@ footer {
 	height: 200px;
 	margin: 0 auto;
 	clear: both;
-	text-align: center;
-	background: url('/img/footer.jpg') no-repeat;
+	background: url('/img/footer_bg.png') no-repeat;
 	position: relative;
 	clear: both;
 }
@@ -1050,7 +1249,153 @@ footer img.footer_right {
 	right: -55px;
 }
 
+footer ul {
+	padding: 0;
+	margin: 0;
+}
 
+footer section:first-of-type ul {
+	width: 816px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+footer ul li {
+	height: 100px;
+	display: inline-block;
+	float: left;
+}
+
+footer ul li a {
+	height: 100px;
+	display: block;
+}
+
+footer ul li a.nike {
+	width: 163px;
+	background: transparent url('/img/nike.png') no-repeat;
+}
+
+footer ul li a.nike:hover {
+	background: transparent url('/img/nike_on.png') no-repeat;
+}
+
+footer ul li a.ouzjsko {
+	width: 145px;
+	background: transparent url('/img/ozujsko.png') no-repeat;
+}
+
+footer ul li a.ozujsko:hover {
+	background: transparent url('/img/ozujsko_on.png') no-repeat;
+}
+
+footer ul li a.generali {
+	width: 160px;
+	background: transparent url('/img/generali.png') no-repeat;
+}
+
+footer ul li a.generali:hover {
+	background: transparent url('/img/generali_on.png') no-repeat;
+}
+
+footer ul li a.anicholding {
+	width: 152px;
+	background: transparent url('/img/anicholding.png') no-repeat;
+}
+
+footer ul li a.anicholding:hover {
+	background: transparent url('/img/anicholding_on.png') no-repeat;
+}
+
+footer ul li a.konzum {
+	width: 150px;
+	background: transparent url('/img/konzum.png') no-repeat;
+}
+
+footer ul li a.konzum:hover {
+	background: transparent url('/img/konzum_on.png') no-repeat;
+}
+
+footer ul li a.pbz {
+	width: 191px;
+	background: transparent url('/img/pbz.png') no-repeat;
+}
+
+footer ul li a.pbz:hover {
+	background: transparent url('/img/pbz_on.png') no-repeat;
+}
+
+footer ul li a.bantours {
+	width: 163px;
+	background: transparent url('/img/bantours.png') no-repeat;
+}
+
+footer ul li a.bantours:hover {
+	background: transparent url('/img/bantours_on.png') no-repeat;
+}
+
+footer ul li a.croatiabus {
+	width: 107px;
+	background: transparent url('/img/croatiabus.png') no-repeat;
+}
+
+footer ul li a.croatiabus:hover {
+	background: transparent url('/img/croatiabus_on.png') no-repeat;
+}
+
+footer ul li a.hyundai {
+	width: 95px;
+	background: transparent url('/img/hyundai.png') no-repeat;
+}
+
+footer ul li a.hyundai:hover {
+	background: transparent url('/img/hyundai_on.png') no-repeat;
+}
+
+footer ul li a.iskon {
+	width: 103px;
+	background: transparent url('/img/iskon.png') no-repeat;
+}
+
+footer ul li a.iskon:hover {
+	background: transparent url('/img/iskon_on.png') no-repeat;
+}
+
+footer ul li a.jamnica {
+	width: 99px;
+	background: transparent url('/img/jamnica.png') no-repeat;
+}
+
+footer ul li a.jamnica:hover {
+	background: transparent url('/img/jamnica_on.png') no-repeat;
+}
+
+footer ul li a.ledo {
+	width: 104px;
+	background: transparent url('/img/ledo.png') no-repeat;
+}
+
+footer ul li a.ledo:hover {
+	background: transparent url('/img/ledo_on.png') no-repeat;
+}
+
+footer ul li a.vindija {
+	width: 99px;
+	background: transparent url('/img/vindija.png') no-repeat;
+}
+
+footer ul li a.vindija:hover {
+	background: transparent url('/img/vindija_on.png') no-repeat;
+}
+
+footer ul li a.cityex {
+	width: 191px;
+	background: transparent url('/img/cityex.png') no-repeat;
+}
+
+footer ul li a.cityex:hover {
+	background: transparent url('/img/cityex_on.png') no-repeat;
+}
 
 
 
@@ -1114,7 +1459,7 @@ footer img.footer_right {
       z-index: 10;
       top: 48%;
       left: 48%;
-      border: 1px solid #CCC;
+/*      border: 1px solid #CCC;*/
     }
     .ad-gallery .ad-image-wrapper .ad-next {
       position: absolute;
@@ -1142,18 +1487,18 @@ footer img.footer_right {
     }
       .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
         background: url('/img/ad_prev.png');
-        width: 30px;
-        height: 30px;
+        width: 80px;
+        height: 80px;
         display: none;
         position: absolute;
-        top: 47%;
+        top: 45%;
         left: 0;
         z-index: 101;
       }
       .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
         background: url('/img/ad_next.png');
-        width: 30px;
-        height: 30px;
+        width: 80px;
+        height: 80px;
         right: 0;
         left: auto;
       }
@@ -1248,14 +1593,26 @@ footer img.footer_right {
     .ad-gallery .ad-nav .ad-thumbs {
       overflow: hidden;
       width: 559px;
+      height: 159px;
+			text-align: center;
       margin: 0 auto;
-      border-left: 1px solid #999;
-      border-right: 1px solid #999;
+/*      border-left: 1px solid #999;*/
+/*      border-right: 1px solid #999;*/
+      font: 14px Arial, sans-serif;
+      color: #fff;
+    }
+
+    .ad-gallery .ad-nav .ad-thumbs h3 {
+    	font: 23px Oswald, sans-serif;
+    	font-weight: 400;
     }
       .ad-gallery .ad-thumbs .ad-thumb-list {
         float: left;
         width: 9000px;
         list-style: none;
+        height: 79px;
+        overflow: hidden;
+        margin-bottom: 10px;
       }
         .ad-gallery .ad-thumbs li {
           float: left;
@@ -1266,11 +1623,12 @@ footer img.footer_right {
             display: block;
           }
             .ad-gallery .ad-thumbs li a img {
-              border-bottom: 1px solid #999;
+              border: 1px solid #999;
+              margin: -1px -1px 0 0;
               display: block;
             }
             .ad-gallery .ad-thumbs li a.ad-active img {
-              border: 3px solid #616161;
+              border: 1px solid #e31f0e;
             }
 /* Can't do display none, since Opera won't load the images then */
 .ad-preloads {
@@ -1288,3 +1646,25 @@ ul#slidenav li.activeSlide {margin-top:-17px;z-index:1000;}
 ul#slidenav li.activeSlide .onImage {display:block;}
 ul#slidenav li.activeSlide .ofImage {display:none;}
 ul#slidenav {position: relative;}
+
+br { clear: both; }
+.cntSeparator {
+  font-size: 54px;
+  margin: 10px 7px;
+  color: #000;
+  margin-top:40px;
+}
+.desc { margin: 7px 3px 0 45px; }
+.desc div {
+  float: left;
+  font-family: Arial;
+  width: 106px;
+  margin-right: 29px;
+  margin-top:10px;
+  font-size: 13px;
+  color: #666;
+}
+div#hns-casopis p {font-family: Oswald; margin:0; padding:40px;text-align:center;font-size:21px;clear:both;}
+.redHr {color:#C13F20;}
+.bluHr {color:#345DA4;}
+div#brojac {background:white;height:337px;background:url(http://www.hns-cff.hr/img/aktualnosti_slider_bg.png);}

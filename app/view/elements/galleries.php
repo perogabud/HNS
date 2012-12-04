@@ -47,4 +47,4 @@ if (isset ($galleryMain)):
 </section>
 <div class="content_bottom_bg"></div>
 </section>
-<div style="float: left;">
+</div>

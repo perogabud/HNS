@@ -1,6 +1,6 @@
 <?php if (isset ($member)): ?>
 	<section class="main">
-		<figure>
+		<figure class="header">
 			<img src="<?php echo $member->Image->Url ?>" width="719" height="429" alt=""/>
 			<figcaption><?php echo $member->Name; ?> </figcaption>
 		</figure>
@@ -56,5 +56,6 @@
 	   		</article>
 	    <?php endif; ?>
     </section>
+    <div class="content_bottom_bg"></div>
 	</section>
 <?php endif; ?>

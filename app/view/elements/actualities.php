@@ -14,7 +14,7 @@
 				<time pubdate="pubdate" datetime="<?php echo $actuality->getPublishDate ('Y-m-d'); ?>"><?php echo $actuality->getPublishDate ('d.m.Y.'); ?></time>
 				<?php endif; ?>
 	    <h3><a href="<?php echo $actuality->Url; ?>"><?php echo $actuality->Title; ?></a></h3>
-	    
+
 			<?php if ($i < 2): ?>
 				<?php echo $actuality->Lead; ?>
 			<?php endif; ?>
@@ -25,4 +25,4 @@
 	<?php endif; ?>
 	<div class="content_bottom_bg"></div>
 </section>
-<div style="float: left;">
+</div>

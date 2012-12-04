@@ -15,5 +15,5 @@
 	  <?php echo $actuality->Content; ?>
 	</section>
 </section>
-<div style="float: left;">
+</div>
 <?php endif; ?>
