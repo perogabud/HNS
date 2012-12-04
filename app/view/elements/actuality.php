@@ -1,4 +1,5 @@
 <?php if (isset ($actuality)): ?>
+<div style="float: left;">
 <section class="main">
   <header>
     <?php if ($actuality->CoverImage): ?>
@@ -14,4 +15,5 @@
 	  <?php echo $actuality->Content; ?>
 	</section>
 </section>
+<div style="float: left;">
 <?php endif; ?>

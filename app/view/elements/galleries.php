@@ -1,3 +1,4 @@
+<div style="float: left;">
 <section class="main">
 <?php
 
@@ -43,4 +44,6 @@ if (isset ($galleryMain)):
 </ul>
 <?php endif; ?>
 </section>
+<div class="content_bottom_bg"></div>
 </section>
+<div style="float: left;">

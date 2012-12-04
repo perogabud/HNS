@@ -1,3 +1,4 @@
+<div style="float: left;">
 <nav id="menu">
 	<ul>
     <li><a href="/hns">HNS</a>
@@ -178,3 +179,4 @@
     <li class="lang"><a href="#" class="hr">HRV</a> <a href="#" class="en">ENG</a></li>
   </ul>
 </nav>
+</div>
