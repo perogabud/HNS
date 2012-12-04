@@ -1,3 +1,4 @@
+<div style="float: left;">
 <section class="main">
 <?php
 
@@ -31,3 +32,4 @@ if (isset ($videoMain)): ?>
 <?php endif; ?>
 </section>
 </section>
+<div style="float: left;">

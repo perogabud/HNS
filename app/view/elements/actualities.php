@@ -1,3 +1,4 @@
+<div style="float: left;">
 <section class="main">
 	<figure class="news header">
 		<img src="/img/utakmica_hrv-svi_(166).jpg" width="719" height="429" alt=""/>
@@ -24,3 +25,4 @@
 	<?php endif; ?>
 	<div class="content_bottom_bg"></div>
 </section>
+<div style="float: left;">

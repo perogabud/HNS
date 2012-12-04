@@ -184,6 +184,7 @@
 
 	  	<?php $this->getElement ('navigation'); ?>
 
+			<div style="float: left;">
 	    <section class="main_home">
 	    	<aside>
 	    		<ul>
@@ -307,6 +308,7 @@
 				<?php $this->getElement ('info'); ?>
 
 	    </section>
+	    </div>
 
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>
