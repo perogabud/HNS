@@ -59,7 +59,7 @@ Config::write ('langMeta', array (
     )
 );
 
-Config::write('adminEmail', 'admin@fiktiv.hr'); // TODO: admin email
+Config::write('adminEmail', 'marko@fiktiv.hr'); // TODO: admin email
 
 // Default database configuration
 Config::write ('dbprefix', 'hns_');
