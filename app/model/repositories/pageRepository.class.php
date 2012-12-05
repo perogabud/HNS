@@ -546,7 +546,7 @@ class PageRepository extends Repository {
       if (Config::read ('debug')) {
         $queryParams = array_merge (
           $queryParams,
-          array (    
+          array (
             ':canAddChildren' => Config::read ('debug') ? (isset ($data['canAddChildren']) ? '1' : '0') : '',
         ':canBeDeleted' => Config::read ('debug') ? (isset ($data['canBeDeleted']) ? '1' : '0') : '',
         ':class' => empty ($data['class']) ? NULL : Tools::stripTags ($data['class']),
@@ -589,7 +589,7 @@ class PageRepository extends Repository {
               `modified` = NOW()
         ";*/
         $query = "
-          
+
            UPDATE " . DBP . "pageI18n
           SET
               `title` = " . ($page->IsEditable ? ":title" : "`title`") . ",
@@ -621,7 +621,7 @@ class PageRepository extends Repository {
           $queryParams[':navigationName'] = Tools::stripTags (trim ($data['navigationName_' . $lang]), 'strict');
           $queryParams[':slug'] = Tools::formatURI (Tools::stripTags (trim ($data['navigationName_' . $lang])));
         }
-        
+
         $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       }
       // Handle many-to-many Custom Module relation
@@ -629,7 +629,7 @@ class PageRepository extends Repository {
       $queryParams = array (
         ':pageId' => array ($pageId, PDO::PARAM_INT)
       );
-      
+
       $query = "
         DELETE FROM " . DBP . "customModuleHasPage
         WHERE `pageId` = :pageId
@@ -1029,7 +1029,7 @@ class PageRepository extends Repository {
       )
     );
   }
-  
+
   public function validateExamApplicationData($input) {
     if (!$this->checkSetData (
         $input,
@@ -1038,12 +1038,12 @@ class PageRepository extends Repository {
     ) {
       return FALSE;
     }
-    
+
     if (!isset($_POST['examClass'])) {
       MessageManager::setGlobalMessage('Molimo odaberite tečaj.');
       return FALSE;
     }
-    
+
     return $this->validateData (
       $input,
        array (
@@ -1060,7 +1060,7 @@ class PageRepository extends Repository {
       )
     );
   }
-  
+
   public function validateClassApplicationData($input) {
     if (!$this->checkSetData (
         $input,
@@ -1069,27 +1069,27 @@ class PageRepository extends Repository {
     ) {
       return FALSE;
     }
-    
+
     if (!isset($_POST['class'])) {
       MessageManager::setGlobalMessage('Molimo odaberite tečaj.');
       return FALSE;
     }
-    
+
     if (!isset($_POST['completedClass'])) {
       MessageManager::setGlobalMessage('Molimo odaberite završeni tečaj.');
       return FALSE;
     }
-    
+
     if (!isset($_POST['documentation'])) {
       MessageManager::setGlobalMessage('Molimo odaberite jednu od ponuđenih opcija vezanih uz dokumentaciju.');
       return FALSE;
     }
-    
+
     if (!isset($_POST['confirmation'])) {
       MessageManager::setGlobalMessage('Molimo potvrdite uvjet vezan uz kotizaciju.');
       return FALSE;
     }
-    
+
     return $this->validateData (
       $input,
        array (
@@ -1107,7 +1107,7 @@ class PageRepository extends Repository {
       )
     );
   }
-  
+
   public function validatePressApplicationData($input) {
     if (!$this->checkSetData (
         $input,
@@ -1116,7 +1116,7 @@ class PageRepository extends Repository {
     ) {
       return FALSE;
     }
-    
+
     return $this->validateData (
       $input,
        array (

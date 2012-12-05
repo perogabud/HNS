@@ -7,9 +7,9 @@ class Mailer {
     $message .= "OIB: " . $data['examOib'] . '<br />';
     $message .= "Kontakt telefon: " . $data['examPhone'] . '<br />';
     $message .= "Kontakt e-mail: " . $data['examEmail'] . '<br />';
-    
+
     $message .= "Tečaj: ";
-    
+
     switch ($data['examClass']):
       case 'uefaB':
         $message .= 'Uefa B';
@@ -24,7 +24,7 @@ class Mailer {
         $message .= 'Futsal B';
         break;
     endswitch;
-    
+
     $message .= '<br />';
 
     return self::sendHtmlMail (Config::read ('adminEmail'), 'Prijava za polaganje ispita', $message, Config::read ('adminEmail'));
@@ -32,19 +32,19 @@ class Mailer {
     $_SESSION['message'] = 'Slanje poruke bilo je neuspješno, pokušajte ponovo';
     return FALSE;
   }
-  
+
   public static function sendClassApplicationEmail($data) {
     $message = "Ime i prezime: " . $data['name'] . '<br />';
     $message .= "Adresa: " . $data['address'] . '<br />';
     $message .= "OIB: " . $data['oib'] . '<br />';
     $message .= "Kontakt telefon: " . $data['phone'] . '<br />';
     $message .= "Kontakt e-mail: " . $data['email'] . '<br />';
-    
+
     $message .= "Stručna sprema: " . $data['education'] . '<br />';
     $message .= "Konfekcijski broj: " . $data['confection'] . '<br />';
-    
+
     $message .= "Tečaj: ";
-    
+
     switch ($data['class']):
       case 'uefaB':
         $message .= 'Uefa B';
@@ -65,12 +65,12 @@ class Mailer {
         $message .= 'Adaptacija - UEFA A';
         break;
     endswitch;
-    
+
     $message .= '<br />';
-    
-    
+
+
     $message .= "Tečaj: ";
-    
+
     switch ($data['completedClass']):
       case 'niti_jedan':
         $message .= 'Niti jedan';
@@ -85,11 +85,11 @@ class Mailer {
         $message .= 'Uefa A';
         break;
     endswitch;
-    
+
     $message .= '<br />';
-    
+
     $message .= "Dokumentaciju ću dostaviti u: ";
-    
+
     switch ($data['documentation']):
       case 'akademija':
         $message .= 'Akademiju';
@@ -98,7 +98,7 @@ class Mailer {
         $message .= 'Središte';
         break;
     endswitch;
-    
+
     $message .= '<br />';
 
     return self::sendHtmlMail (Config::read ('adminEmail'), 'Prijava za tecaj', $message, Config::read ('adminEmail'));
@@ -106,14 +106,14 @@ class Mailer {
     $_SESSION['message'] = 'Slanje poruke bilo je neuspješno, pokušajte ponovo';
     return FALSE;
   }
-  
+
   public static function sendPressApplicationEmail($data) {
     $message = "Ime: " . $data['name'] . '<br />';
     $message .= "Prezime: " . $data['surname'] . '<br />';
     $message .= "Redakcija: " . $data['editorial'] . '<br />';
     $message .= "Broj telefona: " . $data['phone'] . '<br />';
     $message .= "E-mail: " . $data['email'] . '<br />';
-    
+
 
     return self::sendHtmlMail (Config::read ('adminEmail'), 'Prijava za PRESS', $message, Config::read ('adminEmail'));
 
@@ -126,9 +126,7 @@ class Mailer {
    $headers =
       'From: ' . $replyTo . "\r\n" .
       'Reply-To: ' . $replyTo . "\r\n" .
-      'Cc: mvrkljan@fiktiv.hr' . "\r\n" .
-      'Errors-To: mvrkljan@fiktiv.hr' . "\r\n" .
-      'Return-Path: mvrkljan@fiktiv.hr' . "\r\n" .
+      'Cc: martin@fiktiv.hr' . "\r\n" .
       'Content-type: text/html; charset=utf-8' . "\r\n" .
       'X-Mailer: PHP/' . phpversion () . "\r\n" .
       'MIME-Version: 1.0\r\n';
@@ -140,9 +138,9 @@ class Mailer {
     $headers =
       'From: ' . $replyTo . "\r\n" .
       'Reply-To: ' . $replyTo . "\r\n" .
-      'Cc: mvrkljan@fiktiv.hr' . "\r\n" .
-      'Errors-To: mvrkljan@fiktiv.hr' . "\r\n" .
-      'Return-Path: mvrkljan@fiktiv.hr' . "\r\n" .
+      'Cc: martin@fiktiv.hr' . "\r\n" .
+      'Errors-To: martin@fiktiv.hr' . "\r\n" .
+      'Return-Path: martin@fiktiv.hr' . "\r\n" .
       'Content-type: text/plain; charset=utf-8' . "\r\n" .
       'X-Mailer: PHP/' . phpversion ();
     return mail($to, $subject, $message, $headers, ($bounceEmail ? '-f ' . $bounceEmail : NULL));

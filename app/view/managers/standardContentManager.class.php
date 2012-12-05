@@ -29,7 +29,7 @@ class StandardContentManager extends ContentManager {
     );
 
     if ($this->params[0] != '') {
-      $subPages = $pageController->getSubpages (array ($this->params[0]), 3);
+      $subPages = $pageController->getSubpages (array ($this->params[0]), 4);
       $this->_setData (
         array ('sideNavPages' => $subPages)
       );
@@ -487,7 +487,7 @@ class StandardContentManager extends ContentManager {
         $pageController = PageController::getInstance ();
         $page = $pageController->getPage (array ('uri' => $this->params));
         if ($page) {
-          $subPages = $pageController->getSubpages (array ($this->params[0]), 3);
+          $subPages = $pageController->getSubpages (array ($this->params[0]), 4);
           if ($page->Redirect) {
             $subPages = $pageController->getSubpages ($this->params);
             Tools::redirect ($subPages[0]->Subpages[0]->Url);
@@ -519,14 +519,14 @@ class StandardContentManager extends ContentManager {
           } elseif ($page->Class) {
             switch ($page->Class) {
               case 'applicationForms':
-                
+
                 if (!empty($_POST)) {
                   if (isset($_POST['submitExamApplication'])) {
                     $success = false;
                     if ($pageController->validateExamApplicationData($_POST)) {
                       $success = Mailer::sendExamApplicationEmail($_POST);
                     }
-                    
+
                     if ($success) {
                       MessageManager::setSuccessMessage('Prijava uspješno poslana!');
                     } else {
@@ -538,7 +538,7 @@ class StandardContentManager extends ContentManager {
                     if ($pageController->validateClassApplicationData($_POST)) {
                       $success = Mailer::sendClassApplicationEmail($_POST);
                     }
-                    
+
                     if ($success) {
                       MessageManager::setSuccessMessage('Prijava uspješno poslana!');
                     } else {
@@ -546,7 +546,7 @@ class StandardContentManager extends ContentManager {
                     }
                   }
                 }
-                
+
                 $this->_setElements (
                   array (
                     'mainContent' => array (
@@ -564,16 +564,16 @@ class StandardContentManager extends ContentManager {
                   )
                 );
                 break 2;
-                
+
                 case 'press':
-                
+
                 if (!empty($_POST)) {
                   if (isset($_POST['submitPressApplication'])) {
                     $success = false;
                     if ($pageController->validatePressApplicationData($_POST)) {
                       $success = Mailer::sendPressApplicationEmail($_POST);
                     }
-                    
+
                     if ($success) {
                       MessageManager::setSuccessMessage('Prijava uspješno poslana!');
                     } else {
@@ -581,7 +581,7 @@ class StandardContentManager extends ContentManager {
                     }
                   }
                 }
-                
+
                 $this->_setElements (
                   array (
                     'mainContent' => array (
@@ -601,7 +601,7 @@ class StandardContentManager extends ContentManager {
                 break 2;
             }
           }
-          
+
           $this->_setElements (
             array (
               'mainContent' => array (
