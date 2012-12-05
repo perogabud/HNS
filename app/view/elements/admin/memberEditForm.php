@@ -24,13 +24,13 @@
     FormHelper::input ('text', 'firstName', 'firstName', array ('label' => array ('text' => 'Ime * '), 'value' => $member->getFirstName ()));
     FormHelper::input ('text', 'lastName', 'lastName', array ('label' => array ('text' => 'Prezime * '), 'value' => $member->getLastName ()));
     FormHelper::input ('text', 'position', 'position', array ('label' => array ('text' => 'Pozicija  '), 'value' => $member->getPosition ()));
-    FormHelper::input ('text', 'birthDate', 'birthDate', array ('label' => array ('text' => 'Datum rođenja  '), 'class' => 'date', 'value' => $member->getBirthDate ()));
+    FormHelper::input ('text', 'birthDate', 'birthDate', array ('label' => array ('text' => 'Datum rođenja  '), 'class' => 'date', 'value' => $member->getBirthDate ('d.m.Y.')));
     FormHelper::input ('text', 'birthPlace', 'birthPlace', array ('label' => array ('text' => 'Mjesto rođenja  '), 'value' => $member->getBirthPlace ()));
     FormHelper::input ('text', 'height', 'height', array ('label' => array ('text' => 'Visina  '), 'value' => $member->getHeight ()));
     FormHelper::input ('text', 'club', 'club', array ('label' => array ('text' => 'Klub  '), 'value' => $member->getClub ()));
     FormHelper::input ('text', 'pastClubs', 'pastClubs', array ('label' => array ('text' => 'Prijašnji klubovi  '), 'value' => $member->getPastClubs ()));
     FormHelper::input ('text', 'playCount', 'playCount', array ('label' => array ('text' => 'Broj nastupa  '), 'value' => $member->getPlayCount ()));
-    FormHelper::input ('text', 'firstPlayDate', 'firstPlayDate', array ('label' => array ('text' => 'Prvi nastup  '), 'class' => 'date', 'value' => $member->getFirstPlayDate ()));
+    FormHelper::input ('text', 'firstPlayDate', 'firstPlayDate', array ('label' => array ('text' => 'Prvi nastup  '), 'class' => 'date', 'value' => $member->getFirstPlayDate ('d.m.Y.')));
     if ($member->getImage ()) {
       echo '<div class="input"><img src="' . $member->getImage ()->getUrl () . '" /></div>';
       FormHelper::input ('file', 'image[]', 'image', array ('label' => array ('text' => 'Slika '), 'info' => 'Leave empty to keep current image.<br />The image will be resized and cropped to the following dimensions: <strong>719px width</strong> and <strong>429px height</strong>.<br/>These are also minimum dimensions.'));

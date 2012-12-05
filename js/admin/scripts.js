@@ -310,10 +310,10 @@ $().ready (function () {
   });
 
   if ($('input.date').length > 0) {
-    $('input.date').datepicker ({dateFormat : 'yy-mm-dd'});
+    $('input.date').datepicker ({dateFormat : 'dd.mm.yy.'});
   }
   if ($('input.dateTime').length > 0) {
-    $('input.dateTime').datetimepicker ({dateFormat : 'yy-mm-dd'});
+    $('input.dateTime').datetimepicker ({dateFormat : 'dd.mm.yy. HH:mm'});
   }
 
   $('select').chosen ();

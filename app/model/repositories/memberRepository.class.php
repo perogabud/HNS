@@ -31,7 +31,7 @@ class MemberRepository extends Repository {
       ";
       $queryParams[':memberId'] = array (intval ($params['memberId']), PDO::PARAM_INT);
     }
-    
+
     if (array_key_exists ('slug', $params)) {
       $query .= "
         AND m.slug = :slug
@@ -300,13 +300,13 @@ class MemberRepository extends Repository {
         ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['firstName'] . ' ' . $data['lastName']))),
         ':lastName' => Tools::stripTags (trim ($data['lastName'])),
         ':position' => empty ($data['position']) ? NULL : Tools::stripTags (trim ($data['position'])),
-        ':birthDate' => empty ($data['birthDate']) ? NULL : array ($data['birthDate'], PDO::PARAM_INT),
+        ':birthDate' => empty ($data['birthDate']) ? NULL : array (date ('Y-m-d', strtotime ($data['birthDate'])), PDO::PARAM_INT),
         ':birthPlace' => empty ($data['birthPlace']) ? NULL : Tools::stripTags (trim ($data['birthPlace'])),
         ':height' => empty ($data['height']) ? NULL : Tools::stripTags (trim ($data['height'])),
         ':club' => empty ($data['club']) ? NULL : Tools::stripTags (trim ($data['club'])),
         ':pastClubs' => empty ($data['pastClubs']) ? NULL : Tools::stripTags (trim ($data['pastClubs'])),
         ':playCount' => empty ($data['playCount']) ? NULL : Tools::stripTags (trim ($data['playCount'])),
-        ':firstPlayDate' => empty ($data['firstPlayDate']) ? NULL : array ($data['firstPlayDate'], PDO::PARAM_INT)
+        ':firstPlayDate' => empty ($data['firstPlayDate']) ? NULL : array (date ('Y-m-d', strtotime ($data['firstPlayDate'])), PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
 
@@ -451,13 +451,13 @@ class MemberRepository extends Repository {
         ':slug' => Tools::formatURI (Tools::stripTags (trim ($data['firstName'] . ' ' . $data['lastName']))),
         ':lastName' => Tools::stripTags (trim ($data['lastName'])),
         ':position' => empty ($data['position']) ? NULL : Tools::stripTags (trim ($data['position'])),
-        ':birthDate' => empty ($data['birthDate']) ? NULL : array ($data['birthDate'], PDO::PARAM_INT),
+        ':birthDate' => empty ($data['birthDate']) ? NULL : array (date ('Y-m-d', strtotime ($data['birthDate'])), PDO::PARAM_INT),
         ':birthPlace' => empty ($data['birthPlace']) ? NULL : Tools::stripTags (trim ($data['birthPlace'])),
         ':height' => empty ($data['height']) ? NULL : Tools::stripTags (trim ($data['height'])),
         ':club' => empty ($data['club']) ? NULL : Tools::stripTags (trim ($data['club'])),
         ':pastClubs' => empty ($data['pastClubs']) ? NULL : Tools::stripTags (trim ($data['pastClubs'])),
         ':playCount' => empty ($data['playCount']) ? NULL : Tools::stripTags (trim ($data['playCount'])),
-        ':firstPlayDate' => empty ($data['firstPlayDate']) ? NULL : array ($data['firstPlayDate'], PDO::PARAM_INT),
+        ':firstPlayDate' => empty ($data['firstPlayDate']) ? NULL : array (date ('Y-m-d', strtotime ($data['firstPlayDate'])), PDO::PARAM_INT),
         ':memberId' => array ($memberId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
@@ -465,7 +465,7 @@ class MemberRepository extends Repository {
       foreach (Config::read ('supportedLangs') as $lang) {
         $query = "
           UPDATE " . DBP . "memberI18n
-          SET 
+          SET
               `biography` = :biography,
               `modified` = NOW()
               WHERE `memberId` = :memberId AND
@@ -528,6 +528,9 @@ class MemberRepository extends Repository {
     ) {
       return FALSE;
     }
+    /**
+     * @todo
+     */
     return $this->validateData (
       $input,
        array (

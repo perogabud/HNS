@@ -14,7 +14,7 @@
     FormHelper::input ('textarea', 'content', 'content', array ('label' => array ('text' => 'Sadržaj  '), 'value' => $newsItem->getContent (), 'class' => 'editor'));
     FormHelper::input ('checkbox', 'isPublished', 'isPublished', array ('label' => array ('text' => 'Objavljeno * '), 'checked' => $newsItem->getIsPublished ()));
     FormHelper::input ('checkbox', 'isFeatured', 'isFeatured', array ('label' => array ('text' => 'Naslovnica * '), 'checked' => $newsItem->getIsFeatured ()));
-    FormHelper::input ('text', 'publishDate', 'publishDate', array ('label' => array ('text' => 'Datum objave * '), 'class' => 'date', 'value' => $newsItem->getPublishDate ()));
+    FormHelper::input ('text', 'publishDate', 'publishDate', array ('label' => array ('text' => 'Datum objave * '), 'class' => 'dateTime', 'value' => $newsItem->getPublishDate ('d.m.Y. H:i')));
     if ($newsItem->getCoverImage ()) {
       echo '<div class="input"><img src="' . $newsItem->getCoverImage ()->getUrl () . '" /></div>';
       FormHelper::input ('file', 'coverImage[]', 'coverImage', array ('label' => array ('text' => 'Naslovna slika '), 'info' => 'Leave empty to keep current image.<br />The image will be resized and cropped to the following dimensions: <strong>729px width</strong> and <strong>429px height</strong>.<br/>These are also minimum dimensions.'));

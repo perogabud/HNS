@@ -187,24 +187,35 @@ class NewsItemRepository extends Repository {
       ";
       $queryParams[':languageId'] = trim ($params['languageId']);
     }
-    
+
     if (isset ($params['isPublished']) && $params['isPublished'] === TRUE) {
       $query .= "
         AND n.isPublished = 1
       ";
     }
-    
+
     if (isset ($params['isFeatured']) && $params['isFeatured']) {
       $query .= "
         AND n.isFeatured = 1
       ";
     }
 
+    if (isset ($params['newsCategoryId']) && is_numeric ($params['newsCategoryId'])) {
+      $query .= "
+        AND n.newsCategoryId = :newsCategoryId
+      ";
+      $queryParams[':newsCategoryId'] = array ($params['newsCategoryId'], PDO::PARAM_INT);
+    }
+
     if (!isset ($params['orderBy'])) {
       $params['orderBy'] = 'publishDate';
       $params['orderDirection'] = 'DESC';
     }
-		$query .= $this->_getOrderAndLimit ($params);
+		if ($params['orderBy'] == 'publishDate') {
+      $params['orderBy'] = 'publishDate DESC, created';
+    }
+    $query .= $this->_getOrderAndLimit ($params);
+
 
 		$newsItems = array ();
     try {
@@ -486,7 +497,7 @@ class NewsItemRepository extends Repository {
         throw new Exception ($message . $e->getMessage());
       }
   }
-  
+
   public function getNewsCategories ($params = array ()) {
 
     $query = "
@@ -509,7 +520,7 @@ class NewsItemRepository extends Repository {
         }
       }
     }
-    
+
 		$query .= $this->_getOrderAndLimit ($params);
 
     try {
@@ -526,7 +537,7 @@ class NewsItemRepository extends Repository {
 
     return Factory::getNewsCategories ($results);
   }
-  
+
   public function getNewsCategoryCount ($params = array ()) {
 
     $query = "
@@ -564,7 +575,7 @@ class NewsItemRepository extends Repository {
 
     return intval ($results[0]['newsCategoryCount']);
   }
-  
+
   public function getNewsCategory ($params = array ()) {
     if (empty ($params)) {
       return NULL;
@@ -576,14 +587,14 @@ class NewsItemRepository extends Repository {
       WHERE 1 = 1
     ";
     $queryParams = array ();
-    
+
     if (array_key_exists ('newsCategoryId', $params)) {
       $query .= "
         AND nk.newsCategoryId = :newsCategoryId
       ";
       $queryParams[':newsCategoryId'] = array (intval ($params['newsCategoryId']), PDO::PARAM_INT);
     }
-    
+
 		$query .= $this->_getOrderAndLimit ($params);
 
     try {
@@ -596,7 +607,7 @@ class NewsItemRepository extends Repository {
 
     return Factory::getNewsCategory ($results[0]);
   }
-  
+
   public function editNewsCategory ($newsCategoryId, $data) {
     if (empty ($data) || !$this->_validateNewsCategoryData ($data)) {
       throw new Exception ('Invalid data.', 10);
@@ -651,11 +662,11 @@ class NewsItemRepository extends Repository {
       )
     );
   }
-  
+
   public function deleteNewsCategory ($newsCategoryId) {
     try {
       $this->startTransaction ();
-      
+
       $query = "
         DELETE FROM " . DBP . "newsCategory
         WHERE `newsCategoryId` = :newsCategoryId
@@ -675,7 +686,7 @@ class NewsItemRepository extends Repository {
         throw new Exception ($message . $e->getMessage());
       }
   }
-  
+
   public function addNewsCategory ($data) {
     if (empty ($data) || !$this->_validateNewsCategoryData ($data)) {
       throw new Exception ('News Category did not pass validation.', 10);
@@ -705,7 +716,7 @@ class NewsItemRepository extends Repository {
     }
     return $this->getNewsCategory (array ('newsCategoryId' => $newsCategoryId));
   }
-  
+
   private function _validateNewsCategoryData ($input) {
     if (!$this->checkSetData (
         $input,

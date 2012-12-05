@@ -4,6 +4,7 @@ $(function() {
 				$('.tab_content').cycle({
 				    speed:  'fast',
 				    timeout: 6000,
+					startingSlide: 2,
 				    //pause: 1,
 				    //pauseOnPagerHover: 1,
 				    pager:  '#slidenav',

@@ -990,7 +990,8 @@ div.table table div.input textarea { height: auto; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
-input.date {
+input.date,
+input.dateTime {
   background: url(/img/admin/calendarGray.png) 99% center no-repeat #FFF;
   background-image: url(/img/admin/calendarGray.png), -moz-linear-gradient(top, #eee 0%, #fff 5px); /* FF3.6+ */
   background-image: url(/img/admin/calendarGray.png), -webkit-linear-gradient(top, #eee 0%, #fff 5px); /* Chrome10+,Safari5.1+ */

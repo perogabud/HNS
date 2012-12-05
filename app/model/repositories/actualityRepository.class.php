@@ -186,7 +186,10 @@ class ActualityRepository extends Repository {
       $params['orderBy'] = 'publishDate';
       $params['orderDirection'] = 'DESC';
     }
-		$query .= $this->_getOrderAndLimit ($params);
+    if ($params['orderBy'] == 'publishDate') {
+      $params['orderBy'] = 'publishDate DESC, created';
+    }
+    $query .= $this->_getOrderAndLimit ($params);
 
 		$actualitys = array ();
     try {

@@ -15,8 +15,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/chosen/chosen.jquery.min.js"></script>
-    <script src="/js/admin/custom-scrollbar-plugin/jquery.mousewheel.min.js"></script>
-    <script src="/js/admin/custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="/js/admin/js/jquery-ui-timepicker-addon.js"></script>
   </head>
 
   <body>

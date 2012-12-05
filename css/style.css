@@ -1255,7 +1255,7 @@ footer ul {
 }
 
 footer section:first-of-type ul {
-	width: 816px;
+	width: 965px;
 	height: 100px;
 	margin: 0 auto;
 }
@@ -1280,7 +1280,7 @@ footer ul li a.nike:hover {
 	background: transparent url('/img/nike_on.png') no-repeat;
 }
 
-footer ul li a.ouzjsko {
+footer ul li a.ozujsko {
 	width: 145px;
 	background: transparent url('/img/ozujsko.png') no-repeat;
 }

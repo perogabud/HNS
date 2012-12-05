@@ -11,7 +11,7 @@
     FormHelper::input ('textarea', 'lead', 'lead', array ('label' => array ('text' => 'Uvodni tekst *'), 'class' => 'editor'));
     FormHelper::input ('textarea', 'content', 'content', array ('label' => array ('text' => 'Sadržaj *'), 'class' => 'editor'));
     FormHelper::input ('checkbox', 'isPublished', 'isPublished', array ('label' => array ('text' => 'Objavljeno  ')));
-    FormHelper::input ('text', 'publishDate', 'publishDate', array ('label' => array ('text' => 'Datum objave * '), 'class' => 'date'));
+    FormHelper::input ('text', 'publishDate', 'publishDate', array ('label' => array ('text' => 'Datum objave * '), 'class' => 'dateTime'));
     FormHelper::input ('file', 'coverImage[]', 'coverImage', array ('label' => array ('text' => 'Naslovna slika '), 'info' => 'The image will be resized and cropped to the following dimensions: <strong>719px width</strong> and <strong>429px height</strong>.<br/>These are also minimum dimensions.'));
     ?>
     <p class="info">Polja označena sa zvijezdicom (*) moraju biti ispunjena.</p>

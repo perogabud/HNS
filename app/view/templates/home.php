@@ -243,7 +243,7 @@
             <div class="caption">pogledaj sve video zapise &gt; <a href="<?php echo '/' . Dict::read ('slug_infoCenter') . '/' . Dict::read ('slug_videos') ?>">HNS TV<img src="/img/hns_negativ.png" alt="HNS logo" /></a></div>
 	    		</div>
 	    		<div id="galerija">
-	    			<img src="/img/slika_iz_galerije.jpg" alt="Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije" width="599" height="337" />
+	    			<img src="/img/galerije.jpg" alt="" width="599" height="337" />
 	    			<div class="caption"><!--<a href="#" class="details">detalji fotografije</a>-->pogledaj sve foto galerije &gt;&gt; <a href="/info-centar/galerija">GALERIJA</a><!--<div class="img_details"><time pubdate="pubdate" datetime="2012-06-25">25.06.2012.</time> Mario Mandžukić slavi pogodak za Hrvatsku u utakmici protiv Italije</div>--></div>
 	    		</div>
 	    		<div id="aktualno">
