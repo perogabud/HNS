@@ -1670,3 +1670,45 @@ div#hns-casopis p {font-family: Oswald; margin:0; padding:40px;text-align:center
 div#brojac {background:white;height:337px;background:url(http://www.hns-cff.hr/img/aktualnosti_slider_bg.png);}
 
 div#hns-casopis, div#aktualno {width:100%;}
+
+form.classApplication,
+form.examApplication {
+  
+}
+
+form.classApplication input.submit,
+form.examApplication input.submit {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+form.classApplication input[type=text],
+form.examApplication input[type=text] {
+  width: 300px;
+}
+
+form.classApplication h3,
+form.examApplication h3 {
+  margin-bottom: 16px;
+  display: block;
+}
+
+form.classApplication .input:not(.radio):not(.checkbox) label,
+form.examApplication .input:not(.radio):not(.checkbox) label {
+  min-width: 120px;
+  display: inline-block;
+  margin-bottom: 12px;
+  text-align: right;
+  margin-right: 12px;
+}
+form.classApplication .input.custom:not(.radio):not(.checkbox) label,
+form.examApplication .input.custom:not(.radio):not(.checkbox) label {
+  margin-top: 16px;
+}
+form.classApplication .input.radio,
+form.examApplication .input.radio {
+  padding-left: 40px;
+}
+form.classApplication .input.checkbox {
+  margin-top: 30px;
+}
