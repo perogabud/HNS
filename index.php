@@ -1,5 +1,5 @@
 <?php
-
+/*
 $start = date ('Y-m-d H:i:s', time ());
                 $end = date ('Y-m-d H:i:s', strtotime ('2013-03-20 08:00:00'));
                 $d_start = new DateTime ($start);
@@ -8,6 +8,7 @@ $start = date ('Y-m-d H:i:s', time ());
                 $diff = new DateInterval ();
                 $diff->format('');
                 die;
+                */
 
 // Handle magic quotes
 if (get_magic_quotes_gpc()) {

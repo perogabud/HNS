@@ -1029,6 +1029,84 @@ class PageRepository extends Repository {
       )
     );
   }
+  
+  public function validateExamApplicationData($input) {
+    if (!$this->checkSetData (
+        $input,
+        array ('examName', 'examAddress', 'examOib', 'examPhone', 'examEmail')
+      )
+    ) {
+      return FALSE;
+    }
+    
+    if (!isset($_POST['examClass'])) {
+      MessageManager::setGlobalMessage('Molimo odaberite tečaj.');
+      return FALSE;
+    }
+    
+    return $this->validateData (
+      $input,
+       array (
+        'message' => 'Morate popuniti sva polja.',
+        'rules' => array (
+          'notEmpty' => array (
+            'examName' => '',
+            'examAddress' => '',
+            'examOib' => '',
+            'examPhone' => '',
+            'examEmail' => '',
+          )
+        )
+      )
+    );
+  }
+  
+  public function validateClassApplicationData($input) {
+    if (!$this->checkSetData (
+        $input,
+        array ('name', 'address', 'oib', 'phone', 'email', 'education')
+      )
+    ) {
+      return FALSE;
+    }
+    
+    if (!isset($_POST['class'])) {
+      MessageManager::setGlobalMessage('Molimo odaberite tečaj.');
+      return FALSE;
+    }
+    
+    if (!isset($_POST['completedClass'])) {
+      MessageManager::setGlobalMessage('Molimo odaberite završeni tečaj.');
+      return FALSE;
+    }
+    
+    if (!isset($_POST['documentation'])) {
+      MessageManager::setGlobalMessage('Molimo odaberite jednu od ponuđenih opcija vezanih uz dokumentaciju.');
+      return FALSE;
+    }
+    
+    if (!isset($_POST['confirmation'])) {
+      MessageManager::setGlobalMessage('Molimo potvrdite uvjet vezan uz kotizaciju.');
+      return FALSE;
+    }
+    
+    return $this->validateData (
+      $input,
+       array (
+        'message' => 'Morate popuniti sva polja.',
+        'rules' => array (
+          'notEmpty' => array (
+            'name' => '',
+            'address' => '',
+            'oib' => '',
+            'phone' => '',
+            'email' => '',
+            'education' => ''
+          )
+        )
+      )
+    );
+  }
 
   private function _deleteCoverImage ($pageId) {
     // Delete image files on server
