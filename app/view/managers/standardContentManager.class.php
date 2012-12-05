@@ -564,6 +564,41 @@ class StandardContentManager extends ContentManager {
                   )
                 );
                 break 2;
+                
+                case 'press':
+                
+                if (!empty($_POST)) {
+                  if (isset($_POST['submitPressApplication'])) {
+                    $success = false;
+                    if ($pageController->validatePressApplicationData($_POST)) {
+                      $success = Mailer::sendPressApplicationEmail($_POST);
+                    }
+                    
+                    if ($success) {
+                      MessageManager::setSuccessMessage('Prijava uspješno poslana!');
+                    } else {
+                      MessageManager::setGlobalMessage('Došlo je do greške prilikom prijave.');
+                    }
+                  }
+                }
+                
+                $this->_setElements (
+                  array (
+                    'mainContent' => array (
+                      'filename' => 'pressApplicationForm',
+                      'data' => array (
+                        'page' => $page,
+                        'submittedSuccess' => isset($success) && $success
+                      )
+                    )
+                  )
+                );
+                $this->_setHtmlHead (
+                  array (
+                    'page' => $page
+                  )
+                );
+                break 2;
             }
           }
           

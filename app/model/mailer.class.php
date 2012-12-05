@@ -106,6 +106,20 @@ class Mailer {
     $_SESSION['message'] = 'Slanje poruke bilo je neuspješno, pokušajte ponovo';
     return FALSE;
   }
+  
+  public static function sendPressApplicationEmail($data) {
+    $message = "Ime: " . $data['name'] . '<br />';
+    $message .= "Prezime: " . $data['surname'] . '<br />';
+    $message .= "Redakcija: " . $data['editorial'] . '<br />';
+    $message .= "Broj telefona: " . $data['phone'] . '<br />';
+    $message .= "E-mail: " . $data['email'] . '<br />';
+    
+
+    return self::sendHtmlMail (Config::read ('adminEmail'), 'Prijava za PRESS', $message, Config::read ('adminEmail'));
+
+    $_SESSION['message'] = 'Slanje poruke bilo je neuspješno, pokušajte ponovo';
+    return FALSE;
+  }
 
   // TODO: remove self from cc before launch
   private static function sendHtmlMail ($to, $subject, $message, $replyTo) {

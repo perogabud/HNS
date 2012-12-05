@@ -1107,6 +1107,32 @@ class PageRepository extends Repository {
       )
     );
   }
+  
+  public function validatePressApplicationData($input) {
+    if (!$this->checkSetData (
+        $input,
+        array ('name', 'surname', 'editorial', 'phone', 'email')
+      )
+    ) {
+      return FALSE;
+    }
+    
+    return $this->validateData (
+      $input,
+       array (
+        'message' => 'Morate popuniti sva polja.',
+        'rules' => array (
+          'notEmpty' => array (
+            'name' => '',
+            'surname' => '',
+            'editorial' => '',
+            'phone' => '',
+            'email' => ''
+          )
+        )
+      )
+    );
+  }
 
   private function _deleteCoverImage ($pageId) {
     // Delete image files on server
