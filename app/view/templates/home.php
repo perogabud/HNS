@@ -86,29 +86,34 @@
 				</section>
 
 				<section class="vatreni">
-					<img src="/img/vatreni.png" alt="vatreni logo" class="vatreni" />
+					<!--<img src="/img/vatreni.png" alt="vatreni logo" class="vatreni" />-->
 					<div class="slideshow1">
             <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow2">
-            <?php for($i = 4; $i < 8; $i++) : $member = $members[$i]; ?>
+            <?php for($i = 4; $i < 7; $i++) : $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow3">
-            <?php for($i = 8; $i < 12; $i++) : $member = $members[$i]; ?>
+            <?php for($i = 7; $i < 10; $i++) : $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow4">
-            <?php for($i = 12; $i < 16; $i++) : $member = $members[$i]; ?>
+            <?php for($i = 11; $i < 14; $i++) : $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>
 					<div class="slideshow5">
-            <?php for($i = 16; $i < 20; $i++) : $member = $members[$i]; ?>
+            <?php for($i = 15; $i < 17; $i++) : $member = $members[$i]; ?>
+							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
+            <? endfor ?>
+					</div>
+					<div class="slideshow6">
+            <?php for($i = 18; $i < 20; $i++) : $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
             <? endfor ?>
 					</div>

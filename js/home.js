@@ -14,9 +14,20 @@ $(function() {
 				    }
 				});
 
+				var d1=new Date(2013,2,22); // jan,1 2011
+				var d2=new Date(); // now
+
+				var diff=d2-d1,sign=diff<0?-1:1,milliseconds,seconds,minutes,hours,days;
+				diff/=sign; // or diff=Math.abs(diff);
+				diff=(diff-(milliseconds=diff%1000))/1000;
+				diff=(diff-(seconds=diff%60))/60;
+				diff=(diff-(minutes=diff%60))/60;
+				days=(diff-(hours=diff%24))/24;
+
         $('#counter').countdown({
           image: 'http://www.hns-cff.hr/img/digits.png',
-          startTime: '105:12:12:00'
+          //startTime: '105:12:12:00'
+          startTime: sprintf('%02s', days) + ':' + sprintf('%02s', hours) + ':' + sprintf('%02s', minutes) + ':' + sprintf('%02s', seconds)
          //startTime: days+':'+hours+':'+mins+':'+secs
         });
 
@@ -64,6 +75,12 @@ $(function() {
 				    delay:  3000,
 				    speed:  2200,
 				    timeout: 350
+				});
+
+				$('.slideshow6').cycle({
+				    delay:  3000,
+				    speed:  2200,
+				    timeout: 250
 				});
 
 				$('.timeline ul').cycle({
