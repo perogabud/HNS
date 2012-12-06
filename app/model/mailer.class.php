@@ -27,7 +27,7 @@ class Mailer {
 
     $message .= '<br />';
 
-    return self::sendHtmlMail (Config::read ('adminEmail'), 'Prijava za polaganje ispita', $message, Config::read ('adminEmail'));
+    return self::sendHtmlMail (Config::read ('applicationEmails'), 'Prijava za polaganje ispita', $message, Config::read ('adminEmail'));
 
     $_SESSION['message'] = 'Slanje poruke bilo je neuspješno, pokušajte ponovo';
     return FALSE;
@@ -101,7 +101,7 @@ class Mailer {
 
     $message .= '<br />';
 
-    return self::sendHtmlMail (Config::read ('adminEmail'), 'Prijava za tecaj', $message, Config::read ('adminEmail'));
+    return self::sendHtmlMail (Config::read ('applicationEmails'), 'Prijava za tecaj', $message, Config::read ('adminEmail'));
 
     $_SESSION['message'] = 'Slanje poruke bilo je neuspješno, pokušajte ponovo';
     return FALSE;
@@ -123,6 +123,9 @@ class Mailer {
 
   // TODO: remove self from cc before launch
   private static function sendHtmlMail ($to, $subject, $message, $replyTo) {
+    if (is_array ($to)) {
+      $to = implode (', ', $to);
+    }
    $headers =
       'From: ' . $replyTo . "\r\n" .
       'Reply-To: ' . $replyTo . "\r\n" .
@@ -135,6 +138,9 @@ class Mailer {
 
   // TODO: remove self from cc before launch
   private static function sendPlainMail ($to, $subject, $message, $replyTo, $bounceEmail = NULL) {
+    if (is_array ($to)) {
+      $to = implode (', ', $to);
+    }
     $headers =
       'From: ' . $replyTo . "\r\n" .
       'Reply-To: ' . $replyTo . "\r\n" .

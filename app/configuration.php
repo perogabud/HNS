@@ -64,3 +64,5 @@ Config::write ('memberImageThumbnailPath', Config::read ('sitePath') . 'img/memb
 Config::write ('memberImageThumbnailDimensions', array ('width' => 79, 'height' => 79));
 
 Config::write('adminEmail', 'marko@fiktiv.hr');
+
+Config::write('applicationEmails', array ('vatroslav.mihacic@hns-cff.hr', 'boris.kubla@hns-cff.hr'));
