@@ -1,4 +1,3 @@
-<div style="float: left;">
 <nav id="menu">
 
   <?php if (isset ($navPages)): ?>
@@ -28,4 +27,3 @@
   <?php endif; ?>
 
 </nav>
-</div>

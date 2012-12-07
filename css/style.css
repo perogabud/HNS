@@ -178,6 +178,7 @@ aside#sidebar {
 
 #wrapper_home aside#sidebar {
 	background: #fff;
+	height: 1401px;
 }
 
 aside#sidebar header h1 {
@@ -358,6 +359,8 @@ section.shop_timeline ul li.hns-shop {
 section.vatreni {
 	margin-bottom: -1px;
 	clear: both;
+/*	height: 180px;*/
+/*	border-right: 1px solid #999;*/
 /*	border: 1px solid #999;*/
 }
 
@@ -388,10 +391,13 @@ section.vatreni ul li.member a img {
 }
 
 section.fb {
-	margin-top: -1px;
 	margin-bottom: -1px;
 	clear: both;
 	line-height: 1;
+}
+
+.fb_iframe_widget iframe {
+	top: -1px;
 }
 
 section.twitter {
@@ -790,14 +796,18 @@ section.tabs ul li.casopis a {
 
 section.main_home section.content {
 	width: 599px;
+	height: 799px;
 	float: left;
 	clear: left;
 	background: #fff url('/img/content_top_bg.png') no-repeat;
+	overflow: hidden;
 }
 
 div.content_bottom_bg {
 	width: 660px;
 	height: 100px;
+	position: absolute;
+	bottom: 200px;
 	background: #fff url('/img/content_bottom_bg.png') bottom left no-repeat;
 	clear: both;
 }
@@ -918,6 +928,7 @@ section.subpage_nav ul li.hns-shop {
 
 section.subpage_nav ul li a img {
 	float: left;
+	border: 1px solid #999;
 }
 
 section.subpage_categories {
@@ -926,9 +937,10 @@ section.subpage_categories {
 }
 
 section.subpage_categories h3 {
-	font: 22px Oswald, sans-serif;
+	font: 21px Oswald, sans-serif;
 	color:  #4d4d4d;
 	text-align: center;
+	text-transform: uppercase;
 	background: url('/img/subpages_categories_separator.png') no-repeat bottom center;
 }
 
@@ -949,6 +961,14 @@ section.subpage_categories ul li a {
 	color: #4d4d4d;
 }
 
+section.subpage_categories ul li a:hover {
+	color: #005ca8;
+}
+
+section.subpage_categories ul li a.active {
+	color: #e31f0e;
+}
+
 section.subpage_categories ul li ul {
 	width: auto;
 	padding: 0;
@@ -959,17 +979,8 @@ section.subpage_categories ul li ul a {
 	font-weight: normal;
 }
 
-section.subpage_categories ul li ul a.active {
-	color: #e31f0e;
-}
-
 section.subpage_categories ul li ul li {
 	background: none;
-}
-
-section.subpage_categories ul li ul li a { /* makni ovo ako sam krivo skuzio */
-	text-transform: uppercase;
-	color: #005ca8;
 }
 
 section.subpage_categories ul li ul li ul {
@@ -1049,6 +1060,7 @@ section.main h2 {
 }
 
 section.main div.lead {
+	margin-bottom: 60px;
 	font-size: 21px;
 	color: #999;
 }
@@ -1180,7 +1192,7 @@ section.main section.member dl dt {
 }
 
 section.main section.member dl dd {
-	width: 550px;
+	width: 515px;
 	float: left;
 }
 
@@ -1221,6 +1233,11 @@ section.content ul.galleries li small {
 	display: inline-block;
 	font-size: 14px;
 	color: #4d4d4d;
+}
+
+section.content ul.galleries li h3 {
+	font: 21px/26px Oswald, sans-serif;
+	color: #005ca8;
 }
 
 
@@ -1437,7 +1454,8 @@ footer ul li a.cityex:hover {
 .ad-gallery {
   width: 719px;
   height: 589px;
-  border: 1px solid #999;
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
 }
 .ad-gallery.video {
   width: 719px;
@@ -1465,7 +1483,7 @@ footer ul li a.cityex:hover {
       position: absolute;
       right: 0;
       top: 0;
-      width: 25%;
+      width: 50%;
       height: 100%;
       cursor: pointer;
       display: block;
@@ -1475,7 +1493,7 @@ footer ul li a.cityex:hover {
       position: absolute;
       left: 0;
       top: 0;
-      width: 25%;
+      width: 50%;
       height: 100%;
       cursor: pointer;
       display: block;
@@ -1483,7 +1501,7 @@ footer ul li a.cityex:hover {
     }
     .ad-gallery .ad-image-wrapper .ad-prev, .ad-gallery .ad-image-wrapper .ad-next {
       /* Or else IE will hide it */
-      background: url('/img/non-existing.jpg')\9
+      background: url('/img/non-existing.jpg');
     }
       .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
         background: url('/img/ad_prev.png');
@@ -1558,9 +1576,12 @@ footer ul li a.cityex:hover {
     border-top: 1px solid #999;
     position: relative;
     background: #4d4d4d;
+    font: 14px Arial, sans-serif;
+    color: #fff;
+    text-align: center;
   }
   .ad-nav {
-    height: 79px;
+    height: 159px;
   }
     .ad-gallery .ad-forward, .ad-gallery .ad-back {
       position: absolute;
@@ -1593,16 +1614,16 @@ footer ul li a.cityex:hover {
     .ad-gallery .ad-nav .ad-thumbs {
       overflow: hidden;
       width: 559px;
-      height: 159px;
-			text-align: center;
+      height: 80px;
+/*			text-align: center;*/
       margin: 0 auto;
+      margin-bottom: 10px;
+      border-right: 1px solid #999;
 /*      border-left: 1px solid #999;*/
 /*      border-right: 1px solid #999;*/
-      font: 14px Arial, sans-serif;
-      color: #fff;
     }
 
-    .ad-gallery .ad-nav .ad-thumbs h3 {
+    .ad-gallery .ad-nav h3 {
     	font: 23px Oswald, sans-serif;
     	font-weight: 400;
     }
@@ -1610,25 +1631,48 @@ footer ul li a.cityex:hover {
         float: left;
         width: 9000px;
         list-style: none;
-        height: 79px;
+        height: 80px;
         overflow: hidden;
-        margin-bottom: 10px;
       }
         .ad-gallery .ad-thumbs li {
           float: left;
-          width: 79px;
-          height: 79px;
+          width: 80px;
+          height: 80px;
         }
           .ad-gallery .ad-thumbs li a {
             display: block;
+            position: relative;
           }
             .ad-gallery .ad-thumbs li a img {
-              border: 1px solid #999;
-              margin: -1px -1px 0 0;
+              border-left: 1px solid #999;
+              border-bottom: 1px solid #999;
+              margin: 0;
               display: block;
             }
             .ad-gallery .ad-thumbs li a.ad-active img {
-              border: 1px solid #e31f0e;
+
+            }
+            
+            .ad-gallery .ad-thumbs li a div.mask {
+            	display: none;
+            }
+            
+            .ad-gallery .ad-thumbs li a:hover div.mask {
+            	display: block;
+            	width: 79px;
+            	height: 78px;
+            	border: 1px solid #fff;
+            	position: absolute;
+            	z-index: 10;
+            }
+            
+            .ad-gallery .ad-thumbs li a.ad-active div.mask {
+            	display: block;
+            	width: 79px;
+            	height: 78px;
+            	border: 1px solid #e31f0e;
+            	position: absolute;
+            	z-index: 10;
             }
 /* Can't do display none, since Opera won't load the images then */
 .ad-preloads {

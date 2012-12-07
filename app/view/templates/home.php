@@ -86,7 +86,6 @@
 				</section>
 
 				<section class="vatreni">
-					<!--<img src="/img/vatreni.png" alt="vatreni logo" class="vatreni" />-->
 					<div class="slideshow1">
             <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
@@ -129,7 +128,7 @@
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
 
-					<div class="fb-like-box" data-href="https://www.facebook.com/cff.hns?fref=ts" data-width="241" data-height="290" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
+					<div class="fb-like-box" data-href="https://www.facebook.com/cff.hns?fref=ts" data-width="241" data-height="291" data-show-faces="true" data-stream="false" data-border-color="#999" data-header="false"></div>
 				</section>
 
 				<section class="twitter">
@@ -189,7 +188,6 @@
 
 	  	<?php $this->getElement ('navigation'); ?>
 
-			<div style="float: left;">
 	    <section class="main_home">
 	    	<aside>
 	    		<ul>
@@ -311,9 +309,8 @@
 	    	</section>
 
 				<?php $this->getElement ('info'); ?>
-
+				<div class="content_bottom_bg"></div>
 	    </section>
-	    </div>
 
 		  <?php $this->getElement ('footer'); ?>
 		  <?php $this->getElement ('scripts'); ?>

@@ -36,7 +36,7 @@
 			  		<li><a href="/info-centar/galerija" ><img src="/img/galerija_80.png" alt="" ></a></li>
 			  		<li><a href="/info-centar/aktualnosti" ><img src="/img/aktualno_80.png" alt="" ></a></li>
 			  		<li><a href="/selekcije/a-reprezentacija" ><img src="/img/a_reprezentacija_80.png" alt="" ></a></li>
-			  		<li><a href="/selekcije/raspored-utakmica" ><img src="/img/brojac_80.png" alt="" style="border: 1px solid #999;" ></a></li>
+			  		<li><a href="/selekcije/raspored-utakmica" ><img src="/img/brojac_80.png" alt="" ></a></li>
 			  	</ul>
 			  </section>
 			  <section class="subpage_categories">

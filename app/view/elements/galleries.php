@@ -1,4 +1,3 @@
-<div style="float: left;">
 <section class="main">
 <?php
 
@@ -16,12 +15,12 @@ if (isset ($galleryMain)):
     <div class="ad-thumbs">
       <ul class="ad-thumb-list">
   			<?php foreach ($galleryMain->Images as $image): ?>
-  			<li><a href="<?php echo $image->Url; ?>" ><img src="<?php echo $image->SmallThumbnailUrl; ?>" width="79" height="79" alt=""/></a></li>
+  			<li><a href="<?php echo $image->Url; ?>" ><img src="<?php echo $image->SmallThumbnailUrl; ?>" width="79" height="79" alt=""/><div class="mask"></div></a></li>
   			<?php endforeach; ?>
   		</ul>
-  		<small>Aktualna galerija</small>
-    	<h3><?php echo $galleryMain->Title; ?></h3>
   	</div>
+ 		<small>Aktualna galerija</small>
+   	<h3><?php echo $galleryMain->Title; ?></h3>
 	</div>
 </section>
 <?php endif; ?>
@@ -47,4 +46,3 @@ if (isset ($galleryMain)):
 </section>
 <div class="content_bottom_bg"></div>
 </section>
-</div>
