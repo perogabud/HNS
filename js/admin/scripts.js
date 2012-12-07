@@ -258,13 +258,6 @@ $().ready (function () {
     });
   });
 
-  if ($('input.datetime').length > 0) {
-    $('input.datetime').datetimepicker ({
-      timeFormat : 'hh:mm TT',
-      ampm: true
-    });
-  }
-
   if ($('div.table table').length) {
     var dataTables = $('div.table table').dataTable ({
       "sScrollY": "200px",
@@ -312,8 +305,12 @@ $().ready (function () {
   if ($('input.date').length > 0) {
     $('input.date').datepicker ({dateFormat : 'dd.mm.yy.'});
   }
+
   if ($('input.dateTime').length > 0) {
-    $('input.dateTime').datetimepicker ({dateFormat : 'dd.mm.yy. HH:mm'});
+    $('input.dateTime').datetimepicker ({
+      dateFormat : 'dd.mm.yy.',
+      timeFormat : 'hh:mm'
+    });
   }
 
   $('select').chosen ();

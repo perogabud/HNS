@@ -271,7 +271,7 @@ class NewsItemRepository extends Repository {
         ':content' => empty ($data['content']) ? NULL : Tools::stripTags (trim ($data['content']), 'loose'),
         ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
         ':isFeatured' => isset ($data['isFeatured']) ? '1' : '0',
-        ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT)
+        ':publishDate' => array (date ('Y-m-d H:i:s', strtotime ($data['publishDate'])), PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
       $newsItemId = $this->lastInsertId ();
@@ -422,7 +422,7 @@ class NewsItemRepository extends Repository {
         ':content' => empty ($data['content']) ? NULL : Tools::stripTags (trim ($data['content']), 'loose'),
         ':isPublished' => isset ($data['isPublished']) ? '1' : '0',
         ':isFeatured' => isset ($data['isFeatured']) ? '1' : '0',
-        ':publishDate' => array ($data['publishDate'], PDO::PARAM_INT),
+        ':publishDate' => array (date ('Y-m-d H:i:s', strtotime ($data['publishDate'])), PDO::PARAM_INT),
         ':newsItemId' => array ($newsItemId, PDO::PARAM_INT)
       );
       $this->_preparedQuery ($query, $queryParams, __FILE__, __LINE__);
