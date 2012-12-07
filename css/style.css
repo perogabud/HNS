@@ -805,7 +805,7 @@ section.main_home section.content {
 
 div.content_bottom_bg {
 	width: 660px;
-	height: 100px;
+	height: 25px;
 	position: absolute;
 	bottom: 200px;
 	background: #fff url('/img/content_bottom_bg.png') bottom left no-repeat;
@@ -905,6 +905,8 @@ section.main section.actualities p.all_news a {
 nav#info {
 	width: 121px;
 	float: left;
+	position: relative;
+	z-index: 10;
 }
 
 nav#info ul li img {
