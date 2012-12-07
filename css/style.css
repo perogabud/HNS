@@ -666,7 +666,7 @@ section.tabs div#aktualno section {
 	width: auto;
 	height: 337px;
 	padding-left: 5px;
-	border-bottom: 1px solid #999;
+/*	border-bottom: 1px solid #999;*/
 /*	margin-bottom: 1px;*/
 	background: url(/img/aktualnosti_slider_bg.png) no-repeat;
 }
@@ -737,8 +737,8 @@ section.tabs div.caption {
 }
 
 section.tabs div#hns-tv div.caption {
-	height: 43px;
-	padding-top: 5px;
+	height: 40px;
+	padding-top: 8px;
 }
 
 section.tabs div.caption a {
@@ -749,7 +749,7 @@ section.tabs div.caption a {
 }
 
 section.tabs div.caption img {
-	margin: 0 0 0 13px;
+	margin: -3px 0 2px 13px;
 	float: none;
 	vertical-align: middle;
 }
@@ -1084,7 +1084,7 @@ section.main p {
 
 section.main section.content, section.main section.subpage {
 	width: 660px;
-	padding: 25px 35px 10px 25px;
+	padding: 25px 35px 80px 25px;
 	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
@@ -1665,7 +1665,7 @@ footer ul li a.cityex:hover {
             	height: 78px;
             	border: 1px solid #fff;
             	position: absolute;
-            	z-index: 10;
+            	z-index: 11;
             }
             
             .ad-gallery .ad-thumbs li a.ad-active div.mask {
