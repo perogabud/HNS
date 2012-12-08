@@ -195,8 +195,8 @@
 	    	<aside>
 	    		<ul>
 	    			<li class="decoration_top"></li>
-	    			<li class="tickets"><a href="/selekcije/ulaznice"><img src="/img/ulaznice.png" alt="ULAZNICE" /></a></li>
-	    			<li><a href="http://www.fifa.com/worldcup/index.html"><img src="/img/brasil2014.png" alt="Brazil 2014 logo" /></a></li>
+	    			<li class="tickets"><a href="/selekcije/ulaznice"></a></li>
+	    			<li class="fifa"><a href="http://www.fifa.com/worldcup/index.html"></a></li>
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
 	    	</aside>

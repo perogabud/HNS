@@ -644,6 +644,27 @@ section.main_home aside:first-child ul li.decoration_top {
 	background: transparent url('/img/slider_top.png') no-repeat;
 }
 
+section.main_home aside ul li.tickets a {
+	height: 119px;
+	display: block;
+	background: url('/img/ulaznice.png') no-repeat;
+}
+
+section.main_home aside ul li.tickets a:hover {
+	background: url('/img/ulaznice_on.png') no-repeat;
+}
+
+section.main_home aside ul li.fifa a {
+	height: 119px;
+	display: block;
+	background: url('/img/brasil2014.png') no-repeat;
+}
+
+section.main_home aside ul li.fifa a:hover {
+	background: url('/img/brasil2014_on.png') no-repeat;
+}
+
+
 section.main_home aside:first-child ul li.ulaznice {
 	margin-bottom: 0;
 }
@@ -922,10 +943,88 @@ nav#info {
 	z-index: 10;
 }
 
-nav#info ul li img {
+nav#info ul li {
+	width: 119px;
+	height: 119px;
 	margin-top: -1px;
 	border: 1px solid #999;
 }
+
+nav#info ul li.licenciranje {
+	height: 79px;
+}
+
+nav#info ul li.licenciranje a {
+	height: 79px;
+	display: block;
+	background: url('/img/licenciranje.png') no-repeat;
+}
+
+nav#info ul li.licenciranje a:hover {
+	background: url('/img/licenciranje_on.png') no-repeat;
+}
+
+nav#info ul li.savezi a {
+	height: 119px;
+	display: block;
+	background: url('/img/zupanijski_savezi.png') no-repeat;
+}
+
+nav#info ul li.savezi a:hover {
+	background: url('/img/zupanijski_savezi_on.png') no-repeat;
+}
+
+nav#info ul li.hnl1 a {
+	height: 119px;
+	display: block;
+	background: url('/img/hnl1.png') no-repeat;
+}
+
+nav#info ul li.hnl1 a:hover {
+	background: url('/img/hnl1_on.png') no-repeat;
+}
+
+nav#info ul li.hnl2 a {
+	height: 119px;
+	display: block;
+	background: url('/img/hnl2.png') no-repeat;
+}
+
+nav#info ul li.hnl2 a:hover {
+	background: url('/img/hnl2_on.png') no-repeat;
+}
+
+nav#info ul li.sredista a {
+	height: 119px;
+	display: block;
+	background: url('/img/hns_sredista.png') no-repeat;
+}
+
+nav#info ul li.sredista a:hover {
+	background: url('/img/hns_sredista_on.png') no-repeat;
+}
+
+nav#info ul li.hada a {
+	height: 119px;
+	display: block;
+	background: url('/img/hada.png') no-repeat;
+}
+
+nav#info ul li.hada a:hover {
+	background: url('/img/hada_on.png') no-repeat;
+}
+
+nav#info ul li.uvjekvjerni a {
+	height: 119px;
+	display: block;
+	background: url('/img/uvjek_vjerni.png') no-repeat;
+}
+
+nav#info ul li.uvjekvjerni a:hover {
+	background: url('/img/uvjek_vjerni_on.png') no-repeat;
+}
+
+
 
 
 /*subpage*/
