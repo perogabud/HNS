@@ -27,6 +27,8 @@
   <body>
   	<div id="bg_box" class="bg<?php echo rand(1,3)?>">
   	<div id="wrapper_home">
+  		<div class="decoration_left"></div>
+  		<div class="decoration_right"></div>
 			<aside id="sidebar">
 				<?php $this->getElement ('header'); ?>
 

@@ -6,6 +6,6 @@
   	<li class="hnl2"><a href="http://www.druga-hnl.com/"></a></li>
   	<li class="sredista"><a href="/hns/hns-sredista"></a></li>
   	<li class="hada"><a href="http://www.hada.hr/"></a></li>
-		<li class="uvjekvjerni"><a href="http://uvijekvjerni.hr" ></li>
+		<li class="uvjekvjerni"><a href="http://uvijekvjerni.hr" ></a></li>
   </ul>
 </nav>
