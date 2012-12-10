@@ -66,7 +66,7 @@
           </ul>
           <?php elseif (isset ($sideNavPages[0])): ?>
           <h3><?php echo $sideNavPages[0]->NavigationName; ?></h3>
-          <?php if (isset ($sideNavPages[0]->Subpages)) FrontHelper::printSidePages ($sideNavPages[0]->Subpages); ?>
+          <?php if (isset ($sideNavPages[0]->Subpages)) FrontHelper::printSidePages ($sideNavPages[0]->Subpages, $activePage); ?>
           <?php endif; ?>
 				</section>
 		  </aside>

@@ -2,6 +2,7 @@
 class Member extends ModelObject {
 
   const LAST_NAME_FIRST = TRUE;
+  const FIRST_NAME_FIRST = FALSE;
 
   protected $_firstName;
   protected $_slug;
@@ -40,10 +41,13 @@ class Member extends ModelObject {
   }
 
   public function getUrl () {
-    return $this->_rootUrl . Dict::read ('slug_selections') .'/' . $this->_team->getSlug () . '/' . $this->_slug;
+    return $this->_rootUrl .
+      Dict::read ('slug_selections') . '/' .
+      $this->_team->getSlug () . '/' .
+      $this->_slug;
   }
 
-  public function getName ($lastFirst = FALSE) {
+  public function getName ($lastFirst = self::FIRST_NAME_FIRST) {
     return $lastFirst ?
     $this->_lastName . ' ' . $this->_firstName :
     $this->_firstName . ' ' . $this->_lastName;
@@ -110,9 +114,12 @@ class Member extends ModelObject {
     $this->_memberCategory = $memberCategory;
   }
 
-
   public function getTeam () {
     return $this->_team;
+  }
+
+  public function setTeam (Team $team) {
+    $this->_team = $team;
   }
 
 

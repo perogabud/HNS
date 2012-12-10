@@ -22,6 +22,7 @@ class Page extends ModelObject {
   protected $_isPublished;
   protected $_canAddChildren;
   protected $_canBeDeleted;
+  protected $_redirect;
   protected $_class;
   protected $_navigationDescription;
   protected $_coverImage;
@@ -84,7 +85,8 @@ class Page extends ModelObject {
   }
 
   public function getUrl ($lang = NULL) {
-    return substr ($this->_rootUrl, 0, -1) . $this->_getLanguageMember ($this->_fullUri, $lang);
+    return substr ($this->_rootUrl, 0, -1) .
+      $this->_getLanguageMember ($this->_fullUri, $lang);
   }
 
   public function getNavigationName ($lang = NULL) {
@@ -97,7 +99,11 @@ class Page extends ModelObject {
       foreach ($this->_customModules as $customModule) {
         $selector = '{{module'. $customModule->getId () .'}}';
         $content = str_replace ('<p>'. $selector .'</p>', $selector, $content);
-        $content = str_replace ($selector, FrontHelper::printCustomModuleHtml ($customModule, FALSE, TRUE), $content);
+        $content = str_replace (
+          $selector,
+          FrontHelper::printCustomModuleHtml ($customModule, FALSE, TRUE),
+          $content
+        );
       }
     return $content;
     FrontHelper::printCustomModuleHtml ($customModule);
@@ -143,6 +149,10 @@ class Page extends ModelObject {
     return $this->_canBeDeleted;
   }
 
+  public function getRedirect () {
+    return $this->_redirect;
+  }
+
   public function getClass () {
     return $this->_class;
   }
@@ -168,9 +178,11 @@ class Page extends ModelObject {
   }
 
   public function getCustomModule ($customModuleId) {
-    if ($this->_customModules) foreach ($this->_customModules as $customModule) {
-      if ($customModule->getId () == $customModuleId) {
-        return $customModule;
+    if ($this->_customModules) {
+      foreach ($this->_customModules as $customModule) {
+        if ($customModule->getId () == $customModuleId) {
+          return $customModule;
+        }
       }
     }
     return NULL;
