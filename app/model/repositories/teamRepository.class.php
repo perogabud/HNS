@@ -59,6 +59,10 @@ class TeamRepository extends Repository {
           'relationName' => 'member'
         )
       );
+      
+      foreach ($members as &$member)
+        $member->setTeam ($team);
+
       $team->setMembers ($members);
     }
 

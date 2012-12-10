@@ -3,6 +3,7 @@
 <script type="text/javascript" src="https://github.com/malsup/cycle/raw/master/jquery.cycle.lite.js"></script>
 <script src="http://www.hns-cff.hr/js/jquery.countdown.js" type="text/javascript" charset="utf-8"></script>
 <script src="http://malsup.github.com/jquery.cycle.all.js" type="text/javascript"></script>
+<script src="/js/sprintf-0.7-beta1.js" type="text/javascript"></script>
 <script type="text/javascript" src="/js/home.js"></script>
 <script type="text/javascript">
 
