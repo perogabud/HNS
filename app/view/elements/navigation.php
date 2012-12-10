@@ -16,7 +16,7 @@
         <?php endif; ?>
         </li>
       <?php endforeach; ?>
-      <li class="lang"><a href="#" class="hr">HRV</a> <a href="#" class="en">ENG</a></li>
+      <li class="lang"><a href="#" class="hr">HRV</a><a href="#" class="en">ENG</a></li>
     </ul>
   <?php endif; ?>
 

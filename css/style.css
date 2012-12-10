@@ -227,6 +227,9 @@ section.raspored table.results th, section.raspored table.zoom th {
 }
 
 section.raspored table.results tr {
+	width: 239px;
+	float: left;
+	vertical-align: middle;
 	background: url('/img/results_splitter.png') top center no-repeat;
 }
 
@@ -263,7 +266,17 @@ section.raspored table.zoom {
 	top: -1px;
 	font-family: Oswald, sans-serif;
 	font-weight: 400;
-	background: url('/img/zoom_bg.png') no-repeat;
+	background: #c7c7c7 url('/img/zoom_bg.png') bottom right no-repeat;
+}
+
+section.raspored table.zoom tr {
+	width: 359px;
+	padding-bottom: 5px;
+	float: left;
+}
+
+section.raspored table.zoom tr td {
+	padding-top: 5px;
 }
 
 section.raspored table.zoom tr:nth-last-of-type(even) td {
@@ -313,14 +326,19 @@ section.raspored table.zoom tr:nth-of-type(odd) td small {
 	display: inline-block;
 	padding: 0 8px;
 	margin: 0 8px;
-	border-left: 1px solid #4d4d4d;
-	border-right: 1px solid #4d4d4d;
+	border-left: 1px solid #666;
+	border-right: 1px solid #666;
 }
 
 section.raspored table.zoom tr:nth-of-type(odd) td span {
 	font-weight: bold;
 }
 
+section.raspored table.zoom tr.close {
+	float: none;
+	clear: both;
+	background: transparent;
+}
 
 section.raspored table.zoom tr.close td {
 	position: relative;
@@ -481,6 +499,10 @@ nav#menu {
 	position: relative;
 }
 
+nav#menu ul {
+	width: 721px; /* ff win7 64 fix */
+}
+
 nav#menu ul li {
 	width: 119px;
 	height: 49px;
@@ -492,17 +514,7 @@ nav#menu ul li {
 	display: inline-block;
 	float: left;
 	text-align: center;
-}
-
-nav#menu ul li:first-child {
-	border-left: 0;
-}
-
-nav#menu ul li.lang {
-/*	font: 12px Oswald, sans-serif;*/
-/*	font-weight: 400;*/
-/*	width: 118px;*/
-/*	border-right: 1px solid #808080;*/
+	overflow: hidden;
 }
 
 nav#menu ul li a {
@@ -538,13 +550,13 @@ nav#menu ul li.lang a:hover, nav#menu ul li.lang a.active {
 
 nav#menu ul li.lang a.hr {
 	color: #e31f0e;
-	padding-right: 4px;
+	padding-right: 8px;
 	border-right: 2px solid #fff;
 }
 
 nav#menu ul li.lang a.en {
 	color: #005ca8;
-	padding-left: 4px;
+	padding-left: 8px;
 }
 
 nav#menu ul li ul {
@@ -1673,7 +1685,7 @@ footer ul li a.cityex:hover {
       background: url('/img/non-existing.jpg');
     }
       .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image, .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
-        background: url('/img/ad_prev.png');
+        background: url('/img/prev.png');
         width: 80px;
         height: 80px;
         display: none;
@@ -1683,7 +1695,7 @@ footer ul li a.cityex:hover {
         z-index: 101;
       }
       .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
-        background: url('/img/ad_next.png');
+        background: url('/img/next.png');
         width: 80px;
         height: 80px;
         right: 0;
@@ -1769,7 +1781,7 @@ footer ul li a.cityex:hover {
       width: 79px;
       height: 79px;
       display: block;
-      background: url('/img/ad_scroll_back.png') no-repeat;
+      background: url('/img/scroll_back.png') no-repeat;
     }
     .ad-gallery .ad-forward {
       cursor: pointer;
@@ -1778,7 +1790,7 @@ footer ul li a.cityex:hover {
       height: 79px;
       top: 0;
       right: 0px;
-      background: url('/img/ad_scroll_forward.png') no-repeat;
+      background: url('/img/scroll_forward.png') no-repeat;
     }
     .ad-gallery .ad-nav .ad-thumbs {
       overflow: hidden;
