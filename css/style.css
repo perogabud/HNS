@@ -165,7 +165,7 @@ div#wrapper, div#wrapper_home {
 	position: relative;
 }
 
-div#wrapper_home div.decoration_left {
+div#wrapper div.decoration_left, div#wrapper_home div.decoration_left {
 	width: 30px;
 	height: 856px;
 	position: absolute;
@@ -173,7 +173,7 @@ div#wrapper_home div.decoration_left {
 	background: url('/img/decoration_left.png') no-repeat;
 }
 
-div#wrapper_home div.decoration_right {
+div#wrapper div.decoration_right, div#wrapper_home div.decoration_right {
 	width: 45px;
 	height: 940px;
 	position: absolute;
