@@ -85,38 +85,41 @@
 					</ul>
 				</section>
 
+        <?php if (isset ($members)): ?>
+        <?php $membersCount = count ($members); ?>
 				<section class="vatreni">
 					<div class="slideshow1">
-            <?php for($i = 0; $i < 4; $i++) : $member = $members[$i]; ?>
+            <?php if ($membersCount >= 4) for($i = 0; $i < 4; $i++): $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
-            <? endfor ?>
+            <?php endfor; ?>
 					</div>
 					<div class="slideshow2">
-            <?php for($i = 4; $i < 7; $i++) : $member = $members[$i]; ?>
+            <?php if ($membersCount >= 7) for($i = 4; $i < 7; $i++): $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
-            <? endfor ?>
+            <?php endfor; ?>
 					</div>
 					<div class="slideshow3">
-            <?php for($i = 7; $i < 10; $i++) : $member = $members[$i]; ?>
+            <?php if ($membersCount >= 10) for($i = 7; $i < 10; $i++): $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
-            <? endfor ?>
+            <?php endfor; ?>
 					</div>
 					<div class="slideshow4">
-            <?php for($i = 11; $i < 14; $i++) : $member = $members[$i]; ?>
+            <?php if ($membersCount >= 14) for($i = 11; $i < 14; $i++): $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
-            <? endfor ?>
+            <?php endfor; ?>
 					</div>
 					<div class="slideshow5">
-            <?php for($i = 15; $i < 17; $i++) : $member = $members[$i]; ?>
+            <?php if ($membersCount >= 17) for($i = 15; $i < 17; $i++): $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
-            <? endfor ?>
+            <?php endfor; ?>
 					</div>
 					<div class="slideshow6">
-            <?php for($i = 18; $i < 20; $i++) : $member = $members[$i]; ?>
+            <?php if ($membersCount >= 20) for($i = 18; $i < 20; $i++): $member = $members[$i]; ?>
 							<a href="<?php echo $member->Url; ?>"><img src="<?php echo $member->Image->ThumbnailUrl; ?>" width="79" height="79" alt="<?php echo $member->Name; ?>"/></a>
-            <? endfor ?>
+            <?php endfor; ?>
 					</div>
 				</section>
+        <?php endif; ?>
 
 				<section class="fb">
 					<div id="fb-root"></div>

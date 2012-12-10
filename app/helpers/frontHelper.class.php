@@ -2,13 +2,22 @@
 
 class FrontHelper {
 
-  public static function printSidePages ($pages) {
+  public static function printSidePages ($pages, $activePage = NULL) {
     if (!empty ($pages)) {
       echo '<ul>';
 		  foreach ($pages as $subPage) {
         echo '<li>';
-		    echo '<a href="'. $subPage->Url .'">'. $subPage->NavigationName .'</a>';
-        if ($subPage->Subpages) self::printSidePages ($subPage->Subpages);
+        $class = '';
+        if (
+          $activePage &&
+          $activePage->Lft >= $subPage->Lft &&
+          $activePage->Rgt <= $subPage->Rgt
+          ) {
+          // Check if active page is child of current sub page
+          $class = ' class="active"';
+        }
+		    echo '<a' . $class . ' href="'. $subPage->Url .'">'. $subPage->NavigationName .'</a>';
+        if ($subPage->Subpages) self::printSidePages ($subPage->Subpages, $activePage);
 		    echo '</li>';
       }
 		  echo '</ul>';

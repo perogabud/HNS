@@ -51,14 +51,16 @@ class TeamRepository extends Repository {
 
     $team = Factory::getTeam ($results);
 
-    $memberRepository = new MemberRepository ();
-    $members = $memberRepository->getMembers (
-      array (
-        'teamId' => $team->getId (),
-        'relationName' => 'member'
-      )
-    );
-    $team->setMembers ($members);
+    if (!isset ($params['simple'])) {
+      $memberRepository = new MemberRepository ();
+      $members = $memberRepository->getMembers (
+        array (
+          'teamId' => $team->getId (),
+          'relationName' => 'member'
+        )
+      );
+      $team->setMembers ($members);
+    }
 
     return $team;
   }

@@ -249,7 +249,7 @@ class MemberRepository extends Repository {
 
     if (isset ($params['team'])) {
       $teamRepository = new TeamRepository ();
-      $team = $teamRepository->getTeam (array ('teamId' => $result['teamId']));
+      $team = $teamRepository->getTeam (array ('teamId' => $result['teamId'], 'simple' => TRUE));
       $result['team'] = $team;
     }
 
