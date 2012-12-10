@@ -1017,11 +1017,11 @@ nav#info ul li.hada a:hover {
 nav#info ul li.uvjekvjerni a {
 	height: 119px;
 	display: block;
-	background: url('/img/uvjek_vjerni.png') no-repeat;
+	background: url('/img/uvijek_vjerni.png') no-repeat;
 }
 
 nav#info ul li.uvjekvjerni a:hover {
-	background: url('/img/uvjek_vjerni_on.png') no-repeat;
+	background: url('/img/uvijek_vjerni_on.png') no-repeat;
 }
 
 
