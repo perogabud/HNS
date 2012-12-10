@@ -353,7 +353,17 @@ section.shop_timeline img {
 }
 
 section.shop_timeline ul li.hns-shop {
-	height: 120px;
+	width: 239px;
+	height: 119px;
+	margin-bottom: -1px;
+	border: 1px solid #999;
+	background: url('/img/hns_shop.png') no-repeat;
+}
+
+section.shop_timeline ul li.hns-shop:hover {
+	width: 239px;
+	height: 119px;
+	background: url('/img/hns_shop_on.png') no-repeat;
 }
 
 section.vatreni {
@@ -545,33 +555,36 @@ nav#menu ul li:hover {
 	background: #4d4d4d;
 }
 
-nav#menu ul li:hover section {
+nav#menu ul li:hover ul {
 	width: 720px;
+	display: inline-block;
 	background: #4d4d4d;
 	left: 0;
+	top: 50px;
 	position: absolute;
 	box-shadow: 0px 5px 5px 1px #666;
 	-webkit-box-shadow: 0px 5px 5px 1px #666;
 	z-index: 999;
 }
 
-nav#menu ul li:hover ul {
-	width: 240px;
-	padding: 15px 0;
+nav#menu ul li:hover ul li {
+	width: 200px;
+	padding: 15px 20px;
 	border: 0;
 	display: inline-block;
 	background: #4d4d4d;
 	float: left;
 	z-index: 1000;
 	overflow: hidden;
+	text-align: left;
 }
 
 nav#menu ul li:hover ul li {
-	width: 100%;
-	padding: 6px 25px;
-	text-align: left;
-	border: 0;
-	background: #4d4d4d;
+/*	width: 100%;*/
+/*	padding: 6px 25px;*/
+/*	text-align: left;*/
+/*	border: 0;*/
+/*	background: #4d4d4d;*/
 }
 
 nav#menu ul li:hover ul li a {
@@ -631,6 +644,27 @@ section.main_home aside:first-child ul li.decoration_top {
 	background: transparent url('/img/slider_top.png') no-repeat;
 }
 
+section.main_home aside ul li.tickets a {
+	height: 119px;
+	display: block;
+	background: url('/img/ulaznice.png') no-repeat;
+}
+
+section.main_home aside ul li.tickets a:hover {
+	background: url('/img/ulaznice_on.png') no-repeat;
+}
+
+section.main_home aside ul li.fifa a {
+	height: 119px;
+	display: block;
+	background: url('/img/brasil2014.png') no-repeat;
+}
+
+section.main_home aside ul li.fifa a:hover {
+	background: url('/img/brasil2014_on.png') no-repeat;
+}
+
+
 section.main_home aside:first-child ul li.ulaznice {
 	margin-bottom: 0;
 }
@@ -666,7 +700,7 @@ section.tabs div#aktualno section {
 	width: auto;
 	height: 337px;
 	padding-left: 5px;
-	border-bottom: 1px solid #999;
+/*	border-bottom: 1px solid #999;*/
 /*	margin-bottom: 1px;*/
 	background: url(/img/aktualnosti_slider_bg.png) no-repeat;
 }
@@ -737,8 +771,8 @@ section.tabs div.caption {
 }
 
 section.tabs div#hns-tv div.caption {
-	height: 43px;
-	padding-top: 5px;
+	height: 40px;
+	padding-top: 8px;
 }
 
 section.tabs div.caption a {
@@ -749,7 +783,7 @@ section.tabs div.caption a {
 }
 
 section.tabs div.caption img {
-	margin: 0 0 0 13px;
+	margin: -3px 0 2px 13px;
 	float: none;
 	vertical-align: middle;
 }
@@ -909,28 +943,168 @@ nav#info {
 	z-index: 10;
 }
 
-nav#info ul li img {
+nav#info ul li {
+	width: 119px;
+	height: 119px;
 	margin-top: -1px;
 	border: 1px solid #999;
 }
 
+nav#info ul li.licenciranje {
+	height: 79px;
+}
+
+nav#info ul li.licenciranje a {
+	height: 79px;
+	display: block;
+	background: url('/img/licenciranje.png') no-repeat;
+}
+
+nav#info ul li.licenciranje a:hover {
+	background: url('/img/licenciranje_on.png') no-repeat;
+}
+
+nav#info ul li.savezi a {
+	height: 119px;
+	display: block;
+	background: url('/img/zupanijski_savezi.png') no-repeat;
+}
+
+nav#info ul li.savezi a:hover {
+	background: url('/img/zupanijski_savezi_on.png') no-repeat;
+}
+
+nav#info ul li.hnl1 a {
+	height: 119px;
+	display: block;
+	background: url('/img/hnl1.png') no-repeat;
+}
+
+nav#info ul li.hnl1 a:hover {
+	background: url('/img/hnl1_on.png') no-repeat;
+}
+
+nav#info ul li.hnl2 a {
+	height: 119px;
+	display: block;
+	background: url('/img/hnl2.png') no-repeat;
+}
+
+nav#info ul li.hnl2 a:hover {
+	background: url('/img/hnl2_on.png') no-repeat;
+}
+
+nav#info ul li.sredista a {
+	height: 119px;
+	display: block;
+	background: url('/img/hns_sredista.png') no-repeat;
+}
+
+nav#info ul li.sredista a:hover {
+	background: url('/img/hns_sredista_on.png') no-repeat;
+}
+
+nav#info ul li.hada a {
+	height: 119px;
+	display: block;
+	background: url('/img/hada.png') no-repeat;
+}
+
+nav#info ul li.hada a:hover {
+	background: url('/img/hada_on.png') no-repeat;
+}
+
+nav#info ul li.uvjekvjerni a {
+	height: 119px;
+	display: block;
+	background: url('/img/uvijek_vjerni.png') no-repeat;
+}
+
+nav#info ul li.uvjekvjerni a:hover {
+	background: url('/img/uvijek_vjerni_on.png') no-repeat;
+}
+
+
+
 
 /*subpage*/
 section.subpage_nav ul li {
-	width: 81px;
-	height: 81px;
+	width: 79px;
+	height: 79px;
 	margin-right: -1px;
 	margin-bottom: -1px;
+	border: 1px solid #999;
 	float: left;
+}
+
+section.subpage_nav ul li a {
+	height: 79px;
+	display: block;
 }
 
 section.subpage_nav ul li.hns-shop {
-	width: 161px;
+	width: 159px;
+	background: url('/img/hns_shop_160.png') no-repeat;
 }
 
-section.subpage_nav ul li a img {
-	float: left;
-	border: 1px solid #999;
+section.subpage_nav ul li.hns-shop:hover {
+	background: url('/img/hns_shop_160_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.ulaznice {
+	background: url('/img/ulaznice_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.ulaznice:hover {
+	background: url('/img/ulaznice_80_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.raspored {
+	background: url('/img/raspored_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.raspored:hover {
+	background: url('/img/raspored_80_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.hnstv {
+	background: url('/img/hns_tv_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.hnstv:hover {
+	background: url('/img/hns_tv_80_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.galerija {
+	background: url('/img/galerija_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.galerija:hover {
+	background: url('/img/galerija_80_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.aktualnosti {
+	background: url('/img/aktualno_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.aktualnosti:hover {
+	background: url('/img/aktualno_80_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.areprezentacija {
+	background: url('/img/a_reprezentacija_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.areprezentacija:hover {
+	background: url('/img/a_reprezentacija_80_on.png') no-repeat;
+}
+
+section.subpage_nav ul li.brojac {
+	background: url('/img/brojac_80.png') no-repeat;
+}
+
+section.subpage_nav ul li.brojac:hover {
+	background: url('/img/brojac_80_on.png') no-repeat;
 }
 
 section.subpage_categories {
@@ -1042,13 +1216,6 @@ section.team ul li span.position {
 	width: 408px;
 }
 
-
-
-section.fake { /*prazni box za povecat visinu lijevog sidebara*/
-	height: 250px;
-	clear: both;
-}
-
 section.main {
 	background: #fff;
 }
@@ -1084,7 +1251,7 @@ section.main p {
 
 section.main section.content, section.main section.subpage {
 	width: 660px;
-	padding: 25px 35px 10px 25px;
+	padding: 25px 35px 80px 25px;
 	background: #fff url('/img/content_top_bg.png') no-repeat;
 }
 
@@ -1665,7 +1832,7 @@ footer ul li a.cityex:hover {
             	height: 78px;
             	border: 1px solid #fff;
             	position: absolute;
-            	z-index: 10;
+            	z-index: 11;
             }
             
             .ad-gallery .ad-thumbs li a.ad-active div.mask {

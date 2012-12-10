@@ -20,6 +20,9 @@
 	  <!--[if lt IE 9]>
 	    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 	  <![endif]-->
+	  <!--[if IE 8]>
+	    <link rel="stylesheet" href="/css/ie8.css" type="text/css" />
+	  <![endif]-->
   </head>
   <body>
   	<div id="bg_box" class="bg<?php echo rand(1,3)?>">
@@ -70,7 +73,7 @@
 
 				<section class="shop_timeline">
 					<ul>
-						<li class="hns-shop"><img src="/img/hns_shop.png" alt="HNS SHOP" /></li>
+						<li class="hns-shop"></li>
 						<li class="timeline" style="overflow:hidden;width:241px;height:121px;">
 							<ul>
 							  <li><a href="/hns/o-nama/vremeplov"><img src="/img/timeline/1998-francuska-suker-boban.jpg" alt="TIMELINE" /></a></li>
@@ -195,8 +198,8 @@
 	    	<aside>
 	    		<ul>
 	    			<li class="decoration_top"></li>
-	    			<li class="tickets"><a href="/selekcije/ulaznice"><img src="/img/ulaznice.png" alt="ULAZNICE" /></a></li>
-	    			<li><a href="http://www.fifa.com/worldcup/index.html"><img src="/img/brasil2014.png" alt="Brazil 2014 logo" /></a></li>
+	    			<li class="tickets"><a href="/selekcije/ulaznice"></a></li>
+	    			<li class="fifa"><a href="http://www.fifa.com/worldcup/index.html"></a></li>
 	    			<li class="decoration_bottom"></li>
 	    		</ul>
 	    	</aside>
